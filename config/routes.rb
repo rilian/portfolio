@@ -1,6 +1,17 @@
 Portfolio::Application.routes.draw do
   devise_for :users
 
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "sign_up" => "users#new", :as => "sign_up"
+
+  root :to => 'home#index'
+
+  resources :categories
+  resources :posts
+  resources :sessions
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -50,11 +61,7 @@ Portfolio::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
 
-  resources :categories
-
-  resources :posts
 
   # See how all your routes lay out with "rake routes"
 
