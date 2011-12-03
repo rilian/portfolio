@@ -1,0 +1,9 @@
+posts of category <%= @category.title %>
+<ul>
+  <% @category.posts.published.each do |post| %>
+    <li>
+      <h1><%= link_to post.title, category_post_path(@category, post)%></h1>
+      <p><%= post.body %></p>
+    </li>
+  <% end %>
+</ul>
