@@ -20,6 +20,10 @@ class Post < ActiveRecord::Base
     def published
       self.where(:is_published => true)
     end
+
+    def ordered
+      self.order("updated_at DESC")
+    end
   end
 
   # Other model methods

@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<%= render "shared/navigation_bar" %>
+
+<br/>
+
+<!--
 <div id="user_nav">
   <% if current_user %>
     Logged in as <%= current_user.email %>.
@@ -21,6 +26,7 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end %>
+-->
 
 <%= yield %>
 

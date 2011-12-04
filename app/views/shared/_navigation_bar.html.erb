@@ -1,0 +1,22 @@
+<div id="nav-container">
+  <ul id="nav">
+    <li class="current"><a href="/">Home</a></li>
+    <% Category.all.each do |category| %>
+      <li>
+        <%= link_to category.title, category_path(category)%>
+        <% if category.posts.published.ordered.size > 0 %>
+          <ul>
+            <% category.posts.published.ordered.limit(10).each do |post| %>
+              <li><%= link_to post.title, post_path(post)%></li>
+            <% end %>
+          <% if category.posts.published.size > 10 %>
+            <li><strong><%= link_to "And #{(category.posts.published.size - 10)} more ...", category_path(category)%></strong></li>
+          <% end %>
+          </ul>
+        <% end %>
+      </li>
+    <% end %>
+    <li><%= link_to 'About', about_home_index_path %></li>
+    <li><%= link_to 'Contacts', contacts_home_index_path %></li>
+  </ul>
+</div>
