@@ -10,6 +10,10 @@ Portfolio::Application.routes.draw do
   resources :categories
   resources :posts
   resources :sessions
+  resources :home, :only => [:index] do
+    get :about, :on => :collection
+    get :contacts, :on => :collection
+  end
   resources :users
 
   # The priority is based upon order of creation:
