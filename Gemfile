@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'kaminari'
+gem "faker"
 
 # Gems used only for assets and not required
 # in production environments by default.

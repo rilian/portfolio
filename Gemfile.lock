@@ -60,6 +60,8 @@ GEM
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
+    faker (1.0.1)
+      i18n (~> 0.4)
     ffi (1.0.11)
     hike (1.2.1)
     i18n (0.6.0)
@@ -174,6 +176,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   database_cleaner
   devise
+  faker
   jquery-rails
   kaminari
   rails (= 3.1.3)

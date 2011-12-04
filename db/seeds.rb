@@ -9,14 +9,15 @@
 Category.delete_all
 Post.delete_all
 
-puts Category.create(:title => 'Design notes').inspect
-puts Category.create(:title => 'Interiors').inspect
-puts Category.create(:title => 'Graphic').inspect
 puts Category.create(:title => 'Illustrations').inspect
+puts Category.create(:title => 'Photo').inspect
+puts Category.create(:title => 'Decor').inspect
+puts Category.create(:title => 'Teaching').inspect
+puts Category.create(:title => 'Cooking').inspect
+puts Category.create(:title => 'Blog').inspect
 
-puts Post.create({:title => 'Hello world!', :body => 'Lorem ipsum dolores', :category => Category.find_by_title('Design notes')}, :is_published => true).inspect
-puts Post.create({:title => 'Second chapter', :body => 'blah blarg bllahf aa', :category => Category.find_by_title('Design notes'), :is_published => true}).inspect
-puts Post.create({:title => 'How to draw with pen!', :body => 'Pax vobiscum lorem ipsum dolores', :category => Category.find_by_title('Graphic'), :is_published => true}).inspect
-puts Post.create({:title => 'Third info', :body => 'omm amm blah blarg bllahf dd', :category => Category.find_by_title('Interiors'), :is_published => true}).inspect
-puts Post.create({:title => 'Paintings around', :body => 'Amnyan ipsum dolores', :category => Category.find_by_title('Illustrations'), :is_published => true}).inspect
-puts Post.create({:title => 'Some design secrets!', :body => 'hrum hrum blah blarg bllahf', :category => Category.find_by_title('Interiors'), :is_published => true}).inspect
+Category.all.each do |category|
+  (5+rand(15)).times do
+    puts Post.create(:title => Faker::Lorem.words(5).join(' '), :body => Faker::Lorem.paragraphs(4).join(' <br/>'), :category => category, :is_published => true).inspect
+  end
+end
