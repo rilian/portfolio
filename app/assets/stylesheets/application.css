@@ -2,7 +2,12 @@
 margin:0px;
 padding:0px;
 }
-img{border:0px;}
+html[xmlns] #nav {
+	display: block;
+}
+* html #nav {
+	height: 1%;
+}
 html{
 width:100%;
 height:100%;
@@ -11,7 +16,25 @@ background:url(/assets/bg.jpg) top center no-repeat;
 body {
 }
 
+img{border:0px;}
+
 /*NAVIGATION*/
+#site-container {
+	width: 1000px;
+	margin: 20px auto;
+}
+
+#site {
+    display: block;
+    margin: 0;
+    width: 1015px;
+
+    background: #d1d1d1; /* for non-css3 browsers */
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebebeb', endColorstr='#a1a1a1'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#a1a1a1)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #ebebeb,  #a1a1a1); /* for firefox 3.6+ */
+
+}
 
 #nav-container {
 	font: normal .8em/1.5em Arial, Helvetica, sans-serif;
@@ -157,10 +180,4 @@ body {
 }
 #nav {
 	display: inline-block;
-}
-html[xmlns] #nav {
-	display: block;
-}
-* html #nav {
-	height: 1%;
 }
