@@ -12,6 +12,9 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
+  attr_accessible :image, :remote_image_url
+
+  mount_uploader :image, ImageUploader
 
   # Model dictionaries, state machine
 

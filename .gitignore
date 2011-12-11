@@ -8,4 +8,6 @@
 *.swp
 .rvmrc
 dump.rdb
+db/schema.rb
+publick/uploads/*
 
