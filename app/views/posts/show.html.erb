@@ -1,19 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Category:</b>
-  <%= @post.category_id %>
-</p>
+<h1><%= @post.title %></h1>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @post.body %>
-</p>
+<div>
+  <%= RedCloth.new(@post.body).to_html.html_safe %>
+</div>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
