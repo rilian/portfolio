@@ -9,5 +9,5 @@
 .rvmrc
 dump.rdb
 db/schema.rb
-publick/uploads/*
+public/uploads/*
 
