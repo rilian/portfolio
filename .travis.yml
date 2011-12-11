@@ -1,5 +1,8 @@
 rvm:
- - 1.9.3
+  - 1.9.3
 
 before_script:
   - "sh -c 'rake db:migrate && rake db:seed'"
+
+notifications:
+  email: false
