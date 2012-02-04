@@ -12,8 +12,7 @@ gem 'kaminari'
 gem "RedCloth"
 gem 'jquery-rails'
 gem "carrierwave"
-#gem "mini_magick"
-gem "rmagick"
+gem "mini_magick"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,11 +25,14 @@ end
 group :development, :test do
   gem 'turn', '0.8.2', :require => false
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem "proxylocal"
+end
+
+group :test do
   gem "shoulda"
   gem 'capybara'
   gem "rspec-rails", ">= 2.2.0"
   gem 'database_cleaner'
   gem 'rspec_multi_matchers'
   gem "faker"
-  gem "proxylocal"
 end
