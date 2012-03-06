@@ -1,12 +1,12 @@
 <div id="nav-container">
   <ul id="nav">
-    <li class="<%= (params[:category_id].blank? && params[:post_id].blank? && params[:id].blank?) ? 'current' : '' %>"><a href="/">Home</a></li>
+    <li class="<%= (params[:category_id].blank? && params[:post_id].blank? && params[:id].blank?) ? 'current' : '' %>"><a href="<%= root_path %>">Home</a></li>
     <% Category.all.each do |category| %>
       <li>
         <%= link_to category.title, category_path(category)%>
-        <% if category.posts.published.ordered.size > 0 %>
+        <% if category.posts.published.size > 0 %>
           <ul>
-            <% category.posts.published.ordered.limit(10).each do |post| %>
+            <% category.posts.published.limit(10).each do |post| %>
               <li><%= link_to post.title, post_path(post)%></li>
             <% end %>
           <% if category.posts.published.size > 10 %>

@@ -10,6 +10,7 @@ gem 'cancan'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 gem 'kaminari'
+gem 'formtastic'
 
 gem 'RedCloth'
 gem 'carrierwave'
@@ -28,7 +29,10 @@ group :assets do
 end
 
 group :development, :test do
-  #gem 'ruby-debug19', :require => 'ruby-debug'
+  # one-liner to install these properly: bash < <(curl -L https://raw.github.com/gist/1333785)
+  #gem 'linecache19', '0.5.13'
+  #gem 'ruby-debug-base19', '0.11.26'
+
   gem 'proxylocal', "0.2.4"
   gem "factory_girl_rails"
 end
