@@ -2,11 +2,13 @@ rvm:
   - 1.9.2
   - 1.9.3
 
+bundler_args: --without development
+
 before_install:
+  #- bash < <(curl -L https://raw.github.com/gist/1333785)
 
 before_script:
-  - bash < <(curl -L https://raw.github.com/gist/1333785)
-  #- "sh -c 'rake db:migrate && rake db:seed'"
+  - "sh -c 'rake db:migrate && rake db:seed'"
 
 notifications:
   email: false
