@@ -1,15 +1,5 @@
-<p id="notice"><%= notice %></p>
+<%= render 'posts/post', :post => @post %>
 
-<h1><%= @post.title %></h1>
-
-<div>
-  <%= image_tag @post.image_url(:thumb).to_s %>
+<div class="">
+  <%= render :partial => "images/image", :collection => @post.images %>
 </div>
-
-<div>
-  <%= RedCloth.new(@post.body).to_html.html_safe %>
-</div>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

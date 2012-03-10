@@ -1,37 +1,7 @@
-<%= form_for @post, :html => {:multipart => true} do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= f.semantic_errors %>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :remote_image_url, "or image URL" %><br />
-    <%= f.text_field :remote_image_url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= f.inputs do %>
+  <%= f.input :title, :label => "Title" %>
+  <%= f.input :body, :label => "Body" %>
+  <%= f.input :category, :as => :select, :collection => Category.all, :label => "Category" %>
 <% end %>

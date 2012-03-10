@@ -12,7 +12,7 @@
 
 <% @posts.each do |post| %>
   <tr>
-    <td><%= post.category_id %></td>
+    <td><%= post.category.try(:title) %></td>
     <td><%= post.title %></td>
     <td><%= post.body %></td>
     <td><%= link_to 'Show', post %></td>
