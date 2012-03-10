@@ -1,47 +1,41 @@
 var Posts = (function(){
-// PUBLIC
-  var posts = {
-    add_fields: function(link, association, content) {
-      var new_id = new Date().getTime();
-      var regexp = new RegExp("new_" + association, "g");
-      $(link).before(content.replace(regexp, new_id));
-    },
+  return {
+      add_fields: function(link, association, content) {
+        var new_id = new Date().getTime();
+        var regexp = new RegExp("new_" + association, "g");
+        $(link).before(content.replace(regexp, new_id));
+      },
 
-    remove_fields: function(link) {
-      $(link).prev("input[type=hidden]").val("1");
-      $(link).closest(".fields").hide();
-    },
+      remove_fields: function(link) {
+        $(link).prev("input[type=hidden]").val("1");
+        $(link).closest(".fields").hide();
+      },
 
-    fill_file_upload: function (element, result) { // private
-      if(result.error) {
-        alert('Error uploading image!');
-      } else {
-        element.find("input.file-upload-cache").val(result.name);
-        element.find("input.file-upload-cache-changed").val(true);
+      fill_file_upload: function (element, result) { // private
+        if(result.error) {
+          alert('Error uploading image!');
+        } else {
+          element.find("input.file-upload-cache").val(result.name);
+          element.find("input.file-upload-cache-changed").val(true);
 
-        //use thumb for video file, if needed
-        if(result.type == 'image') {
-          var $container = element.parents("div.file-upload-container").length > 0 ? element.parents("div.file-upload-container") : element;
-          $container.find("div.cache-image-holder").html("<a href='" + result.url + "' class='fancybox'><img src='" + result.thumbnail_url + "'></a>");
-          assign_fancyboxes();
+          //use thumb for video file, if needed
+          if(result.type == 'image') {
+            var $container = element.parents("div.file-upload-container").length > 0 ? element.parents("div.file-upload-container") : element;
+            $container.find("div.cache-image-holder").html("<a href='" + result.url + "' class='fancybox'><img src='" + result.thumbnail_url + "'></a>");
+            assign_fancyboxes();
+          }
         }
       }
-    }
-  };
-
-// PRIVATE
-
-  return posts;
+    };
 })();
-
-
 
 $(function() {
 
-  // attach fileupload event after 1st click on container div
+  // attach file-upload event after 1st click on container div
   $("#main").on("click", 'div.file-upload', function() {
     var file_upload_container = $(this);
     file_upload_container.find('.file-upload-input').fileupload({
+      method: 'PUT',
       dataType: 'json',
       url: file_upload_container.attr('data-upload_href'),
       done: function (e, data) {

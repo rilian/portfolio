@@ -7,14 +7,13 @@ class Post < ActiveRecord::Base
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :category
+  has_many :images
 
   # Validations: presence > by type > validates
   validates_presence_of :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :image, :remote_image_url
-
-  mount_uploader :image, ImageUploader
+  accepts_nested_attributes_for :images, :allow_destroy => true
 
   # Model dictionaries, state machine
 
@@ -23,18 +22,10 @@ class Post < ActiveRecord::Base
     def published
       self.where(:is_published => true)
     end
-
-    def ordered
-      self.order("updated_at DESC")
-    end
   end
 
   # Other model methods
-  def to_param
-    "#{self.id}-#{self.category.title.parameterize}-#{self.title.parameterize}"
-  end
 
   # Private methods (for example: custom validators)
   private
-
 end

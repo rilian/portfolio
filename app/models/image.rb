@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
   # Includes
-  mount_uploader :image, ImageUploader
+  mount_uploader :asset, ImageUploader
 
   # Before, after callbacks
 
@@ -10,8 +10,20 @@ class Image < ActiveRecord::Base
   belongs_to :post
 
   # Validations: presence > by type > validates
+  validates_presence_of :asset
 
   # Other properties (e.g. accepts_nested_attributes_for)
+  attr_accessible :asset, :asset_cache, :asset_cache_changed
+
+  def asset_cache_changed
+    false
+  end
+
+  # For image change when only screencap uploads asset_cache
+  def asset_cache_changed=(value)
+    self.save! if self.persisted?
+    true
+  end
 
   # Model dictionaries, state machine
 
@@ -20,9 +32,6 @@ class Image < ActiveRecord::Base
   end
 
   # Other model methods
-  def to_param
-    "#{self.id}-#{self.category.title.parameterize}-#{self.title.parameterize}"
-  end
 
   # Private methods (for example: custom validators)
   private
