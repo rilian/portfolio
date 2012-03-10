@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Image do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_db_column(:post_id).of_type(:integer) }
+  it { should have_db_column(:asset).of_type(:string) }
+
+  it { should have_db_index(:post_id) }
 end

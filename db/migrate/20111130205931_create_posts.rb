@@ -7,7 +7,5 @@ class CreatePosts < ActiveRecord::Migration
       t.boolean :is_published, :default => false
       t.timestamps
     end
-
-    add_index :posts, :category_id
   end
 end

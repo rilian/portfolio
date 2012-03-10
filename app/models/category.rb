@@ -10,6 +10,7 @@ class Category < ActiveRecord::Base
 
   # Validations: presence > by type > validates
   validates_presence_of :title
+  validates_uniqueness_of :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
 
