@@ -10,8 +10,8 @@ before_install:
 
 bundler_args: --without development assets
 
-before_script:
-  - "bundle exec rake db:setup db:migrate db:test:clone > /dev/null"
+#before_script:
+#  - "bundle exec rake db:setup db:migrate db:test:clone > /dev/null"
 
 script: TRAVIS=1 bundle exec rspec spec
 
