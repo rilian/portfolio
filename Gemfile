@@ -24,9 +24,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :test do
+group :development do
   gem 'ruby-debug19', :require => 'ruby-debug' unless ENV['TRAVIS']
-  gem 'factory_girl_rails'
 end
 
 group :test do
@@ -36,8 +35,8 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'factory_girl_rails'
 end
-
 
 group :production do
   #
