@@ -2,7 +2,7 @@ rvm:
   - 1.9.2
   - 1.9.3
 
-gemfile: gemfiles/Gemfile.ci
+gemfile: Gemfile.ci
 
 bundler_args: --without development
 
