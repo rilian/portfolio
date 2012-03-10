@@ -8,4 +8,14 @@ describe Post do
 
   it { should have_db_index(:category_id) }
   it { should have_db_index(:is_published) }
+
+  describe "generators" do
+    before :each do
+      @post = Factory(:post)
+    end
+
+    it "should be valid" do
+      @post.should be_valid
+    end
+  end
 end

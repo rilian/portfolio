@@ -5,4 +5,14 @@ describe Image do
   it { should have_db_column(:asset).of_type(:string) }
 
   it { should have_db_index(:post_id) }
+
+  describe "generators" do
+    before :each do
+      @image = Factory(:image)
+    end
+
+    it "should be valid" do
+      @image.should be_valid
+    end
+  end
 end

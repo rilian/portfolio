@@ -19,6 +19,7 @@ FactoryGirl.define do
   factory :post do
     title { Factory.next(:title) }
     body { Factory.next(:body) }
+    is_published false
 
     images { [Factory(:image)] }
 
@@ -29,6 +30,5 @@ FactoryGirl.define do
 
   factory :image do
     asset File.open("#{Rails.root}/spec/support/file.jpg")
-    is_published false
   end
 end
