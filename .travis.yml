@@ -2,9 +2,9 @@ rvm:
   - 1.9.2
   - 1.9.3
 
-#gemfile: gemfiles/Gemfile.ci
+gemfile: gemfiles/Gemfile.ci
 
-#bundler_args: --without development
+bundler_args: --without development
 
 before_install:
   #- bash < <(curl -L https://raw.github.com/gist/1333785)
