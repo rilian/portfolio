@@ -25,11 +25,6 @@ group :assets do
 end
 
 group :development, :test do
-  # one-liner to install these properly: bash < <(curl -L https://raw.github.com/gist/1333785)
-  gem 'linecache19',       '>= 0.5.13'
-  gem 'ruby-debug-base19', '>= 0.11.26'
-  gem 'ruby-debug19'
-
   gem 'factory_girl_rails'
 end
 
@@ -44,6 +39,11 @@ group :test do
 end
 
 group :development do
+  # one-liner to install these properly: bash < <(curl -L https://raw.github.com/gist/1333785)
+  gem 'linecache19',       '>= 0.5.13'
+  gem 'ruby-debug-base19', '>= 0.11.26'
+  gem 'ruby-debug19'
+
   gem 'proxylocal'
 end
 
