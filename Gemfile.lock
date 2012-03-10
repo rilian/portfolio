@@ -33,7 +33,6 @@ GEM
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bert (1.1.2)
     builder (3.0.0)
     cancan (1.6.7)
     capybara (1.1.2)
@@ -63,7 +62,6 @@ GEM
       warden (~> 1.1.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
-    eventmachine (0.12.10)
     execjs (1.3.0)
       multi_json (~> 1.0)
     factory_girl (2.6.3)
@@ -102,9 +100,6 @@ GEM
     nokogiri (1.5.2)
     orm_adapter (0.0.6)
     polyglot (0.3.3)
-    proxylocal (0.3.1)
-      bert (>= 1.1.2)
-      eventmachine (>= 0.12.10)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -210,7 +205,6 @@ DEPENDENCIES
   launchy
   linecache19 (>= 0.5.13)
   mini_magick
-  proxylocal
   rails (= 3.2.2)
   rspec-rails (~> 2.6)
   ruby-debug-base19 (>= 0.11.26)

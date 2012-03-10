@@ -24,8 +24,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :test do
-  gem 'factory_girl_rails'
+group :development do
+  # one-liner to install these properly: bash < <(curl -L https://raw.github.com/gist/1333785)
+  gem 'linecache19',       '>= 0.5.13'
+  gem 'ruby-debug-base19', '>= 0.11.26'
+  gem 'ruby-debug19'
 end
 
 group :test do
@@ -35,16 +38,9 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'factory_girl_rails'
 end
 
-group :development do
-  # one-liner to install these properly: bash < <(curl -L https://raw.github.com/gist/1333785)
-  gem 'linecache19',       '>= 0.5.13'
-  gem 'ruby-debug-base19', '>= 0.11.26'
-  gem 'ruby-debug19'
-
-  gem 'proxylocal'
-end
 
 group :production do
   #
