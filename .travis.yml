@@ -3,10 +3,10 @@ rvm:
   - 1.9.3
 
 before_install:
-  - bash < <(curl -L https://raw.github.com/gist/1333785)
 
 before_script:
-  - "sh -c 'rake db:migrate && rake db:seed'"
+  - bash < <(curl -L https://raw.github.com/gist/1333785)
+  #- "sh -c 'rake db:migrate && rake db:seed'"
 
 notifications:
   email: false
