@@ -87,7 +87,7 @@ GEM
       railties (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    linecache19 (0.5.13)
+    linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.4.3)
       i18n (>= 0.4.0)
@@ -138,7 +138,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.8.0)
-    ruby-debug-base19 (0.11.26)
+    ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby_core_source (>= 0.1.4)
@@ -203,11 +203,9 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
-  linecache19 (>= 0.5.13)
   mini_magick
   rails (= 3.2.2)
   rspec-rails (~> 2.6)
-  ruby-debug-base19 (>= 0.11.26)
   ruby-debug19
   sass-rails
   selenium-client

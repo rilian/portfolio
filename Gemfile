@@ -25,7 +25,7 @@ group :assets do
 end
 
 group :development, :test do
-  gem "ruby-debug19", :require => 'ruby-debug' unless ENV['TRAVIS']
+  gem 'ruby-debug19', :require => 'ruby-debug' unless ENV['TRAVIS']
   gem 'factory_girl_rails'
 end
 

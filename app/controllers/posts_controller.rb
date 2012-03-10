@@ -20,7 +20,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
     else
-      #debugger
       render action: "new"
     end
   end
