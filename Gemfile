@@ -21,19 +21,15 @@ gem 'mini_magick'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
-
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
   # one-liner to install these properly: bash < <(curl -L https://raw.github.com/gist/1333785)
-  #gem 'linecache19', '0.5.13'
-  #gem 'ruby-debug-base19', '0.11.26'
+  gem 'linecache19',       '>= 0.5.13'
+  gem 'ruby-debug-base19', '>= 0.11.26'
+  gem 'ruby-debug19'
 
-  gem 'proxylocal'
   gem 'factory_girl_rails'
 end
 
@@ -45,6 +41,10 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'fuubar'
+end
+
+group :development do
+  gem 'proxylocal'
 end
 
 group :production do
