@@ -11,7 +11,8 @@ before_install:
 bundler_args: --without development assets
 
 before_script:
-  - "bundle exec rake db:setup db:test:prepare"
+  - "bundle exec rake db:reset db:setup db:migrate
+  - "RAILS_ENV=test rake db:reset db:setup db:migrate"
 
 script: TRAVIS=1 bundle exec rspec spec
 
