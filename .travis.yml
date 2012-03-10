@@ -8,7 +8,7 @@ before_install:
   - gem install bundler
 #  - bash < <(curl -L https://raw.github.com/gist/1333785)
 
-bundler_args: --without development
+bundler_args: --without development assets
 
 before_script:
   - "bundle exec rake db:setup db:migrate db:test:clone > /dev/null"
