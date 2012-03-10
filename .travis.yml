@@ -4,15 +4,10 @@ rvm:
   - 1.9.2
   - 1.9.3
 
-before_install:
-  - gem install bundler
-#  - bash < <(curl -L https://raw.github.com/gist/1333785)
-
 bundler_args: --without development assets
 
 before_script:
-  - "bundle exec rake db:reset db:setup db:migrate
-  - "RAILS_ENV=test rake db:reset db:setup db:migrate"
+  - "bundle exec rake db:reset db:setup db:migrate ; RAILS_ENV=test rake db:reset db:setup db:migrate"
 
 script: TRAVIS=1 bundle exec rspec spec
 
