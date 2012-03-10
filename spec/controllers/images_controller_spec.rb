@@ -25,13 +25,12 @@ describe ImagesController do
       end
     end
 
-    describe 'PUT update' do
+    describe 'POST create' do
       before :each do
-        put :update, :file => File.new("#{Rails.root}/spec/support/file.jpg")#, :auth_token => @user.authentication_token
+        post :create, :file => File.new("#{Rails.root}/spec/support/file.jpg")#, :auth_token => @user.authentication_token
       end
 
-      it "should be valid JSON" do
-        #response.headers.keys.include?("X-javascript").should be_true
+      it "should be success" do
         response.should be_success
         hash = ActiveSupport::JSON.decode(response.body)
         hash.is_a?(Hash).should be_true

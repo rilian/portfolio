@@ -35,9 +35,8 @@ $(function() {
   $("#main").on("click", 'div.file-upload', function() {
     var file_upload_container = $(this);
     file_upload_container.find('.file-upload-input').fileupload({
-      method: 'PUT',
       dataType: 'json',
-      url: file_upload_container.attr('data-upload_href'),
+      url: file_upload_container.data('upload_href'),
       done: function (e, data) {
         if(data.result.error) {
           alert(data.result.error);
