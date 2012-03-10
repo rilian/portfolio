@@ -6,5 +6,7 @@ class CreateImages < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :images, :post_id unless index_exists?(:images, :post_id)
   end
 end
