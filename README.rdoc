@@ -18,9 +18,7 @@ Portfolio is a web-application based on Rails framework that allows you create p
 
 I encourage you to test and use the software, and send your pull-requests with improvements
 
-== Build Status {<img src="https://secure.travis-ci.org/rilian/portfolio.png"/>}[http://travis-ci.org/rilian/portfolio]
-
-== Dependency Status {<img src="https://gemnasium.com/rilian/portfolio.png?travis"/>}[https://gemnasium.com/rilian/portfolio]
+== Build Status {<img src="https://secure.travis-ci.org/rilian/portfolio.png?branch=master" alt="Build Status" />}[http://travis-ci.org/rilian/portfolio]
 
 == License
 
