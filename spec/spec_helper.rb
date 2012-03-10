@@ -31,6 +31,8 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
+  config.debug = !ENV['TRAVIS']
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
