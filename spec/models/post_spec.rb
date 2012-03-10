@@ -7,4 +7,5 @@ describe Post do
   it { should have_db_column(:is_published).of_type(:boolean).with_options(:default => false) }
 
   it { should have_db_index(:category_id) }
+  it { should have_db_index(:is_published) }
 end
