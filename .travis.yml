@@ -2,12 +2,10 @@ rvm:
   - 1.9.2
   - 1.9.3
 
-#gemfile: Gemfile.ci
+before_install:
+  - bash < <(curl -L https://raw.github.com/gist/1333785)
 
-#bundler_args: --without development
-
-#before_install:
-#  - bash < <(curl -L https://raw.github.com/gist/1333785)
+bundler_args: --without development
 
 before_script:
   - "sh -c 'rake db:migrate && rake db:seed'"
