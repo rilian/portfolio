@@ -35,7 +35,6 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
-  gem 'fuubar'
 end
 
 group :development do
