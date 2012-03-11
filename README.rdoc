@@ -6,7 +6,7 @@ Portfolio is a web-application based on Rails framework that allows you create p
 
 1. Clone Portfolio at the command prompt if you haven't yet:
 
-    git clone https://rilian@github.com/rilian/portfolio.git
+    git clone https://github.com/rilian/portfolio.git
 
 2. Change directory to +portfolio+ and start the web server:
 
