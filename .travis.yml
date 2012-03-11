@@ -1,3 +1,5 @@
+# configuration settings for http://travis-ci.org
+
 language: ruby
 
 rvm:

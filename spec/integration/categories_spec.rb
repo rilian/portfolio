@@ -12,7 +12,7 @@ describe "Categories", :type => :request do
 
     context "Scenario" do
       it "should be valid", :js => true do
-        #
+        pending
       end
     end
   end

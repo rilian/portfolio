@@ -11,7 +11,7 @@ describe CategoriesController do
     end
   end
 
-  describe "user" do
+  describe "authenticated user" do
     before(:each) do
       authenticate_user
     end

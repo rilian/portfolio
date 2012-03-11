@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
   #before_filter :authenticate_user!
 
-  load_and_authorize_resource :post
+  load_and_authorize_resource :post, :except => [:index]
+  authorize_resource :post, :only => [:index]
 
   def index
+    @search = Post.includes([:category, :images]).search(params[:q])
+    @posts = @search.result(:distinct => true).page(params[:page])
   end
 
   def show

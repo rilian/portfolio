@@ -9,6 +9,7 @@ gem 'devise'
 gem 'cancan'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
+gem 'ransack'
 gem 'kaminari'
 gem 'formtastic'
 
