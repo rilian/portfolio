@@ -6,13 +6,14 @@ describe HomeController do
   end
 
   describe "user" do
-    describe "GET index" do
-      before do
-        get :index
+    %w(about contacts).each do |page|
+      describe "GET #{page}" do
+        before do
+          get page.to_sym
+        end
+        it { response.should be_success }
+        it { response.should render_template(page) }
       end
-
-      it { response.should be_success }
-      it { response.should render_template("index")}
     end
   end
 end

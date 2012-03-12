@@ -1,21 +1,7 @@
 <div id="nav-container">
   <ul id="nav">
     <li class="<%= (params[:category_id].blank? && params[:post_id].blank? && params[:id].blank?) ? 'current' : '' %>"><a href="<%= root_path %>">Home</a></li>
-    <% Category.all.each do |category| %>
-      <li>
-        <%= link_to category.title, category_path(category)%>
-        <% if category.posts.published.size > 0 %>
-          <ul>
-            <% category.posts.published.limit(10).each do |post| %>
-              <li><%= link_to post.title, post_path(post)%></li>
-            <% end %>
-          <% if category.posts.published.size > 10 %>
-            <li><strong><%= link_to "And #{(category.posts.published.size - 10)} more ...", category_path(category)%></strong></li>
-          <% end %>
-          </ul>
-        <% end %>
-      </li>
-    <% end %>
+    <%= render 'categories/menu' %>
     <li><%= link_to 'About', about_path %></li>
     <li><%= link_to 'Contacts', contacts_path %></li>
   </ul>

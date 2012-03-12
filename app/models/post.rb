@@ -4,13 +4,14 @@ class Post < ActiveRecord::Base
   # Before, after callbacks
 
   # Default scopes, default values (e.g. self.per_page =)
+  paginates_per 10
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :category
   has_many :images
 
   # Validations: presence > by type > validates
-  validates_presence_of :title
+  validates_presence_of :title, :body
 
   # Other properties (e.g. accepts_nested_attributes_for)
   accepts_nested_attributes_for :images, :allow_destroy => true

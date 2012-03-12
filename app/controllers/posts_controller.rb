@@ -5,8 +5,8 @@ class PostsController < ApplicationController
   authorize_resource :post, :only => [:index]
 
   def index
-    @search = Post.includes([:category, :images]).search(params[:q])
-    @posts = @search.result(:distinct => true).page(params[:page])
+    @q = Post.includes([:category, :images]).search(params[:q])
+    @posts = @q.result(:distinct => true).page(params[:page])
   end
 
   def show

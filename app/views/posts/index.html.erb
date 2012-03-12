@@ -1,27 +1,7 @@
-<h1>Listing posts</h1>
-
-<table>
-  <tr>
-    <th>Category</th>
-    <th>Title</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.category.try(:title) %></td>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<%= search_form_for @q, {:url => root_path} do |f| %>
+  <%= f.label :title_or_body_or_body_full_or_category_title_cont %>
+  <%= f.text_field :title_or_body_or_body_full_or_category_title_cont %>
+  <%= f.submit %>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Nost', new_post_path %>
+<%= render 'shared/posts_list', :posts => @posts %>

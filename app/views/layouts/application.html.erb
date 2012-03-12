@@ -1,38 +1,30 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]> <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html class="" lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Portfolio</title>
+  <title><%= content_for?(:title) ? yield(:title) + ' - Portfolio' : 'Portfolio' %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-  <%= stylesheet_link_tag    "application/application" %>
-  <%= javascript_include_tag "head/application" %>
+  <%= stylesheet_link_tag    'application/application' %>
+  <%= javascript_include_tag 'head/application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="no-js">
-    <p class="warning-32">Warning! Your browser doesn't have JavaScript enabled therefore some of the site's features may not work as advertised.</p>
-  </div>
-
   <div id="body">
-
     <header>
-      <%= render "header" %>
+      <%= render 'header' %>
     </header>
 
     <div id="container">
-      <%= render "navigation" %>
-      <%= render "flashes" %>
+      <%= render 'navigation' %>
+      <%= render 'flashes' %>
       <div id="main" role="main">
         <%= yield %>
       </div>
     </div>
   </div>
-  <%= render "footer" %>
-  <%= javascript_include_tag "application/application" %>
+  <%= render 'footer' %>
+  <%= javascript_include_tag 'application/application' %>
   <%= yield :javascripts %>
 </body>
 </html>

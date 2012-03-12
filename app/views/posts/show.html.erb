@@ -1,5 +1,6 @@
+<%= content_for :title do
+ "#{@post.title} - #{@post.category.title}"
+end %>
+
 <%= render 'posts/post', :post => @post %>
 
-<div class="">
-  <%= render :partial => "images/image", :collection => @post.images %>
-</div>

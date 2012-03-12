@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource :category
 
   def show
-    @category = Category.find params[:id]
-    @posts = Post.where(:category_id => @category.id).published
+    @posts = @category.posts.page(params[:page])
   end
 end

@@ -27,6 +27,7 @@ end
 
 group :development, :test do
   gem 'ruby-debug19', :require => 'ruby-debug' unless ENV['TRAVIS']
+  gem 'factory_girl_rails'
 end
 
 group :test do
@@ -36,7 +37,6 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
-  gem 'factory_girl_rails'
 end
 
 group :production do

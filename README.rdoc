@@ -8,11 +8,19 @@ Portfolio is a web-application based on Rails framework that allows you create p
 
     git clone https://github.com/rilian/portfolio.git
 
-2. Change directory to +portfolio+ and start the web server:
+2. Change directory to +portfolio+ :
 
-    cd portfolio; rails server
+    cd portfolio;
 
-3. Go to http://localhost:3000 and you'll see Portfolio root page
+3. Migrate and seed database:
+
+    rake db:migrate ; rake db:seed
+
+4. Start the web server:
+
+    rails server
+
+5. Go to http://localhost:3000 and you'll see Portfolio root page
 
 == Contributing
 

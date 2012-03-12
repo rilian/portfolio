@@ -1,9 +1,7 @@
-posts of category <%= @category.title %>
-<ul>
-  <% @category.posts.published.each do |post| %>
-    <li>
-      <h1><%= link_to post.title, post_path(post)%></h1>
-      <p><%= post.body %></p>
-    </li>
-  <% end %>
-</ul>
+<%= content_for :title do
+ @category.title
+end %>
+
+<h1>posts of category <%= @category.title %></h1>
+
+<%= render 'shared/posts_list', :posts => @posts %>
