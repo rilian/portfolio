@@ -1,7 +1,7 @@
 <li class="post">
   <h2><%= link_to post.title, post_path(post) %></h2>
   <div>
-    <%= RedCloth.new(post.body).to_html.html_safe %>
+    <%= RedCloth.new(post.body_full).to_html.html_safe %>
   </div>
   <div class="">
     <%= render :partial => 'images/image', :collection => post.images %>
