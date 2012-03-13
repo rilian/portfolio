@@ -21,13 +21,24 @@ var Posts = (function(){
           //use thumb for video file, if needed
           if(result.type == 'image') {
             var $container = element.parents("div.file-upload-container").length > 0 ? element.parents("div.file-upload-container") : element;
-            $container.find("div.cache-image-holder").html("<a href='" + result.url + "' class='fancybox'><img src='" + result.thumbnail_url + "'></a>");
+            $container.find("div.cache-image-holder").html('<a href="' + result.url + '" class="copy-paste"><img src="' + result.thumbnail_url + '"></a>');
             assign_fancyboxes();
+            assign_copy_image_to_text();
           }
         }
       }
     };
 })();
+
+function assign_copy_image_to_text() {
+  $("#main").on("click", '.copy-paste', function(e) {
+    var body_full = $('#post_body_full');
+    var domain = document.location.protocol + '//' + document.location.host;
+    body_full.val(body_full.val() + "\n" + ' !' + domain + $(this).find('img').attr('src') + '!:' + domain + $(this).attr('href') + '');
+    $(this).parents('.copy-paste-container').html('copied');
+    e.preventDefault();
+  });
+}
 
 $(function() {
 
@@ -58,5 +69,7 @@ $(function() {
       }
     });
   });
+
+  assign_copy_image_to_text();
 });
 

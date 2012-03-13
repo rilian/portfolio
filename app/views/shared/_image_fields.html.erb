@@ -7,7 +7,7 @@
 
     <div class="cache-image-holder">
       <% if f.object.asset? %>
-        <%= (link_to (image_tag f.object.asset.url(:thumb)), f.object.asset.url)  %>
+        <%= (link_to (image_tag f.object.asset.url(:thumb)), f.object.asset.url, :class => 'copy-paste')  %>
       <% else %>
         <div class="">no image</div>
       <% end %>
