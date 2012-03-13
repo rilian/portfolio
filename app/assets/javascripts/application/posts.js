@@ -54,7 +54,7 @@ $(function() {
         file_upload_container.parents('div.file-upload-container').find('span.callback_displayer').html(progress + "%").addClass("red-text");
       },
       fail: function(e, data) {
-        alert(data.errorThrown);
+        alert(data.errorThrown || 'Interrupted');
       }
     });
   });
