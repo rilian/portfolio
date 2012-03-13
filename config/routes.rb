@@ -7,5 +7,7 @@ Portfolio::Application.routes.draw do
 
   resources :categories, :only => [:show]
   resources :posts, :except => [:index]
-  resources :images, :only => [:update, :destroy]
+  resources :images, :only => [:destroy] do
+    post :cache_uploader, :on => :collection
+  end
 end

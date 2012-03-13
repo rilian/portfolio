@@ -14,7 +14,7 @@
     </div>
 
     <div class="">
-      <div class="file-upload" data-upload_href="<%= image_path(:id => 0) %>">
+      <div class="file-upload" data-upload_href="<%= cache_uploader_images_path %>">
         <p>
           or
           <%= file_field_tag :file, :class => "file-upload-input" %>

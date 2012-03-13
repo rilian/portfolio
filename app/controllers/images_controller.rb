@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   #before_filter :authenticate_user!
 
-  load_and_authorize_resource :post, :except => [:update]
+  load_and_authorize_resource :post, :except => [:cache_uploader]
 
   def destroy
     @image = Image.find(params[:id])
@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
     redirect_to post_path(@image.post)
   end
 
-  def update
+  def cache_uploader
     begin
       @uploader = ImageUploader.new
       @uploader.cache!(params[:file])
@@ -17,11 +17,10 @@ class ImagesController < ApplicationController
     rescue Exception => e
       json_response = {:error => e.message}
     end
-    #headers['X-javascript'] = "Posts.screencap_callback('#{json_response.to_json}');"
     render :inline => json_response.to_json
   end
 
-  private
+private
 
     def create_json_responce(uploader)
       {
