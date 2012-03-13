@@ -1,7 +1,35 @@
-<%= f.semantic_errors %>
+<%= semantic_form_for(@post, :html => {:novalidate => true}) do |f| %>
+  <div class="">
+    <div class="">
+      <h3>Post Details</h3>
+    </div>
+    <div class="">
+      <%= f.semantic_errors %>
 
-<%= f.inputs do %>
-  <%= f.input :title, :label => "Title" %>
-  <%= f.input :body, :label => "Body" %>
-  <%= f.input :category, :as => :select, :collection => Category.all, :label => "Category" %>
+      <%= f.inputs do %>
+        <%= f.input :title, :label => "Title", :required => true %>
+        <%= f.input :body, :label => "Body" %>
+        <%= f.input :body_full, :label => "Body Full" %>
+        <%= f.input :category, :as => :select, :collection => Category.all, :label => "Category" %>
+        <%= f.input :is_published, :label => "Published" %>
+      <% end %>
+    </div>
+
+    <div class="">
+      <h3>Images</h3>
+    </div>
+    <div class="">
+      <%= f.semantic_fields_for :images do |image| %>
+        <%= render "shared/image_fields", :f => image  %>
+      <% end %>
+
+      <%= link_to_add_fields content_tag(:span, "Add Image", :class => ''), f, :images, :class => 'add-image-form-button' %>
+    </div>
+
+    <div class="">
+      <%= f.actions  do %>
+        <%= f.action :submit, :as => :button, :button_html => { :class => 'form-button' } %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

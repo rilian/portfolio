@@ -9,5 +9,6 @@ Portfolio::Application.routes.draw do
   resources :posts, :except => [:index]
   resources :images, :only => [:destroy] do
     post :cache_uploader, :on => :collection
+    put :cache_uploader, :on => :collection
   end
 end

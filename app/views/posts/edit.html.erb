@@ -1,26 +1,7 @@
+<%= content_for :title do
+ "Edit #{@post.title} - #{@post.category.title}"
+end %>
+
 <h1>Edit post</h1>
 
-<%= semantic_form_for(@post, :html => {:novalidate => true}) do |f| %>
-  <div class="">
-    <div class="">
-      <h3>Post Details</h3>
-    </div>
-    <div class="">
-      <%= render 'form', :f => f %>
-    </div>
-  </div>
-
-  <div class="">
-    <%= f.semantic_fields_for :images do |image| %>
-      <%= render "shared/image_fields", :f => image  %>
-    <% end %>
-
-    <%= link_to_add_fields content_tag(:span, "Add Image", :class => ''), f, :images, :class => 'add-image-form-button' %>
-  </div>
-
-  <div class="">
-    <%= f.actions  do %>
-      <%= f.action :submit, :as => :button, :button_html => { :class => 'form-button' } %>
-    <% end %>
-  </div>
-<% end %>
+<%= render 'form', :post => @post %>
