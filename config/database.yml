@@ -10,3 +10,9 @@ test:
   database: portfolio_test
   username: rails
   password: rails
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: portfolio_prod
+  username: rails
+  password: rails

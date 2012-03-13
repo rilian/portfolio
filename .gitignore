@@ -10,4 +10,4 @@
 dump.rdb
 db/schema.rb
 public/uploads/*
-
+public/assets/*
