@@ -1,9 +1,7 @@
 class ImagesController < ApplicationController
   #before_filter :authenticate_user!
 
-  protect_from_forgery :except => [:create]
-
-  load_and_authorize_resource :post
+  load_and_authorize_resource :post, :except => [:update]
 
   def destroy
     @image = Image.find(params[:id])
@@ -11,7 +9,7 @@ class ImagesController < ApplicationController
     redirect_to post_path(@image.post)
   end
 
-  def create
+  def update
     begin
       @uploader = ImageUploader.new
       @uploader.cache!(params[:file])

@@ -25,9 +25,9 @@ describe ImagesController do
       end
     end
 
-    describe 'POST create' do
+    describe 'PUT update' do
       before :each do
-        post :create, :file => File.new("#{Rails.root}/spec/support/file.jpg")#, :auth_token => @user.authentication_token
+        put :update, :id => 0, :file => File.new("#{Rails.root}/spec/support/file.jpg")#, :auth_token => @user.authentication_token
       end
 
       it "should be success" do

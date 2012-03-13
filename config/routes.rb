@@ -7,5 +7,5 @@ Portfolio::Application.routes.draw do
 
   resources :categories, :only => [:show]
   resources :posts, :except => [:index]
-  resources :images, :only => [:create, :destroy]
+  resources :images, :only => [:update, :destroy]
 end
