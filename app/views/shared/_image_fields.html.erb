@@ -7,7 +7,9 @@
 
     <div class="cache-image-holder">
       <% if f.object.asset? %>
-        <%= (link_to (image_tag f.object.asset.url(:thumb)), f.object.asset.url, :class => 'copy-paste')  %>
+        <%= link_to image_tag(f.object.asset.url(:thumb)), f.object.asset.url, :class => 'fancybox image-container' %>
+        <%= link_to 'Insert into body', '#', :class => 'to_body' %>
+        <%= link_to 'Insert into full body', '#', :class => 'to_body_full' %>
       <% else %>
         <div class="">no image</div>
       <% end %>
@@ -16,7 +18,6 @@
     <div class="">
       <div class="file-upload" data-upload_href="<%= cache_uploader_images_path %>">
         <p>
-          or
           <%= file_field_tag :file, :class => "file-upload-input" %>
           <%#= f.input :asset, :as => :file, :label => "Image", :input_html => {:class => "file-upload-input"} %>
           <%= f.input :asset_cache, :as => :hidden, :input_html => {:class => "file-upload-cache"} %>
@@ -24,7 +25,7 @@
         </p>
       </div>
 
-      <div class="capture-status clearfix">
+      <div class="capture-status">
         <p><%= label_tag 'Upload status: ' %><span class="callback_displayer">n/a</span></p>
       </div>
     </div>
