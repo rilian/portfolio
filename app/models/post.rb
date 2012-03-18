@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
 
   # Default scopes, default values (e.g. self.per_page =)
   paginates_per 10
+  DELIMITER = '<!--more-->'
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :category
@@ -26,6 +27,9 @@ class Post < ActiveRecord::Base
   end
 
   # Other model methods
+  def body_intro
+    self.body.split(DELIMITER)[0]
+  end
 
   # Private methods (for example: custom validators)
   private

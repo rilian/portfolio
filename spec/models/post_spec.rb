@@ -22,4 +22,25 @@ describe Post do
       @post.should be_valid
     end
   end
+
+  describe "public methods" do
+    describe "body_intro" do
+      context "with delimiter" do
+        before do
+          @post = Factory(:post, :body => "Intro#{Post::DELIMITER}Full")
+        end
+        it "should be valid" do
+          @post.body_intro.should == 'Intro'
+        end
+      end
+      context "without delimiter" do
+        before do
+          @post = Factory(:post, :body => "Intro Full")
+        end
+        it "should be valid" do
+          @post.body_intro.should == 'Intro Full'
+        end
+      end
+    end
+  end
 end

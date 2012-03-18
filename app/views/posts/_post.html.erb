@@ -1,12 +1,9 @@
 <li class="post">
   <h2><%= link_to post.title, post_path(post) %></h2>
   <div>
-    <%= RedCloth.new(post.body).to_html.html_safe %>
-  </div>
-  <div class="">
-    <%= render :partial => 'images/image', :collection => post.images %>
+    <%= RedCloth.new(post.body_intro).to_html.html_safe %>
   </div>
   <div>
-    Created on <%= post.created_at.strftime('%H:%M %d-%m-%Y')%> <%= link_to 'Edit', edit_post_path(post) %> |
+    Created on <%= post.created_at.strftime('%H:%M %d-%m-%Y')%>
   </div>
 </li>

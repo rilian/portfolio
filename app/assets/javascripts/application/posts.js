@@ -43,6 +43,14 @@ function assign_copy_image_to_text() {
 }
 
 $(function() {
+  var post_body = $('#main textarea#post_body');
+
+  // set delimiter
+  if (post_body.length) {
+    if (post_body.val().length == 0) {
+      post_body.val("\n<!--more-->\n");
+    }
+  }
 
   // attach file-upload event after 1st click on container div
   $("#main").on("click", 'div.file-upload', function() {

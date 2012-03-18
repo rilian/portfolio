@@ -32,7 +32,7 @@ FactoryGirl.define do
   factory :post do
     category { Factory(:category_without_posts) }
     title { Factory.next(:title) }
-    body { Factory.next(:body) }
+    body { "#{Factory.next(:body)} #{Post::DELIMITER} #{Factory.next(:body)}" }
     is_published false
 
     images { [Factory(:image)] }
