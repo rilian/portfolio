@@ -6,7 +6,7 @@ describe HomeController do
   end
 
   describe "user" do
-    %w(about contacts).each do |page|
+    %w(contacts).each do |page|
       describe "GET #{page}" do
         before do
           get page.to_sym
