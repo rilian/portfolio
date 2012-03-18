@@ -4,6 +4,6 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource :category
 
   def show
-    @posts = @category.posts.page(params[:page])
+    @posts = @category.posts.includes([:images]).page(params[:page])
   end
 end

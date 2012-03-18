@@ -1,7 +1,7 @@
 <%= content_for :title do
- @category.title
+  @category.title
 end %>
 
-<h1>posts of category <%= @category.title %></h1>
+<h1>Posts of category <%= @category.title %></h1>
 
 <%= render 'shared/posts_list', :posts => @posts %>

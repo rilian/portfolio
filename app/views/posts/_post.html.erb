@@ -6,4 +6,10 @@
   <div>
     Created on <%= post.created_at.strftime('%H:%M %d-%m-%Y')%>
   </div>
+  <div>
+    <!-- TODO: carousel -->
+    <div class="">
+        <%= render :partial => 'images/image', :collection => post.images %>
+    </div>
+  </div>
 </li>
