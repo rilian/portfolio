@@ -1,6 +1,6 @@
 <li class="post">
   <h2><%= link_to post.title, post_path(post) %></h2>
-  <div>
+  <div class="body">
     <%= RedCloth.new(post.body_intro).to_html.html_safe %>
   </div>
   <div>

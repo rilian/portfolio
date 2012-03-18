@@ -4,4 +4,6 @@ end %>
 
 <h1>Posts of category <%= @category.title %></h1>
 
-<%= render 'shared/posts_list', :posts => @posts %>
+<ul>
+  <%= render 'shared/posts_list', :posts => @posts %>
+</ul>
