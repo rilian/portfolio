@@ -1,7 +1,7 @@
 <%= semantic_form_for(@post, :html => {:novalidate => true}) do |f| %>
   <table>
     <tr>
-      <td>
+      <td style="width: 400px;">
         <div class="">
           <div class="">
             <h3>Post Details</h3>
@@ -10,9 +10,9 @@
             <%= f.semantic_errors %>
 
             <%= f.inputs do %>
-              <%= f.input :title, :label => "Title", :required => true %>
-              <%= f.input :body, :label => "Body" %>
-              <%= f.input :category, :as => :select, :collection => Category.all, :label => "Category", :include_blank => false %>
+              <%= f.input :title, :label => "Title<br>".html_safe, :required => true %>
+              <%= f.input :body, :label => "Body<br>".html_safe %>
+              <%= f.input :category, :as => :select, :collection => Category.all, :label => "Category<br>".html_safe, :include_blank => false %>
               <%= f.input :is_published, :label => "Post Published" %>
             <% end %>
           </div>
@@ -28,7 +28,7 @@
               <%= render "shared/image_fields", :f => image  %>
             <% end %>
 
-            <%= link_to_add_fields content_tag(:span, "Add Image", :class => ''), f, :images, :class => 'add-image-form-button' %>
+            <%= link_to_add_fields content_tag(:button, "Add Image", :class => ''), f, :images, :class => 'add-image-form-button' %>
           </div>
         </div>
       </td>
