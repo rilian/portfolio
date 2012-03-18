@@ -1,5 +1,5 @@
 <%= content_for :title do
- "Edit #{@post.title} - #{@post.category.title}"
+  "Edit #{@post.try(:title)} - #{@post.try(:category).try(:title)}"
 end %>
 
 <h1>Edit post</h1>

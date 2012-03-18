@@ -21,7 +21,9 @@ var Posts = (function(){
           //use thumb for video file, if needed
           if(result.type == 'image') {
             var $container = element.parents("div.file-upload-container").length > 0 ? element.parents("div.file-upload-container") : element;
-            $container.find("div.cache-image-holder").html('<a href="' + result.url + '" class="fancybox"><img src="' + result.thumbnail_url + '"></a>');
+            $container.find("div.cache-image-holder").html('' +
+                '<a href="' + result.url + '" class="fancybox image-container"><img src="' + result.thumbnail_url + '"></a>' +
+                '<!--<a href="#" class="to_body">Insert into body</a>-->');
             assign_fancyboxes();
             assign_copy_image_to_text();
           }
@@ -31,8 +33,8 @@ var Posts = (function(){
 })();
 
 function assign_copy_image_to_text() {
-  $("#main").on("click", '.to_body, .to_body_full', function(e) {
-    var body = $(this).hasClass('to_body') ? $('textarea#post_body') : $('textarea#post_body_full');
+  $("#main").on("click", '.to_body', function(e) {
+    var body = $('textarea#post_body');
     var domain = document.location.protocol + '//' + document.location.host;
     var text = body.val() + "\n" + ' !' + domain + $(this).parents('.cache-image-holder').find('a.image-container img').attr('src') + '!:' + domain + $(this).parents('.cache-image-holder').find('a.image-container').attr('href');
     body.val(text);

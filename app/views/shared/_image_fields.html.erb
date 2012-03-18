@@ -3,33 +3,29 @@
     <%= f.semantic_errors %>
   </div>
 
-  <%= f.inputs do %>
+  <div class="cache-image-holder">
+    <% if f.object.asset? %>
+      <%= link_to image_tag(f.object.asset.url(:thumb)), f.object.asset.url, :class => 'fancybox image-container' %>
+      <%= link_to 'Insert into body', '#', :class => 'to_body' %>
+    <% else %>
+      <div class="">no image</div>
+    <% end %>
+  </div>
 
-    <div class="cache-image-holder">
-      <% if f.object.asset? %>
-        <%= link_to image_tag(f.object.asset.url(:thumb)), f.object.asset.url, :class => 'fancybox image-container' %>
-        <%= link_to 'Insert into body', '#', :class => 'to_body' %>
-        <%= link_to 'Insert into full body', '#', :class => 'to_body_full' %>
-      <% else %>
-        <div class="">no image</div>
-      <% end %>
+  <div class="">
+    <div class="file-upload" data-upload_href="<%= cache_uploader_images_path %>">
+      <p>
+        <%= file_field_tag :file, :class => "file-upload-input" %>
+        <%#= f.input :asset, :as => :file, :label => "Image", :input_html => {:class => "file-upload-input"} %>
+        <%= f.input :asset_cache, :as => :hidden, :input_html => {:class => "file-upload-cache"} %>
+        <%= f.input :asset_cache_changed, :as => :hidden, :input_html => {:class => "file-upload-cache-changed"} %>
+      </p>
     </div>
 
-    <div class="">
-      <div class="file-upload" data-upload_href="<%= cache_uploader_images_path %>">
-        <p>
-          <%= file_field_tag :file, :class => "file-upload-input" %>
-          <%#= f.input :asset, :as => :file, :label => "Image", :input_html => {:class => "file-upload-input"} %>
-          <%= f.input :asset_cache, :as => :hidden, :input_html => {:class => "file-upload-cache"} %>
-          <%= f.input :asset_cache_changed, :as => :hidden, :input_html => {:class => "file-upload-cache-changed"} %>
-        </p>
-      </div>
-
-      <div class="capture-status">
-        <p><%= label_tag 'Upload status: ' %><span class="callback_displayer">n/a</span></p>
-      </div>
+    <div class="capture-status">
+      <p><%= label_tag 'Upload status: ' %><span class="callback_displayer">n/a</span></p>
     </div>
+  </div>
 
-    <%= link_to_remove_fields content_tag(:span, "Delete Image", :class => 'icon'), f, :class => 'button remove form-button' %>
-  <% end %>
+  <%= link_to_remove_fields content_tag(:span, "Delete Image", :class => 'icon'), f, :class => 'button remove form-button' %>
 </div>
