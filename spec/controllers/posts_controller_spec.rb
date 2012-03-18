@@ -34,8 +34,8 @@ describe PostsController do
 
       describe "GET index with search" do
         before do
-          @post_1 = Factory(:post, :title => '12', :body => 'A', :body_full => '')
-          @post_2 = Factory(:post, :title => '23', :body => 'A', :body_full => '')
+          @post_1 = Factory(:post, :title => '12', :body => 'A')
+          @post_2 = Factory(:post, :title => '23', :body => 'A')
         end
 
         after :each do
@@ -45,12 +45,12 @@ describe PostsController do
 
         context "by all params at once" do
           it "should find 1 posts" do
-            get :index, :q => {:title_or_body_or_body_full_or_category_title_cont => '1'}
+            get :index, :q => {:title_or_body_or_category_title_cont => '1'}
             assigns[:posts].should =~ [@post_1]
           end
 
           it "should find 2 posts" do
-            get :index, :q => {:title_or_body_or_body_full_or_category_title_cont => '2'}
+            get :index, :q => {:title_or_body_or_category_title_cont => '2'}
             assigns[:posts].should =~ [@post_1, @post_2]
           end
         end

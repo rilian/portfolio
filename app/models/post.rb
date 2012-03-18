@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   has_many :images
 
   # Validations: presence > by type > validates
-  validates_presence_of :title, :body
+  validates_presence_of :title, :body, :category
 
   # Other properties (e.g. accepts_nested_attributes_for)
   accepts_nested_attributes_for :images, :allow_destroy => true

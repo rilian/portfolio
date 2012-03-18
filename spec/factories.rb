@@ -22,7 +22,7 @@ FactoryGirl.define do
 
   factory :category do
     title { Factory.next(:title) }
-    posts { [Factory(:post)] }
+    posts { [Factory(:post, :category => Factory(:category_without_posts))] }
 
     factory :category_without_posts do
       posts { [] }
@@ -30,9 +30,9 @@ FactoryGirl.define do
   end
 
   factory :post do
+    category { Factory(:category_without_posts) }
     title { Factory.next(:title) }
     body { Factory.next(:body) }
-    body_full { "#{Factory.next(:body)} #{Factory.next(:body)}" }
     is_published false
 
     images { [Factory(:image)] }

@@ -9,10 +9,11 @@
 Category.delete_all
 Post.delete_all
 
-%w'Photo Art Decor Cooking Blog'.each do |title|
+%w'Photo Illustration Collage Art Cooking Blog'.each do |title|
   category = Category.create(:title => title)
   25.times do
     Factory(:post, :category => category, :is_published => true)
+    puts '.'
   end
 end
 
