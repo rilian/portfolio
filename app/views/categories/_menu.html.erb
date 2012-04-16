@@ -1,5 +1,5 @@
 <% Category.all.each do |category| %>
-  <li>
+  <li class="<%= @category && (@category.id == category.id) ? 'current' : '' %>">
     <%= link_to category.title, category_path(category)%>
     <% if category.posts.published.size > 0 %>
       <ul>
