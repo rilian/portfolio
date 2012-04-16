@@ -10,7 +10,7 @@ describe User do
 
   describe "generators" do
     before :each do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
     end
 
     it "should be valid" do

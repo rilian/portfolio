@@ -9,7 +9,7 @@ describe Category do
 
   describe "instance" do
     before :each do
-      Factory(:category)
+      FactoryGirl.create(:category)
     end
 
     it { should validate_uniqueness_of(:title) }
@@ -17,7 +17,7 @@ describe Category do
 
   describe "generators" do
     before :each do
-      @category = Factory(:category)
+      @category = FactoryGirl.create(:category)
     end
 
     it "should be valid" do

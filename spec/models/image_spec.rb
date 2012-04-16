@@ -8,7 +8,7 @@ describe Image do
 
   describe "generators" do
     before :each do
-      @image = Factory(:image)
+      @image = FactoryGirl.create(:image)
     end
 
     it "should be valid" do

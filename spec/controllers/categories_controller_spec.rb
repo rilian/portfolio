@@ -18,7 +18,7 @@ describe CategoriesController do
 
     describe "GET show" do
       before do
-        @category = Factory(:category, :posts => [])
+        @category = FactoryGirl.create(:category, :posts => [])
         get :show, :id => @category.id
       end
       it { response.should be_success }

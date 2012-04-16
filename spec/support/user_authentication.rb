@@ -1,5 +1,5 @@
 def authenticate_user
-  @user = Factory(:user)
+  @user = FactoryGirl.create(:user)
   @user.stub!(:sign_in_count).and_return(0)
   @user.stub!(:sign_in_count=)
   @user.stub!(:disabled?).and_return(false)

@@ -34,8 +34,8 @@ describe PostsController do
 
       describe "GET index with search" do
         before do
-          @post_1 = Factory(:post, :title => '12', :body => 'A')
-          @post_2 = Factory(:post, :title => '23', :body => 'A')
+          @post_1 = FactoryGirl.create(:post, :title => '12', :body => 'A')
+          @post_2 = FactoryGirl.create(:post, :title => '23', :body => 'A')
         end
 
         after :each do

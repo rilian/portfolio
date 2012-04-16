@@ -15,7 +15,7 @@ describe Post do
 
   describe "generators" do
     before :each do
-      @post = Factory(:post)
+      @post = FactoryGirl.create(:post)
     end
 
     it "should be valid" do
@@ -27,7 +27,7 @@ describe Post do
     describe "body_intro" do
       context "with delimiter" do
         before do
-          @post = Factory(:post, :body => "Intro#{Post::DELIMITER}Full")
+          @post = FactoryGirl.create(:post, :body => "Intro#{Post::DELIMITER}Full")
         end
         it "should be valid" do
           @post.body_intro.should == 'Intro'
@@ -35,7 +35,7 @@ describe Post do
       end
       context "without delimiter" do
         before do
-          @post = Factory(:post, :body => "Intro Full")
+          @post = FactoryGirl.create(:post, :body => "Intro Full")
         end
         it "should be valid" do
           @post.body_intro.should == 'Intro Full'

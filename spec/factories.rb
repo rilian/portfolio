@@ -16,13 +16,13 @@ FactoryGirl.define do
   end
 
   factory :user do
-    username   { Factory.next(:username) }
-    email      { Factory.next(:email) }
+    username   { FactoryGirl.generate(:username) }
+    email      { FactoryGirl.generate(:email) }
   end
 
   factory :category do
-    title { Factory.next(:title) }
-    posts { [Factory(:post, :category => Factory(:category_without_posts))] }
+    title { FactoryGirl.generate(:title) }
+    posts { [FactoryGirl.create(:post, :category => FactoryGirl.create(:category_without_posts))] }
 
     factory :category_without_posts do
       posts { [] }
@@ -30,12 +30,12 @@ FactoryGirl.define do
   end
 
   factory :post do
-    category { Factory(:category_without_posts) }
-    title { Factory.next(:title) }
-    body { "#{Factory.next(:body)} #{Post::DELIMITER} #{Factory.next(:body)}" }
+    category { FactoryGirl.create(:category_without_posts) }
+    title { FactoryGirl.generate(:title) }
+    body { "#{FactoryGirl.generate(:body)} #{Post::DELIMITER} #{FactoryGirl.generate(:body)}" }
     is_published false
 
-    images { [Factory(:image)] }
+    images { [FactoryGirl.create(:image)] }
 
     factory :post_without_images do
       images { [] }
