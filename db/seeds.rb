@@ -5,17 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+User.delete_all
 Category.delete_all
-Post.delete_all
+Image.delete_all
 
-%w'Photo Illustration Collage Art Cooking Blog'.each do |title|
-  category = Category.create(:title => title, :is_photo => (title != 'Blog'))
-  15.times do
-    Factory(:post, :category => category, :is_published => true)
-    puts '.'
-  end
+user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
+puts "New user created #{user.name}"
+
+# Categories
+5.times do
+  cat = FactoryGirl.create(:category)
+  FactoryGirl.create(:image, :category => cat, :is_vertical => true)
+  FactoryGirl.create(:image, :category => cat, :is_vertical => false)
+  FactoryGirl.create(:image, :category => cat, :is_vertical => true)
+  puts cat.inspect
 end
-
-puts "Total Categories = #{Category.count}"
-puts "Total Posts = #{Post.count}"
+puts "#{Category.all.count} categories created"

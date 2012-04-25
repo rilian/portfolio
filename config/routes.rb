@@ -1,13 +1,23 @@
 Portfolio::Application.routes.draw do
-  #devise_for :users
+  if Rails.env.production?
+    devise_for :users, :controllers => { :registrations => "registrations" }
+  else
+    devise_for :users
+  end
 
-  root :to => 'posts#index'
+  authenticated :user do
+    root :to => 'home#index'
+  end
+
   match '/contacts' => 'home#contacts'
 
-  resources :categories, :only => [:show]
-  resources :posts, :except => [:index]
-  resources :images, :only => [:destroy] do
-    post :cache_uploader, :on => :collection
-    put :cache_uploader, :on => :collection
+  root :to => 'home#index'
+
+  resources :categories
+  resources :images do
+    collection do
+      post :cache_uploader
+      put :cache_uploader
+    end
   end
 end
