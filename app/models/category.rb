@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
   # Default scopes, default values (e.g. self.per_page =)
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
-  has_many :posts
+  has_many :images
 
   # Validations: presence > by type > validates
   validates_presence_of :title
