@@ -1,0 +1,45 @@
+<h1>Images <small>list of all images</small></h1>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :title_or_desc_or_category_title_cont %>
+  <%= f.text_field :title_or_desc_or_category_title_cont %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'New Image', new_image_path, :class => 'btn' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= sort_link @q, :id %></th>
+      <th>Thumb</th>
+      <th><%= sort_link @q, :title %></th>
+      <th><%= sort_link @q, :desc %></th>
+      <th><%= sort_link @q, :created_at %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= link_to image.id, edit_image_path(image.id) %></td>
+        <td>
+          <%= link_to edit_image_path(image.id) do
+            image_tag(image.asset_url_resolved(:span2))
+          end %>
+        <td><%= link_to image.title || 'Untitled', edit_image_path(image.id) %></td>
+        <td><%= truncate(h(image.desc || 'No description'), {:length => 500, :separator => ' ', :omission => " ..."}) %></td>
+        <td><%= image.created_at.strftime("%H:%M %d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <thead>
+    <tr>
+      <th><%= sort_link @q, :id %></th>
+      <th>Thumb</th>
+      <th><%= sort_link @q, :title %></th>
+      <th><%= sort_link @q, :desc %></th>
+    </tr>
+  </thead>
+</table>
+
+<%= paginate @images %>

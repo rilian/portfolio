@@ -1,7 +1,0 @@
-<div id="nav-container">
-  <ul id="nav">
-    <li class="<%= (params[:category_id].blank? && params[:post_id].blank? && params[:id].blank?) ? 'current' : '' %>"><a href="<%= root_path %>">Home</a></li>
-    <%= render 'categories/menu' %>
-    <li><%= link_to 'Contacts', contacts_path %></li>
-  </ul>
-</div>

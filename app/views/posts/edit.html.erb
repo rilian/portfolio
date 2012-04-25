@@ -1,7 +1,0 @@
-<%= content_for :title do
-  "Edit #{@post.try(:title)} - #{@post.try(:category).try(:title)}"
-end %>
-
-<h1>Edit post</h1>
-
-<%= render 'form', :post => @post %>

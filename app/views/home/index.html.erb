@@ -1,4 +1,10 @@
-<h1><%= @category.title %> <small>category</small></h1>
+<h1>Welcome <small>the latest works</small></h1>
+
+<%= search_form_for @q, {:url => root_path} do |f| %>
+  <%= f.label :title_or_desc_or_category_title_cont %>
+  <%= f.text_field :title_or_desc_or_category_title_cont %>
+  <%= f.submit %>
+<% end %>
 
 <ul class="thumbnails">
   <% @images.each do |image| %>
