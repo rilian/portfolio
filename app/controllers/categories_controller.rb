@@ -1,9 +1,38 @@
 class CategoriesController < ApplicationController
-  #before_filter :authenticate_user!
+  load_and_authorize_resource :category, :except => [:index, :show]
+  load_resource :category, :only => [:index, :show]
 
-  load_and_authorize_resource :category
+  def index
+  end
 
   def show
-    @posts = @category.posts.includes([:images]).page(params[:page])
+    @images = @category.images.page(params[:page]).per(10)
+  end
+
+  def create
+    if @category.save
+      redirect_to category_path(@category)
+    else
+      render :edit
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @category.update_attributes(params[:category])
+      redirect_to category_path(@category)
+    else
+      render :edit
+    end
+  end
+
+  def new
+  end
+
+  def destroy
+    @category.destroy
+    redirect_to categories_path
   end
 end
