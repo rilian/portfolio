@@ -1,14 +1,16 @@
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
 FactoryGirl.define do
+  sequence :title do |n|
+    "Title_#{n}"
+  end
+
   sequence :email do |n|
     "email.#{n+1}@example.local"
   end
 
   sequence :username do |n|
-    "bob_jack_#{n}"
-  end
-
-  sequence :title do |n|
-    "Title_#{n}"
+    "bob_#{n}"
   end
 
   sequence :body do |n|
@@ -16,33 +18,24 @@ FactoryGirl.define do
   end
 
   factory :user do
-    username   { FactoryGirl.generate(:username) }
-    email      { FactoryGirl.generate(:email) }
+    name                  FactoryGirl.generate(:username)
+    email                 FactoryGirl.generate(:email)
+    password              'please'
+    password_confirmation 'please'
+    # required if the Devise Confirmable module is used
+    # confirmed_at Time.now
   end
 
   factory :category do
-    title { FactoryGirl.generate(:title) }
-    posts { [FactoryGirl.create(:post, :category => FactoryGirl.create(:category_without_posts))] }
-
-    factory :category_without_posts do
-      posts { [] }
-    end
-  end
-
-  factory :post do
-    category { FactoryGirl.create(:category_without_posts) }
-    title { FactoryGirl.generate(:title) }
-    body { "#{FactoryGirl.generate(:body)} #{Post::DELIMITER} #{FactoryGirl.generate(:body)}" }
-    is_published false
-
-    images { [FactoryGirl.create(:image)] }
-
-    factory :post_without_images do
-      images { [] }
-    end
+    title  { FactoryGirl.generate(:title) }
+    images []
   end
 
   factory :image do
-    asset File.open("#{Rails.root}/spec/support/file.jpg")
+    category
+    asset       File.open("#{Rails.root}/spec/support/file.jpg")
+    title       { FactoryGirl.generate(:title) }
+    desc        { FactoryGirl.generate(:body) }
+    is_vertical false
   end
 end
