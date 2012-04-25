@@ -1,37 +1,34 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
+gem 'rails', '3.2.3'
 
-gem 'rails', '3.2.2'
-gem 'pg'
-gem 'jquery-rails'
-gem 'fancybox-rails'
+gem 'sqlite3' #TODO: pg
 
 gem 'devise'
 gem 'cancan'
-gem 'bcrypt-ruby', :require => 'bcrypt'
 
-gem 'ransack'
-gem 'kaminari'
+gem 'jquery-rails'
+gem 'bootstrap-sass'
 gem 'formtastic'
 
-gem 'RedCloth'
 gem 'carrierwave'
 gem 'mini_magick'
 
-# Gems used only for assets and not required
-# in production environments by default.
+gem 'ransack'
+gem 'kaminari'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 end
 
 group :development, :test do
-  gem 'ruby-debug19', :require => 'ruby-debug' unless ENV['TRAVIS']
+  gem 'debugger'
   gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'rspec-rails', "~> 2.6"
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-client'
   gem 'launchy'
@@ -39,6 +36,6 @@ group :test do
   gem 'shoulda'
 end
 
-group :production do
-  #
+group :development do
+  gem 'quiet_assets'
 end
