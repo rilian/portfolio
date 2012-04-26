@@ -1,3 +1,8 @@
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">Images</li>
+<% end %>
+
 <h1>Images <small>list of all images</small></h1>
 
 <%= search_form_for @q do |f| %>

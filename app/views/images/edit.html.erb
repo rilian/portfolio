@@ -1,3 +1,9 @@
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li><%= link_to "Images", images_path %> <span class="divider">/</span></li>
+  <li class="active">Edit</li>
+<% end %>
+
 <h1>Edit Image <small>update content</small></h1>
 
 <%= render 'form' %>

@@ -1,3 +1,8 @@
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">Categories</li>
+<% end %>
+
 <h1>Categories <small>Chose the one you like</small></h1>
 
 <% if user_signed_in? %>

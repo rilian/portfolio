@@ -13,15 +13,17 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <header class="navbar navbar-fixed-top">
+    <header class="navbar navbar-fixed">
       <nav class="navbar-inner">
         <div class="container">
           <%= render 'layouts/navigation' %>
         </div>
       </nav>
     </header>
-    <div id="main" role="main">
-      <div class="container">
+      <div class="container master-container">
+        <ul class="breadcrumb">
+          <%= yield :breadcrumb %>
+        </ul>
         <div class="content">
            <div class="row">
             <div class="span12">
@@ -38,6 +40,5 @@
           </footer>
         </div>
       </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
   </body>
 </html>

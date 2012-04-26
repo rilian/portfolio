@@ -1,3 +1,7 @@
+<% content_for :breadcrumb do %>
+  <li class="active">Home</li>
+<% end %>
+
 <h1>Welcome <small>the latest works</small></h1>
 
 <%= search_form_for @q, {:url => root_path} do |f| %>

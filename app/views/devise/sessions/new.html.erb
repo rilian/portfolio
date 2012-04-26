@@ -1,3 +1,9 @@
+<% content_for :breadcrumb do %>
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li>Users <span class="divider">/</span></li>
+  <li class="active">Sign In</li>
+<% end %>
+
 <h1>Sign in <small>to add more content</small></h1>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
