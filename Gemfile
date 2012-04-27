@@ -7,7 +7,6 @@ gem 'devise'
 gem 'cancan'
 
 gem 'jquery-rails'
-#gem 'bootstrap-sass'
 gem 'formtastic'
 
 gem 'carrierwave'
