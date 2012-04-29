@@ -15,6 +15,8 @@ gem 'mini_magick'
 gem 'ransack'
 gem 'kaminari'
 
+gem 'factory_girl_rails'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
@@ -23,7 +25,6 @@ end
 
 group :development, :test do
   gem 'debugger'
-  gem 'factory_girl_rails'
 end
 
 group :test do
