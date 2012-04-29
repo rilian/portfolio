@@ -24,7 +24,7 @@
         </div>
 
         <%= link_to category_path(category.id) do
-              image_tag(category.images.first ? category.images.first.asset_url_resolved(:span4) : 'no_thumb_4.png')
+              image_tag((category.images && category.images.first) ? category.images.first.asset_url_resolved(:span4) : 'no_thumb_4.png')
         end %>
       </div>
     </li>
