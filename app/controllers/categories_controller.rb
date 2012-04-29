@@ -10,6 +10,9 @@ class CategoriesController < ApplicationController
     @images = @category.images.page(params[:page]).per(10)
   end
 
+  def new
+  end
+
   def create
     if @category.save
       redirect_to category_path(@category)
@@ -27,9 +30,6 @@ class CategoriesController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def new
   end
 
   def destroy

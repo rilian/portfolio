@@ -23,4 +23,14 @@ describe Category do
       @category.should be_valid
     end
   end
+
+  describe 'other model methods' do
+    before :each do
+      @category = FactoryGirl.build(:category)
+    end
+
+    it "should return to_param" do
+      @category.to_param.should eq("#{@category.id}-#{@category.title.parameterize}")
+    end
+  end
 end
