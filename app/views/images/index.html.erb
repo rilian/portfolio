@@ -5,12 +5,6 @@
 
 <h1>Images <small>list of all images</small></h1>
 
-<%= search_form_for @q do |f| %>
-  <%= f.label :title_or_desc_or_category_title_cont %>
-  <%= f.text_field :title_or_desc_or_category_title_cont %>
-  <%= f.submit %>
-<% end %>
-
 <%= link_to 'New Image', new_image_path, :class => 'btn' %>
 
 <table class="table">

@@ -1,25 +1,25 @@
 <%= link_to "Portfolio", root_path, :class => 'brand' %>
 <div class="nav-collapse collapse">
-  <ul class="nav">
+  <ul class="nav pull-left">
     <li>
       <%= link_to 'Categories', categories_path %>
     </li>
-    <li>
-      <%= link_to 'Contacts', contacts_path %>
-    </li>
-
     <% if user_signed_in? %>
       <li>
         <%= link_to('Images', images_path) %>
       </li>
     <% end %>
+    <li>
+      <%= link_to 'Contacts', contacts_path %>
+    </li>
+  </ul>
 
+  <ul class="nav pull-right">
     <% if user_signed_in? %>
       <li>
         <%= link_to('Edit account', edit_user_registration_path) %>
       </li>
     <% end %>
-
     <% if user_signed_in? %>
       <li>
         <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
@@ -30,4 +30,8 @@
       </li>
     <% end %>
   </ul>
+
+  <form class="navbar-search pull-right" method="get" action="/">
+    <input type="text" class="search-query" placeholder="Search" name="q[title_or_desc_or_category_title_cont]" value="<%= params[:q][:title_or_desc_or_category_title_cont] if params[:q] %>">
+  </form>
 </div>

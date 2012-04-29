@@ -1,14 +1,13 @@
 <% content_for :breadcrumb do %>
-  <li class="active">Home</li>
+  <% if params[:q] %>
+    <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+    <li class="active"><%= params[:q][:title_or_desc_or_category_title_cont] %></li>
+  <% else %>
+    <li class="active">Home</li>
+  <% end %>
 <% end %>
 
 <h1>Welcome <small>the latest works</small></h1>
-
-<%= search_form_for @q, {:url => root_path} do |f| %>
-  <%= f.label :title_or_desc_or_category_title_cont %>
-  <%= f.text_field :title_or_desc_or_category_title_cont %>
-  <%= f.submit %>
-<% end %>
 
 <ul class="thumbnails">
   <% @images.each do |image| %>
