@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   sequence :title do |n|
-    "Title_#{n}"
+    "Title #{n}"
   end
 
   sequence :email do |n|
@@ -37,5 +37,9 @@ FactoryGirl.define do
     title       { FactoryGirl.generate(:title) }
     desc        { FactoryGirl.generate(:body) }
     is_vertical false
+    factory :image_vertical do
+      asset       File.open("#{Rails.root}/spec/support/file_vertical.png")
+      is_vertical true
+    end
   end
 end

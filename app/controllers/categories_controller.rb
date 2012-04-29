@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   load_resource :category, :only => [:index, :show]
 
   def index
+    @categories = @categories.includes([:images])
   end
 
   def show

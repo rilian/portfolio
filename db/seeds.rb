@@ -10,14 +10,15 @@ Category.delete_all
 Image.delete_all
 
 user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
-puts "New user created #{user.name}"
 
-# Categories
 5.times do
   cat = FactoryGirl.create(:category)
-  FactoryGirl.create(:image, :category => cat, :is_vertical => true)
-  FactoryGirl.create(:image, :category => cat, :is_vertical => false)
-  FactoryGirl.create(:image, :category => cat, :is_vertical => true)
-  puts cat.inspect
+  10.times do
+    FactoryGirl.create(:image, :category => cat)
+    FactoryGirl.create(:image_vertical, :category => cat)
+  end
 end
+
+puts "#{User.all.count} users created"
 puts "#{Category.all.count} categories created"
+puts "#{Image.all.count} images created"
