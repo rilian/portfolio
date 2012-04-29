@@ -13,17 +13,7 @@ class Image < ActiveRecord::Base
   validates_presence_of :asset, :category
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :asset_cache_changed, :category_id, :title, :desc, :is_vertical
-
-  def asset_cache_changed
-    false
-  end
-
-  # For image change when only screencap uploads asset_cache
-  def asset_cache_changed=(value)
-    self.save! if self.persisted?
-    true
-  end
+  attr_accessible :asset, :asset_cache, :category_id, :title, :desc, :is_vertical
 
   # Model dictionaries, state machine
 

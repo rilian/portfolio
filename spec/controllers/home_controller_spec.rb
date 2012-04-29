@@ -12,4 +12,12 @@ describe HomeController do
       response.should render_template(:index)
     end
   end
+
+  describe "GET 'contacts'" do
+    it "should be successful" do
+      get :contacts
+      response.should be_success
+      response.should render_template(:contacts)
+    end
+  end
 end

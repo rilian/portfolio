@@ -33,12 +33,12 @@ FactoryGirl.define do
 
   factory :image do
     category
-    asset       File.open("#{Rails.root}/spec/support/file.jpg")
+    asset       File.open("#{Rails.root}/spec/fixtures/file.jpg")
     title       { FactoryGirl.generate(:title) }
     desc        { FactoryGirl.generate(:body) }
     is_vertical false
     factory :image_vertical do
-      asset       File.open("#{Rails.root}/spec/support/file_vertical.png")
+      asset       File.open("#{Rails.root}/spec/fixtures/file_vertical.png")
       is_vertical true
     end
   end

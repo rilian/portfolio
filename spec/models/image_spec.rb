@@ -9,6 +9,9 @@ describe Image do
 
   it { should have_db_index(:category_id) }
 
+  it { should validate_presence_of(:asset) }
+  it { should validate_presence_of(:category) }
+
   describe "generators" do
     before :each do
       @image = FactoryGirl.create(:image)
@@ -16,6 +19,16 @@ describe Image do
 
     it "should be valid" do
       @image.should be_valid
+    end
+  end
+
+  describe 'other model methods' do
+    before :each do
+      @image = FactoryGirl.build(:image)
+    end
+
+    it "should return to_param" do
+      @image.to_param.should eq("#{@image.id}-#{@image.title.parameterize}")
     end
   end
 end

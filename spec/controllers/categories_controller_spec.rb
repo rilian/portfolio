@@ -67,14 +67,13 @@ describe CategoriesController do
 
     describe "POST 'create'" do
       before :each do
-        @title = FactoryGirl.generate(:title)
-        post :create, :category => {:title => @title}
+        post :create, :category => {:title => 'AA'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
         Category.last.present?.should be_true
-        Category.last.title.should eq(@title)
+        Category.last.title.should eq('AA')
       end
     end
 
