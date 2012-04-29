@@ -55,8 +55,11 @@ describe CategoriesController do
     end
 
     describe "GET 'new'" do
-      it "should be successful" do
+      before :each do
         get :new
+      end
+
+      it "should be successful" do
         response.should be_success
         response.should render_template(:new)
       end
@@ -64,36 +67,50 @@ describe CategoriesController do
 
     describe "POST 'create'" do
       before :each do
-        title = FactoryGirl.generate(:title)
-        post :create, :category => {:title => title}
+        @title = FactoryGirl.generate(:title)
+        post :create, :category => {:title => @title}
       end
 
       it "should be successful" do
-        response.should be_success
-        Category.last.present.should be_true
-        Category.last.title.should eq(title)
+        response.status.should eq(302)
+        Category.last.present?.should be_true
+        Category.last.title.should eq(@title)
       end
     end
 
     describe "GET 'edit'" do
-      it "should be successful" do
+      before :each do
         get :edit
+      end
+
+      it "should be successful" do
         response.should be_success
         response.should render_template(:edit)
       end
     end
 
     describe "PUT 'update'" do
+      before :each do
+        @category = FactoryGirl.create(:category)
+        put :update, :id => @category.id, :category => {:title => 'New awesome title!'}
+      end
+
       it "should be successful" do
-        put :update
-        response.should be_success
+        response.status.should eq(302)
+        @category.reload
+        @category.title.should eq('New awesome title!')
       end
     end
 
-    describe "GET 'destroy'" do
+    describe "DELETE 'destroy'" do
+      before :each do
+        @category = FactoryGirl.create(:category)
+        delete :destroy, :id => @category.id
+      end
+
       it "should be successful" do
-        delete :destroy
-        response.should be_success
+        response.status.should eq(302)
+        Category.find_by_id(@category.id).nil?.should be_true
       end
     end
 
