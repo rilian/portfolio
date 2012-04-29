@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20120425192144) do
     t.string   "asset"
     t.string   "title"
     t.text     "desc"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "is_vertical", :default => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "is_vertical"
   end
 
   add_index "images", ["category_id"], :name => "index_images_on_category_id"
