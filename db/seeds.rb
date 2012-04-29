@@ -9,11 +9,11 @@ User.delete_all
 Category.delete_all
 Image.delete_all
 
-user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
+User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
 
-5.times do
+2.times do
   cat = FactoryGirl.create(:category)
-  10.times do
+  3.times do
     FactoryGirl.create(:image, :category => cat)
     FactoryGirl.create(:image_vertical, :category => cat)
   end

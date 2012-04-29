@@ -5,7 +5,7 @@
 
 <h1>Images <small>list of all images</small></h1>
 
-<%= link_to 'New Image', new_image_path, :class => 'btn' %>
+<%= link_to 'New Image', new_image_path, :class => 'btn btn-primary' %>
 
 <table class="table">
   <thead>
@@ -15,6 +15,7 @@
       <th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :desc %></th>
       <th><%= sort_link @q, :created_at %></th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +29,12 @@
         <td><%= link_to image.title || 'Untitled', edit_image_path(image.id) %></td>
         <td><%= truncate(h(image.desc || 'No description'), {:length => 500, :separator => ' ', :omission => " ..."}) %></td>
         <td><%= image.created_at.strftime("%H:%M %d/%m/%Y") %></td>
+        <td>
+          <p>
+            <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
+            <%= link_to 'Delete', image_path(image), :class => 'btn', :method => 'delete', :confirm => 'Delete image?' %>
+          </p>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -37,6 +44,7 @@
       <th>Thumb</th>
       <th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :desc %></th>
+      <th>Actions</th>
     </tr>
   </thead>
 </table>
