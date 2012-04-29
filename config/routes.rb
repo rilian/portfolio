@@ -14,10 +14,5 @@ Portfolio::Application.routes.draw do
   root :to => 'home#index'
 
   resources :categories
-  resources :images do
-    collection do
-      post :cache_uploader
-      put :cache_uploader
-    end
-  end
+  resources :images
 end

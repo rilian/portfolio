@@ -10,9 +10,6 @@ describe ImagesController do
       { :put => "/images/1" }.should route_to(:controller => "images", :action => "update", :id => '1')
       { :post => "/images" }.should route_to(:controller => "images", :action => "create")
       { :delete => "/images/1" }.should route_to(:controller => "images", :action => "destroy", :id => '1')
-
-      { :post => "/images/cache_uploader" }.should route_to(:controller => "images", :action => "cache_uploader")
-      { :put => "/images/cache_uploader" }.should route_to(:controller => "images", :action => "cache_uploader")
     end
   end
 end
