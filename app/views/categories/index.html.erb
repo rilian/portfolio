@@ -6,27 +6,30 @@
 <h1>Categories <small>Chose the one you like</small></h1>
 
 <% if user_signed_in? %>
-  <%= link_to 'New category', new_category_path, :class => 'btn' %>
+  <%= link_to 'New category', new_category_path, :class => 'btn btn-primary' %>
 <% end %>
 
 <ul class="thumbnails">
   <% @categories.each do |category| %>
-    <li class="span4">
-      <div class="thumbnail">
-        <div class="caption">
-          <h5><%= category.title %></h5>
-          <% if user_signed_in? %>
-            <p>
-              <%= link_to 'Edit category', edit_category_path(category), :class => 'btn btn-primary' %>
-              <%= link_to 'Delete category', category_path(category), :class => 'btn', :method => 'delete', :confirm => 'Delete category?' %>
-            </p>
-          <% end %>
+    <% if category.images && category.images.first %>
+      <li class="span3">
+        <div>
+          <div class="caption">
+            <h5><%= category.title %></h5>
+          </div>
+          <%= link_to(category_path(category.id), :class => 'thumbnail') do
+                image_tag category.images.first.asset.url
+          end %>
+          <div class="caption">
+            <% if user_signed_in? %>
+              <p>
+                <%= link_to 'Edit category', edit_category_path(category), :class => 'btn btn-primary' %>
+                <%= link_to 'Delete category', category_path(category), :class => 'btn', :method => 'delete', :confirm => 'Delete category?' %>
+              </p>
+            <% end %>
+          </div>
         </div>
-
-        <%= link_to category_path(category.id) do
-              image_tag((category.images && category.images.first) ? category.images.first.asset_url_resolved(:span4) : 'no_thumb_4.png')
-        end %>
-      </div>
-    </li>
+      </li>
+    <% end %>
   <% end %>
 </ul>

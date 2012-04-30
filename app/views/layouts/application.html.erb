@@ -13,35 +13,31 @@
     <%= yield(:head) %>
   </head>
   <body>
-
-  <header class="navbar navbar-fixed">
-    <nav class="navbar-inner">
-      <div class="container">
-        <%= render 'layouts/navigation' %>
-      </div>
-    </nav>
-  </header>
-
-  <div class="container master-container">
-
-    <ul class="breadcrumb">
-      <%= yield :breadcrumb %>
-    </ul>
-    <div class="content">
-       <div class="row">
-        <div class="span12">
-          <% flash.each do |name, msg| %>
-            <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-              <a class="close" data-dismiss="alert">×</a>
-              <%= msg %>
-            </div>
-          <% end %>
-          <%= yield %>
+    <header class="navbar navbar-fixed">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render 'layouts/navigation' %>
         </div>
+      </nav>
+    </header>
+    <div class="container master-container">
+      <div class="content">
+        <div class="row">
+          <div class="span12">
+            <% flash.each do |name, msg| %>
+              <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+                <a class="close" data-dismiss="alert">×</a>
+                <%= msg %>
+              </div>
+            <% end %>
+            <%= yield %>
+          </div>
+        </div>
+        <footer class="footer">
+          <p class="pull-right"><a href="#">Back to top</a></p>
+          <p>&copy; 2012</p>
+        </footer>
       </div>
-      <footer>
-      </footer>
     </div>
-  </div> <!--! end of .container -->
   </body>
 </html>

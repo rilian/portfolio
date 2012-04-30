@@ -11,9 +11,9 @@ Image.delete_all
 
 User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
 
-2.times do
-  cat = FactoryGirl.create(:category)
-  3.times do
+%w(Photo Illustration Collage Art Cooking).each do |title|
+  cat = FactoryGirl.create(:category, :title => title)
+  2.times do
     FactoryGirl.create(:image, :category => cat)
     FactoryGirl.create(:image_vertical, :category => cat)
   end

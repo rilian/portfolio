@@ -23,8 +23,8 @@
       <tr>
         <td><%= link_to image.id, edit_image_path(image.id) %></td>
         <td>
-          <%= link_to edit_image_path(image.id) do
-            image_tag(image.asset_url_resolved(:span2))
+          <%= link_to(edit_image_path(image.id), :class => 'thumbnail') do
+            image_tag(image.asset.url(:span2))
           end %>
         <td><%= link_to image.title || 'Untitled', edit_image_path(image.id) %></td>
         <td><%= truncate(h(image.desc || 'No description'), {:length => 500, :separator => ' ', :omission => " ..."}) %></td>
