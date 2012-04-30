@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-carousel
+//= require fancybox/jquery.easing-1.3.pack
+//= require fancybox/jquery.easing-1.3.pack.js
+//= require fancybox/jquery.fancybox-buttons.js
+//= require fancybox/jquery.fancybox-thumbs.js
+//= require fancybox/jquery.fancybox.js
+//= require fancybox/jquery.fancybox.pack.js
+//= require fancybox/jquery.mousewheel-3.0.6.pack.js
+//= require bootstrap-tooltip
+//= require bootstrap-popover
 //= require_tree .
