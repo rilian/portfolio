@@ -8,7 +8,7 @@
     <% Category.includes([:images]).all.each do |category| %>
       <% if category.images.size > 0 %>
         <li>
-          <%= link_to "#{category.title} (#{category.images.size})", category_path(category) %>
+          <%= link_to category.title, category_path(category) %>
         </li>
       <% end %>
     <% end %>

@@ -3,10 +3,8 @@ require 'spec_helper'
 describe User do
   it { should have_db_column(:email).of_type(:string) }
   it { should have_db_column(:encrypted_password).of_type(:string) }
-  it { should have_db_column(:name).of_type(:string) }
 
   it { should have_db_index(:email).unique(true) }
-  it { should have_db_index(:name).unique(true) }
 
   describe "generators" do
     before :each do
@@ -20,7 +18,6 @@ describe User do
 
   before(:each) do
     @attr = {
-      :name => "Example User",
       :email => "user@example.com",
       :password => "foobar",
       :password_confirmation => "foobar"
