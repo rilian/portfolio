@@ -15,10 +15,10 @@
       <li class="span3">
         <div>
           <div class="caption">
-            <h5><%= category.title %></h5>
+            <h3><%= category.title %></h5>
           </div>
           <%= link_to(category_path(category.id), :class => 'thumbnail') do
-                image_tag category.images.first.asset.url
+                image_tag category.images.first.asset.url(:span4)
           end %>
           <div class="caption">
             <% if user_signed_in? %>

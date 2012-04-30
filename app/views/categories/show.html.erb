@@ -6,22 +6,6 @@
 
 <h1><%= @category.title %> <small>category</small></h1>
 
-<ul class="thumbnails">
-  <% @images.each do |image| %>
-    <li class="span4">
-      <div class="thumbnail">
-        <div class="caption">
-          <h5><%= image.title || 'Untitled' %></h5>
-        </div>
-        <%= link_to image.asset.url do
-              image_tag image.asset_url_resolved(:span4)
-        end %>
-        <div class="caption">
-          <p><%= truncate(h(image.desc || 'No description'), {:length => 500, :separator => ' ', :omission => " ..."}) %></p>
-        </div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<%= render 'images/thumbnails', :images => @images %>
 
 <%= paginate @images %>

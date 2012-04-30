@@ -1,0 +1,16 @@
+<ul class="thumbnails">
+  <% images.each do |image| %>
+    <li class="span2">
+      <div>
+        <%= link_to(image.asset.url,
+                    :class => 'thumbnail fancybox',
+                    :rel => 'group',
+                    :title => image.title || 'Untitled',
+                    'data-original-title' => image.title,
+                    'data-content' => "#{(image.desc || 'No description')}<br>#{image.created_at.strftime("%d-%m-%Y")}") do
+              image_tag(image.asset.url(:span4))
+        end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
