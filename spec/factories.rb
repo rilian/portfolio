@@ -9,16 +9,11 @@ FactoryGirl.define do
     "email.#{n+1}@example.local"
   end
 
-  sequence :username do |n|
-    "bob_#{n}"
-  end
-
   sequence :body do |n|
     "Lorem Ipsum #{n} is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took."
   end
 
   factory :user do
-    name                  FactoryGirl.generate(:username)
     email                 FactoryGirl.generate(:email)
     password              'please'
     password_confirmation 'please'
