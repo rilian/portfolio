@@ -7,13 +7,13 @@ class Image < ActiveRecord::Base
   # Default scopes, default values (e.g. self.per_page =)
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
-  belongs_to :category
+  belongs_to :album
 
   # Validations: presence > by type > validates
-  validates_presence_of :asset, :category
+  validates_presence_of :asset, :album
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :category_id, :title, :desc, :is_vertical
+  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :is_vertical
 
   # Model dictionaries, state machine
 

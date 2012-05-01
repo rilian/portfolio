@@ -26,13 +26,13 @@ FactoryGirl.define do
     # confirmed_at Time.now
   end
 
-  factory :category do
+  factory :album do
     title  { FactoryGirl.generate(:title) }
     images []
   end
 
   factory :image do
-    category
+    album
     asset       File.open("#{Rails.root}/spec/fixtures/file.jpg")
     title       { FactoryGirl.generate(:title) }
     desc        { FactoryGirl.generate(:body) }

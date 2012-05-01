@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Category do
+describe Album do
   it { should have_db_column(:title).of_type(:string).with_options(:null => false) }
   it { should have_db_index(:title).unique(true) }
 
@@ -8,7 +8,7 @@ describe Category do
 
   describe "instance" do
     before :each do
-      FactoryGirl.create(:category)
+      FactoryGirl.create(:album)
     end
 
     it { should validate_uniqueness_of(:title) }
@@ -16,21 +16,21 @@ describe Category do
 
   describe "generators" do
     before :each do
-      @category = FactoryGirl.create(:category)
+      @album = FactoryGirl.create(:album)
     end
 
     it "should be valid" do
-      @category.should be_valid
+      @album.should be_valid
     end
   end
 
   describe 'other model methods' do
     before :each do
-      @category = FactoryGirl.build(:category)
+      @album = FactoryGirl.build(:album)
     end
 
     it "should return to_param" do
-      @category.to_param.should eq("#{@category.id}-#{@category.title.parameterize}")
+      @album.to_param.should eq("#{@album.id}-#{@album.title.parameterize}")
     end
   end
 end

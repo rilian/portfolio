@@ -1,7 +1,7 @@
 <% content_for :breadcrumb do %>
   <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-  <li><%= link_to "Categories", categories_path %> <span class="divider">/</span></li>
-  <li><%= link_to @image.category.title, category_path(@image.category) %> <span class="divider">/</span></li>
+  <li><%= link_to "Albums", albums_path %> <span class="divider">/</span></li>
+  <li><%= link_to @image.album.title, album_path(@image.album) %> <span class="divider">/</span></li>
   <li class="active"><%= @image.title || 'Untitled' %></li>
 <% end %>
 

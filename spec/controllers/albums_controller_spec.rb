@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe CategoriesController do
-  it "should use CategoriesController" do
-    controller.should be_an_instance_of(CategoriesController)
+describe AlbumsController do
+  it "should use AlbumsController" do
+    controller.should be_an_instance_of(AlbumsController)
   end
 
   describe "unauthorized request" do
@@ -17,8 +17,8 @@ describe CategoriesController do
       end
 
       it "should be success" do
-        @category = FactoryGirl.create(:category, :images => [FactoryGirl.create(:image)])
-        get :show, :id => @category.id
+        @album = FactoryGirl.create(:album, :images => [FactoryGirl.create(:image)])
+        get :show, :id => @album.id
         response.status.should eq(200)
         response.should render_template(:show)
       end
@@ -67,13 +67,13 @@ describe CategoriesController do
 
     describe "POST 'create'" do
       before :each do
-        post :create, :category => {:title => 'AA'}
+        post :create, :album => {:title => 'AA'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
-        Category.last.present?.should be_true
-        Category.last.title.should eq('AA')
+        Album.last.present?.should be_true
+        Album.last.title.should eq('AA')
       end
     end
 
@@ -90,26 +90,26 @@ describe CategoriesController do
 
     describe "PUT 'update'" do
       before :each do
-        @category = FactoryGirl.create(:category)
-        put :update, :id => @category.id, :category => {:title => 'New awesome title!'}
+        @album = FactoryGirl.create(:album)
+        put :update, :id => @album.id, :album => {:title => 'New awesome title!'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
-        @category.reload
-        @category.title.should eq('New awesome title!')
+        @album.reload
+        @album.title.should eq('New awesome title!')
       end
     end
 
     describe "DELETE 'destroy'" do
       before :each do
-        @category = FactoryGirl.create(:category)
-        delete :destroy, :id => @category.id
+        @album = FactoryGirl.create(:album)
+        delete :destroy, :id => @album.id
       end
 
       it "should be successful" do
         response.status.should eq(302)
-        Category.find_by_id(@category.id).nil?.should be_true
+        Album.find_by_id(@album.id).nil?.should be_true
       end
     end
 

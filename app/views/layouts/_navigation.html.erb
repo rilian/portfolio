@@ -2,13 +2,13 @@
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
     <li>
-      <%= link_to('All Categories', categories_path) %>
+      <%= link_to('All Albums', albums_path) %>
     </li>
     <li class="divider-vertical"></li>
-    <% Category.includes([:images]).all.each do |category| %>
-      <% if category.images.size > 0 %>
+    <% Album.includes([:images]).all.each do |album| %>
+      <% if album.images.size > 0 %>
         <li>
-          <%= link_to category.title, category_path(category) %>
+          <%= link_to album.title, album_path(album) %>
         </li>
       <% end %>
     <% end %>
@@ -42,6 +42,6 @@
   </ul>
 
   <form class="navbar-search pull-right" method="get" action="/">
-    <input type="text" class="input-medium search-query" placeholder="Search" name="q[title_or_desc_or_category_title_cont]" value="<%= params[:q][:title_or_desc_or_category_title_cont] if params[:q] %>">
+    <input type="text" class="input-medium search-query" placeholder="Search" name="q[title_or_desc_or_album_title_cont]" value="<%= params[:q][:title_or_desc_or_album_title_cont] if params[:q] %>">
   </form>
 </div>

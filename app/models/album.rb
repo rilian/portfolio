@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Album < ActiveRecord::Base
   # Includes
 
   # Before, after callbacks

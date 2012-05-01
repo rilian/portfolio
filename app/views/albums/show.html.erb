@@ -1,10 +1,10 @@
 <% content_for :breadcrumb do %>
   <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-  <li><%= link_to "Categories", categories_path %> <span class="divider">/</span></li>
-  <li class="active"><%= @category.title %></li>
+  <li><%= link_to "Albums", albums_path %> <span class="divider">/</span></li>
+  <li class="active"><%= @album.title %></li>
 <% end %>
 
-<h1><%= @category.title %> <small>category</small></h1>
+<h1><%= @album.title %> <small>album</small></h1>
 
 <%= render 'images/thumbnails', :images => @images %>
 

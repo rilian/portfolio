@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   load_and_authorize_resource :image
 
   def index
-    @q = Image.includes([:category]).search(params[:q])
+    @q = Image.includes([:album]).search(params[:q])
     @images = @q.result(:distinct => true).page(params[:page]).per(50)
   end
 

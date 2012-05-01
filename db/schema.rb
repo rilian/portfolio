@@ -13,14 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20120425192144) do
 
-  create_table "categories", :force => true do |t|
+  create_table "albums", :force => true do |t|
     t.string "title", :null => false
   end
 
-  add_index "categories", ["title"], :name => "index_categories_on_title", :unique => true
+  add_index "albums", ["title"], :name => "index_albums_on_title", :unique => true
 
   create_table "images", :force => true do |t|
-    t.integer  "category_id"
+    t.integer  "album_id"
     t.string   "asset"
     t.string   "title"
     t.text     "desc"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20120425192144) do
     t.boolean  "is_vertical"
   end
 
-  add_index "images", ["category_id"], :name => "index_images_on_category_id"
+  add_index "images", ["album_id"], :name => "index_images_on_album_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

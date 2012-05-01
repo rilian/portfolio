@@ -1,10 +1,10 @@
 <% content_for :breadcrumb do %>
   <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-  <li><%= link_to "Categories", categories_path %> <span class="divider">/</span></li>
+  <li><%= link_to "Albums", albums_path %> <span class="divider">/</span></li>
   <li class="active">New</li>
 <% end %>
 
-<h1>New Category <small>add one</small></h1>
+<h1>New Album <small>add one</small></h1>
 
 
 <%= render 'form' %>

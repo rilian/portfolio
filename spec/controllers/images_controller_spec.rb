@@ -55,10 +55,10 @@ describe ImagesController do
 
     describe "POST 'create'" do
       before :each do
-        @category = FactoryGirl.create(:category)
+        @album = FactoryGirl.create(:album)
         @file = fixture_file_upload('/file_vertical.png', 'image/png')
 
-        post :create, :image => {:category_id => @category.id, :asset => @file, :is_vertical => true, :title => 'AA', :desc => 'BB'}
+        post :create, :image => {:album_id => @album.id, :asset => @file, :is_vertical => true, :title => 'AA', :desc => 'BB'}
       end
 
       it "should be successful" do
@@ -68,7 +68,7 @@ describe ImagesController do
         image.title.should eq('AA')
         image.desc.should eq('BB')
         image.is_vertical?.should be_true
-        image.category_id.should eq(@category.id)
+        image.album_id.should eq(@album.id)
       end
     end
 

@@ -6,19 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
-Category.delete_all
+Album.delete_all
 Image.delete_all
 
 User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
 
 %w(Photo Illustration Collage Art Cooking).each do |title|
-  cat = FactoryGirl.create(:category, :title => title)
+  cat = FactoryGirl.create(:album, :title => title)
   2.times do
-    FactoryGirl.create(:image, :category => cat)
-    FactoryGirl.create(:image_vertical, :category => cat)
+    FactoryGirl.create(:image, :album => cat)
+    FactoryGirl.create(:image_vertical, :album => cat)
   end
 end
 
 puts "#{User.all.count} users created"
-puts "#{Category.all.count} categories created"
+puts "#{Album.all.count} albums created"
 puts "#{Image.all.count} images created"

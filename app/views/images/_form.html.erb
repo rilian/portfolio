@@ -2,7 +2,7 @@
   <%= f.semantic_errors %>
 
   <%= f.inputs do %>
-    <%= f.input :category, :as => :select %>
+    <%= f.input :album, :as => :select %>
 
     <% if f.object.asset? %>
       <%= link_to image_tag(f.object.asset_url_resolved(:span4)), f.object.asset_url_resolved(:big) %>

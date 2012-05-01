@@ -6,7 +6,7 @@ class Ability
     if user
       can :manage, :all
     else
-      can :read, Category
+      can :read, Album
     end
     # Define abilities for the passed in user here. For example:
     #

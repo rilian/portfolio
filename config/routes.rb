@@ -13,6 +13,6 @@ Portfolio::Application.routes.draw do
 
   root :to => 'home#index'
 
-  resources :categories
+  resources :albums
   resources :images
 end

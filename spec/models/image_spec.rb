@@ -1,16 +1,16 @@
 require 'spec_helper'
 
 describe Image do
-  it { should have_db_column(:category_id).of_type(:integer) }
+  it { should have_db_column(:album_id).of_type(:integer) }
   it { should have_db_column(:asset).of_type(:string) }
   it { should have_db_column(:title).of_type(:string) }
   it { should have_db_column(:desc).of_type(:text) }
   it { should have_db_column(:is_vertical).of_type(:boolean) }
 
-  it { should have_db_index(:category_id) }
+  it { should have_db_index(:album_id) }
 
   it { should validate_presence_of(:asset) }
-  it { should validate_presence_of(:category) }
+  it { should validate_presence_of(:album) }
 
   describe "generators" do
     before :each do
