@@ -1,12 +1,3 @@
-<% content_for :breadcrumb do %>
-  <% if params[:q] %>
-    <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-    <li class="active"><%= params[:q][:title_or_desc_or_album_title_cont] %></li>
-  <% else %>
-    <li class="active">Home</li>
-  <% end %>
-<% end %>
-
 <h1>Welcome <small>the latest works</small></h1>
 
 <%= render 'images/thumbnails', :images => @images %>
