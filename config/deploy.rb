@@ -35,7 +35,7 @@ namespace :rvm do
   end
 end
 after 'deploy', 'rvm:trust_rvmrc'
-#after 'deploy:finalize_update', 'deploy:config'
+after 'deploy:finalize_update', 'deploy:config'
 
 # forward ssh auth
 ssh_options[:forward_agent] = true
@@ -43,6 +43,14 @@ ssh_options[:forward_agent] = true
 set :unicorn_pid, '/tmp/unicorn-irene-rilian-portfolio.pid'
 
 namespace :deploy do
+  desc "Deploy production configs"
+  task :config do
+    run <<-CMD
+      mkdir -p #{shared_path}/database
+      ln -sf #{shared_path}/database #{latest_release}/config/shared
+    CMD
+  end
+
   #desc "Zero-downtime restart of Unicorn"
   #task :restart, :except => { :no_release => true } do
   #  run "kill -s USR2 `cat /tmp/unicorn-tapwatch.pid`"
