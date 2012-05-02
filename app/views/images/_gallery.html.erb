@@ -20,10 +20,11 @@
 <ul class="thumbnails">
   <% images.each_with_index do |image, index| %>
     <li class="span12">
-      <a name="img<%= image.id %>"></a>
       <div class="caption">
         <p>
+          <a name="img<%= image.id %>"></a>
           <%= render_image_data(image) %>
+        </p>
       </div>
       <div class="thumbnail">
         <%= image_tag(image.asset.url(:big)) %>

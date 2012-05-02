@@ -1,3 +1,12 @@
 <h1><%= @image.title %> <small>image</small></h1>
 
-<%= render 'images/gallery', :images => [@image] %>
+<div class="caption">
+  <p>
+    <%= render_image_data(@image) %>
+  </p>
+</div>
+<div class="thumbnail">
+  <%= image_tag(@image.asset.url(:big)) %>
+</div>
+
+<%= link_to 'Edit', edit_image_path(@image), :class => 'btn btn-primary' %>

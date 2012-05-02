@@ -17,5 +17,7 @@ module ImagesHelper
       data << ', ' if data.length > 0
       data << image.date.strftime("%Y")
     end
+    data = 'Untitled' if data == ''
+    data
   end
 end
