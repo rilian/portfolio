@@ -5,3 +5,9 @@ development:
 test: &test
   adapter: sqlite3
   database: db/portfolio_test.sqlite3
+
+production:
+  adapter: sqlite3
+  database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
