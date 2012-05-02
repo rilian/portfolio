@@ -13,10 +13,10 @@ User.create!(:email => 'user@example.com', :password => 'please', :password_conf
 
 %w(Photo Illustration Collage Art).each do |title|
   cat = FactoryGirl.create(:album, :title => title)
-  20.times do
-    FactoryGirl.create(:image, :album => cat)
-    #FactoryGirl.create(:image_vertical, :album => cat)
-  end
+  #20.times do
+  #  FactoryGirl.create(:image, :album => cat)
+  #  #FactoryGirl.create(:image_vertical, :album => cat)
+  #end
 end
 
 puts "#{User.all.count} users created"
