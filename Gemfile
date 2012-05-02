@@ -17,10 +17,15 @@ gem 'kaminari'
 
 gem 'factory_girl_rails'
 
+gem 'unicorn'
+gem 'capistrano'
+gem 'rvm-capistrano'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'therubyracer'
 end
 
 group :development, :test do
