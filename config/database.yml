@@ -1,10 +1,14 @@
 development:
   adapter: sqlite3
-  database: db/portfolio_dev.sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
 
-test: &test
+test:
   adapter: sqlite3
-  database: db/portfolio_test.sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
   adapter: sqlite3
