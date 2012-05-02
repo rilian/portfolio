@@ -14,6 +14,9 @@
       <li class="<%= current_page?(images_path) ? 'active' : '' %>">
         <%= link_to('Images', images_path) %>
       </li>
+      <li>
+        <%= link_to 'New Image', new_image_path, :class => 'bnt-mini btn-primary' %>
+      </li>
       <li class="divider-vertical"></li>
       <li class="<%= current_page?(albums_path) ? 'active' : '' %>">
         <%= link_to('Albums', albums_path) %>
