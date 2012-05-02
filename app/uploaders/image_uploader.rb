@@ -32,8 +32,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :span2 do
     process :resize_to_limit => [160, 160]
   end
-  version :span4 do
-    process :resize_to_fit => [360, 268]
+  version :span3 do
+    process :resize_to_limit => [260, 180]
   end
   version :big do
     process :resize_to_limit => [1024, 1024]

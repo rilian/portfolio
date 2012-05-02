@@ -28,10 +28,6 @@ class Image < ActiveRecord::Base
     "#{self.id}-#{self.title.parameterize}"
   end
 
-  def asset_url_resolved(type)
-    self.asset.url((type.to_s+(self.is_vertical? ? '_vertical' : '')).to_sym)
-  end
-
   # Private methods (for example: custom validators)
   private
 

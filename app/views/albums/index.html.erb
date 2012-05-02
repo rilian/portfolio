@@ -13,7 +13,7 @@
             <h3><%= album.title %></h3>
           </div>
           <%= link_to(album_path(album.id), :class => 'thumbnail') do
-                image_tag album.images.first.asset.url(:span4)
+                image_tag album.images.first.asset.url(:span3)
           end %>
           <div class="caption">
             <% if user_signed_in? %>

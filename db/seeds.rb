@@ -9,7 +9,7 @@ User.delete_all
 Album.delete_all
 Image.delete_all
 
-User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
+User.create!(:email => 'user@example.com', :password => 'please', :password_confirmation => 'please')
 
 %w(Photo Illustration Collage Art Cooking).each do |title|
   cat = FactoryGirl.create(:album, :title => title)
