@@ -13,7 +13,7 @@ class Image < ActiveRecord::Base
   validates_presence_of :asset, :album
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :is_vertical
+  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :is_vertical
 
   # Model dictionaries, state machine
 

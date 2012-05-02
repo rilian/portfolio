@@ -10,8 +10,13 @@
       <% end %>
     <% end %>
     <% if user_signed_in? %>
+      <li class="divider-vertical"></li>
       <li class="<%= current_page?(images_path) ? 'active' : '' %>">
         <%= link_to('Images', images_path) %>
+      </li>
+      <li class="divider-vertical"></li>
+      <li class="<%= current_page?(albums_path) ? 'active' : '' %>">
+        <%= link_to('Albums', albums_path) %>
       </li>
     <% end %>
     <li class="divider-vertical"></li>

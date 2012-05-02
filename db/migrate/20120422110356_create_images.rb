@@ -4,7 +4,9 @@ class CreateImages < ActiveRecord::Migration
       t.integer :album_id
       t.string :asset
       t.string :title
+      t.string :place
       t.text :desc
+      t.date :date
 
       t.timestamps
     end

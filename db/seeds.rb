@@ -11,11 +11,11 @@ Image.delete_all
 
 User.create!(:email => 'user@example.com', :password => 'please', :password_confirmation => 'please')
 
-%w(Photo Illustration Collage Art Cooking).each do |title|
+%w(Photo Illustration Collage Art).each do |title|
   cat = FactoryGirl.create(:album, :title => title)
-  2.times do
+  20.times do
     FactoryGirl.create(:image, :album => cat)
-    FactoryGirl.create(:image_vertical, :album => cat)
+    #FactoryGirl.create(:image_vertical, :album => cat)
   end
 end
 

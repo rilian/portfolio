@@ -1,28 +1,37 @@
-<% if user_signed_in? %>
-  <%= link_to 'New album', new_album_path, :class => 'btn btn-primary' %>
-<% end %>
+<h1>Albums <small>list of all albums</small></h1>
 
-<ul class="thumbnails">
-  <% @albums.each do |album| %>
-    <% if album.images && album.images.first %>
-      <li class="span3">
-        <div>
-          <div class="caption">
-            <h3><%= album.title %></h3>
-          </div>
-          <%= link_to(album_path(album.id), :class => 'thumbnail') do
-                image_tag album.images.first.asset.url(:span3)
-          end %>
-          <div class="caption">
-            <% if user_signed_in? %>
-              <p>
-                <%= link_to 'Edit album', edit_album_path(album), :class => 'btn btn-primary' %>
-                <%= link_to 'Delete album', album_path(album), :class => 'btn', :method => 'delete', :confirm => 'Delete album?' %>
-              </p>
-            <% end %>
-          </div>
-        </div>
-      </li>
+<%= link_to 'New Album', new_album_path, :class => 'btn btn-primary' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Images</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= link_to album.id, edit_album_path(album) %></td>
+        <td><%= link_to album.title %></td>
+        <td><%= album.images.size %></td>
+        <td>
+          <p>
+            <%= link_to 'Edit', edit_album_path(album), :class => 'btn btn-primary' %>
+            <%= link_to 'Delete', album_path(album), :class => 'btn', :method => 'delete', :confirm => 'Delete album?' %>
+          </p>
+        </td>
+      </tr>
     <% end %>
-  <% end %>
-</ul>
+  </tbody>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Images</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+</table>

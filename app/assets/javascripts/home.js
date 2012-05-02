@@ -1,7 +1,9 @@
 $(function() {
-  $('.thumbnails a.fancybox').popover({
+  $('a.has_popover').popover({
     placement: 'bottom'
-  }).fancybox({
+  });
+
+  $('a.fancybox').fancybox({
     arrows: true,
     nextClick: true,
     mouseWheel: true,

@@ -5,6 +5,8 @@ describe Image do
   it { should have_db_column(:asset).of_type(:string) }
   it { should have_db_column(:title).of_type(:string) }
   it { should have_db_column(:desc).of_type(:text) }
+  it { should have_db_column(:place).of_type(:string) }
+  it { should have_db_column(:date).of_type(:date) }
   it { should have_db_column(:is_vertical).of_type(:boolean) }
 
   it { should have_db_index(:album_id) }

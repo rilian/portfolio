@@ -1,11 +1,15 @@
 <%= semantic_form_for(@image, :html => {:novalidate => true}) do |f| %>
   <%= f.semantic_errors %>
 
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button %>
+  <% end %>
+
   <%= f.inputs do %>
     <%= f.input :album, :as => :select %>
 
     <% if f.object.asset? %>
-      <%= link_to image_tag(f.object.asset.url(:span3)), f.object.asset.url(:big) %>
+      <%= link_to image_tag(f.object.asset.url(:span2)), f.object.asset.url(:big) %>
     <% end %>
 
     <%= f.input :asset, :as => :file %>
@@ -13,6 +17,8 @@
     <%= f.input :is_vertical %>
 
     <%= f.input :title %>
+    <%= f.input :place %>
+    <%= f.input :date, :as => :date_select %>
     <%= f.input :desc %>
   <% end %>
 

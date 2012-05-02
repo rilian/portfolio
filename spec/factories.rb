@@ -31,6 +31,8 @@ FactoryGirl.define do
     asset       File.open("#{Rails.root}/spec/fixtures/file.jpg")
     title       { FactoryGirl.generate(:title) }
     desc        { FactoryGirl.generate(:body) }
+    place       'Kiev'
+    date        Date.today
     is_vertical false
     factory :image_vertical do
       asset       File.open("#{Rails.root}/spec/fixtures/file_vertical.png")

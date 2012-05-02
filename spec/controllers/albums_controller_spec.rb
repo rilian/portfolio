@@ -11,12 +11,6 @@ describe AlbumsController do
       end
 
       it "should be success" do
-        get :index
-        response.status.should eq(200)
-        response.should render_template(:index)
-      end
-
-      it "should be success" do
         @album = FactoryGirl.create(:album, :images => [FactoryGirl.create(:image)])
         get :show, :id => @album.id
         response.status.should eq(200)
@@ -30,6 +24,9 @@ describe AlbumsController do
         response.status.should eq(302)
       end
 
+      it "should redirect to homepage" do
+        get :index
+      end
       it "should redirect to homepage" do
         get :new
       end

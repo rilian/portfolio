@@ -1,7 +1,7 @@
 <%= paginator.render do -%>
-  <nav class="pagination">
+  <div class="pagination pagination-centered">
     <ul>
-      <%#= first_page_tag %>
+      <%= first_page_tag %>
       <%= prev_page_tag %>
       <% each_page do |page| -%>
         <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
@@ -13,5 +13,5 @@
       <%= next_page_tag %>
       <%#= last_page_tag %>
     </ul>
-  </nav>
+  </div>
 <% end -%>

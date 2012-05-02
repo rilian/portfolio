@@ -1,13 +1,13 @@
 class AlbumsController < ApplicationController
-  load_and_authorize_resource :album, :except => [:index, :show]
-  load_resource :album, :only => [:index, :show]
+  load_and_authorize_resource :album, :except => [:show]
+  load_resource :album, :only => [:show]
 
   def index
     @albums = @albums.includes([:images])
   end
 
   def show
-    @images = @album.images.page(params[:page]).per(24)
+    @images = @album.images.page(params[:page]).per(12)
   end
 
   def new
