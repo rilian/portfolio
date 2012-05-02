@@ -3,6 +3,7 @@ class AlbumsController < ApplicationController
   load_resource :album, :only => [:show]
 
   def index
+    authorize!(:manage, Album)
     @albums = @albums.includes([:images])
   end
 
