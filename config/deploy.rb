@@ -46,8 +46,10 @@ namespace :deploy do
   desc "Deploy production configs"
   task :config do
     run <<-CMD
-      mkdir -p #{shared_path}/database
-      ln -sf #{shared_path}/database #{latest_release}/config/shared
+      mkdir -p #{shared_path}/uploads &&
+      ln -sf #{shared_path}/uploads #{latest_release}/public/uploads &&
+      mkdir -p #{shared_path}/database &&
+      ln -sf #{shared_path}/database #{latest_release}/db/shared
     CMD
   end
 
