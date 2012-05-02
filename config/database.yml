@@ -1,13 +1,7 @@
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: portfolio_dev
-  username: rails
-  password: rails
+  adapter: sqlite3
+  database: db/portfolio_dev.sqlite3
 
 test: &test
-  adapter: postgresql
-  encoding: unicode
-  database: portfolio_test
-  username: rails
-  password: rails
+  adapter: sqlite3
+  database: db/portfolio_test.sqlite3

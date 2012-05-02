@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 
-gem 'pg'
+gem 'sqlite3'
 
 gem 'devise'
 gem 'cancan'
