@@ -34,14 +34,8 @@
       <li>
         <%= link_to('Edit account', edit_user_registration_path) %>
       </li>
-    <% end %>
-    <% if user_signed_in? %>
       <li>
-        <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
-      </li>
-    <% else %>
-      <li class="<%= current_page?(new_user_session_path) ? 'active' : '' %>">
-        <%= link_to('Login', new_user_session_path)  %>
+        <%= link_to('Logout', destroy_user_session_path, :method => 'delete') %>
       </li>
     <% end %>
   </ul>
