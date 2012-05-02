@@ -15,17 +15,21 @@
   <% end %>
 </ul>
 
+<%= paginate images %>
+
 <ul class="thumbnails">
   <% images.each_with_index do |image, index| %>
     <li class="span12">
       <a name="img<%= image.id %>"></a>
-      <div class="thumbnail">
-        <%= image_tag(image.asset.url(:big)) %>
-      </div>
       <div class="caption">
         <p>
           <%= render_image_data(image) %>
       </div>
+      <div class="thumbnail">
+        <%= image_tag(image.asset.url(:big)) %>
+      </div>
     </li>
   <% end %>
 </ul>
+
+<%= paginate images %>
