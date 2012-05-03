@@ -5,9 +5,9 @@
         <%= link_to("#img#{image.id}",
                     :class => 'thumbnail has_popover',
                     :rel => 'group',
-                    :title => image.title || 'Untitled',
+                    :title => (image.title? ? image.title : 'Untitled'),
                     'data-original-title' => image.title,
-                    'data-content' => "#{(image.desc || 'No description')}") do
+                    'data-content' => render_image_data(image)) do
               image_tag(image.asset.url(:span2))
         end %>
       </div>
@@ -23,6 +23,7 @@
       <div class="caption">
         <p>
           <a name="img<%= image.id %>"></a>
+          <strong><%= image.title? ? image.title : 'Untitled' %></strong>
           <%= render_image_data(image) %>
         </p>
       </div>
