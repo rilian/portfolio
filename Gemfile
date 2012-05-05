@@ -7,7 +7,7 @@ gem 'devise'
 gem 'cancan'
 
 gem 'jquery-rails'
-gem 'formtastic'
+gem 'simple_form'
 
 gem 'carrierwave'
 gem 'mini_magick'
@@ -33,7 +33,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.9.0'
   gem 'capybara'
   gem 'selenium-client'
   gem 'launchy'
