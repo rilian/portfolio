@@ -19,6 +19,7 @@
 //= require fancybox/jquery.fancybox.js
 //= require fancybox/jquery.fancybox.pack.js
 //= require fancybox/jquery.mousewheel-3.0.6.pack.js
+//= require bootstrap-alert
 //= require bootstrap-tooltip
 //= require bootstrap-popover
 //= require_tree .

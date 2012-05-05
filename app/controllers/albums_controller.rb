@@ -16,7 +16,7 @@ class AlbumsController < ApplicationController
 
   def create
     if @album.save
-      redirect_to album_path(@album)
+      redirect_to albums_path
     else
       render :edit
     end

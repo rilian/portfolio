@@ -9,6 +9,8 @@
       <th>Thumb</th>
       <th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :desc %></th>
+      <th><%= sort_link @q, :place %></th>
+      <th><%= sort_link @q, :date %></th>
       <th><%= sort_link @q, :created_at %></th>
       <th>Actions</th>
     </tr>
@@ -18,11 +20,13 @@
       <tr>
         <td><%= link_to image.id, edit_image_path(image.id) %></td>
         <td>
-          <%= link_to(edit_image_path(image.id), :class => 'thumbnail') do
+          <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
             image_tag(image.asset.url(:span2))
           end %>
-        <td><%= link_to image.title || 'Untitled', edit_image_path(image.id) %></td>
+        <td><%= link_to (image.title? ? image.title : 'Untitled'), edit_image_path(image.id) %></td>
         <td><%= truncate(h(image.desc || 'No description'), {:length => 500, :separator => ' ', :omission => " ..."}) %></td>
+        <td><%= image.place %></td>
+        <td><%= image.date.strftime("%Y") if image.date %></td>
         <td><%= image.created_at.strftime("%H:%M %d/%m/%Y") %></td>
         <td>
           <p>
@@ -39,6 +43,8 @@
       <th>Thumb</th>
       <th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :desc %></th>
+      <th><%= sort_link @q, :place %></th>
+      <th><%= sort_link @q, :date %></th>
       <th><%= sort_link @q, :created_at %></th>
       <th>Actions</th>
     </tr>
