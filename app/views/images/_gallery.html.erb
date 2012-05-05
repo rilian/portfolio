@@ -21,6 +21,7 @@
   <% images.each_with_index do |image, index| %>
     <li class="span12">
       <div class="caption">
+        <p class="pull-right"><a href="#">Back to top</a></p>
         <p>
           <a name="img<%= image.id %>"></a>
           <strong><%= image.title? ? image.title : 'Untitled' %></strong>
