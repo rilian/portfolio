@@ -6,7 +6,7 @@
                     :class => 'thumbnail has_popover',
                     :rel => 'group',
                     :title => (image.title? ? image.title : 'Untitled'),
-                    'data-original-title' => image.title,
+                    'data-original-title' => (image.title? ? image.title : 'Untitled'),
                     'data-content' => render_image_data(image)) do
               image_tag(image.asset.url(:span2))
         end %>
