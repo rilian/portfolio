@@ -33,7 +33,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', '2.9.0'
+  gem 'rspec-rails', '2.9.0' # warden env issue on 2.10.0
   gem 'capybara'
   gem 'selenium-client'
   gem 'launchy'
