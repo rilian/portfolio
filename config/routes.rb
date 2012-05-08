@@ -10,7 +10,7 @@ Portfolio::Application.routes.draw do
   end
 
   match '/contacts' => 'home#contacts'
-  match '/rss' => 'home#index', :defaults => { :format => 'rss' }
+  match '/rss' => 'home#index', :as => :rss_feed, :defaults => { :format => 'rss' }
 
   root :to => 'home#index'
 

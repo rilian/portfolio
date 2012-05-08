@@ -1,0 +1,9 @@
+  <div>
+    <p>
+      <strong><%= image.title? ? image.title : 'Untitled' %></strong>
+      <%= render_image_data(image) %>
+    </p>
+  </div>
+  <div>
+    <%= image_tag(image.asset.url(:big), :alt => image.id) %>
+  </div>
