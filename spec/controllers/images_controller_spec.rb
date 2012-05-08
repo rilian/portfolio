@@ -16,9 +16,6 @@ describe ImagesController do
         get :index
       end
       it "should redirect to homepage" do
-        get :show
-      end
-      it "should redirect to homepage" do
         get :new
       end
       it "should redirect to homepage" do
@@ -32,6 +29,19 @@ describe ImagesController do
       end
       it "should redirect to homepage" do
         delete :destroy
+      end
+    end
+
+    context "accessible pages" do
+      before :each do
+        @image = FactoryGirl.create(:image)
+        get :show, :id => @image.id
+      end
+
+      it "should be successful" do
+        response.should be_success
+        response.should render_template(:show)
+        assigns[:image].should == @image
       end
     end
   end

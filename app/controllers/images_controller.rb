@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
-  load_and_authorize_resource :image
+  load_and_authorize_resource :image, :except => [:show]
+  load_resource :image, :only => [:show]
 
   def index
     @q = Image.includes([:album]).search(params[:q])

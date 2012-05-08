@@ -10,4 +10,6 @@
   <%= image_tag(@image.asset.url(:big)) %>
 </div>
 
-<%= link_to 'Edit', edit_image_path(@image), :class => 'btn btn-primary' %>
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_image_path(@image), :class => 'btn btn-primary' %>
+<% end %>
