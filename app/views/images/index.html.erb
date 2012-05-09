@@ -12,6 +12,7 @@
       <th><%= sort_link @q, :place %></th>
       <th><%= sort_link @q, :date %></th>
       <th><%= sort_link @q, :created_at %></th>
+      <th><%= sort_link @q, :published_at %></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -28,6 +29,7 @@
         <td><%= image.place %></td>
         <td><%= image.date.strftime("%Y") if image.date %></td>
         <td><%= image.created_at.strftime("%H:%M %d/%m/%Y") %></td>
+        <td><%= image.published_at.present? image.published_at.strftime("%H:%M %d/%m/%Y") : 'n/a' %></td>
         <td>
           <p>
             <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
@@ -46,6 +48,7 @@
       <th><%= sort_link @q, :place %></th>
       <th><%= sort_link @q, :date %></th>
       <th><%= sort_link @q, :created_at %></th>
+      <th><%= sort_link @q, :published_at %></th>
       <th>Actions</th>
     </tr>
   </thead>

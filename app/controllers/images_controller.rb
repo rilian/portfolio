@@ -8,6 +8,9 @@ class ImagesController < ApplicationController
   end
 
   def show
+    unless @image.published_at.present? || user_signed_in?
+      redirect_to root_path, :alert => 'Image is not published yet'
+    end
   end
 
   def create

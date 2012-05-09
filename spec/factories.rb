@@ -34,6 +34,7 @@ FactoryGirl.define do
     place       'Kiev'
     date        Date.today
     is_vertical false
+    published_at Time.now
     factory :image_vertical do
       asset       File.open("#{Rails.root}/spec/fixtures/file_vertical.png")
       is_vertical true

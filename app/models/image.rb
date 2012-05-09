@@ -18,9 +18,12 @@ class Image < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'published_at DESC'
 
   class << self
+    def published
+      self.where("published_at IS NOT NULL")
+    end
   end
 
   # Other model methods

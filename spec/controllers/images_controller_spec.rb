@@ -16,6 +16,10 @@ describe ImagesController do
         get :index
       end
       it "should redirect to homepage" do
+        @image = FactoryGirl.create(:image, :published_at => false)
+        get :show, :id => @image.id
+      end
+      it "should redirect to homepage" do
         get :new
       end
       it "should redirect to homepage" do
@@ -34,7 +38,7 @@ describe ImagesController do
 
     context "accessible pages" do
       before :each do
-        @image = FactoryGirl.create(:image)
+        @image = FactoryGirl.create(:image, :published_at => Time.now)
         get :show, :id => @image.id
       end
 
@@ -50,6 +54,19 @@ describe ImagesController do
     before (:each) do
       @user = FactoryGirl.create(:user)
       sign_in @user
+    end
+
+    describe "GET 'show'" do
+      before :each do
+        @image = FactoryGirl.create(:image, :published_at => false)
+        get :show, :id => @image.id
+      end
+
+      it "should be successful" do
+        response.should be_success
+        response.should render_template(:show)
+        assigns[:image].should == @image
+      end
     end
 
     describe "GET 'new'" do
