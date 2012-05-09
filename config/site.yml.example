@@ -1,0 +1,22 @@
+# Example site config
+
+development:
+  :host: http://0.0.0.0:3006
+  :title: Portfolio (change in site.yml)
+  :description: Portfolio Description (change in site.yml)
+  :contacts: Contacts text here (change in site.yml)
+  :copy: Copyright &copy; 2012 Author. All rights reserved
+
+test:
+  :host: http://portfolio.test.local
+  :title: Portfolio (change in site.yml)
+  :description: Portfolio Description (change in site.yml)
+  :contacts: Contacts text here (change in site.yml)
+  :copy: Copyright &copy; 2012 Author. All rights reserved
+
+production:
+  :host: http://portfolio.production.local
+  :title: Portfolio Production
+  :description: Portfolio Production Description
+  :contacts: Contacts text here (change in site.yml)
+  :copy: Copyright &copy; 2012 Author. All rights reserved

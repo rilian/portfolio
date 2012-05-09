@@ -50,6 +50,26 @@ namespace :deploy do
       ln -sf #{shared_path}/uploads #{latest_release}/public/uploads &&
       mkdir -p #{shared_path}/database &&
       ln -sf #{shared_path}/database #{latest_release}/db/shared
+      mkdir -p #{shared_path}/config &&
+      ln -sf #{shared_path}/config/site.yml #{latest_release}/config/site.yml
+    CMD
+  end
+
+  desc "Deploy site config"
+  task :site_config do
+    SITE = YAML.load_file("./config/site.yml")['production']
+
+    run <<-CMD
+      mkdir -p #{shared_path}/config &&
+      touch #{shared_path}/config/site.yml
+    CMD
+
+    result_hash = {'production' => SITE}
+    puts YAML.dump(result_hash)
+    put YAML.dump(result_hash), "#{shared_path}/config/site.yml"
+
+    run <<-CMD
+      ln -sf #{shared_path}/config/site.yml #{latest_release}/config/site.yml
     CMD
   end
 
