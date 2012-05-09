@@ -7,7 +7,8 @@ development:
   :contacts: |
     Contacts text here
     (change in site.yml)
-  :copy: Copyright (c) 2012 Author. All rights reserved
+  :copy: |
+    Copyright (c) 2012 Author. All rights reserved
 
 test:
   :host: http://portfolio.test.local
@@ -16,7 +17,8 @@ test:
   :contacts: |
     Contacts text here
     (change in site.yml)
-  :copy: Copyright (c) 2012 Author. All rights reserved
+  :copy: |
+    Copyright (c) 2012 Author. All rights reserved
 
 production:
   :host: http://portfolio.production.local
@@ -25,4 +27,5 @@ production:
   :contacts: |
     Contacts text here
     (change in site.yml)
-  :copy: Copyright (c) 2012 Author. All rights reserved
+  :copy: |
+    Copyright (c) 2012 Author. All rights reserved

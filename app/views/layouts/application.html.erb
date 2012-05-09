@@ -36,7 +36,8 @@
         </div>
         <footer class="footer">
           <p class="pull-right"><a href="#" class="btn">Back to top</a></p>
-          <p><%= SITE[:copy] %></p>
+          <p><%= sanitize SITE[:copy] %></p>
+          <p><%= link_to 'User sign in', new_user_session_path %></p>
         </footer>
       </div>
     </div>
