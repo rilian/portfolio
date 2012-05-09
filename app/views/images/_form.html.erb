@@ -18,6 +18,8 @@
   <%= f.input :title %>
   <%= f.input :place %>
   <%= f.input :date, :as => :date, :order =>[:year] %>
+  <%= f.input :published_at_checkbox, :as => :boolean, :label => "Published #{@image.published_at.present? ? "<br>#{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
+
   <%= f.input :desc, :input_html => { :rows => 3, :cols => 40 }  %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

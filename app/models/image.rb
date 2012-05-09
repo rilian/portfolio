@@ -13,7 +13,7 @@ class Image < ActiveRecord::Base
   validates_presence_of :asset, :album
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :is_vertical
+  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :is_vertical, :published_at_checkbox
 
   # Model dictionaries, state machine
 
@@ -27,6 +27,14 @@ class Image < ActiveRecord::Base
   end
 
   # Other model methods
+  def published_at_checkbox
+    self.published_at.present?
+  end
+
+  def published_at_checkbox=(val)
+    self.published_at = (val == '1' ? Time.now : nil)
+  end
+
   def to_param
     "#{self.id}-#{self.title.parameterize}"
   end

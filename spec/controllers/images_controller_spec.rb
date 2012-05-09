@@ -85,7 +85,7 @@ describe ImagesController do
         @album = FactoryGirl.create(:album)
         @file = fixture_file_upload('/file_vertical.png', 'image/png')
 
-        post :create, :image => {:album_id => @album.id, :asset => @file, :is_vertical => true, :title => 'AA', :desc => 'BB'}
+        post :create, :image => {:album_id => @album.id, :asset => @file, :is_vertical => true, :title => 'AA', :desc => 'BB', :published_at_checkbox => '0'}
       end
 
       it "should be successful" do
@@ -96,6 +96,7 @@ describe ImagesController do
         image.desc.should eq('BB')
         image.is_vertical?.should be_true
         image.album_id.should eq(@album.id)
+        image.published_at.should == nil
       end
     end
 
