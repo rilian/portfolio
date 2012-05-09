@@ -49,7 +49,7 @@ namespace :deploy do
       mkdir -p #{shared_path}/uploads &&
       ln -sf #{shared_path}/uploads #{latest_release}/public/uploads &&
       mkdir -p #{shared_path}/database &&
-      ln -sf #{shared_path}/database #{latest_release}/db/shared
+      ln -sf #{shared_path}/database #{latest_release}/db/shared &&
       mkdir -p #{shared_path}/config &&
       ln -sf #{shared_path}/config/site.yml #{latest_release}/config/site.yml
     CMD
