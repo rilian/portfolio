@@ -10,6 +10,8 @@
 # http://github.com/RailsApps/rails3-application-templates/issues
 #----------------------------------------------------------------------------
 
+config/site.yml
+
 # bundler state
 /.bundle
 /vendor/bundle/
