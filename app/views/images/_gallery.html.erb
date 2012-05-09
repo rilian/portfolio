@@ -24,7 +24,7 @@
         <p class="pull-right"><a href="#" class="btn">Back to top</a></p>
         <p>
           <a name="img<%= image.id %>"></a>
-          <strong><%= image.title? ? image.title : 'Untitled' %></strong>
+          <strong><%= image.title? ? image.title : 'Untitled' %></strong>.
           <%= render_image_data(image) %>
         </p>
         <p><%= link_to 'Permanent link', image_url(image), :class => 'btn' %></p>

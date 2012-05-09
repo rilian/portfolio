@@ -1,6 +1,6 @@
   <div>
     <p>
-      <strong><%= image.title? ? image.title : 'Untitled' %></strong>
+      <strong><%= image.title? ? image.title : 'Untitled' %></strong>.
       <%= render_image_data(image) %>
     </p>
   </div>
@@ -11,7 +11,4 @@
   </div>
   <div>
     Album: <%= link_to(image.album.title, album_url(image.album)) %>
-  </div>
-  <div>
-    Tags:
   </div>
