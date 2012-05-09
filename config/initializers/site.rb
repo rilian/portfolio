@@ -5,4 +5,4 @@
 end
 
 SITE = YAML.load_file("#{::Rails.root}/config/site.yml")[::Rails.env]
-puts "SITE = #{SITE.inspect}"
+puts "Loaded site.yml: #{SITE.inspect}"
