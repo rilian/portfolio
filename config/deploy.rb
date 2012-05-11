@@ -23,6 +23,10 @@ set :use_sudo, false
 # use bundler
 require 'bundler/capistrano'
 
+# use whenever
+set :whenever_command, "bundle exec whenever"
+require 'whenever/capistrano'
+
 # use rvm
 # $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require 'rvm/capistrano'
