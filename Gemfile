@@ -20,6 +20,7 @@ gem 'factory_girl_rails'
 gem 'unicorn'
 gem 'capistrano'
 gem 'rvm-capistrano'
+gem 'whenever', :require => false
 
 group :assets do
   gem 'sass-rails'
@@ -33,7 +34,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', '2.9.0' # warden env issue on 2.10.0
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-client'
   gem 'launchy'

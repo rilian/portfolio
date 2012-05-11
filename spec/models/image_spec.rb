@@ -26,13 +26,27 @@ describe Image do
     end
   end
 
-  describe 'other model methods' do
+  describe 'instance methods' do
     before :each do
       @image = FactoryGirl.build(:image)
     end
 
     it "should return to_param" do
       @image.to_param.should eq("#{@image.id}-#{@image.title.parameterize}")
+    end
+  end
+
+  describe 'class methods' do
+    describe "should publish_unpublished" do
+      before :each do
+        @image = FactoryGirl.create(:image, :published_at => nil)
+      end
+
+      it "should not exist unpublished images" do
+        Image.where(:published_at => nil).size.should eq(1)
+        Image.publish_unpublished
+        Image.where(:published_at => nil).size.should eq(0)
+      end
     end
   end
 end
