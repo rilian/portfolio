@@ -5,6 +5,13 @@ class Image < ActiveRecord::Base
   # Before, after callbacks
 
   # Default scopes, default values (e.g. self.per_page =)
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
+
+  def store_dir
+    'public/uploads'
+  end
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :album
