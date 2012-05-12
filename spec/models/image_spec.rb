@@ -83,18 +83,4 @@ describe Image do
       end
     end
   end
-
-  describe 'class methods' do
-    describe "should publish_unpublished" do
-      before :each do
-        @image = FactoryGirl.create(:image, :published_at => nil)
-      end
-
-      it "should not exist unpublished images" do
-        Image.where(:published_at => nil).size.should eq(1)
-        Image.publish_unpublished
-        Image.where(:published_at => nil).size.should eq(0)
-      end
-    end
-  end
 end
