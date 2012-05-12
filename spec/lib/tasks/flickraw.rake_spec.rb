@@ -11,5 +11,11 @@ describe "flickraw" do
 
   describe ":upload_images" do
     pending
+    #@rake['flickraw:get_flickr_tokens'].invoke
+  end
+
+  describe ":upload_images" do
+    pending
+    #@rake['flickraw:upload_images'].invoke
   end
 end

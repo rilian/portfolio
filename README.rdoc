@@ -22,6 +22,12 @@ Portfolio is a web-application based on Rails framework that allows you create p
 
 5. Go to http://localhost:3000 and you'll see Portfolio root page
 
+6. Update +site.yml+ config
+
+7. If you wish to deploy app to your favourite production server, make sure you have set Flickr API keys. Run this rake task for more info:
+
+    rake flickraw:get_flickr_tokens
+
 == Contributing
 
 I encourage you to test and use the software, and send your pull-requests with improvements
