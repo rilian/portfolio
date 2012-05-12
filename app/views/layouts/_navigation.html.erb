@@ -4,7 +4,7 @@
     <li class="divider-vertical"></li>
     <% Album.includes([:images]).all.each do |album| %>
       <% if album.images.size > 0 %>
-        <li class="<%= current_page?(album_path(album)) ? 'active' : '' %>">
+        <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
           <%= link_to album.title, album_path(album) %>
         </li>
       <% end %>
