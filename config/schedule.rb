@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 6.hours do
-  runner "Image.publish_unpublished"
+  rake 'images:publish_unpublished'
 end

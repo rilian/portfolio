@@ -49,15 +49,6 @@ class Image < ActiveRecord::Base
     "#{self.id}-#{self.title.parameterize}"
   end
 
-  def self.publish_unpublished
-    image_to_publish = Image.where('published_at IS NULL').order('created_at DESC').limit(1).first
-    if image_to_publish
-      puts "Publishing Image #{image_to_publish.id}"
-      image_to_publish.published_at = Time.now
-      image_to_publish.save!
-    end
-  end
-
   def tags_resolved
     self.tags * ', '
   end
