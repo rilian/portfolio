@@ -18,7 +18,7 @@
 <%= paginate images %>
 
 <ul class="thumbnails">
-  <% images.each_with_index do |image, index| %>
+  <% images.each_with_index do |image| %>
     <li class="span12">
       <div class="caption">
         <p class="pull-right"><a href="#" class="btn">Back to top</a></p>
@@ -27,6 +27,13 @@
           <strong><%= image.title? ? image.title : 'Untitled' %></strong>.
           <%= render_image_data(image) %>
         </p>
+        <% unless image.tags.empty? %>
+        <p>
+          <% image.tags.each do |tag| %>
+            <%= link_to tag, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}), :class => 'label label-info' %>
+          <% end %>
+        </p>
+        <% end %>
         <p><%= link_to 'Permanent link', image_url(image), :class => 'btn' %></p>
       </div>
       <div class="thumbnail">

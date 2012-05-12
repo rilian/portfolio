@@ -1,14 +1,23 @@
+<div>
+  <p>
+    <strong><%= image.title? ? image.title : 'Untitled' %></strong>.
+    <%= render_image_data(image) %>
+  </p>
+</div>
+<div>
+  <%= link_to(image_url(image)) do
+        image_tag(image.asset.url(:span2), :alt => image.id)
+  end %>
+</div>
+<div>
+  Album: <%= link_to(image.album.title, album_url(image.album)) %>
+</div>
+<% unless image.tags.empty? %>
   <div>
-    <p>
-      <strong><%= image.title? ? image.title : 'Untitled' %></strong>.
-      <%= render_image_data(image) %>
-    </p>
+    Tags:
+    <% image.tags.each do |tag| %>
+      <%= link_to tag, root_url(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}) %>
+    <% end %>
   </div>
-  <div>
-    <%= link_to(image_url(image)) do
-          image_tag(image.asset.url(:span2), :alt => image.id)
-    end %>
-  </div>
-  <div>
-    Album: <%= link_to(image.album.title, album_url(image.album)) %>
-  </div>
+<% end %>
+

@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
   mount_uploader :asset, ImageUploader
 
   # Before, after callbacks
+  before_save :update_tags_cache
 
   # Default scopes, default values (e.g. self.per_page =)
   def extension_white_list
@@ -20,7 +21,8 @@ class Image < ActiveRecord::Base
   validates_presence_of :asset, :album
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :is_vertical, :published_at_checkbox
+  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :is_vertical, :published_at_checkbox, :tags, :tags_resolved
+  attr_taggable :tags
 
   # Model dictionaries, state machine
 
@@ -39,7 +41,8 @@ class Image < ActiveRecord::Base
   end
 
   def published_at_checkbox=(val)
-    self.published_at = (val == '1' ? Time.now : nil)
+    self.published_at = Time.now if val == '1' && self.published_at.blank?
+    self.published_at = nil unless val == '1'
   end
 
   def to_param
@@ -55,7 +58,18 @@ class Image < ActiveRecord::Base
     end
   end
 
+  def tags_resolved
+    self.tags * ', '
+  end
+
+  def tags_resolved=(value)
+    self.tags = value
+  end
+
   # Private methods (for example: custom validators)
   private
 
+  def update_tags_cache
+    self.tags_cache = self.tags_resolved
+  end
 end

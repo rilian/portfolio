@@ -1,15 +1,22 @@
-<h1><%= @image.title %> <small>image</small></h1>
+<h1><%= @image.title %> <small>image</small>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_image_path(@image), :class => 'btn btn-primary' %>
+  <% end %>
+</h1>
 
 <div class="caption">
   <p>
     <strong><%= @image.title? ? @image.title : 'Untitled' %></strong>
     <%= render_image_data(@image) %>
   </p>
+  <% unless @image.tags.empty? %>
+  <p>
+    <% @image.tags.each do |tag| %>
+      <%= link_to tag, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}), :class => 'label label-info' %>
+    <% end %>
+  </p>
+  <% end %>
 </div>
 <div class="thumbnail">
   <%= image_tag(@image.asset.url(:big)) %>
 </div>
-
-<% if user_signed_in? %>
-  <%= link_to 'Edit', edit_image_path(@image), :class => 'btn btn-primary' %>
-<% end %>

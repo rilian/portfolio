@@ -3,7 +3,6 @@
 
   <% if f.object.asset? %>
     <div>
-      <br>
       <%= link_to image_tag(f.object.asset.url(:span2)), f.object.asset.url(:big) %>
       <br>
       <br>
@@ -13,6 +12,8 @@
   <%= f.input :asset, :as => :file, :required => !f.object.asset? %>
   <%= f.input :asset_cache, :as => :hidden %>
 
+  <%= f.input :tags_resolved, :as => :text, :input_html => { :rows => 2, :cols => 40 } %>
+
   <%= f.input :is_vertical, :as => :boolean %>
 
   <%= f.input :title %>
@@ -20,7 +21,7 @@
   <%= f.input :date, :as => :date, :order =>[:year] %>
   <%= f.input :published_at_checkbox, :as => :boolean, :label => "Published #{@image.published_at.present? ? "<br>#{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
 
-  <%= f.input :desc, :input_html => { :rows => 3, :cols => 40 }  %>
+  <%= f.input :desc, :input_html => { :rows => 2, :cols => 40 }  %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>

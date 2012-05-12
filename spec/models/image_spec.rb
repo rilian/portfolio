@@ -9,6 +9,7 @@ describe Image do
   it { should have_db_column(:date).of_type(:date) }
   it { should have_db_column(:is_vertical).of_type(:boolean) }
   it { should have_db_column(:published_at).of_type(:datetime) }
+  it { should have_db_column(:tags_cache).of_type(:string) }
 
   it { should have_db_index(:album_id) }
   it { should have_db_index(:published_at) }
@@ -33,6 +34,53 @@ describe Image do
 
     it "should return to_param" do
       @image.to_param.should eq("#{@image.id}-#{@image.title.parameterize}")
+    end
+
+    it "should have published_at_checkbox" do
+      @image.published_at_checkbox.should == @image.published_at.present?
+    end
+
+    describe "published_at" do
+      before :each do
+        time_now = Time.now
+        Time.stub!(:now).and_return(time_now)
+      end
+
+      describe "should be updated" do
+        before :each do
+          @image.published_at = nil
+        end
+
+        it "when value is nil" do
+          @image.published_at_checkbox = '1'
+          @image.published_at.should == Time.now
+        end
+      end
+
+      describe "should be preserved" do
+        it "when value is not nil initially" do
+          published_at_cached = @image.published_at
+          @image.published_at_checkbox = '1'
+          @image.published_at.should == published_at_cached
+        end
+      end
+
+      it "should set published_at to nil" do
+        @image.published_at_checkbox = '0'
+        @image.published_at.should == nil
+      end
+    end
+
+    describe "tags_resolved" do
+      it "should return well-formatted tags" do
+        @image.tags = %w(aa bb cc)
+        @image.tags_resolved.should == 'aa, bb, cc'
+      end
+
+      it "should set published_at to nil" do
+        @image.tags_resolved = 'a, b'
+        @image.tags.should == %w(a b)
+      end
     end
   end
 

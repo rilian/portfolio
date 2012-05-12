@@ -14,6 +14,7 @@ gem 'mini_magick'
 
 gem 'ransack'
 gem 'kaminari'
+gem 'rocket_tag', '0.2.0' # 0.3.1 has bug https://github.com/bradphelan/rocket_tag/issues/11
 
 gem 'factory_girl_rails'
 
