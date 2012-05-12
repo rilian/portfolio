@@ -9,6 +9,10 @@ development:
     (change in site.yml)
   :copy: |
     Copyright (c) 2012 Author. All rights reserved
+  :flickr_api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  :flickr_access_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 test:
   :host: http://portfolio.test.local
@@ -19,6 +23,10 @@ test:
     (change in site.yml)
   :copy: |
     Copyright (c) 2012 Author. All rights reserved
+  :flickr_api_key:
+  :flickr_shared_secret:
+  :flickr_access_token:
+  :flickr_access_secret:
 
 production:
   :host: http://portfolio.production.local
@@ -29,3 +37,7 @@ production:
     (change in site.yml)
   :copy: |
     Copyright (c) 2012 Author. All rights reserved
+  :flickr_api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  :flickr_access_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
