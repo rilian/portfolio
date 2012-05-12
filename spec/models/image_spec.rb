@@ -10,9 +10,11 @@ describe Image do
   it { should have_db_column(:is_vertical).of_type(:boolean) }
   it { should have_db_column(:published_at).of_type(:datetime) }
   it { should have_db_column(:tags_cache).of_type(:string) }
+  it { should have_db_column(:is_uploaded_to_flickr).of_type(:boolean).with_options(:default => false) }
 
   it { should have_db_index(:album_id) }
   it { should have_db_index(:published_at) }
+  it { should have_db_index(:is_uploaded_to_flickr) }
 
   it { should validate_presence_of(:asset) }
   it { should validate_presence_of(:album) }

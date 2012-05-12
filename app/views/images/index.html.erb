@@ -13,6 +13,7 @@
       <th><%= sort_link @q, :date %></th>
       <th><%= sort_link @q, :created_at %></th>
       <th><%= sort_link @q, :published_at %></th>
+      <th><%= sort_link @q, :is_uploaded_to_flickr %></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -35,6 +36,14 @@
           <% else %>
             <span class="label label-warning">no</span>
           <% end %>
+        </td>
+        <td>
+          <% if image.is_uploaded_to_flickr? %>
+            <span class="label label-success">yes</span>
+          <% else %>
+            <span class="label label-warning">no</span>
+          <% end%>
+        </td>
         <td>
           <p>
             <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
@@ -54,6 +63,7 @@
       <th><%= sort_link @q, :date %></th>
       <th><%= sort_link @q, :created_at %></th>
       <th><%= sort_link @q, :published_at %></th>
+      <th><%= sort_link @q, :is_uploaded_to_flickr %></th>
       <th>Actions</th>
     </tr>
   </thead>
