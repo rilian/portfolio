@@ -1,4 +1,14 @@
 <ul class="thumbnails">
+  <% get_tags_cloud.each do |tag, count| %>
+    <li>
+      <h<%= [(6-count), 2].max %>>
+        <%= link_to tag, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}) %>
+      </h<%= [(6-count), 2].max %>>
+    </li>
+  <% end %>
+</ul>
+
+<ul class="thumbnails">
   <% images.each do |image| %>
     <li class="span2">
       <div>
