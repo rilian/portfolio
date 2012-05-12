@@ -57,6 +57,23 @@ class Image < ActiveRecord::Base
     self.tags = value
   end
 
+  def render_data
+    data = ''
+    if self.desc.present?
+      data << ', ' if data.length > 0
+      data << self.desc
+    end
+    if self.place.present?
+      data << ', ' if data.length > 0
+      data << self.place
+    end
+    if self.date.present?
+      data << ', ' if data.length > 0
+      data << self.date.strftime("%Y")
+    end
+    data
+  end
+
   # Private methods (for example: custom validators)
   private
 

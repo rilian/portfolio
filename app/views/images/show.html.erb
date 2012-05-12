@@ -7,7 +7,7 @@
 <div class="caption">
   <p>
     <strong><%= @image.title? ? @image.title : 'Untitled' %></strong>
-    <%= render_image_data(@image) %>
+    <%= @image.render_data %>
   </p>
   <% unless @image.tags.empty? %>
   <p>

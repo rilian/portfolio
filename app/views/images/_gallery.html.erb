@@ -17,7 +17,7 @@
                     :rel => 'group',
                     :title => (image.title? ? image.title : 'Untitled'),
                     'data-original-title' => (image.title? ? image.title : 'Untitled'),
-                    'data-content' => render_image_data(image)) do
+                    'data-content' => image.render_data) do
               image_tag(image.asset.url(:span2), :alt => image.id)
         end %>
       </div>
@@ -35,7 +35,7 @@
         <p>
           <a name="img<%= image.id %>"></a>
           <strong><%= image.title? ? image.title : 'Untitled' %></strong>.
-          <%= render_image_data(image) %>
+          <%= image.render_data %>
         </p>
         <% unless image.tags.empty? %>
         <p>

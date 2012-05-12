@@ -82,5 +82,13 @@ describe Image do
         @image.tags.should == %w(a b)
       end
     end
+
+    describe "render_data" do
+      it "should render correct description and such" do
+        @image.render_data.should match(@image.desc)
+        @image.render_data.should match(@image.place)
+        @image.render_data.should match(@image.date.strftime("%Y"))
+      end
+    end
   end
 end
