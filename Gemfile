@@ -22,6 +22,7 @@ gem 'unicorn'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'whenever', :require => false
+gem 'flickraw'
 
 group :assets do
   gem 'sass-rails'
