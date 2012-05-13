@@ -41,7 +41,7 @@ namespace :flickraw do
 
     puts "Starting upload images"
 
-    image_to_upload = Image.where('published_at IS NOT NULL AND uploaded_to_flickr_at IS NOT NULL').order('published_at DESC').limit(1).first
+    image_to_upload = Image.where('published_at IS NOT NULL AND uploaded_to_flickr_at IS NULL').order('published_at DESC').limit(1).first
 
     if image_to_upload
       FlickRaw.api_key = SITE[:flickr_api_key]
@@ -54,13 +54,32 @@ namespace :flickraw do
 
       puts "You are now authenticated as #{login.username}"
 
-      puts 'Uploading'
-      result = flickr.upload_photo(image_to_upload.asset.path,
+      puts 'Uploading ...'
+      flickr_photo_id = flickr.upload_photo(image_to_upload.asset.path,
                                   :title => image_to_upload.title,
                                   :description => image_to_upload.render_data)
-      puts "Image uploaded id = #{result.inspect}"
+      puts "Image uploaded id = #{flickr_photo_id}"
+      puts "Updating tags"
 
-      image_to_upload.update_attributes({:uploaded_to_flickr_at => Time.now, :flickr_photo_id => result})
+      flickr.photos.addTags(:photo_id => flickr_photo_id, :tags => image_to_upload.tags_resolved)
+      puts "Tags updated"
+
+      puts "Getting list of Flickr photosets (albums)"
+      photosets = flickr.photosets.getList
+
+      if photosets.map(&:title).include?(image_to_upload.album.title)
+        # Add
+        photoset_id = photosets.select {|p| p['title'] == image_to_upload.album.title}[0]['id']
+        puts "Adding image #{flickr_photo_id} to photoset #{photoset_id}"
+        flickr.photosets.addPhoto(:photoset_id => photoset_id, :photo_id => flickr_photo_id)
+      else
+        # Create photoset
+        puts "Creating photoset '#{image_to_upload.album.title}'"
+        flickr.photosets.create(:title => image_to_upload.album.title, :description => '',:primary_photo_id => flickr_photo_id)
+        puts "Image #{flickr_photo_id} set as primary in photoset #{image_to_upload.album.title}"
+      end
+
+      image_to_upload.update_attributes({:uploaded_to_flickr_at => Time.now, :flickr_photo_id => flickr_photo_id})
     else
       puts "No images to upload"
     end
