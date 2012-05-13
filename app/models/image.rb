@@ -65,7 +65,7 @@ class Image < ActiveRecord::Base
   end
 
   def tags_resolved=(value)
-    self.tags = value
+    self.tags = value if value.present?
   end
 
   def render_data
