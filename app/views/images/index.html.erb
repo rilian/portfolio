@@ -39,7 +39,7 @@
         </td>
         <td>
           <% if image.uploaded_to_flickr_at.present? %>
-            <span class="label label-success"><%= image.flickr_photo_id %></span>
+            <span class="label label-important"><%= link_to image.flickr_photo_id, "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
             <br>
             <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%H:%M %d/%m/%Y") %></span>
           <% else %>

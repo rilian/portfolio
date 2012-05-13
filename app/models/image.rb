@@ -29,7 +29,7 @@ class Image < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope :order => 'published_at DESC'
+  default_scope :order => 'published_at DESC, created_at DESC'
 
   class << self
     def published
