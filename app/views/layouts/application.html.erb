@@ -47,8 +47,15 @@
           </div>
         </div>
         <footer class="footer">
-          <!--<p class="pull-right"><a href="#" class="btn">Back to top</a></p>-->
-          <p><%= sanitize SITE[:copy] %></p>
+          <p>
+            <small>
+              <%= sanitize SITE[:copy] %>
+              <br/>
+              Except where otherwise noted, content on this site <a href="<%= SITE[:host] %>"><%= SITE[:host] %></a> is licensed under a <a rel="nofollow" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.
+              <br/>
+              This site is based on <a href="https://github.com/rilian/portfolio" rel="nofollow">rilian/portfolio</a> engine.
+            </small>
+          </p>
           <% unless user_signed_in? %>
             <p><%= link_to 'User sign in', new_user_session_path %></p>
           <% end %>
