@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
   mount_uploader :asset, ImageUploader
 
   # Before, after callbacks
-  before_save :update_tags_cache
+  before_save :update_values
 
   # Default scopes, default values (e.g. self.per_page =)
   def extension_white_list
@@ -88,7 +88,10 @@ class Image < ActiveRecord::Base
   # Private methods (for example: custom validators)
   private
 
-  def update_tags_cache
+  def update_values
     self.tags_cache = self.tags_resolved
+    self.title = self.title.titleize
+    self.desc = self.desc.capitalize
+    self.place = self.place.capitalize
   end
 end

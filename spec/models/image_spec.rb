@@ -30,6 +30,21 @@ describe Image do
     end
   end
 
+  describe 'before filters' do
+    describe "should humanize text values" do
+      before do
+        @image = FactoryGirl.create(:image, :title => 'aa aa', :desc => 'bb bb', :place => 'cc cc', :tags => 'xx, yy')
+      end
+
+      it "should have humanized values" do
+        @image.title.should == 'Aa Aa'
+        @image.desc.should == 'Bb bb'
+        @image.place.should == 'Cc cc'
+        @image.tags_cache.should == 'xx, yy'
+      end
+    end
+  end
+
   describe 'instance methods' do
     before :each do
       @image = FactoryGirl.build(:image)
