@@ -29,17 +29,12 @@ FactoryGirl.define do
   factory :image do
     album
     asset       File.open("#{Rails.root}/spec/fixtures/file.jpg")
-    title       { FactoryGirl.generate(:title) }
+    title       'Untitled'
     desc        { FactoryGirl.generate(:body) }
     place       'Kiev'
     date        Date.today
-    is_vertical false
     published_at Time.now
     uploaded_to_flickr_at Time.now
     flickr_photo_id '1234567890'
-    factory :image_vertical do
-      asset       File.open("#{Rails.root}/spec/fixtures/file_vertical.png")
-      is_vertical true
-    end
   end
 end

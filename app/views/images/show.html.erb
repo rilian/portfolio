@@ -13,7 +13,7 @@
       <% unless @image.tags.empty? %>
       <p>
         <% @image.tags.each do |tag| %>
-          <%= link_to tag, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}), :class => 'label' %>
+          <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}), :class => 'label' %>
         <% end %>
       </p>
       <% end %>
@@ -21,25 +21,11 @@
   </div>
   <div class="span4">
     <p class="pull-right">
-      <%= link_to "#{rand(100)} Comments", '#', :class => 'label' %>
+      <%= link_to "<i class=\"icon-user icon-white\"> </i> Comments".html_safe, "#discus_modal_#{@image.id}", :class => 'label', 'data-toggle' => 'modal' %>
     </p>
   </div>
 </div>
 
-
-<!--<div class="caption">-->
-  <!--<p>-->
-    <!--<strong><%= @image.title? ? @image.title : 'Untitled' %></strong>-->
-    <!--<%= @image.render_data %>-->
-  <!--</p>-->
-  <!--<% unless @image.tags.empty? %>-->
-  <!--<p>-->
-    <!--<% @image.tags.each do |tag| %>-->
-      <!--<%= link_to tag, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}), :class => 'label label-info' %>-->
-    <!--<% end %>-->
-  <!--</p>-->
-  <!--<% end %>-->
-<!--</div>-->
 <div class="thumbnail">
   <%= image_tag(@image.asset.url(:big)) %>
 </div>

@@ -24,7 +24,7 @@
           <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
             image_tag(image.asset.url(:span2))
           end %>
-        <td><%= link_to (image.title? ? image.title : 'Untitled'), edit_image_path(image.id) %></td>
+        <td><%= link_to image.title, edit_image_path(image.id) %></td>
         <td><%= image.render_data %></td>
         <td><%= image.date.strftime("%Y") if image.date %></td>
         <td><%= image.created_at.strftime("%d/%m/%Y") %></td>

@@ -18,10 +18,10 @@ class Image < ActiveRecord::Base
   belongs_to :album
 
   # Validations: presence > by type > validates
-  validates_presence_of :asset, :album
+  validates_presence_of :asset, :album, :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :is_vertical,
+  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date,
                   :published_at_checkbox, :uploaded_to_flickr_at_checkbox, :tags, :tags_resolved,
                   :uploaded_to_flickr_at, :flickr_photo_id
   attr_taggable :tags

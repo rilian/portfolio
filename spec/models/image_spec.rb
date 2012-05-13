@@ -7,7 +7,6 @@ describe Image do
   it { should have_db_column(:desc).of_type(:text) }
   it { should have_db_column(:place).of_type(:string) }
   it { should have_db_column(:date).of_type(:date) }
-  it { should have_db_column(:is_vertical).of_type(:boolean) }
   it { should have_db_column(:published_at).of_type(:datetime) }
   it { should have_db_column(:tags_cache).of_type(:string) }
   it { should have_db_column(:uploaded_to_flickr_at).of_type(:datetime) }
@@ -19,6 +18,7 @@ describe Image do
 
   it { should validate_presence_of(:asset) }
   it { should validate_presence_of(:album) }
+  it { should validate_presence_of(:title) }
 
   describe "generators" do
     before :each do

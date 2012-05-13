@@ -11,20 +11,18 @@
 
   <%= f.input :asset, :as => :file, :required => !f.object.asset? %>
   <%= f.input :asset_cache, :as => :hidden %>
+  <%= f.input :title %>
+  <%= f.input :desc, :input_html => { :rows => 2, :cols => 40 }  %>
+  <%= f.input :place %>
+  <%= f.input :date, :as => :date, :order =>[:year] %>
 
   <%= f.input :tags_resolved, :as => :text, :input_html => { :rows => 2, :cols => 40 } %>
 
-  <%= f.input :is_vertical, :as => :boolean %>
-
-  <%= f.input :title %>
-  <%= f.input :place %>
-  <%= f.input :date, :as => :date, :order =>[:year] %>
   <%= f.input :published_at_checkbox, :as => :boolean, :label => "Published #{@image.published_at.present? ? "<br>#{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
 
   <%= f.input :uploaded_to_flickr_at_checkbox, :as => :boolean, :label => "Uploaded toFlickr #{@image.uploaded_to_flickr_at.present? ? "<br>#{@image.uploaded_to_flickr_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
   <%= f.input :flickr_photo_id %>
 
-  <%= f.input :desc, :input_html => { :rows => 2, :cols => 40 }  %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>
