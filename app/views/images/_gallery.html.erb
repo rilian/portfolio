@@ -30,18 +30,18 @@
 <ul class="thumbnails">
   <% images.each_with_index do |image, index| %>
     <li class="span12">
-      <a name="img<%= image.id %>"></a>
       <div class="row">
         <div class="span8">
+          <a name="img<%= image.id %>"></a>
           <div class="caption">
             <strong><%= image.title? ? image.title : 'Untitled' %></strong>.
-            <%= image.render_data %>
+            <p><%= image.render_data %></p>
           </div>
           <div class="caption">
             <% unless image.tags.empty? %>
             <p>
               <% image.tags.each do |tag| %>
-                <%= link_to tag, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}), :class => 'label' %>
+                <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}), :class => 'label' %>
               <% end %>
             </p>
             <% end %>
@@ -49,10 +49,13 @@
         </div>
         <div class="span4">
           <p class="pull-right">
-            <%= link_to "#{rand(100)} Comments", '#', :class => 'label' %>
-            <%= link_to 'Permanent Link', image_url(image), :class => 'label' %>
+
+            <%= link_to "<i class=\"icon-user icon-white\"> </i> Comments".html_safe, "#discus_modal_#{image.id}", :class => 'label', 'data-toggle' => 'modal' %>
+
+            <%= link_to "<i class=\"icon-map-marker icon-white\"> </i> Link".html_safe, image_url(image), :class => 'label' %>
+
             <% unless index == 0%>
-              <a href="#" class="label">Back to top ▲</a>
+              <a href="#" class="label"><i class="icon-home icon-white"> </i> Back</a>
             <% end %>
           </p>
         </div>
@@ -61,8 +64,15 @@
       <div class="thumbnail">
         <%= image_tag(image.asset.url(:big), :alt => image.id) %>
       </div>
+      <hr>
+
     </li>
   <% end %>
 </ul>
 
 <%= paginate images %>
+
+<!-- disqus data -->
+<% images.each_with_index do |image, index| %>
+  <%= render 'images/image_modal', :image => image %>
+<% end %>
