@@ -1,6 +1,6 @@
-<h1>Images <small>list of all images</small></h1>
-
-<%= link_to 'New Image', new_image_path, :class => 'btn btn-primary' %>
+<h1>Images <small>list of all images</small>
+  <%= link_to 'New Image', new_image_path, :class => 'btn btn-primary' %>
+</h1>
 
 <table class="table">
   <thead>
@@ -8,8 +8,7 @@
       <th><%= sort_link @q, :id %></th>
       <th>Thumb</th>
       <th><%= sort_link @q, :title %></th>
-      <th><%= sort_link @q, :desc %></th>
-      <th><%= sort_link @q, :place %></th>
+      <th>Decription</th>
       <th><%= sort_link @q, :date %></th>
       <th><%= sort_link @q, :created_at %></th>
       <th><%= sort_link @q, :published_at %></th>
@@ -26,13 +25,12 @@
             image_tag(image.asset.url(:span2))
           end %>
         <td><%= link_to (image.title? ? image.title : 'Untitled'), edit_image_path(image.id) %></td>
-        <td><%= truncate(h(image.desc || 'No description'), {:length => 500, :separator => ' ', :omission => " ..."}) %></td>
-        <td><%= image.place %></td>
+        <td><%= image.render_data %></td>
         <td><%= image.date.strftime("%Y") if image.date %></td>
-        <td><%= image.created_at.strftime("%H:%M %d/%m/%Y") %></td>
+        <td><%= image.created_at.strftime("%d/%m/%Y") %></td>
         <td>
           <% if image.published_at.present? %>
-            <span class="label label-success"><%= image.published_at.strftime("%H:%M %d/%m/%Y") %></span>
+            <span class="label label-success"><%= image.published_at.strftime("%d/%m/%Y") %></span>
           <% else %>
             <span class="label label-warning">no</span>
           <% end %>
@@ -41,7 +39,7 @@
           <% if image.uploaded_to_flickr_at.present? %>
             <span class="label label-important"><%= link_to image.flickr_photo_id, "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
             <br>
-            <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%H:%M %d/%m/%Y") %></span>
+            <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%d/%m/%Y") %></span>
           <% else %>
             <span class="label label-warning">no</span>
           <% end%>
@@ -60,8 +58,7 @@
       <th><%= sort_link @q, :id %></th>
       <th>Thumb</th>
       <th><%= sort_link @q, :title %></th>
-      <th><%= sort_link @q, :desc %></th>
-      <th><%= sort_link @q, :place %></th>
+      <th>Decription</th>
       <th><%= sort_link @q, :date %></th>
       <th><%= sort_link @q, :created_at %></th>
       <th><%= sort_link @q, :published_at %></th>
