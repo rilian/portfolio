@@ -14,6 +14,7 @@ development:
   :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_user_id: Nickname
+  :google_analytics_account: UA-000000-00
 
 test:
   :host: http://portfolio.test.local
@@ -29,6 +30,7 @@ test:
   :flickr_access_token:
   :flickr_access_secret:
   :flickr_user_id: Nickname
+  :google_analytics_account: UA-000000-00
 
 production:
   :host: http://portfolio.production.local
@@ -44,3 +46,4 @@ production:
   :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_user_id: Nickname
+  :google_analytics_account: UA-000000-00
