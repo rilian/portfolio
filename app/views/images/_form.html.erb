@@ -1,28 +1,28 @@
 <%= simple_form_for @image, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :album_id, :as => :select, :collection => Album.all, :required => true, :include_blank => false %>
+  <div class="well">
+    <%= f.input :album_id, :as => :select, :collection => Album.all, :required => true, :include_blank => false %>
 
-  <% if f.object.asset? %>
-    <div>
-      <%= link_to image_tag(f.object.asset.url(:span2)), f.object.asset.url(:big) %>
-      <br>
-      <br>
-    </div>
-  <% end %>
+    <% if f.object.asset? %>
+      <div class="">
+        <%= link_to image_tag(f.object.asset.url(:span2)), f.object.asset.url(:big) %>
+        <br>
+        <br>
+      </div>
+    <% end %>
 
-  <%= f.input :asset, :as => :file, :required => !f.object.asset? %>
-  <%= f.input :asset_cache, :as => :hidden %>
-  <%= f.input :title %>
-  <%= f.input :desc, :input_html => { :rows => 2, :cols => 40 }  %>
-  <%= f.input :place %>
-  <%= f.input :date, :as => :date, :order =>[:year] %>
-
-  <%= f.input :tags_resolved, :as => :text, :input_html => { :rows => 2, :cols => 40 } %>
-
-  <%= f.input :published_at_checkbox, :as => :boolean, :label => "Published #{@image.published_at.present? ? "<br>#{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
-
-  <%= f.input :uploaded_to_flickr_at_checkbox, :as => :boolean, :label => "Uploaded toFlickr #{@image.uploaded_to_flickr_at.present? ? "<br>#{@image.uploaded_to_flickr_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
-  <%= f.input :flickr_photo_id %>
-
-
-  <%= f.button :submit, :class => 'btn-primary' %>
+    <%= f.input :asset, :as => :file, :required => !f.object.asset? %>
+    <%= f.input :asset_cache, :as => :hidden %>
+    <%= f.input :title %>
+    <hr>
+    <%= f.input :desc, :input_html => { :rows => 2, :cols => 40 }  %>
+    <%= f.input :place %>
+    <%= f.input :date, :as => :date, :order =>[:year] %>
+    <%= f.input :tags_resolved, :as => :text, :input_html => { :rows => 2, :cols => 40 } %>
+    <hr>
+    <%= f.input :published_at_checkbox, :as => :boolean, :label => "Published #{@image.published_at.present? ? "<br>#{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
+    <%= f.input :uploaded_to_flickr_at_checkbox, :as => :boolean, :label => "Uploaded to Flickr #{@image.uploaded_to_flickr_at.present? ? "<br>#{@image.uploaded_to_flickr_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
+    <%= f.input :flickr_photo_id, :label => "Flickr Photo Id" %>
+    <hr>
+    <%= f.button :submit, :class => 'btn-primary' %>
+  </div>
 <% end %>
