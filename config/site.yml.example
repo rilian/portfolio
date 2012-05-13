@@ -13,6 +13,7 @@ development:
   :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  :flickr_user_id: Nickname
 
 test:
   :host: http://portfolio.test.local
@@ -27,6 +28,7 @@ test:
   :flickr_shared_secret:
   :flickr_access_token:
   :flickr_access_secret:
+  :flickr_user_id: Nickname
 
 production:
   :host: http://portfolio.production.local
@@ -41,3 +43,4 @@ production:
   :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  :flickr_user_id: Nickname

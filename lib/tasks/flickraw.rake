@@ -41,7 +41,7 @@ namespace :flickraw do
 
     puts "Starting upload images"
 
-    image_to_upload = Image.where('published_at IS NOT NULL').where(:is_uploaded_to_flickr => false).order('published_at DESC').limit(1).first
+    image_to_upload = Image.where('published_at IS NOT NULL AND uploaded_to_flickr_at IS NOT NULL').order('published_at DESC').limit(1).first
 
     if image_to_upload
       FlickRaw.api_key = SITE[:flickr_api_key]
@@ -58,11 +58,11 @@ namespace :flickraw do
       result = flickr.upload_photo(image_to_upload.asset.path,
                                   :title => image_to_upload.title,
                                   :description => image_to_upload.render_data)
-      puts "Result: #{result.inspect}"
+      puts "Image uploaded id = #{result.inspect}"
 
-      image_to_upload.update_attribute(:is_uploaded_to_flickr, true)
+      image_to_upload.update_attributes({:uploaded_to_flickr_at => Time.now, :flickr_photo_id => result})
     else
-      puts "no images to upload"
+      puts "No images to upload"
     end
   end
 end

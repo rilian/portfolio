@@ -35,6 +35,8 @@ FactoryGirl.define do
     date        Date.today
     is_vertical false
     published_at Time.now
+    uploaded_to_flickr_at Time.now
+    flickr_photo_id '1234567890'
     factory :image_vertical do
       asset       File.open("#{Rails.root}/spec/fixtures/file_vertical.png")
       is_vertical true

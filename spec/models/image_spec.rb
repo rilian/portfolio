@@ -10,11 +10,12 @@ describe Image do
   it { should have_db_column(:is_vertical).of_type(:boolean) }
   it { should have_db_column(:published_at).of_type(:datetime) }
   it { should have_db_column(:tags_cache).of_type(:string) }
-  it { should have_db_column(:is_uploaded_to_flickr).of_type(:boolean).with_options(:default => false) }
+  it { should have_db_column(:uploaded_to_flickr_at).of_type(:datetime) }
+  it { should have_db_column(:flickr_photo_id).of_type(:string).with_options(:limit => 11) }
 
   it { should have_db_index(:album_id) }
   it { should have_db_index(:published_at) }
-  it { should have_db_index(:is_uploaded_to_flickr) }
+  it { should have_db_index(:uploaded_to_flickr_at) }
 
   it { should validate_presence_of(:asset) }
   it { should validate_presence_of(:album) }
@@ -70,6 +71,37 @@ describe Image do
       it "should set published_at to nil" do
         @image.published_at_checkbox = '0'
         @image.published_at.should == nil
+      end
+    end
+
+    describe "uploaded_to_flickr_at" do
+      before :each do
+        time_now = Time.now
+        Time.stub!(:now).and_return(time_now)
+      end
+
+      describe "should be updated" do
+        before :each do
+          @image.uploaded_to_flickr_at = nil
+        end
+
+        it "when value is nil" do
+          @image.uploaded_to_flickr_at_checkbox = '1'
+          @image.uploaded_to_flickr_at.should == Time.now
+        end
+      end
+
+      describe "should be preserved" do
+        it "when value is not nil initially" do
+          uploaded_to_flickr_at_cached = @image.uploaded_to_flickr_at
+          @image.uploaded_to_flickr_at_checkbox = '1'
+          @image.uploaded_to_flickr_at.should == uploaded_to_flickr_at_cached
+        end
+      end
+
+      it "should set published_at to nil" do
+        @image.uploaded_to_flickr_at_checkbox = '0'
+        @image.uploaded_to_flickr_at.should == nil
       end
     end
 

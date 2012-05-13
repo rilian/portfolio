@@ -21,6 +21,9 @@
   <%= f.input :date, :as => :date, :order =>[:year] %>
   <%= f.input :published_at_checkbox, :as => :boolean, :label => "Published #{@image.published_at.present? ? "<br>#{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
 
+  <%= f.input :uploaded_to_flickr_at_checkbox, :as => :boolean, :label => "Uploaded toFlickr #{@image.uploaded_to_flickr_at.present? ? "<br>#{@image.uploaded_to_flickr_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
+  <%= f.input :flickr_photo_id %>
+
   <%= f.input :desc, :input_html => { :rows => 2, :cols => 40 }  %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

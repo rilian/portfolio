@@ -21,7 +21,9 @@ class Image < ActiveRecord::Base
   validates_presence_of :asset, :album
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :is_vertical, :published_at_checkbox, :tags, :tags_resolved
+  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :is_vertical,
+                  :published_at_checkbox, :uploaded_to_flickr_at_checkbox, :tags, :tags_resolved,
+                  :uploaded_to_flickr_at, :flickr_photo_id
   attr_taggable :tags
 
   # Model dictionaries, state machine
@@ -43,6 +45,15 @@ class Image < ActiveRecord::Base
   def published_at_checkbox=(val)
     self.published_at = Time.now if val == '1' && self.published_at.blank?
     self.published_at = nil unless val == '1'
+  end
+
+  def uploaded_to_flickr_at_checkbox
+    self.uploaded_to_flickr_at.present?
+  end
+
+  def uploaded_to_flickr_at_checkbox=(val)
+    self.uploaded_to_flickr_at = Time.now if val == '1' && self.uploaded_to_flickr_at.blank?
+    self.uploaded_to_flickr_at = nil unless val == '1'
   end
 
   def to_param
