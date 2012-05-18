@@ -49,10 +49,7 @@
         </div>
         <div class="span4">
           <p class="pull-right">
-
-            <%= link_to "<i class=\"icon-user icon-white\"> </i> Comments".html_safe, "#discus_modal_#{image.id}", :class => 'label', 'data-toggle' => 'modal' %>
-
-            <%= link_to "<i class=\"icon-map-marker icon-white\"> </i> Link".html_safe, image_url(image), :class => 'label' %>
+            <%= link_to "... Comments", "#{image_url(image)}#disqus_thread", :class => 'label', 'data-disqus-identifier'=> "image_#{image.id}" %>
 
             <% unless index == 0%>
               <a href="#" class="label"><i class="icon-home icon-white"> </i> Back</a>
@@ -62,7 +59,9 @@
       </div>
 
       <div class="thumbnail">
-        <%= image_tag(image.asset.url(:big), :alt => image.id) %>
+        <%= link_to(image_url(image), :class => 'thumbnail')do
+            image_tag(image.asset.url(:big), :alt => image.id)
+        end %>
       </div>
       <hr>
 
@@ -71,8 +70,3 @@
 </ul>
 
 <%= paginate images %>
-
-<!-- disqus data -->
-<% images.each_with_index do |image, index| %>
-  <%= render 'images/image_modal', :image => image %>
-<% end %>

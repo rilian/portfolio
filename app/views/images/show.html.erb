@@ -21,11 +21,26 @@
   </div>
   <div class="span4">
     <p class="pull-right">
-      <%= link_to "<i class=\"icon-user icon-white\"> </i> Comments".html_safe, "#discus_modal_#{@image.id}", :class => 'label', 'data-toggle' => 'modal' %>
     </p>
   </div>
 </div>
 
 <div class="thumbnail">
   <%= image_tag(@image.asset.url(:big)) %>
+</div>
+
+<div class="container">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = '<%= SITE[:disqus_shortname] %>';
+    var disqus_identifier = '<%= "image_#{@image.id}" %>';
+    var disqus_url = '<%= image_url(@image) %>';
+    var disqus_developer = '<%= SITE[:disqus_developer] %>';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>

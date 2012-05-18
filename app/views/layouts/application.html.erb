@@ -63,5 +63,16 @@
         </footer>
       </div>
     </div>
+
+  <script type="text/javascript">
+    var disqus_shortname = '<%= SITE[:disqus_shortname] %>';
+    var disqus_developer = '<%= SITE[:disqus_developer] %>';
+    (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+  </script>
   </body>
 </html>
