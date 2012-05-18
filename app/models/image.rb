@@ -91,7 +91,7 @@ class Image < ActiveRecord::Base
   def update_values
     self.tags_cache = self.tags_resolved
     self.title = self.title.titleize
-    self.desc = self.desc.capitalize
-    self.place = self.place.capitalize
+    self.desc = self.desc.try(:capitalize)
+    self.place = self.place.try(:capitalize)
   end
 end

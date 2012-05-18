@@ -85,15 +85,16 @@ describe ImagesController do
         @album = FactoryGirl.create(:album)
         @file = fixture_file_upload('/file.jpg', 'image/jpg')
 
-        post :create, :image => {:album_id => @album.id, :asset => @file, :title => 'AA', :desc => 'BB', :published_at_checkbox => '0'}
+        post :create, :image => {:album_id => @album.id, :asset => @file, :title => 'aa aa', :desc => 'bb bb', :place => 'cc cc', :published_at_checkbox => '0'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
         image = Image.last
         image.present?.should be_true
-        image.title.should eq('AA')
-        image.desc.should eq('BB')
+        image.title.should eq('Aa Aa')
+        image.desc.should eq('Bb bb')
+        image.place.should eq('Cc cc')
         image.album_id.should eq(@album.id)
         image.published_at.should == nil
       end
@@ -119,7 +120,7 @@ describe ImagesController do
       it "should be successful" do
         response.status.should eq(302)
         @image.reload
-        @image.title.should eq('New awesome title!')
+        @image.title.should eq('New Awesome Title!')
       end
     end
 
