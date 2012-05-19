@@ -64,13 +64,13 @@ describe AlbumsController do
 
     describe "POST 'create'" do
       before :each do
-        post :create, :album => {:title => 'AA'}
+        post :create, :album => {:title => 'AA AA'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
         Album.last.present?.should be_true
-        Album.last.title.should eq('AA')
+        Album.last.title.should eq('Aa Aa')
       end
     end
 
@@ -94,7 +94,7 @@ describe AlbumsController do
       it "should be successful" do
         response.status.should eq(302)
         @album.reload
-        @album.title.should eq('New awesome title!')
+        @album.title.should eq('New Awesome Title!')
       end
     end
 

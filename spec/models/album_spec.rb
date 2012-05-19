@@ -24,6 +24,18 @@ describe Album do
     end
   end
 
+  describe 'before filters' do
+    describe "should humanize text values" do
+      before do
+        @album = FactoryGirl.create(:album, :title => 'aa aa')
+      end
+
+      it "should have humanized values" do
+        @album.title.should == 'Aa Aa'
+      end
+    end
+  end
+
   describe 'other model methods' do
     before :each do
       @album = FactoryGirl.build(:album)
