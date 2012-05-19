@@ -9,7 +9,7 @@ describe "flickraw" do
     Rake::Task.define_task(:environment)
   end
 
-  describe ":upload_images" do
+  describe ":get_flickr_tokens" do
     pending
     #@rake['flickraw:get_flickr_tokens'].invoke
   end
