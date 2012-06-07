@@ -23,6 +23,12 @@
       </div>
     </li>
   <% end %>
+
+  <% if images.size == 0 %>
+    <li class="span2">
+      <h3>No images</h3>
+    </li>
+  <% end %>
 </ul>
 
 <%= paginate images %>
