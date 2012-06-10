@@ -2,7 +2,7 @@
   <% get_tags_cloud.each do |tag, count| %>
     <li>
       <h<%= [(6-count), 2].max %>>
-        <%= link_to tag, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}) %>
+        <%= link_to tag, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}) %>
       </h<%= [(6-count), 2].max %>>
     </li>
   <% end %>
@@ -47,7 +47,7 @@
             <% unless image.tags.empty? %>
             <p>
               <% image.tags.each do |tag| %>
-                <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}), :class => 'label' %>
+                <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), :class => 'label' %>
               <% end %>
             </p>
             <% end %>

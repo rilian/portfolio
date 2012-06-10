@@ -14,6 +14,8 @@ class Image < ActiveRecord::Base
     'public/uploads'
   end
 
+  DEFAULT_QUERY = 'title_or_desc_or_tags_cache_or_place_or_album_title_cont'
+
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :album
 
@@ -23,7 +25,7 @@ class Image < ActiveRecord::Base
   # Other properties (e.g. accepts_nested_attributes_for)
   attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date,
                   :published_at_checkbox, :uploaded_to_flickr_at_checkbox, :tags, :tags_resolved,
-                  :uploaded_to_flickr_at, :flickr_photo_id
+                  :uploaded_to_flickr_at, :flickr_photo_id, :deviantart_id
   attr_taggable :tags
 
   # Model dictionaries, state machine

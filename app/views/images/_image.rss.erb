@@ -16,7 +16,7 @@
   <div>
     Tags:
     <% image.tags.each do |tag| %>
-      <%= link_to tag, root_url(:q => {:title_or_desc_or_tags_cache_or_album_title_cont => tag}) %>
+      <%= link_to tag, root_url(:q => {Image::DEFAULT_QUERY.to_sym => tag}) %>
     <% end %>
   </div>
 <% end %>

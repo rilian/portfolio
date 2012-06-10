@@ -47,6 +47,6 @@
   </ul>
 
   <form class="navbar-search pull-right" method="get" action="/">
-    <input type="text" class="input-medium search-query" placeholder="Search" name="q[title_or_desc_or_tags_cache_or_album_title_cont]" value="<%= params[:q][:title_or_desc_or_tags_cache_or_album_title_cont] if params[:q] %>">
+    <input type="text" class="input-medium search-query" placeholder="Search" name="q[<%= Image::DEFAULT_QUERY %>]" value="<%= params[:q][Image::DEFAULT_QUERY.to_sym] if params[:q] %>">
   </form>
 </div>
