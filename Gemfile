@@ -13,6 +13,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'ransack'
+gem 'squeel', '1.0.1'
 gem 'kaminari'
 gem 'rocket_tag', '0.2.0' # 0.3.1 has bug https://github.com/bradphelan/rocket_tag/issues/11
 
