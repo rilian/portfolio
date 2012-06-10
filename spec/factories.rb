@@ -28,13 +28,14 @@ FactoryGirl.define do
 
   factory :image do
     album
-    asset       File.open("#{Rails.root}/spec/fixtures/file.jpg")
-    title       'Untitled'
-    desc        { FactoryGirl.generate(:body) }
-    place       'Kiev'
-    date        Date.today
-    published_at Time.now
+    asset                 File.open("#{Rails.root}/spec/fixtures/file.jpg")
+    title                 'Untitled'
+    desc                  { FactoryGirl.generate(:body) }
+    place                 'Kiev'
+    date                  Date.today
+    published_at          Time.now
     uploaded_to_flickr_at Time.now
-    flickr_photo_id '1234567890'
+    flickr_photo_id       '1234567890'
+    deviantart_id         '12345678'
   end
 end

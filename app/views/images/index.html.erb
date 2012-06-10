@@ -13,6 +13,7 @@
       <th><%= sort_link @q, :created_at %></th>
       <th><%= sort_link @q, :published_at %></th>
       <th><%= sort_link @q, :uploaded_to_flickr_at %></th>
+      <th>DeviantArt</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -45,6 +46,13 @@
           <% end%>
         </td>
         <td>
+          <% if image.deviantart_id.present? %>
+            <span class="label label-important"><%= link_to image.deviantart_id, "http://www.deviantart.com/#/#{image.deviantart_id}" %></span>
+          <% else %>
+            <span class="label label-warning">no</span>
+          <% end %>
+        </td>
+        <td>
           <p>
             <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
             <%= link_to 'Delete', image_path(image), :class => 'btn', :method => 'delete', :confirm => 'Delete image?' %>
@@ -63,6 +71,7 @@
       <th><%= sort_link @q, :created_at %></th>
       <th><%= sort_link @q, :published_at %></th>
       <th><%= sort_link @q, :uploaded_to_flickr_at %></th>
+      <th>DeviantArt</th>
       <th>Actions</th>
     </tr>
   </thead>

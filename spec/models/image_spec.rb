@@ -11,6 +11,7 @@ describe Image do
   it { should have_db_column(:tags_cache).of_type(:string) }
   it { should have_db_column(:uploaded_to_flickr_at).of_type(:datetime) }
   it { should have_db_column(:flickr_photo_id).of_type(:string).with_options(:limit => 11) }
+  it { should have_db_column(:deviantart_id).of_type(:string).with_options(:limit => 8) }
 
   it { should have_db_index(:album_id) }
   it { should have_db_index(:published_at) }
