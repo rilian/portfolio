@@ -27,11 +27,11 @@ describe Album do
   describe 'before filters' do
     describe "should humanize text values" do
       before do
-        @album = FactoryGirl.create(:album, :title => 'aa aa')
+        @album = FactoryGirl.create(:album, :title => 'BB bb Bb bB!')
       end
 
       it "should have humanized values" do
-        @album.title.should == 'Aa Aa'
+        @album.title.should == 'BB bb Bb bB!'
       end
     end
   end

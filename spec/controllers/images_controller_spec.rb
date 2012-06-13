@@ -85,16 +85,16 @@ describe ImagesController do
         @album = FactoryGirl.create(:album)
         @file = fixture_file_upload('/file.jpg', 'image/jpg')
 
-        post :create, :image => {:album_id => @album.id, :asset => @file, :title => 'aa aa', :desc => 'bb bb', :place => 'cc cc', :published_at_checkbox => '0'}
+        post :create, :image => {:album_id => @album.id, :asset => @file, :title => 'aa AA aA Aa', :desc => 'bb BB bB Bb', :place => 'cc CC Cc cC', :published_at_checkbox => '0'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
         image = Image.last
         image.present?.should be_true
-        image.title.should eq('Aa Aa')
-        image.desc.should eq('Bb bb')
-        image.place.should eq('Cc cc')
+        image.title.should eq('aa AA aA Aa')
+        image.desc.should eq('bb BB bB Bb')
+        image.place.should eq('cc CC Cc cC')
         image.album_id.should eq(@album.id)
         image.published_at.should == nil
       end
@@ -114,13 +114,13 @@ describe ImagesController do
     describe "PUT 'update'" do
       before :each do
         @image = FactoryGirl.create(:image)
-        put :update, :id => @image.id, :image => {:title => 'New awesome title!'}
+        put :update, :id => @image.id, :image => {:title => 'BB bb Bb bB!'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
         @image.reload
-        @image.title.should eq('New Awesome Title!')
+        @image.title.should eq('BB bb Bb bB!')
       end
     end
 

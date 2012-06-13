@@ -34,14 +34,14 @@ describe Image do
   describe 'before filters' do
     describe "should humanize text values" do
       before do
-        @image = FactoryGirl.create(:image, :title => 'aa aa', :desc => 'bb bb', :place => 'cc cc', :tags => 'xx, yy')
+        @image = FactoryGirl.create(:image, :title => 'aa AA aA Aa', :desc => 'bb BB bB Bb', :place => 'cc CC Cc cC', :tags => 'xx, yy, qQ')
       end
 
       it "should have humanized values" do
-        @image.title.should == 'Aa Aa'
-        @image.desc.should == 'Bb bb'
-        @image.place.should == 'Cc cc'
-        @image.tags_cache.should == 'xx, yy'
+        @image.title.should == 'aa AA aA Aa'
+        @image.desc.should == 'bb BB bB Bb'
+        @image.place.should == 'cc CC Cc cC'
+        @image.tags_cache.should == 'xx, yy, qQ'
       end
     end
   end

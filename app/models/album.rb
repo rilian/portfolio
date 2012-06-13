@@ -2,7 +2,6 @@ class Album < ActiveRecord::Base
   # Includes
 
   # Before, after callbacks
-  before_save :update_values
 
   # Default scopes, default values (e.g. self.per_page =)
 
@@ -28,8 +27,4 @@ class Album < ActiveRecord::Base
 
   # Private methods (for example: custom validators)
   private
-
-  def update_values
-    self.title = self.title.titleize
-  end
 end

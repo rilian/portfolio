@@ -64,13 +64,13 @@ describe AlbumsController do
 
     describe "POST 'create'" do
       before :each do
-        post :create, :album => {:title => 'AA AA'}
+        post :create, :album => {:title => 'aa AA Aa aA'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
         Album.last.present?.should be_true
-        Album.last.title.should eq('Aa Aa')
+        Album.last.title.should eq('aa AA Aa aA')
       end
     end
 
@@ -88,13 +88,13 @@ describe AlbumsController do
     describe "PUT 'update'" do
       before :each do
         @album = FactoryGirl.create(:album)
-        put :update, :id => @album.id, :album => {:title => 'New awesome title!'}
+        put :update, :id => @album.id, :album => {:title => 'BB bb Bb bB!'}
       end
 
       it "should be successful" do
         response.status.should eq(302)
         @album.reload
-        @album.title.should eq('New Awesome Title!')
+        @album.title.should eq('BB bb Bb bB!')
       end
     end
 
