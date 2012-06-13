@@ -41,7 +41,7 @@ namespace :flickraw do
 
     puts "Starting upload images"
 
-    image_to_upload = Image.where('published_at IS NOT NULL AND uploaded_to_flickr_at IS NULL').order('published_at DESC').limit(1).first
+    image_to_upload = Image.where('published_at IS NOT NULL AND uploaded_to_flickr_at IS NULL AND created_at < ?', (Time.now - 30.minutes)).order('published_at DESC').limit(1).first
 
     if image_to_upload
       FlickRaw.api_key = SITE[:flickr_api_key]
