@@ -31,11 +31,14 @@ class Image < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope :order => 'published_at DESC, created_at DESC'
+  default_scope :order => "images.published_at DESC, images.created_at DESC"
 
   class << self
     def published
-      self.where("published_at IS NOT NULL")
+      self.where("images.published_at IS NOT NULL")
+    end
+    def not_from_hidden_album
+      self.joins(:album).where("albums.is_hidden = ?", false)
     end
   end
 

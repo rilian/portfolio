@@ -6,6 +6,7 @@ Portfolio::Application.configure do
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
+  def eager_load!; end
 
   # Configure static asset server for tests with Cache-Control for performance
   config.serve_static_assets = true
@@ -34,7 +35,7 @@ Portfolio::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
-  
+
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'example.com' }
 

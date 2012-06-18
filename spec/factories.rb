@@ -22,8 +22,9 @@ FactoryGirl.define do
   end
 
   factory :album do
-    title  { FactoryGirl.generate(:title) }
-    images []
+    title     { FactoryGirl.generate(:title) }
+    images    []
+    is_hidden false
   end
 
   factory :image do
