@@ -8,7 +8,7 @@ development:
     Contacts text here
     (change in site.yml)
   :copy: |
-    Copyright (c) 2012 Author. All rights reserved.
+    Copyright © 2012 Author. All rights reserved.
   :flickr_api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -28,7 +28,7 @@ test:
     Contacts text here
     (change in site.yml)
   :copy: |
-    Copyright (c) 2012 Author. All rights reserved.
+    Copyright © 2012 Author. All rights reserved.
   :flickr_api_key:
   :flickr_shared_secret:
   :flickr_access_token:
@@ -48,7 +48,7 @@ production:
     Contacts text here
     (change in site.yml)
   :copy: |
-    Copyright (c) 2012 Author. All rights reserved.
+    Copyright © 2012 Author. All rights reserved.
   :flickr_api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
