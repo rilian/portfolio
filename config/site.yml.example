@@ -7,8 +7,7 @@ development:
   :contacts: |
     Contacts text here
     (change in site.yml)
-  :copy: |
-    Copyright © 2012 Author. All rights reserved.
+  :copyright_holder: Developer
   :flickr_api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -27,8 +26,7 @@ test:
   :contacts: |
     Contacts text here
     (change in site.yml)
-  :copy: |
-    Copyright © 2012 Author. All rights reserved.
+  :copyright_holder: Developer
   :flickr_api_key:
   :flickr_shared_secret:
   :flickr_access_token:
@@ -47,8 +45,7 @@ production:
   :contacts: |
     Contacts text here
     (change in site.yml)
-  :copy: |
-    Copyright © 2012 Author. All rights reserved.
+  :copyright_holder: Author's Name
   :flickr_api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_access_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
