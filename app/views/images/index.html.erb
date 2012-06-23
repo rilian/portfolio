@@ -20,7 +20,7 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= link_to image.id, edit_image_path(image.id) %></td>
+        <td><%= link_to image.id, edit_image_path(image.id) %> <%= image.album.title %></td>
         <td>
           <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
             image_tag(image.asset.url(:span2))
