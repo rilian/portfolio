@@ -36,12 +36,14 @@ namespace :flickraw do
   task :upload_images => :environment do
     if SITE[:flickr_api_key].empty? || SITE[:flickr_shared_secret].empty? ||
         SITE[:flickr_access_token].empty? || SITE[:flickr_access_secret].empty?
-      puts "Error: not all Flickr api keys present"
+      puts "Error: not all Flickr api keys present. Please run\n\nrake flickraw:get_flickr_tokens"
+      return
     end
 
     puts "Starting upload images"
 
-    image_to_upload = Image.published.not_from_hidden_album.readonly(false).where('images.uploaded_to_flickr_at IS NULL AND images.created_at < ?', (Time.now - 30.minutes)).order('images.published_at DESC').limit(1).first
+    image_to_upload = Image.published.not_from_hidden_album.readonly(false).
+        where('images.uploaded_to_flickr_at IS NULL AND images.created_at < ?', (Time.now - 30.minutes)).order('images.published_at DESC').limit(1).first
 
     if image_to_upload
       FlickRaw.api_key = SITE[:flickr_api_key]
@@ -75,13 +77,58 @@ namespace :flickraw do
       else
         # Create photoset
         puts "Creating photoset '#{image_to_upload.album.title}'"
-        flickr.photosets.create(:title => image_to_upload.album.title, :description => '',:primary_photo_id => flickr_photo_id)
+        flickr.photosets.create(:title => image_to_upload.album.title, :description => '', :primary_photo_id => flickr_photo_id)
         puts "Image #{flickr_photo_id} set as primary in photoset #{image_to_upload.album.title}"
       end
 
       image_to_upload.update_attributes({:uploaded_to_flickr_at => Time.now, :flickr_photo_id => flickr_photo_id})
     else
       puts "No images to upload"
+    end
+  end
+
+  desc "Updates metadata on Flickr images, which are changed in the last week"
+  task :update_images_data => :environment do
+    if SITE[:flickr_api_key].empty? || SITE[:flickr_shared_secret].empty? ||
+        SITE[:flickr_access_token].empty? || SITE[:flickr_access_secret].empty?
+      puts "Error: not all Flickr api keys present. Please run\n\nrake flickraw:get_flickr_tokens"
+      return
+    end
+
+    puts "Starting update images"
+
+    images_to_update = Image.published.not_from_hidden_album.readonly(false).
+        where('images.flickr_photo_id != "" AND images.updated_at > ? ', (3.days.ago))
+
+    if images_to_update.size > 0
+      FlickRaw.api_key = SITE[:flickr_api_key]
+      FlickRaw.shared_secret = SITE[:flickr_shared_secret]
+
+      flickr.access_token = SITE[:flickr_access_token]
+      flickr.access_secret = SITE[:flickr_access_secret]
+
+      login = flickr.test.login
+
+      puts "You are now authenticated as #{login.username}"
+
+      puts "Updating #{images_to_update.size} images ..."
+
+      images_to_update.each do |image|
+        puts "Updating image #{image.id}"
+        begin
+          # Updating tags
+          flickr.photos.setTags(:photo_id => image.flickr_photo_id, :tags => image.tags_resolved)
+
+          # Updating title and description
+          flickr.photos.setMeta(:photo_id => image.flickr_photo_id, :title => image.title, :description => image.render_data)
+
+          # Update image timestamp
+          image.update_attributes({:uploaded_to_flickr_at => Time.now})
+        rescue Exception => e
+          puts e.message
+        end
+        puts "Tags updated"
+      end
     end
   end
 end

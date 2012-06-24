@@ -18,4 +18,9 @@ describe "flickraw" do
     pending
     #@rake['flickraw:upload_images'].invoke
   end
+
+  describe ":update_images_data" do
+    pending
+    #@rake['flickraw:update_images_data'].invoke
+  end
 end
