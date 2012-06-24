@@ -8,8 +8,8 @@
       <th><%= sort_link @q, :id %></th>
       <th>Thumb</th>
       <th><%= sort_link @q, :title %></th>
-      <th>Decription</th>
-      <th><%= sort_link @q, :date %></th>
+      <th>Description</th>
+      <th>Tags</th>
       <th><%= sort_link @q, :created_at %></th>
       <th><%= sort_link @q, :published_at %></th>
       <th><%= sort_link @q, :uploaded_to_flickr_at %></th>
@@ -30,7 +30,7 @@
           end %>
         <td><%= link_to image.title, edit_image_path(image.id) %></td>
         <td><%= image.render_data %></td>
-        <td><%= image.date.strftime("%Y") if image.date %></td>
+        <td><%= image.tags_resolved %></td>
         <td><%= image.created_at.strftime("%d/%m/%Y") %></td>
         <td>
           <% if image.published_at.present? %>
@@ -69,8 +69,8 @@
       <th><%= sort_link @q, :id %></th>
       <th>Thumb</th>
       <th><%= sort_link @q, :title %></th>
-      <th>Decription</th>
-      <th><%= sort_link @q, :date %></th>
+      <th>Description</th>
+      <th>Tags</th>
       <th><%= sort_link @q, :created_at %></th>
       <th><%= sort_link @q, :published_at %></th>
       <th><%= sort_link @q, :uploaded_to_flickr_at %></th>
