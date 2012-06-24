@@ -20,7 +20,10 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= link_to image.id, edit_image_path(image.id) %> <%= image.album.title %></td>
+        <td>
+          <%= link_to image.id, edit_image_path(image.id) %> <%= image.album.title %>
+          <%= '(hidden)' if image.album.is_hidden %>
+        </td>
         <td>
           <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
             image_tag(image.asset.url(:span2))
@@ -42,14 +45,14 @@
             <br>
             <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%d/%m/%Y") %></span>
           <% else %>
-            <span class="label label-warning">no</span>
+            <span class="label label-warning"><%= link_to 'upload', 'http://www.flickr.com/photos/upload/' %></span>
           <% end%>
         </td>
         <td>
           <% if image.deviantart_id.present? %>
             <span class="label label-important"><%= link_to image.deviantart_id, "http://www.deviantart.com/#/#{image.deviantart_id}" %></span>
           <% else %>
-            <span class="label label-warning">no</span>
+            <span class="label label-warning"><%= link_to 'upload', 'http://www.deviantart.com/submit/deviation' %></span>
           <% end %>
         </td>
         <td>
