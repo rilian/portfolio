@@ -7,32 +7,46 @@ describe ImagesController do
 
   describe "unauthorized request" do
     context "inaccessible pages" do
-      after :each do
-        response.should redirect_to root_path
-        response.status.should eq(302)
+      context "collection" do
+        after :each do
+          response.should redirect_to root_path
+          response.status.should eq(302)
+        end
+
+        it "should redirect to homepage" do
+          get :index
+        end
+        it "should redirect to homepage" do
+          @image = FactoryGirl.create(:image, :published_at => false)
+          get :show, :id => @image.id
+        end
+        it "should redirect to homepage" do
+          get :new
+        end
+        it "should redirect to homepage" do
+          post :create
+        end
       end
 
-      it "should redirect to homepage" do
-        get :index
-      end
-      it "should redirect to homepage" do
-        @image = FactoryGirl.create(:image, :published_at => false)
-        get :show, :id => @image.id
-      end
-      it "should redirect to homepage" do
-        get :new
-      end
-      it "should redirect to homepage" do
-        post :create
-      end
-      it "should redirect to homepage" do
-        get :edit
-      end
-      it "should redirect to homepage" do
-        put :update
-      end
-      it "should redirect to homepage" do
-        delete :destroy
+      context "member" do
+        before :each do
+          @image = FactoryGirl.create(:image)
+        end
+
+        after :each do
+          response.should redirect_to root_path
+          response.status.should eq(302)
+        end
+
+        it "should redirect to homepage" do
+          get :edit, :id => @image.id
+        end
+        it "should redirect to homepage" do
+          put :update, :id => @image.id
+        end
+        it "should redirect to homepage" do
+          delete :destroy, :id => @image.id
+        end
       end
     end
 
@@ -102,7 +116,8 @@ describe ImagesController do
 
     describe "GET 'edit'" do
       before :each do
-        get :edit
+        @image = FactoryGirl.create(:image)
+        get :edit, :id => @image.id
       end
 
       it "should be successful" do

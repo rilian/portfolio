@@ -19,28 +19,42 @@ describe AlbumsController do
     end
 
     context "inaccessible pages" do
-      after :each do
-        response.should redirect_to root_path
-        response.status.should eq(302)
+      context "collections" do
+        after :each do
+          response.should redirect_to root_path
+          response.status.should eq(302)
+        end
+
+        it "should redirect to homepage" do
+          get :index
+        end
+        it "should redirect to homepage" do
+          get :new
+        end
+        it "should redirect to homepage" do
+          post :create
+        end
       end
 
-      it "should redirect to homepage" do
-        get :index
-      end
-      it "should redirect to homepage" do
-        get :new
-      end
-      it "should redirect to homepage" do
-        post :create
-      end
-      it "should redirect to homepage" do
-        get :edit
-      end
-      it "should redirect to homepage" do
-        put :update
-      end
-      it "should redirect to homepage" do
-        delete :destroy
+      context "members" do
+        before :each do
+          @album = FactoryGirl.create(:album)
+        end
+
+        after :each do
+          response.should redirect_to root_path
+          response.status.should eq(302)
+        end
+
+        it "should redirect to homepage" do
+          get :edit, :id => @album.id
+        end
+        it "should redirect to homepage" do
+          put :update, :id => @album.id
+        end
+        it "should redirect to homepage" do
+          delete :destroy, :id => @album.id
+        end
       end
     end
   end
@@ -76,7 +90,8 @@ describe AlbumsController do
 
     describe "GET 'edit'" do
       before :each do
-        get :edit
+        @album = FactoryGirl.create(:album)
+        get :edit, :id => @album.id
       end
 
       it "should be successful" do
