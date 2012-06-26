@@ -48,8 +48,7 @@ class Image < ActiveRecord::Base
   end
 
   def published_at_checkbox=(val)
-    self.published_at = Time.now if val == '1' && self.published_at.blank?
-    self.published_at = nil unless val == '1'
+    self.published_at = (val == '1' && self.published_at.blank?) ? Time.now : (val != '1') ? nil : self.published_at
   end
 
   def uploaded_to_flickr_at_checkbox
@@ -57,8 +56,7 @@ class Image < ActiveRecord::Base
   end
 
   def uploaded_to_flickr_at_checkbox=(val)
-    self.uploaded_to_flickr_at = Time.now if val == '1' && self.uploaded_to_flickr_at.blank?
-    self.uploaded_to_flickr_at = nil unless val == '1'
+    self.uploaded_to_flickr_at = (val == '1' && self.uploaded_to_flickr_at.blank?) ? Time.now : (val != '1') ? nil : self.uploaded_to_flickr_at
   end
 
   def to_param
@@ -75,17 +73,11 @@ class Image < ActiveRecord::Base
 
   def render_data
     data = ''
-    if self.desc.present?
-      data << '. ' if data.length > 0
-      data << self.desc
-    end
-    if self.place.present?
-      data << '. ' if data.length > 0
-      data << self.place
-    end
-    if self.date.present?
-      data << '. ' if data.length > 0
-      data << self.date.strftime("%Y")
+    [self.desc, self.place, self.date.try(:strftime, "%Y")].each do |text|
+      unless text.empty?
+        data << '. ' if data.length > 0
+        data << text
+      end
     end
     data
   end
