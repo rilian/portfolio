@@ -28,9 +28,24 @@
           <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
             image_tag(image.asset.url(:span2))
           end %>
-        <td><%= link_to image.title, edit_image_path(image.id) %></td>
-        <td><%= image.render_data %></td>
-        <td><%= image.tags_resolved %></td>
+        <td>
+          <%= link_to image.title, edit_image_path(image.id) %>
+          <% if image.title.size < 3 %>
+            <span class="label label-important">Not enough!</span>
+          <% end %>
+        </td>
+        <td>
+          <%= image.render_data %>
+          <% if image.render_data.size < 20 %>
+            <span class="label label-important">Not enough!</span>
+          <% end %>
+        </td>
+        <td>
+          <%= image.tags_resolved %>
+          <% if image.tags_resolved.size < 10 %>
+            <span class="label label-important">Not enough!</span>
+          <% end %>
+        </td>
         <td><%= image.created_at.strftime("%d/%m/%Y") %></td>
         <td>
           <% if image.published_at.present? %>
