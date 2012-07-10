@@ -32,6 +32,13 @@
         image_tag 'rss.png'
       end %>
     </li>
+    <% if SITE[:flickr_user_id].present? %>
+      <li>
+        <%= link_to "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/" do
+          image_tag 'flickr.png'
+        end %>
+      </li>
+    <% end %>
   </ul>
 
   <ul class="nav pull-right">
