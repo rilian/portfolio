@@ -22,7 +22,9 @@
       <tr>
         <td>
           <%= link_to image.id, edit_image_path(image.id) %> <%= image.album.title %>
-          <%= '(hidden)' if image.album.is_hidden %>
+          <% if image.album.is_hidden %>
+            <span class="label label-important">hidden</span>
+          <% end %>
         </td>
         <td>
           <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
