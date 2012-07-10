@@ -42,7 +42,7 @@
         </td>
         <td>
           <%= image.tags_resolved %>
-          <% if image.tags_resolved.size < 10 %>
+          <% if image.tags_resolved.size < 10 || image.tags_resolved.count(',') < 5 %>
             <span class="label label-important">Not enough!</span>
           <% end %>
         </td>
