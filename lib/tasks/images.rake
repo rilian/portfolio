@@ -8,4 +8,12 @@ namespace :images do
       puts "Published image #{image_to_publish.id}"
     end
   end
+
+  desc 'Recreate asset versions on all Images'
+  task :recreate_versions => :environment do
+    Image.all.each do |image|
+      image.asset.recreate_versions!
+      puts "Recreated asset versions for Image##{image.id}"
+    end
+  end
 end
