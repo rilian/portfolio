@@ -32,9 +32,17 @@ Portfolio is a web-application based on Rails framework that allows you create p
 
     rake flickraw:get_flickr_tokens
 
+4. Deploy with capistrano
+
+    cap deploy;cap deploy:stop;cap deploy:start
+
+5. If needed run remotely rake task
+
+    cap invoke COMMAND='cd PATH_TO_APPLICATION && bundle exec rake RAILS_ENV=production images:recreate_versions'
+
 == Contributing
 
-I encourage you to test and use the software, and send your pull-requests with improvements
+I encourage you to test and use the software, and send your pull-requests with improvements!
 
 == Build Status {<img src="https://secure.travis-ci.org/rilian/portfolio.png?branch=master" alt="Build Status" />}[http://travis-ci.org/rilian/portfolio] {<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/rilian/portfolio]
 
