@@ -43,12 +43,16 @@ class Image < ActiveRecord::Base
   end
 
   # Other model methods
+  def to_param
+    "#{self.id}-#{self.title.parameterize}"
+  end
+
   def published_at_checkbox
     self.published_at.present?
   end
 
   def published_at_checkbox=(val)
-    self.published_at = (val == '1' && self.published_at.blank?) ? Time.now : (val != '1') ? nil : self.published_at
+    self.published_at = set_time(self.published_at, val)
   end
 
   def uploaded_to_flickr_at_checkbox
@@ -56,11 +60,7 @@ class Image < ActiveRecord::Base
   end
 
   def uploaded_to_flickr_at_checkbox=(val)
-    self.uploaded_to_flickr_at = (val == '1' && self.uploaded_to_flickr_at.blank?) ? Time.now : (val != '1') ? nil : self.uploaded_to_flickr_at
-  end
-
-  def to_param
-    "#{self.id}-#{self.title.parameterize}"
+    self.uploaded_to_flickr_at = set_time(self.uploaded_to_flickr_at, val)
   end
 
   def tags_resolved
@@ -87,5 +87,9 @@ class Image < ActiveRecord::Base
 
   def update_values
     self.tags_cache = self.tags_resolved
+  end
+
+  def set_time(initial_value, checkbox_value)
+    initial_value = (checkbox_value == '1' && initial_value.blank?) ? Time.now : (checkbox_value != '1') ? nil : initial_value
   end
 end
