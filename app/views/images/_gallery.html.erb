@@ -1,14 +1,4 @@
 <ul class="thumbnails">
-  <% get_tags_cloud.each do |tag, count| %>
-    <li>
-      <h<%= [(6-count), 2].max %>>
-        <%= link_to tag, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}) %>
-      </h<%= [(6-count), 2].max %>>
-    </li>
-  <% end %>
-</ul>
-
-<ul class="thumbnails">
   <% images.each do |image| %>
     <li class="span2">
       <div>
@@ -76,3 +66,9 @@
 </ul>
 
 <%= paginate images %>
+
+<div>
+  <% get_tags_cloud.each do |tag, count| %>
+    <%= link_to tag, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), {:style => "font-size:#{(count * 50) + 50}%;"} %>
+  <% end %>
+</div>
