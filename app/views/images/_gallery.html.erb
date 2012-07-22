@@ -30,7 +30,7 @@
         <div class="span8">
           <a name="img<%= image.id %>"></a>
           <div class="caption">
-            <strong><%= image.title %></strong>.
+            <h2><%= link_to image.title, "#{image_url(image)}" %></h2>
             <p><%= image.render_data %></p>
           </div>
           <div class="caption">
@@ -46,21 +46,14 @@
         <div class="span4">
           <p class="pull-right">
             <%= link_to "... Comments", "#{image_url(image)}#disqus_thread", :class => 'label', 'data-disqus-identifier'=> "image_#{image.id}" %>
-
-            <% unless index == 0%>
-              <a href="#" class="label"><i class="icon-home icon-white"> </i> Back</a>
-            <% end %>
           </p>
         </div>
       </div>
 
-      <div class="">
-        <%= link_to(image_url(image), :class => 'thumbnail')do
-            image_tag(image.asset.url(:big), :alt => image.id)
-        end %>
+      <div class="thumbnail">
+        <%= image_tag(image.asset.url(:big), :alt => image.id) %>
       </div>
       <hr>
-
     </li>
   <% end %>
 </ul>
