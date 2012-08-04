@@ -81,6 +81,7 @@ namespace :flickraw do
         puts "Image #{flickr_photo_id} set as primary in photoset #{image_to_upload.album.title}"
       end
 
+      time_now = Time.now
       image_to_upload.update_attributes({:uploaded_to_flickr_at => Time.now, :flickr_photo_id => flickr_photo_id, :updated_at => time_now})
     else
       puts "No images to upload"
