@@ -82,7 +82,7 @@ namespace :flickraw do
       end
 
       time_now = Time.now
-      image_to_upload.update_attributes({:uploaded_to_flickr_at => Time.now, :flickr_photo_id => flickr_photo_id, :updated_at => time_now})
+      image_to_upload.update_attributes({:uploaded_to_flickr_at => time_now, :flickr_photo_id => flickr_photo_id, :updated_at => time_now})
     else
       puts "No images to upload"
     end
