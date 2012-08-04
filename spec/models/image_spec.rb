@@ -53,7 +53,7 @@ describe Image do
       @image_3 = FactoryGirl.create(:image, :published_at => 1.days.ago)
     end
 
-    it "default scope should return all images in published_at DESC, created_at DESC order" do
+    it "default scope should return all images by published_at DESC, created_at DESC order" do
       Image.all.map(&:id).should == [@image_3.id, @image_2.id, @image_1.id]
     end
   end

@@ -35,7 +35,7 @@ describe Album do
       @album_3 = FactoryGirl.create(:album, :weight => 2)
     end
 
-    it "default scope should return all images in weight DESC" do
+    it "default scope should return all albums by weight DESC" do
       Album.all.map(&:id).should == [@album_2.id, @album_3.id, @album_1.id]
     end
   end
