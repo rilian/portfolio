@@ -81,7 +81,7 @@ namespace :flickraw do
         puts "Image #{flickr_photo_id} set as primary in photoset #{image_to_upload.album.title}"
       end
 
-      image_to_upload.update_attributes({:uploaded_to_flickr_at => Time.now, :flickr_photo_id => flickr_photo_id})
+      image_to_upload.update_attributes({:uploaded_to_flickr_at => Time.now, :flickr_photo_id => flickr_photo_id, :updated_at => time_now})
     else
       puts "No images to upload"
     end
@@ -98,7 +98,7 @@ namespace :flickraw do
     puts "Starting update images"
 
     images_to_update = Image.published.not_from_hidden_album.readonly(false).
-        where('images.flickr_photo_id != "" AND images.updated_at > ? ', (3.days.ago))
+        where('images.uploaded_to_flickr_at < images.updated_at AND images.flickr_photo_id != "" AND images.updated_at > ? ', (3.days.ago))
 
     if images_to_update.size > 0
       FlickRaw.api_key = SITE[:flickr_api_key]
@@ -122,12 +122,36 @@ namespace :flickraw do
           # Updating title and description
           flickr.photos.setMeta(:photo_id => image.flickr_photo_id, :title => image.title, :description => image.render_data)
 
+          photo_context = flickr.photos.getAllContexts(:photo_id => image.flickr_photo_id)
+
+          current_photo_album = photo_context['set'][0]['title']
+          if image.album.title != current_photo_album
+            puts "Changing photoset from #{current_photo_album} to #{image.album.title}"
+            flickr.photosets.removePhoto(:photoset_id => photo_context['set'][0]['id'], :photo_id => image.flickr_photo_id)
+
+            puts "Getting list of Flickr photosets (albums)"
+            photosets = flickr.photosets.getList
+
+            if photosets.map(&:title).include?(image.album.title)
+              # Add
+              photoset_id = photosets.select {|p| p['title'] == image.album.title}[0]['id']
+              puts "Adding image #{image.flickr_photo_id} to photoset #{photoset_id}"
+              flickr.photosets.addPhoto(:photoset_id => photoset_id, :photo_id => image.flickr_photo_id)
+            else
+              # Create photoset
+              puts "Creating photoset '#{image.album.title}'"
+              flickr.photosets.create(:title => image.album.title, :description => '', :primary_photo_id => image.flickr_photo_id)
+              puts "Image #{image.flickr_photo_id} set as primary in photoset #{image.album.title}"
+            end
+          end
+
           # Update image timestamp
-          image.update_attributes({:uploaded_to_flickr_at => Time.now})
+          time_now = Time.now
+          image.update_attributes({:uploaded_to_flickr_at => time_now, :updated_at => time_now})
         rescue Exception => e
           puts e.message
         end
-        puts "Tags updated"
+        puts "Metadata updated for image #{image.id}"
       end
     end
   end

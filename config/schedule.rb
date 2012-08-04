@@ -27,6 +27,6 @@ every 1.hours do
   rake 'flickraw:upload_images'
 end
 
-every 1.days do
+every 1.hours do
   rake 'flickraw:update_images_data'
 end

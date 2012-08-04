@@ -25,7 +25,7 @@ class Image < ActiveRecord::Base
   # Other properties (e.g. accepts_nested_attributes_for)
   attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date,
                   :published_at_checkbox, :uploaded_to_flickr_at_checkbox, :tags, :tags_resolved,
-                  :uploaded_to_flickr_at, :flickr_photo_id, :deviantart_id
+                  :uploaded_to_flickr_at, :flickr_photo_id, :deviantart_id, :updated_at
   attr_taggable :tags
 
   # Model dictionaries, state machine
