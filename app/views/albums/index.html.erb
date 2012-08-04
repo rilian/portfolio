@@ -22,7 +22,7 @@
         <td>
           <p>
             <%= link_to 'Edit', edit_album_path(album), :class => 'btn btn-primary' %>
-            <%= link_to 'Delete', album_path(album), :class => 'btn', :method => 'delete', :confirm => 'Delete album?' %>
+            <%= link_to 'Delete', album_path(album), :class => 'btn', :method => 'delete', :data => { :confirm => 'Delete album?' } %>
           </p>
         </td>
       </tr>

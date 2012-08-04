@@ -75,7 +75,7 @@
         <td>
           <p>
             <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
-            <%= link_to 'Delete', image_path(image), :class => 'btn', :method => 'delete', :confirm => 'Delete image?' %>
+            <%= link_to 'Delete', image_path(image), :class => 'btn', :method => 'delete', :data => { :confirm => 'Delete image?' } %>
           </p>
         </td>
       </tr>
