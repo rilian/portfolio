@@ -125,11 +125,22 @@ namespace :flickraw do
 
           photo_context = flickr.photos.getAllContexts(:photo_id => image.flickr_photo_id)
 
+          update_photoset = false
           current_photo_album = photo_context['set'][0]['title']
-          if image.album.title != current_photo_album
-            puts "Changing photoset from #{current_photo_album} to #{image.album.title}"
-            flickr.photosets.removePhoto(:photoset_id => photo_context['set'][0]['id'], :photo_id => image.flickr_photo_id)
 
+          if image.album.title != current_photo_album
+            puts "Updating photosets, removing image from other photosets"
+            update_photoset = true
+
+            photo_context['set'].each do |set|
+              if image.album.title != set['title']
+                puts "Remove image #{image.flickr_photo_id} from set \"#{set['title']}\""
+                flickr.photosets.removePhoto(:photoset_id => photo_context['set'][0]['id'], :photo_id => image.flickr_photo_id)
+              end
+            end
+          end
+
+          if update_photoset
             puts "Getting list of Flickr photosets (albums)"
             photosets = flickr.photosets.getList
 
