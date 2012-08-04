@@ -1,6 +1,7 @@
 <%= simple_form_for @album, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :title %>
   <%= f.input :is_hidden, :as => :boolean, :label => "Images hidden?" %>
+  <%= f.input :weight, :label => "Weight" %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>

@@ -46,6 +46,18 @@ describe Image do
     end
   end
 
+  describe "scopes" do
+    before do
+      @image_1 = FactoryGirl.create(:image, :published_at => 3.days.ago)
+      @image_2 = FactoryGirl.create(:image, :published_at => 2.days.ago)
+      @image_3 = FactoryGirl.create(:image, :published_at => 1.days.ago)
+    end
+
+    it "default scope should return all images in published_at DESC, created_at DESC order" do
+      Image.all.map(&:id).should == [@image_3.id, @image_2.id, @image_1.id]
+    end
+  end
+
   describe 'instance methods' do
     before :each do
       @image = FactoryGirl.build(:image)

@@ -17,6 +17,8 @@ class Album < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
+  default_scope :order => "albums.weight DESC"
+
   class << self
   end
 

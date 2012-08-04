@@ -3,8 +3,10 @@ require 'spec_helper'
 describe Album do
   it { should have_db_column(:title).of_type(:string).with_options(:null => false) }
   it { should have_db_column(:is_hidden).of_type(:boolean).with_options(:default => false) }
+  it { should have_db_column(:weight).of_type(:integer).with_options(:default => 0) }
   it { should have_db_index(:title).unique(true) }
   it { should have_db_index(:is_hidden) }
+  it { should have_db_index(:weight) }
 
   it { should validate_presence_of(:title) }
 
@@ -23,6 +25,18 @@ describe Album do
 
     it "should be valid" do
       @album.should be_valid
+    end
+  end
+
+  describe "scopes" do
+    before do
+      @album_1 = FactoryGirl.create(:album, :weight => 1)
+      @album_2 = FactoryGirl.create(:album, :weight => 3)
+      @album_3 = FactoryGirl.create(:album, :weight => 2)
+    end
+
+    it "default scope should return all images in weight DESC" do
+      Album.all.map(&:id).should == [@album_2.id, @album_3.id, @album_1.id]
     end
   end
 

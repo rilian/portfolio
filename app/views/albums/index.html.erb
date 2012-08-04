@@ -8,6 +8,7 @@
       <th>#</th>
       <th>Title</th>
       <th>Hidden?</th>
+      <th>Weight</th>
       <th>Images</th>
       <th>Actions</th>
     </tr>
@@ -18,6 +19,7 @@
         <td><%= link_to album.id, edit_album_path(album) %></td>
         <td><%= link_to album.title %></td>
         <td><%= album.is_hidden? ? 'yes' : 'no' %></td>
+        <td><%= album.weight %></td>
         <td><%= album.images.size %></td>
         <td>
           <p>
@@ -33,6 +35,7 @@
       <th>#</th>
       <th>Title</th>
       <th>Hidden?</th>
+      <th>Weight</th>
       <th>Images</th>
       <th>Actions</th>
     </tr>
