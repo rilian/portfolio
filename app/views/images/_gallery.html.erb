@@ -30,7 +30,7 @@
         <div class="span8">
           <a name="img<%= image.id %>"></a>
           <div class="caption">
-            <h2><%= link_to image.title, "#{image_url(image)}" %></h2>
+            <h2><%= link_to image.title, "#{image_url(image)}" %> <small><%= image.album.title %></small></h2>
             <p><%= image.render_data %></p>
           </div>
           <div class="caption">
