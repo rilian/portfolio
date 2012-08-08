@@ -19,7 +19,6 @@ gem 'rocket_tag'
 
 gem 'factory_girl_rails'
 
-gem 'unicorn'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'whenever', :require => false
@@ -34,6 +33,7 @@ end
 
 group :development, :test do
   gem 'debugger'
+  gem 'thin'
 end
 
 group :test do
@@ -47,4 +47,8 @@ end
 
 group :development do
   gem 'quiet_assets'
+end
+
+group :production do
+  gem 'unicorn'
 end
