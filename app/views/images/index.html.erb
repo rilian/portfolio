@@ -8,10 +8,7 @@
       <th><%= sort_link @q, :id %></th>
       <th>Thumb</th>
       <th>Info</th>
-      <!--<th>Description</th>-->
-      <!--<th>Tags</th>-->
       <th><%= sort_link @q, :created_at, "Dates" %></th>
-      <!--<th><%= sort_link @q, :published_at %></th>-->
       <th>Flickr</th>
       <th>DeviantArt</th>
       <th>Actions</th>
@@ -39,19 +36,19 @@
           <p>
             <strong><%= image.title %></strong>
             <% if image.title.size < 3 %>
-              <span class="label label-important">Not enough!</span>
+              <span class="label label-important">Not enough title!</span>
             <% end %>
           </p>
           <p>
             <%= image.render_data %>
             <% if image.render_data.size < 15 %>
-              <span class="label label-important">Not enough!</span>
+              <span class="label label-important">Not enough description!</span>
             <% end %>
           </p>
           <p>
             <%= image.tags_resolved %>
             <% if image.tags_resolved.size < 10 || image.tags_resolved.count(',') < 5 %>
-              <span class="label label-important">Not enough!</span>
+              <span class="label label-important">Not enough tags!</span>
             <% end %>
           </p>
         </td>
@@ -67,8 +64,6 @@
             <% end %>
           </p>
         </td>
-        <!--<td>-->
-        <!--</td>-->
         <td>
           <% if image.uploaded_to_flickr_at.present? || image.flickr_photo_id.present? %>
             <span class=" "><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
@@ -101,10 +96,7 @@
       <th><%= sort_link @q, :id %></th>
       <th>Thumb</th>
       <th>Info</th>
-      <!--<th>Description</th>-->
-      <!--<th>Tags</th>-->
       <th><%= sort_link @q, :created_at, "Dates" %></th>
-      <!--<th><%= sort_link @q, :published_at %></th>-->
       <th>Flickr</th>
       <th>DeviantArt</th>
       <th>Actions</th>
