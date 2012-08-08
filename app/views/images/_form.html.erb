@@ -1,28 +1,23 @@
-<%= simple_form_for @image, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @image, :html => { :class => 'form-inline' } do |f| %>
   <div class="well">
-    <%= f.input :album_id, :as => :select, :collection => Album.all, :required => true, :include_blank => false %>
-
     <% if f.object.asset? %>
-      <div class="">
-        <%= link_to image_tag(f.object.asset.url(:span2)), f.object.asset.url(:big) %>
-        <br>
-        <br>
+      <div class="control-group">
+        <div class="controls">
+          <%= link_to image_tag(f.object.asset.url(:span2)), f.object.asset.url(:big) %>
+        </div>
       </div>
     <% end %>
-
-    <%= f.input :asset, :as => :file, :required => !f.object.asset? %>
+    <%= f.input :asset, :as => :file, :label => "Picture", :required => !f.object.asset? %>
     <%= f.input :asset_cache, :as => :hidden %>
-    <%= f.input :title %>
-    <hr>
-    <%= f.input :desc, :input_html => { :rows => 2, :cols => 40 }  %>
-    <%= f.input :place %>
-    <%= f.input :date, :as => :date, :order =>[:year] %>
-    <%= f.input :tags_resolved, :as => :text, :input_html => { :rows => 2, :cols => 40 } %>
-    <hr>
-    <%= f.input :published_at_checkbox, :as => :boolean, :label => "Published #{@image.published_at.present? ? "<br>#{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
-    <%= f.input :uploaded_to_flickr_at_checkbox, :as => :boolean, :label => "Uploaded to Flickr #{@image.uploaded_to_flickr_at.present? ? "<br>#{@image.uploaded_to_flickr_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
-    <%= f.input :flickr_photo_id, :label => "Flickr Photo Id" %>
-    <hr>
+    <%= f.input :album_id, :as => :select, :collection => Album.all, :required => true, :include_blank => false %>
+    <%= f.input :title, :input_html => { :class => "input-xxlarge" } %>
+    <%= f.input :desc, :label => "Description (one sentence)", :input_html => { :rows => 2, :cols => 40, :class => "input-xxlarge" }  %>
+    <%= f.input :place, :label => "Place: place, city, region, country", :input_html => { :class => "input-xxlarge" } %>
+    <%= f.input :date, :label => "Year of the picture", :as => :date, :order =>[:year] %>
+    <%= f.input :tags_resolved, :label => "Tags (please add a lot relevant to picture)", :as => :text, :input_html => { :rows => 2, :cols => 40, :class => "input-xxlarge" } %>
+    <%= f.input :published_at_checkbox, :as => :boolean, :label => "Published #{@image.published_at.present? ? " #{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
+    <%= f.input :uploaded_to_flickr_at_checkbox, :as => :boolean, :label => "Uploaded to Flickr (check only when done manual upload) #{@image.uploaded_to_flickr_at.present? ? " #{@image.uploaded_to_flickr_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
+    <%= f.input :flickr_photo_id, :label => "Flickr Photo Id", :input_html => { :class => "input-xxlarge" } %>
     <%= f.button :submit, :class => 'btn-primary' %>
   </div>
 <% end %>
