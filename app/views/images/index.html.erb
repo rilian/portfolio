@@ -7,12 +7,12 @@
     <tr>
       <th><%= sort_link @q, :id %></th>
       <th>Thumb</th>
-      <th><%= sort_link @q, :title %></th>
-      <th>Description</th>
-      <th>Tags</th>
-      <th><%= sort_link @q, :created_at %></th>
-      <th><%= sort_link @q, :published_at %></th>
-      <th><%= sort_link @q, :uploaded_to_flickr_at %></th>
+      <th>Info</th>
+      <!--<th>Description</th>-->
+      <!--<th>Tags</th>-->
+      <th><%= sort_link @q, :created_at, "Dates" %></th>
+      <!--<th><%= sort_link @q, :published_at %></th>-->
+      <th>Flickr</th>
       <th>DeviantArt</th>
       <th>Actions</th>
     </tr>
@@ -21,44 +21,57 @@
     <% @images.each do |image| %>
       <tr>
         <td>
-          <%= link_to image.id, edit_image_path(image.id) %> <%= image.album.title %>
-          <% if image.album.is_hidden %>
-            <span class="label label-important">hidden</span>
-          <% end %>
+          <p>
+            <%= link_to image.id, edit_image_path(image.id) %>
+          </p>
+          <p>
+            <%= image.album.title %>
+            <% if image.album.is_hidden %>
+              <span class="label label-important">hidden</span>
+            <% end %>
+          </p>
         </td>
         <td>
           <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
             image_tag(image.asset.url(:span2))
           end %>
         <td>
-          <%= link_to image.title, edit_image_path(image.id) %>
-          <% if image.title.size < 3 %>
-            <span class="label label-important">Not enough!</span>
-          <% end %>
+          <p>
+            <strong><%= image.title %></strong>
+            <% if image.title.size < 3 %>
+              <span class="label label-important">Not enough!</span>
+            <% end %>
+          </p>
+          <p>
+            <%= image.render_data %>
+            <% if image.render_data.size < 15 %>
+              <span class="label label-important">Not enough!</span>
+            <% end %>
+          </p>
+          <p>
+            <%= image.tags_resolved %>
+            <% if image.tags_resolved.size < 10 || image.tags_resolved.count(',') < 5 %>
+              <span class="label label-important">Not enough!</span>
+            <% end %>
+          </p>
         </td>
         <td>
-          <%= image.render_data %>
-          <% if image.render_data.size < 15 %>
-            <span class="label label-important">Not enough!</span>
-          <% end %>
+          <p>
+            <%= image.created_at.strftime("%d/%m/%Y") %>
+          </p>
+          <p>
+            <% if image.published_at.present? %>
+              <span class="label label-success"><%= image.published_at.strftime("%d/%m/%Y") %></span>
+            <% else %>
+              <span class="label label-warning">not published yet</span>
+            <% end %>
+          </p>
         </td>
-        <td>
-          <%= image.tags_resolved %>
-          <% if image.tags_resolved.size < 10 || image.tags_resolved.count(',') < 5 %>
-            <span class="label label-important">Not enough!</span>
-          <% end %>
-        </td>
-        <td><%= image.created_at.strftime("%d/%m/%Y") %></td>
-        <td>
-          <% if image.published_at.present? %>
-            <span class="label label-success"><%= image.published_at.strftime("%d/%m/%Y") %></span>
-          <% else %>
-            <span class="label label-warning">no</span>
-          <% end %>
-        </td>
+        <!--<td>-->
+        <!--</td>-->
         <td>
           <% if image.uploaded_to_flickr_at.present? || image.flickr_photo_id.present? %>
-            <span class="label label-important"><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
+            <span class=" "><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
             <br>
             <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%d/%m/%Y") %></span>
           <% else %>
@@ -75,6 +88,8 @@
         <td>
           <p>
             <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
+          </p>
+          <p>
             <%= link_to 'Delete', image_path(image), :class => 'btn', :method => 'delete', :data => { :confirm => 'Delete image?' } %>
           </p>
         </td>
@@ -85,12 +100,12 @@
     <tr>
       <th><%= sort_link @q, :id %></th>
       <th>Thumb</th>
-      <th><%= sort_link @q, :title %></th>
-      <th>Description</th>
-      <th>Tags</th>
-      <th><%= sort_link @q, :created_at %></th>
-      <th><%= sort_link @q, :published_at %></th>
-      <th><%= sort_link @q, :uploaded_to_flickr_at %></th>
+      <th>Info</th>
+      <!--<th>Description</th>-->
+      <!--<th>Tags</th>-->
+      <th><%= sort_link @q, :created_at, "Dates" %></th>
+      <!--<th><%= sort_link @q, :published_at %></th>-->
+      <th>Flickr</th>
       <th>DeviantArt</th>
       <th>Actions</th>
     </tr>
