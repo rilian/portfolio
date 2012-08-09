@@ -34,7 +34,9 @@ Portfolio is a web-application based on Rails framework that allows you create p
 
 4. Deploy with capistrano
 
-    cap deploy;cap deploy:stop;cap deploy:start
+    cap deploy:config
+    cap deploy:site_config
+    cap deploy
 
 5. If needed run remotely rake task
 
