@@ -14,14 +14,6 @@ describe HomeController do
     end
   end
 
-  describe "GET 'contacts'" do
-    it "should be successful" do
-      get :contacts
-      response.should be_success
-      response.should render_template(:contacts)
-    end
-  end
-
   describe "GET 'rss'" do
     it "should be successful" do
       get :index, :format => :rss

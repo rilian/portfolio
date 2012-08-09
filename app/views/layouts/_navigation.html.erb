@@ -35,20 +35,24 @@
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
     <li>
-      <%= link_to rss_feed_url do
+      <%= link_to rss_feed_url, :target => 'blank' do
         image_tag 'rss.png'
       end %>
     </li>
     <% if SITE[:flickr_user_id].present? %>
       <li>
-        <%= link_to "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/" do
+        <%= link_to "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/", :target => 'blank' do
           image_tag 'flickr.png'
         end %>
       </li>
     <% end %>
-    <li class="<%= current_page?(contacts_path) ? 'active' : '' %>">
-      <%= link_to 'Contacts', contacts_path %>
-    </li>
+    <% if SITE[:linkedin_account].present? %>
+      <li>
+        <%= link_to SITE[:linkedin_account], :target => 'blank' do
+          image_tag 'linkedin.png'
+        end %>
+      </li>
+    <% end %>
     <li>
       <form class="navbar-search pull-right" method="get" action="/">
         <input type="text" class="input-medium search-query" placeholder="Search" name="q[<%= Image::DEFAULT_QUERY %>]" value="<%= params[:q][Image::DEFAULT_QUERY.to_sym] if params[:q] %>">

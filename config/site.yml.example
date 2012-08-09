@@ -4,9 +4,6 @@ development:
   :host: http://0.0.0.0:3006
   :title: Portfolio (change in site.yml)
   :description: Portfolio Description (change in site.yml)
-  :contacts: |
-    Contacts text here
-    (change in site.yml)
   :copyright_holder: Developer
   :flickr_api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -18,14 +15,12 @@ development:
   :disqus_developer: 1
   :deviantart_login: login
   :deviantart_password: password
+  :linkedin_account: http://linkedin.com/
 
 test:
   :host: http://portfolio.test.local
   :title: Portfolio (change in site.yml)
   :description: Portfolio Description (change in site.yml)
-  :contacts: |
-    Contacts text here
-    (change in site.yml)
   :copyright_holder: Developer
   :flickr_api_key:
   :flickr_shared_secret:
@@ -37,14 +32,12 @@ test:
   :disqus_developer: 0
   :deviantart_login: login
   :deviantart_password: password
+  :linkedin_account: http://linkedin.com/
 
 production:
   :host: http://portfolio.production.local
   :title: Portfolio Production
   :description: Portfolio Production Description
-  :contacts: |
-    Contacts text here
-    (change in site.yml)
   :copyright_holder: Author's Name
   :flickr_api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   :flickr_shared_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -56,3 +49,4 @@ production:
   :disqus_developer: 0
   :deviantart_login: login
   :deviantart_password: password
+  :linkedin_account: http://linkedin.com/

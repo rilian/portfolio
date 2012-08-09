@@ -8,7 +8,4 @@ class HomeController < ApplicationController
       format.rss { render :layout => false }
     end
   end
-
-  def contacts
-  end
 end
