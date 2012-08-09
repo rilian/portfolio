@@ -90,6 +90,10 @@ class Image < ActiveRecord::Base
   end
 
   def set_time(initial_value, checkbox_value)
-    initial_value = (checkbox_value == '1' && initial_value.blank?) ? Time.now : (checkbox_value != '1') ? nil : initial_value
+    if checkbox_value == '1' && initial_value.blank?
+      Time.now
+    else
+      (checkbox_value != '1') ? nil : initial_value
+    end
   end
 end

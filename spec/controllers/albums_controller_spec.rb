@@ -60,7 +60,7 @@ describe AlbumsController do
   end
 
   context "authorized request" do
-    before (:each) do
+    before :each do
       @user = FactoryGirl.create(:user)
       sign_in @user
     end

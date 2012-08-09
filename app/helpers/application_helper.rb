@@ -5,6 +5,6 @@ module ApplicationHelper
   def get_tags_cloud
     tags_cloud = Hash.new(0)
     Image.published.map(&:tags).flatten.each { |tag| tags_cloud[tag] += 1 }
-    tags_cloud.sort {|a, b| rand <=> rand }
+    tags_cloud.sort_by { rand }
   end
 end

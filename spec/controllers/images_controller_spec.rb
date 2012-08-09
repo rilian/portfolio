@@ -8,7 +8,7 @@ describe ImagesController do
   describe "unauthorized request" do
     context "inaccessible pages" do
       context "collection" do
-        after :each do
+        after do
           response.should redirect_to root_path
           response.status.should eq(302)
         end
@@ -29,11 +29,11 @@ describe ImagesController do
       end
 
       context "member" do
-        before :each do
+        before do
           @image = FactoryGirl.create(:image)
         end
 
-        after :each do
+        after do
           response.should redirect_to root_path
           response.status.should eq(302)
         end
@@ -51,7 +51,7 @@ describe ImagesController do
     end
 
     context "accessible pages" do
-      before :each do
+      before do
         @image = FactoryGirl.create(:image, :published_at => Time.now)
         get :show, :id => @image.id
       end
@@ -65,13 +65,13 @@ describe ImagesController do
   end
 
   context "authorized request" do
-    before (:each) do
+    before do
       @user = FactoryGirl.create(:user)
       sign_in @user
     end
 
     describe "GET 'show'" do
-      before :each do
+      before do
         @image = FactoryGirl.create(:image, :published_at => false)
         get :show, :id => @image.id
       end
@@ -84,7 +84,7 @@ describe ImagesController do
     end
 
     describe "GET 'new'" do
-      before :each do
+      before do
         get :new
       end
 
@@ -95,7 +95,7 @@ describe ImagesController do
     end
 
     describe "POST 'create'" do
-      before :each do
+      before do
         @album = FactoryGirl.create(:album)
         @file = fixture_file_upload('/file.jpg', 'image/jpg')
 
@@ -115,7 +115,7 @@ describe ImagesController do
     end
 
     describe "GET 'edit'" do
-      before :each do
+      before do
         @image = FactoryGirl.create(:image)
         get :edit, :id => @image.id
       end
@@ -127,7 +127,7 @@ describe ImagesController do
     end
 
     describe "PUT 'update'" do
-      before :each do
+      before do
         @image = FactoryGirl.create(:image)
         put :update, :id => @image.id, :image => {:title => 'BB bb Bb bB!'}
       end
@@ -140,7 +140,7 @@ describe ImagesController do
     end
 
     describe "DELETE 'destroy'" do
-      before :each do
+      before do
         @image = FactoryGirl.create(:image)
         delete :destroy, :id => @image.id
       end

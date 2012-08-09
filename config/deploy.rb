@@ -68,7 +68,7 @@ namespace :deploy do
       touch #{shared_path}/config/site.yml
     CMD
 
-    result_hash = {'production' => SITE}
+    result_hash = {:production => SITE}
     puts YAML.dump(result_hash)
     put YAML.dump(result_hash), "#{shared_path}/config/site.yml"
 
