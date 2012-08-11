@@ -1,6 +1,10 @@
-<h1>Images <small>list of all images</small>
+<h1>
   <%= link_to 'New Image', new_image_path, :class => 'btn btn-primary' %>
+  Images
+  <small>list of all images</small>
 </h1>
+
+<%= paginate @images %>
 
 <table class="table">
   <thead>
@@ -10,7 +14,7 @@
       <th>Info</th>
       <th><%= sort_link @q, :created_at, "Dates" %></th>
       <th>Flickr</th>
-      <th>DeviantArt</th>
+      <th>Photobanks</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -35,20 +39,20 @@
         <td>
           <p>
             <strong><%= image.title %></strong>
-            <% if image.title.size < 3 %>
-              <span class="label label-important">Not enough title!</span>
+            <% if image.title.scan(/\w+/).size < 5 %>
+              <span class="label label-important">need 5 words</span>
             <% end %>
           </p>
           <p>
             <%= image.render_data %>
-            <% if image.render_data.size < 15 %>
-              <span class="label label-important">Not enough description!</span>
+            <% if image.render_data.scan(/\w+/).size < 15 %>
+              <span class="label label-important">need 2 sentences</span>
             <% end %>
           </p>
           <p>
             <%= image.tags_resolved %>
-            <% if image.tags_resolved.size < 10 || image.tags_resolved.count(',') < 5 %>
-              <span class="label label-important">Not enough tags!</span>
+            <% if image.tags_resolved.count(',') < 30 %>
+              <span class="label label-important">need 30 tags, have <%= image.tags_resolved.count(',') %></span>
             <% end %>
           </p>
         </td>
@@ -66,19 +70,39 @@
         </td>
         <td>
           <% if image.uploaded_to_flickr_at.present? || image.flickr_photo_id.present? %>
-            <span class=" "><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
+            <span><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
             <br>
             <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%d/%m/%Y") %></span>
           <% else %>
-            <span class="label label-warning"><%= link_to 'upload', 'http://www.flickr.com/photos/upload/' %></span>
+            <span><%= link_to 'upload', 'http://www.flickr.com/photos/upload/' %></span>
+            <span class="label label-important">automatical</span>
           <% end%>
         </td>
         <td>
-          <% if image.deviantart_id.present? %>
-            <span class="label label-important"><%= link_to image.deviantart_id, "http://www.deviantart.com/#/#{image.deviantart_id}" %></span>
-          <% else %>
-            <span class="label label-warning"><%= link_to 'upload', 'http://www.deviantart.com/submit/deviation' %></span>
-          <% end %>
+          <p>
+            DeviantArt
+            <% if image.deviantart_link.present? %>
+              <span><%= link_to "Browse", image.deviantart_link, :target => '_blank' %></span>
+            <% else %>
+              <span><%= link_to 'upload', 'http://www.deviantart.com/submit/deviation' %></span>
+            <% end %>
+          </p>
+          <p>
+            iStockPhoto
+            <% if image.istockphoto_link.present? %>
+              <span><%= link_to "Browse", image.istockphoto_link, :target => '_blank' %></span>
+            <% else %>
+              <span><%= link_to 'upload', 'http://istockphoto.com/' %></span>
+            <% end %>
+          </p>
+          <p>
+            ShutterStock
+            <% if image.shutterstock_link.present? %>
+              <span><%= link_to "Browse", image.shutterstock_link, :target => '_blank' %></span>
+            <% else %>
+              <span><%= link_to 'upload', 'http://shutterstock.com/' %></span>
+            <% end %>
+          </p>
         </td>
         <td>
           <p>
@@ -98,7 +122,7 @@
       <th>Info</th>
       <th><%= sort_link @q, :created_at, "Dates" %></th>
       <th>Flickr</th>
-      <th>DeviantArt</th>
+      <th>Photobanks</th>
       <th>Actions</th>
     </tr>
   </thead>
