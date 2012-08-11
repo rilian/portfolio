@@ -22,6 +22,7 @@ gem 'factory_girl_rails'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'whenever', :require => false
+
 gem 'flickraw'
 
 group :assets do
