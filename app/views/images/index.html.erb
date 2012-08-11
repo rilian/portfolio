@@ -65,6 +65,7 @@
               <span class="label label-success"><%= image.published_at.strftime("%d/%m/%Y") %></span>
             <% else %>
               <span class="label label-warning">not published yet</span>
+              <span class="label label-important">once per 6 hours</span>
             <% end %>
           </p>
         </td>
@@ -75,7 +76,12 @@
             <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%d/%m/%Y") %></span>
           <% else %>
             <span><%= link_to 'upload', 'http://www.flickr.com/photos/upload/' %></span>
-            <span class="label label-important">automatical</span>
+
+            <% unless image.album.is_hidden %>
+              <span class="label label-important">once per 1 hour</span>
+            <% else %>
+              <span class="label label-important">album hidden</span>
+            <% end %>
           <% end%>
         </td>
         <td>
