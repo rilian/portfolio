@@ -23,9 +23,10 @@ class Image < ActiveRecord::Base
   validates_presence_of :asset, :album, :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date,
+  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :updated_at,
                   :published_at_checkbox, :uploaded_to_flickr_at_checkbox, :tags, :tags_resolved,
-                  :uploaded_to_flickr_at, :flickr_photo_id, :deviantart_id, :updated_at
+                  :uploaded_to_flickr_at, :flickr_photo_id,
+                  :deviantart_link, :istockphoto_link, :shutterstock_link
   attr_taggable :tags
 
   # Model dictionaries, state machine

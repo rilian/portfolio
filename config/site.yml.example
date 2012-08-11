@@ -13,8 +13,6 @@ development:
   :google_analytics_account: UA-000000-00
   :disqus_shortname: example
   :disqus_developer: 1
-  :deviantart_login: login
-  :deviantart_password: password
   :linkedin_account: http://linkedin.com/
 
 test:
@@ -30,8 +28,6 @@ test:
   :google_analytics_account: UA-000000-00
   :disqus_shortname: example
   :disqus_developer: 0
-  :deviantart_login: login
-  :deviantart_password: password
   :linkedin_account: http://linkedin.com/
 
 production:
@@ -47,6 +43,4 @@ production:
   :google_analytics_account: UA-000000-00
   :disqus_shortname: example
   :disqus_developer: 0
-  :deviantart_login: login
-  :deviantart_password: password
   :linkedin_account: http://linkedin.com/

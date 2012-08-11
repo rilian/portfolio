@@ -37,6 +37,8 @@ FactoryGirl.define do
     published_at          Time.now
     uploaded_to_flickr_at Time.now
     flickr_photo_id       '1234567890'
-    deviantart_id         '12345678'
+    deviantart_link       'http://deviantart.com/'
+    istockphoto_link      'http://istockphoto.com/'
+    shutterstock_link     'http://shutterstock.com/'
   end
 end
