@@ -2,6 +2,8 @@
 
 Portfolio is a web-application based on Rails framework that allows you create portfolio with images
 
+== Build Status {<img src="https://secure.travis-ci.org/rilian/portfolio.png?branch=master" alt="Build Status" />}[http://travis-ci.org/rilian/portfolio] {<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/rilian/portfolio]
+
 == Getting Started
 
 1. Clone Portfolio at the command prompt if you haven't yet:
@@ -44,10 +46,8 @@ Portfolio is a web-application based on Rails framework that allows you create p
 
 == Contributing
 
-I encourage you to test and use the software, and send your pull-requests with improvements!
-
-== Build Status {<img src="https://secure.travis-ci.org/rilian/portfolio.png?branch=master" alt="Build Status" />}[http://travis-ci.org/rilian/portfolio] {<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/rilian/portfolio]
+I encourage you to test and use the software, send your pull-requests with improvements and suggest cool features!
 
 == License
 
-Portfolio is provided as is, without any responsibility. You may use it in any way
+Portfolio is provided as is, without any responsibility. You may use it in any way.
