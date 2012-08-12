@@ -227,15 +227,20 @@ namespace :flickraw do
     images.each do |image|
       puts "Image ##{image.id}"
 
-      comments = flickr.photos.comments.getList(
-        :photo_id => image.flickr_photo_id,
-        :min_comment_date => image.flickr_comment_time + 1,
-        :max_comment_date => Time.now.to_i
-      )
+      comments = []
+      begin
+        comments = flickr.photos.comments.getList(
+          :photo_id => image.flickr_photo_id,
+          :min_comment_date => image.flickr_comment_time + 1,
+          :max_comment_date => Time.now.to_i
+        )
+      rescue Exception => e
+        puts e.message
+      end
 
       latest_flickr_comment_time = 0
 
-      if comments.respond_to?(:each)
+      if comments.respond_to?(:each) && comments.size > 0
         comments.each do |comment|
           latest_flickr_comment_time = [latest_flickr_comment_time.to_i, comment['datecreate'].to_i].max
           thread = disqus_threads_for_images[image.id.to_s.to_sym]
