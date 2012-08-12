@@ -220,7 +220,7 @@ namespace :flickraw do
 
     puts "You are now authenticated as #{login.username}"
 
-    images = Image.published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""').limit(1)
+    images = Image.published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""')
 
     puts "Updating #{images.size} images ..."
 
@@ -231,7 +231,7 @@ namespace :flickraw do
         :max_comment_date => Time.now.to_i
       )
 
-      latest_flickr_comment_time = ''
+      latest_flickr_comment_time = 0
 
       comments.each do |comment|
         latest_flickr_comment_time = comment['datecreate']
@@ -253,6 +253,8 @@ namespace :flickraw do
         puts response.body
       end
       image.update_attributes({:flickr_comment_time => latest_flickr_comment_time, :updated_at => image.updated_at})
+
+      return #TODO: remove once real testing done
     end
   end
 end
