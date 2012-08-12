@@ -239,7 +239,7 @@ namespace :flickraw do
         comments.each do |comment|
           latest_flickr_comment_time = comment['datecreate']
           thread = disqus_threads_for_images[image.id.to_s.to_sym]
-          message = "From Flickr by #{comment['authorname']}:\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
+          message = "From Flickr by <b>#{comment['authorname']}</b>:\n---\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
 
           puts message
 
