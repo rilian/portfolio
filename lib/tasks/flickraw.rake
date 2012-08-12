@@ -237,7 +237,7 @@ namespace :flickraw do
 
       if comments.respond_to?(:each)
         comments.each do |comment|
-          latest_flickr_comment_time = comment['datecreate']
+          latest_flickr_comment_time = [latest_flickr_comment_time, comment['datecreate']].max
           thread = disqus_threads_for_images[image.id.to_s.to_sym]
           message = "From Flickr by <b>#{comment['authorname']}</b>:\n---\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
 
