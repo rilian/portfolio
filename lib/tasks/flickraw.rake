@@ -235,6 +235,10 @@ namespace :flickraw do
 
       latest_flickr_comment_time = 0
 
+      puts comments.inspect
+
+      return
+
       comments.each do |comment|
         latest_flickr_comment_time = comment['datecreate']
         thread = disqus_threads_for_images[image.id.to_s.to_sym]
