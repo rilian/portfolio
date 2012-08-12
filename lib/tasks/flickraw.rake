@@ -260,7 +260,7 @@ namespace :flickraw do
         puts "No comments yet for image #{image.id}"
       end
 
-      return if image.id < 100 #TODO: remove once real testing done
+      return if image.id < 95 #TODO: remove once real testing done
     end
   end
 end
