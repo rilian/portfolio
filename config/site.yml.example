@@ -13,7 +13,9 @@ development:
   :google_analytics_account: UA-000000-00
   :disqus_shortname: example
   :disqus_developer: 1
-  :disqus_api_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_api_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_access_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   :linkedin_account: http://linkedin.com/
 
 test:
@@ -29,7 +31,9 @@ test:
   :google_analytics_account: UA-000000-00
   :disqus_shortname: example
   :disqus_developer: 0
-  :disqus_api_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_api_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_access_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   :linkedin_account: http://linkedin.com/
 
 production:
@@ -45,5 +49,7 @@ production:
   :google_analytics_account: UA-000000-00
   :disqus_shortname: example
   :disqus_developer: 0
-  :disqus_api_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_api_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  :disqus_access_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   :linkedin_account: http://linkedin.com/
