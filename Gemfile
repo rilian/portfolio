@@ -24,6 +24,7 @@ gem 'rvm-capistrano'
 gem 'whenever', :require => false
 
 gem 'flickraw'
+gem 'disqus'
 
 group :assets do
   gem 'sass-rails'
