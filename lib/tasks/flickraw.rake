@@ -261,10 +261,8 @@ namespace :flickraw do
         puts image.errors
         puts "image flickr_comment_time NOW #{image.flickr_comment_time}"
       else
-        puts "No comments yet for image #{image.id}"
+        puts "No new comments yet after #{Time.at(image.flickr_comment_time).strftime("%d/%m/%Y")} for image #{image.id}"
       end
-
-      return if image.id <= 105 #TODO: remove once real testing done
     end
   end
 end
