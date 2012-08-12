@@ -175,23 +175,24 @@ namespace :flickraw do
   task :post_comments_to_disqus => :environment do
     return unless check_flickr_api_keys
 
-    puts "Getting list of Deisqus threads"
+    puts "Getting list of Disqus threads"
 
     # there is a limit 100, default 25, and we have to use cursor to get all the available threads
     has_next_cursor = true
     cursor = ''
     disqus_threads_for_images = {}
+    disqus_http = Net::HTTP.new('disqus.com', 80)
 
     while has_next_cursor do
       puts "Getting threads for cursor '#{cursor}'"
 
-      http = Net::HTTP.new('disqus.com', 80)
+      # http://disqus.com/api/docs/threads/list/
       request = Net::HTTP::Get.new("/api/3.0/threads/list.json?" +
-                                    "limit=90&"+
+                                    "limit=100&"+
                                     "cursor=#{cursor}&"+
                                     "forum=#{SITE[:disqus_shortname]}"+
                                     "&api_secret=#{SITE[:disqus_api_secret]}")
-      response = http.request(request)
+      response = disqus_http.request(request)
       response_json = JSON(response.body)
 
       if response_json['cursor'].present? && response_json['cursor']['hasNext']
@@ -201,81 +202,57 @@ namespace :flickraw do
         has_next_cursor = false
       end
 
+      # disqus_threads_for_images == {:"108"=>"802536169", :"107"=>"802508264", ... }
       response_json['response'].each do |thread|
         disqus_threads_for_images[(thread['identifiers'][0].scan(/(\d+)/).last.first).to_sym] = thread['id']
       end
     end
 
-    # Now disqus_threads_for_images == {:"108"=>"802536169", :"107"=>"802508264", ... }
-
     puts "Starting update images"
 
-    return
+    FlickRaw.api_key = SITE[:flickr_api_key]
+    FlickRaw.shared_secret = SITE[:flickr_shared_secret]
 
-    images = Image.published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""')
+    flickr.access_token = SITE[:flickr_access_token]
+    flickr.access_secret = SITE[:flickr_access_secret]
 
-    if images.size > 0
-      #FlickRaw.api_key = SITE[:flickr_api_key]
-      #FlickRaw.shared_secret = SITE[:flickr_shared_secret]
-      #
-      #flickr.access_token = SITE[:flickr_access_token]
-      #flickr.access_secret = SITE[:flickr_access_secret]
-      #
-      #login = flickr.test.login
-      #
-      #puts "You are now authenticated as #{login.username}"
+    login = flickr.test.login
 
-      puts "Updating #{images.size} images ..."
+    puts "You are now authenticated as #{login.username}"
 
-      images.each do |image|
-        #comments = flickr.photos.comments.getList(
-        #  :photo_id => image.flickr_photo_id,
-        #  :min_comment_date => (Time.now - 5.hours).to_i,
-        #  :max_comment_date => Time.now.to_i)
-        #debugger
-        #1+1
+    images = Image.published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""').limit(1)
 
-        DISQUS_URL = "http://disqus.com/api/3.0/posts/create.json"
+    puts "Updating #{images.size} images ..."
 
-        uri = URI.parse(DISQUS_URL)
-        http = Net::HTTP.new(uri.host, uri.port)
+    images.each do |image|
+      comments = flickr.photos.comments.getList(
+        :photo_id => image.flickr_photo_id,
+        :min_comment_date => image.flickr_comment_time,
+        :max_comment_date => Time.now.to_i
+      )
 
-        request = Net::HTTP::Get.new("/api/3.0/threads/list.json?api_key=#{URI.escape(api_key)}")
-        response = http.request(request)
+      latest_flickr_comment_time = ''
 
-                puts response.inspect
-                puts response.body
+      comments.each do |comment|
+        latest_flickr_comment_time = comment['datecreate']
+        thread = disqus_threads_for_images[image.id.to_s.to_sym]
+        message = "From Flickr by #{comment['authorname']}:\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
 
-        return
+        puts message
 
+        # http://disqus.com/api/docs/posts/create/
         request = Net::HTTP::Post.new("/api/3.0/posts/create.json?" +
-                                        "thread=#{URI.escape(thread_id)}&" +
-                                        "message=#{URI.escape(message)}&" +
-                                        #"author_email=#{URI.escape(author_email)}&" +
-                                        #"author_name=#{URI.escape(author_name)}&" +
-                                        #"api_secret=#{URI.escape(api_secret)}&" +
-                                        "api_key=#{URI.escape(api_key)}"# +
-#                                        "date=#{Time.now.to_i}")
-                                                              )
-        #request.add_field('thread_id', URI.escape(thread_id))
-        #request.add_field('message', URI.escape(message))
-        #request.add_field('author_email', URI.escape(author_email))
-        #request.add_field('author_name', URI.escape(author_name))
-        #request.add_field('api_key', URI.escape(api_key))
-        #request.add_field('api_secret', URI.escape(api_secret))
-        #request.add_field('date', Time.now.to_i)
-        request.add_field("Referer", "http://irene.rilian.info")
+                                        "thread=#{thread}&" +
+                                        "message=#{CGI.escape(message)}&" +
+                                        "access_token=#{SITE[:disqus_access_token]}&" +
+                                        "api_key=#{SITE[:disqus_api_key]}"
+        )
 
-
-        response = http.request(request)
-
+        response = disqus_http.request(request)
         puts response.inspect
         puts response.body
-
-       # debugger
-        #1+1
-
       end
+      image.update_attributes({:flickr_comment_time => latest_flickr_comment_time, :updated_at => image.updated_at})
     end
   end
 end
