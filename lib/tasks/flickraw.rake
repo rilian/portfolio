@@ -225,6 +225,8 @@ namespace :flickraw do
     puts "Updating #{images.size} images ..."
 
     images.each do |image|
+      puts "Image ##{image.id}"
+
       comments = flickr.photos.comments.getList(
         :photo_id => image.flickr_photo_id,
         :min_comment_date => image.flickr_comment_time,
