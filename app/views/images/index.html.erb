@@ -83,6 +83,10 @@
               <span class="label label-important">album hidden</span>
             <% end %>
           <% end%>
+
+          <% if image.flickr_comment_time != 0 %>
+            <p>Comments up to <%= Time.at(image.flickr_comment_time).strftime("%d/%m/%Y") %></p>
+          <% end %>
         </td>
         <td>
           <p>
