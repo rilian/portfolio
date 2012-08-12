@@ -235,32 +235,32 @@ namespace :flickraw do
 
       latest_flickr_comment_time = 0
 
-      puts comments.inspect
+      if comments.respond_to?(:each)
+        comments.each do |comment|
+          latest_flickr_comment_time = comment['datecreate']
+          thread = disqus_threads_for_images[image.id.to_s.to_sym]
+          message = "From Flickr by #{comment['authorname']}:\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
 
-      return
+          puts message
 
-      comments.each do |comment|
-        latest_flickr_comment_time = comment['datecreate']
-        thread = disqus_threads_for_images[image.id.to_s.to_sym]
-        message = "From Flickr by #{comment['authorname']}:\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
+          # http://disqus.com/api/docs/posts/create/
+          request = Net::HTTP::Post.new("/api/3.0/posts/create.json?" +
+                                          "thread=#{thread}&" +
+                                          "message=#{CGI.escape(message)}&" +
+                                          "access_token=#{SITE[:disqus_access_token]}&" +
+                                          "api_key=#{SITE[:disqus_api_key]}"
+          )
 
-        puts message
-
-        # http://disqus.com/api/docs/posts/create/
-        request = Net::HTTP::Post.new("/api/3.0/posts/create.json?" +
-                                        "thread=#{thread}&" +
-                                        "message=#{CGI.escape(message)}&" +
-                                        "access_token=#{SITE[:disqus_access_token]}&" +
-                                        "api_key=#{SITE[:disqus_api_key]}"
-        )
-
-        response = disqus_http.request(request)
-        puts response.inspect
-        puts response.body
+          response = disqus_http.request(request)
+          puts response.inspect
+          puts response.body
+        end
+        image.update_attributes({:flickr_comment_time => latest_flickr_comment_time, :updated_at => image.updated_at})
+      else
+        puts "No comments yet for image #{image.id}"
       end
-      image.update_attributes({:flickr_comment_time => latest_flickr_comment_time, :updated_at => image.updated_at})
 
-      return #TODO: remove once real testing done
+      return if image.id < 100 #TODO: remove once real testing done
     end
   end
 end
