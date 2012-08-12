@@ -23,6 +23,8 @@ describe Image do
   it { should validate_presence_of(:album) }
   it { should validate_presence_of(:title) }
 
+  it { should validate_numericality_of(:flickr_photo_id) }
+
   describe "generators" do
     before :each do
       @image = FactoryGirl.create(:image)

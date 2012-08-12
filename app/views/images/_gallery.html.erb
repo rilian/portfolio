@@ -55,35 +55,39 @@
       </div>
 
       <div class="thumbnail">
-        <%= image_tag(image.asset.url(:big), :alt => image.id) %>
-      </div>
-      <div class="caption">
         <p>
-          <%= image.render_data %>
-
-          <% if user_signed_in? %>
-            <% if image.render_data.scan(/\w+/).size < 15 %>
-              <span class="label label-important">need 2 sentences</span>
-            <% end %>
-          <% end %>
+          <%= image_tag(image.asset.url(:big), :alt => image.id) %>
         </p>
       </div>
-      <div class="caption">
-        <% unless image.tags.empty? %>
-        <p>
-          <% image.tags.each do |tag| %>
-            <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), :class => 'label' %>
-          <% end %>
 
-          <% if user_signed_in? %>
-            <% if image.tags_resolved.count(',') < 30 %>
-              <span class="label label-important">need 30 tags, have <%= image.tags_resolved.count(',') %></span>
+      <p>
+        <div class="caption">
+          <p>
+            <%= image.render_data %>
+
+            <% if user_signed_in? %>
+              <% if image.render_data.scan(/\w+/).size < 15 %>
+                <span class="label label-important">need 2 sentences</span>
+              <% end %>
             <% end %>
-          <% end %>
-        </p>
-        <% end %>
-      </div>
+          </p>
+        </div>
+        <div class="caption">
+          <% unless image.tags.empty? %>
+          <p>
+            <% image.tags.each do |tag| %>
+              <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), :class => 'label' %>
+            <% end %>
 
+            <% if user_signed_in? %>
+              <% if image.tags_resolved.count(',') < 30 %>
+                <span class="label label-important">need 30 tags, have <%= image.tags_resolved.count(',') %></span>
+              <% end %>
+            <% end %>
+          </p>
+          <% end %>
+        </div>
+      <p>
       <hr>
     </li>
   <% end %>
