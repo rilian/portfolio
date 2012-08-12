@@ -48,6 +48,13 @@ Portfolio is a web-application based on Rails framework that allows you create p
 
 I encourage you to test and use the software, send your pull-requests with improvements and suggest cool features!
 
+== Additional Info
+
+You may find useful information on API used in Portfolio project on these pages
+
+    http://hanklords.github.com/flickraw/
+    http://disqus.com/api/
+
 == License
 
 Portfolio is provided as is, without any responsibility. You may use it in any way.
