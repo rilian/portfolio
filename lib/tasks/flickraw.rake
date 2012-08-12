@@ -229,7 +229,7 @@ namespace :flickraw do
 
       comments = flickr.photos.comments.getList(
         :photo_id => image.flickr_photo_id,
-        :min_comment_date => image.flickr_comment_time,
+        :min_comment_date => image.flickr_comment_time + 1,
         :max_comment_date => Time.now.to_i
       )
 
