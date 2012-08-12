@@ -257,6 +257,8 @@ namespace :flickraw do
         end
         puts "image flickr_comment_time WAS #{image.flickr_comment_time}"
         image.update_attributes({:flickr_comment_time => latest_flickr_comment_time, :updated_at => image.updated_at})
+        image.save
+        puts image.errors
         puts "image flickr_comment_time NOW #{image.flickr_comment_time}"
       else
         puts "No comments yet for image #{image.id}"
