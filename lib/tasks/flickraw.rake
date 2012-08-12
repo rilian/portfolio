@@ -255,12 +255,14 @@ namespace :flickraw do
           puts response.inspect
           puts response.body
         end
+        puts "image flickr_comment_time WAS #{image.flickr_comment_time}"
         image.update_attributes({:flickr_comment_time => latest_flickr_comment_time, :updated_at => image.updated_at})
+        puts "image flickr_comment_time NOW #{image.flickr_comment_time}"
       else
         puts "No comments yet for image #{image.id}"
       end
 
-      return if image.id < 95 #TODO: remove once real testing done
+      return if image.id <= 105 #TODO: remove once real testing done
     end
   end
 end
