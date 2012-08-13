@@ -266,7 +266,7 @@ namespace :flickraw do
         puts image.errors
         puts "image flickr_comment_time NOW #{image.flickr_comment_time}"
       else
-        puts "No new comments yet after #{Time.at(image.flickr_comment_time).strftime("%d/%m/%Y")} for image #{image.id}"
+        puts "No new comments yet after #{Time.at(image.flickr_comment_time).strftime("%d %b %Y")} for image #{image.id}"
       end
     end
   end

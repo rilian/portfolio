@@ -58,11 +58,11 @@
         </td>
         <td>
           <p>
-            <%= image.created_at.strftime("%d/%m/%Y") %>
+            <%= image.created_at.strftime("%d %b %Y") %>
           </p>
           <p>
             <% if image.published_at.present? %>
-              <span class="label label-success"><%= image.published_at.strftime("%d/%m/%Y") %></span>
+              <span class="label label-success"><%= image.published_at.strftime("%d %b %Y") %></span>
             <% else %>
               <span class="label label-warning">not published yet</span>
               <span class="label label-important">once per 6 hours</span>
@@ -73,7 +73,7 @@
           <% if image.uploaded_to_flickr_at.present? || image.flickr_photo_id.present? %>
             <span><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
             <br>
-            <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%d/%m/%Y") %></span>
+            <span class="label label-success"><%= image.uploaded_to_flickr_at.strftime("%d %b %Y") %></span>
           <% else %>
             <span><%= link_to 'upload', 'http://www.flickr.com/photos/upload/' %></span>
 
@@ -85,7 +85,7 @@
           <% end%>
 
           <% if image.flickr_comment_time != 0 %>
-            <p>Comments up to <%= Time.at(image.flickr_comment_time).strftime("%d/%m/%Y") %></p>
+            <p>Comments up to <%= Time.at(image.flickr_comment_time).strftime("%d %b %Y") %></p>
           <% end %>
         </td>
         <td>
