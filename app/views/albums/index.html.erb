@@ -7,7 +7,7 @@
     <tr>
       <th>#</th>
       <th>Title</th>
-      <th>Hidden?</th>
+      <th>Visibility</th>
       <th>Weight</th>
       <th>Images</th>
       <th>Actions</th>
@@ -18,9 +18,15 @@
       <tr>
         <td><%= link_to album.id, edit_album_path(album) %></td>
         <td><%= link_to album.title %></td>
-        <td><%= album.is_hidden? ? 'yes' : 'no' %></td>
+        <td>
+          <% if album.is_hidden? %>
+            <span class="label label-important">hidden</span>
+          <% else %>
+            visible
+          <% end %>
+        </td>
         <td><%= album.weight %></td>
-        <td><%= album.images.size %></td>
+        <td><%= link_to album.images.size, album_path(album) %></td>
         <td>
           <p>
             <%= link_to 'Edit', edit_album_path(album), :class => 'btn btn-primary' %>
@@ -34,7 +40,7 @@
     <tr>
       <th>#</th>
       <th>Title</th>
-      <th>Hidden?</th>
+      <th>Visibility</th>
       <th>Weight</th>
       <th>Images</th>
       <th>Actions</th>
