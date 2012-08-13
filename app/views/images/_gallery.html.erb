@@ -57,10 +57,9 @@
                 <span class="label label-important">need 2 sentences</span>
               <% end %>
             <% end %>
-          </p>
 
-          <% unless image.tags.empty? %>
-            <p class="pull-left">
+            <% unless image.tags.empty? %>
+              <br/>
               <% image.tags.each do |tag| %>
                 <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), :class => 'label' %>
               <% end %>
@@ -70,8 +69,8 @@
                   <span class="label label-important">need 30 tags, have <%= image.tags_resolved.count(',') %></span>
                 <% end %>
               <% end %>
-            </p>
-          <% end %>
+            <% end %>
+          </p>
         </div>
 
         <div class="span1">
