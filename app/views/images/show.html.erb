@@ -1,55 +1,55 @@
-<h1>
-  <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_image_path(@image), :class => 'btn btn-primary' %>
-  <% end %>
-
-  <%= @image.title %>
-
-  <% if user_signed_in? %>
-    <% if @image.title.scan(/\w+/).size < 5 %>
-      <span class="label label-important">need 5 words</span>
+<ul class="thumbnails">
+<li class="span12">
+  <h2>
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_image_path(@image), :class => 'btn btn-primary' %>
     <% end %>
-  <% end %>
 
-  <small><%= @image.album.title %></small>
-</h1>
+    <%= @image.title %>
 
-<div class="thumbnail">
-  <%= image_tag(@image.asset.url(:big)) %>
-</div>
-
-<div class="row">
-  <div class="span11">
-    <div class="caption">
-      <%= @image.render_data %>
-
-      <% if user_signed_in? %>
-        <% if @image.render_data.scan(/\w+/).size < 15 %>
-          <span class="label label-important">need 2 sentences</span>
-        <% end %>
+    <% if user_signed_in? %>
+      <% if @image.title.scan(/\w+/).size < 5 %>
+        <span class="label label-important">need 5 words</span>
       <% end %>
-    </div>
-    <div class="caption">
-      <% unless @image.tags.empty? %>
-      <p>
-        <% @image.tags.each do |tag| %>
-          <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), :class => 'label' %>
-        <% end %>
-      <% end %>
+    <% end %>
 
-      <% if user_signed_in? %>
-        <% if @image.tags_resolved.count(',') < 30 %>
-          <span class="label label-important">need 30 tags, have <%= @image.tags_resolved.count(',') %></span>
+    <small class="pull-right"><%= @image.album.title %></small>
+  </h2>
+
+  <div class="thumbnail">
+    <%= image_tag(@image.asset.url(:big), :alt => @image.id) %>
+  </div>
+
+  <div class="row">
+    <p></p>
+    <div class="span11">
+      <p class="pull-left">
+        <%= @image.render_data %>
+        <% if user_signed_in? %>
+          <% if @image.render_data.scan(/\w+/).size < 15 %>
+            <span class="label label-important">need 2 sentences</span>
+          <% end %>
         <% end %>
-      <% end %>
       </p>
+
+      <% unless @image.tags.empty? %>
+        <p class="pull-left">
+          <% @image.tags.each do |tag| %>
+            <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), :class => 'label' %>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <% if @image.tags_resolved.count(',') < 30 %>
+              <span class="label label-important">need 30 tags, have <%= @image.tags_resolved.count(',') %></span>
+            <% end %>
+          <% end %>
+        </p>
+      <% end %>
     </div>
   </div>
-  <div class="span1">
-    <p class="pull-right">
-    </p>
-  </div>
-</div>
+  <hr>
+</li>
+</ul>
 
 <div class="container">
   <div id="disqus_thread"></div>
