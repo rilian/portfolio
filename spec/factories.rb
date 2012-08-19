@@ -40,5 +40,6 @@ FactoryGirl.define do
     deviantart_link       'http://deviantart.com/'
     istockphoto_link      'http://istockphoto.com/'
     shutterstock_link     'http://shutterstock.com/'
+    is_for_sale           false
   end
 end
