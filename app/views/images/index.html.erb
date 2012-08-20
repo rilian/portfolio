@@ -31,11 +31,9 @@
               <span class="label label-important">hidden</span>
             <% end %>
           </p>
-          <% if image.is_for_sale %>
-            <p>
-              <span class="label label-important">For Sale</span>
-            </p>
-          <% end %>
+          <p>
+            <span class="label <%= image.is_for_sale? ? 'label-important' : '' %>"><%= image.is_for_sale? ? '' : 'Not ' %> For Sale</span>
+          </p>
         </td>
         <td>
           <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
