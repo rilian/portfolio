@@ -171,6 +171,40 @@ namespace :flickraw do
     end
   end
 
+  desc "Removes photos on Flickr which are deleted on the site"
+  task :remove_deleted_on_site => :environment do
+    return unless check_flickr_api_keys
+
+    puts "Starting remove images"
+
+    FlickRaw.api_key = SITE[:flickr_api_key]
+    FlickRaw.shared_secret = SITE[:flickr_shared_secret]
+
+    flickr.access_token = SITE[:flickr_access_token]
+    flickr.access_secret = SITE[:flickr_access_secret]
+
+    login = flickr.test.login
+
+    puts "You are now authenticated as #{login.username}"
+
+    all_flickr_image_ids = flickr.photos.search(:user_id => SITE[:flickr_user_id]).map(&:id)
+    all_existing_image_ids = Image.all.map(&:flickr_photo_id).reject {|i| i.empty? }
+    flickr_image_ids_to_delete = all_flickr_image_ids - all_existing_image_ids
+    flickr_image_ids_to_delete.each do |image_id|
+      puts "deleting #{image_id}"
+      flickr.photos.delete(:photo_id => image_id)
+    end
+
+    not_existing_flickr_images = all_existing_image_ids - all_flickr_image_ids
+    if not_existing_flickr_images.size > 0
+      time_now = Time.now
+      Image.where("flickr_photo_id IN (?)", not_existing_flickr_images).each do |image|
+        puts "cleanup flickr_photo_id #{image.flickr_photo_id} on image ##{image.id}"
+        image.update_attributes({:flickr_photo_id => '', :uploaded_to_flickr_at => nil, :updated_at => time_now})
+      end
+    end
+  end
+
   desc "Gets latest comments on Flickr images and export to Disqus"
   task :post_comments_to_disqus => :environment do
     return unless check_flickr_api_keys
