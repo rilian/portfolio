@@ -34,3 +34,7 @@ every 1.hours do
 every 2.hours do
   rake 'flickraw:post_comments_to_disqus'
 end
+
+every 1.days do
+  rake 'flickraw:remove_deleted_on_site'
+end
