@@ -1,24 +1,26 @@
-<div style="margin-left: 20px">
-  <ul class="thumbnails thumbnail" style="text-align:center">
-    <% images.each do |image| %>
-      <li class="span" style="margin-bottom:3px;margin-left: 3px;">
-        <%= link_to("#img#{image.id}",
-                    :class => ' has_popover',
-                    :rel => 'group',
-                    :title => image.title,
-                    'data-original-title' => image.title,
-                    'data-content' => image.render_data) do
-          image_tag(image.asset.url(:span2), :alt => image.id)
-        end %>
-      </li>
-    <% end %>
+<div class="thumbnail">
+  <div style="display:block; margin: 0 auto; width:858px">
+      <ul class="thumbnails">
+        <% images.each do |image| %>
+          <li class="span" style="margin-bottom:3px;margin-left: 3px;">
+            <%= link_to("#img#{image.id}",
+                        :class => ' has_popover',
+                        :rel => 'group',
+                        :title => image.title,
+                        'data-original-title' => image.title,
+                        'data-content' => image.render_data) do
+              image_tag(image.asset.url(:span2), :alt => image.id)
+            end %>
+          </li>
+        <% end %>
 
-    <% if images.size == 0 %>
-      <li class="span2">
-        <h3>No images</h3>
-      </li>
-    <% end %>
-  </ul>
+        <% if images.size == 0 %>
+          <li class="span2">
+            <h3>No images</h3>
+          </li>
+        <% end %>
+      </ul>
+  </div>
 </div>
 
 <%= paginate images %>
