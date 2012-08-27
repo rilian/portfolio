@@ -36,7 +36,7 @@ class Image < ActiveRecord::Base
                   :published_at_checkbox, :uploaded_to_flickr_at_checkbox, :tags, :tags_resolved,
                   :uploaded_to_flickr_at, :flickr_photo_id, :flickr_comment_time,
                   :deviantart_link, :istockphoto_link, :shutterstock_link,
-                  :is_for_sale
+                  :is_for_sale, :image_width, :image_height
   attr_taggable :tags
 
   # Model dictionaries, state machine

@@ -39,6 +39,7 @@
           <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
             image_tag(image.asset.url(:span2))
           end %>
+          <p class="pagination-centered"><%= "#{image.image_width}x#{image.image_height}" %></p>
         <td>
           <p>
             <strong><%= image.title %></strong>

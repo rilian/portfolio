@@ -30,18 +30,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  process :get_version_dimensions
 
   # Create different versions of your uploaded files:
   version :big do
     process :resize_to_limit => [900, 700]
   end
-  version :span2, :from_version => :big do
+  version :span2 do
     process :resize_to_limit => [900, 110]
   end
-  #version :span2, :from_version => :big do
-  #  process :convert => 'png'
-  #  process :resize_and_pad => [120, 120, '#EEEEEE', 'Center']
-  #end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -55,4 +52,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   #  super.chomp(File.extname(super)) + '.png'
   #end
 
+  def get_version_dimensions
+    begin
+      model.image_width, model.image_height = `identify -format "%wx%h" #{file.path}`.split(/x/)
+    rescue
+      model.image_width = 0
+      model.image_height = 0
+    end
+  end
 end

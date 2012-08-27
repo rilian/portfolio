@@ -16,6 +16,8 @@ describe Image do
   it { should have_db_column(:shutterstock_link).of_type(:string) }
   it { should have_db_column(:flickr_comment_time).of_type(:integer).with_options(:default => 0) }
   it { should have_db_column(:is_for_sale).of_type(:boolean).with_options(:default => false) }
+  it { should have_db_column(:image_width).of_type(:integer) }
+  it { should have_db_column(:image_height).of_type(:integer) }
 
   it { should have_db_index(:album_id) }
   it { should have_db_index(:published_at) }
