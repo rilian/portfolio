@@ -1,10 +1,13 @@
 # encoding: utf-8
 
+require 'carrierwave/processing/mime_types'
+
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include CarrierWave::MimeTypes
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -23,18 +26,18 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
-  process :convert => 'png'
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
-  version :span2 do
-    process :resize_and_pad => [120, 120, '#EEEEEE', 'Center']
-  end
   version :big do
     process :resize_to_limit => [900, 700]
+  end
+  version :span2, :from_version => :big do
+    process :convert => 'png'
+    process :resize_and_pad => [120, 120, '#EEEEEE', 'Center']
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -45,8 +48,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    super.chomp(File.extname(super)) + '.png'
-  end
+  #def filename
+  #  super.chomp(File.extname(super)) + '.png'
+  #end
 
 end
