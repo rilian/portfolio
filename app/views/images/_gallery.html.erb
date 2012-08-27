@@ -1,25 +1,25 @@
-<ul class="thumbnails">
-  <% images.each do |image| %>
-    <li class="span2">
-      <div>
+<div style="margin-left: 20px">
+  <ul class="thumbnails" style="text-align:center">
+    <% images.each do |image| %>
+      <li class="span" style="margin-bottom:2px;margin-left: 1px;">
         <%= link_to("#img#{image.id}",
                     :class => 'thumbnail has_popover',
                     :rel => 'group',
                     :title => image.title,
                     'data-original-title' => image.title,
                     'data-content' => image.render_data) do
-              image_tag(image.asset.url(:span2), :alt => image.id)
+          image_tag(image.asset.url(:span2), :alt => image.id)
         end %>
-      </div>
-    </li>
-  <% end %>
+      </li>
+    <% end %>
 
-  <% if images.size == 0 %>
-    <li class="span2">
-      <h3>No images</h3>
-    </li>
-  <% end %>
-</ul>
+    <% if images.size == 0 %>
+      <li class="span2">
+        <h3>No images</h3>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <%= paginate images %>
 
@@ -27,6 +27,7 @@
   <% images.each do |image| %>
     <li class="span12">
       <a name="img<%= image.id %>"></a>
+
       <h2>
         <% if user_signed_in? %>
           <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
@@ -47,6 +48,7 @@
 
       <div class="row">
         <p></p>
+
         <div class="span11">
           <p class="pull-left">
             <%= image.render_data %>
@@ -69,7 +71,7 @@
 
         <div class="span1">
           <p class="pull-right">
-            <%= link_to "... Comments", "#{image_url(image)}#disqus_thread", :class => 'label', 'data-disqus-identifier'=> "image_#{image.id}" %>
+            <%= link_to "... Comments", "#{image_url(image)}#disqus_thread", :class => 'label', 'data-disqus-identifier' => "image_#{image.id}" %>
           </p>
         </div>
       </div>
