@@ -36,9 +36,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [900, 700]
   end
   version :span2, :from_version => :big do
-    process :convert => 'png'
-    process :resize_and_pad => [120, 120, '#EEEEEE', 'Center']
+    process :resize_to_limit => [900, 110]
   end
+  #version :span2, :from_version => :big do
+  #  process :convert => 'png'
+  #  process :resize_and_pad => [120, 120, '#EEEEEE', 'Center']
+  #end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
