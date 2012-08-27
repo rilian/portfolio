@@ -23,6 +23,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
+  process :convert => 'png'
   #
   # def scale(width, height)
   #   # do something
@@ -30,7 +31,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :span2 do
-    process :resize_and_pad => [120, 120]
+    process :resize_and_pad => [120, 120, '#EEEEEE', 'Center']
   end
   version :big do
     process :resize_to_limit => [900, 700]
@@ -44,8 +45,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    super.chomp(File.extname(super)) + '.png'
+  end
 
 end
