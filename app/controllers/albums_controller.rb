@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @images = @album.images.published.page(params[:page]).per(28)
+    @images = @album.images.published.page(params[:page]).per(Image::PER_PAGE)
   end
 
   def new

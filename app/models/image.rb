@@ -22,6 +22,8 @@ class Image < ActiveRecord::Base
   TAGS_MIN_FOR_SALE = 30
   TAGS_MIN = 10
 
+  PER_PAGE = 25
+
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :album
 
