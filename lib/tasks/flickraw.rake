@@ -254,7 +254,7 @@ namespace :flickraw do
 
     puts "You are now authenticated as #{login.username}"
 
-    images = Image.where(:id => 128).published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""')
+    images = Image.where(:id => 127).published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""')
 
     puts "Updating #{images.size} images ..."
 
