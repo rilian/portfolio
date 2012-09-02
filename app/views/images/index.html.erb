@@ -83,7 +83,7 @@
           <% end%>
 
           <% if image.flickr_comment_time != 0 %>
-            <p>Comments up to <%= time_ago_in_words(Time.at(image.flickr_comment_time)) %> ago</p>
+            <p>Last comment <%= time_ago_in_words(Time.at(image.flickr_comment_time)) %> ago</p>
           <% end %>
         </td>
         <td>
