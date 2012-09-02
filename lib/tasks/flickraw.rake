@@ -254,7 +254,7 @@ namespace :flickraw do
 
     puts "You are now authenticated as #{login.username}"
 
-    images = Image.where(:id => 127).published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""')
+    images = Image.published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""')
 
     puts "Updating #{images.size} images ..."
 
@@ -267,7 +267,7 @@ namespace :flickraw do
           :photo_id => image.flickr_photo_id,
           :min_comment_date => image.flickr_comment_time + 1,
           :max_comment_date => Time.now.to_i,
-          :include_faves => true
+          #:include_faves => true
         )
       rescue Exception => e
         puts e.message
