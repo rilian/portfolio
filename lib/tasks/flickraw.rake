@@ -266,7 +266,8 @@ namespace :flickraw do
         comments = flickr.photos.comments.getList(
           :photo_id => image.flickr_photo_id,
           :min_comment_date => image.flickr_comment_time + 1,
-          :max_comment_date => Time.now.to_i
+          :max_comment_date => Time.now.to_i,
+          :include_faves => true
         )
       rescue Exception => e
         puts e.message
@@ -276,9 +277,14 @@ namespace :flickraw do
 
       if comments.respond_to?(:each) && comments.size > 0
         comments.each do |comment|
-          latest_flickr_comment_time = [latest_flickr_comment_time.to_i, comment['datecreate'].to_i].max
           thread = disqus_threads_for_images[image.id.to_s.to_sym]
-          message = "From Flickr by <b>#{comment['authorname']}</b>:\n---\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
+          if comment['type'] == 'comment'
+            latest_flickr_comment_time = [latest_flickr_comment_time.to_i, comment['datecreate'].to_i].max
+            message = "From Flickr by <b>#{comment['authorname']}</b>:\n---\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
+          elsif comment['type'] == 'faves'
+            latest_flickr_comment_time = [latest_flickr_comment_time.to_i, comment['faves']['person'][0]['favedate'].to_i].max
+            message = "On Flickr <b>#{comment['faves']['person'][0]['username']}</b> added your picture to <b>favorites</b>"
+          end
 
           puts message
 
