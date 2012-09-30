@@ -15,5 +15,4 @@
 //= require bootstrap-alert
 //= require bootstrap-tooltip
 //= require bootstrap-popover
-//= require turbolinks
 //= require_tree .

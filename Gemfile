@@ -16,7 +16,6 @@ gem 'ransack'
 gem 'squeel'
 gem 'kaminari'
 gem 'rocket_tag'
-gem 'turbolinks'
 
 gem 'factory_girl_rails'
 
