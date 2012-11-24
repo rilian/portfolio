@@ -25,6 +25,7 @@ gem 'whenever', :require => false
 
 gem 'flickraw'
 gem 'disqus'
+gem 'nokogiri'
 
 group :assets do
   gem 'sass-rails'
