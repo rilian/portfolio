@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Album do
-  it { should have_db_column(:title).of_type(:string).with_options(:null => false) }
-  it { should have_db_column(:is_hidden).of_type(:boolean).with_options(:default => false) }
-  it { should have_db_column(:weight).of_type(:integer).with_options(:default => 0) }
+  it { should have_db_column(:title).of_type(:string).with_options(null: false) }
+  it { should have_db_column(:is_hidden).of_type(:boolean).with_options(default: false) }
+  it { should have_db_column(:weight).of_type(:integer).with_options(default: 0) }
   it { should have_db_index(:title).unique(true) }
   it { should have_db_index(:is_hidden) }
   it { should have_db_index(:weight) }
@@ -30,9 +30,9 @@ describe Album do
 
   describe "scopes" do
     before do
-      @album_1 = FactoryGirl.create(:album, :weight => 1)
-      @album_2 = FactoryGirl.create(:album, :weight => 3)
-      @album_3 = FactoryGirl.create(:album, :weight => 2)
+      @album_1 = FactoryGirl.create(:album, weight: 1)
+      @album_2 = FactoryGirl.create(:album, weight: 3)
+      @album_3 = FactoryGirl.create(:album, weight: 2)
     end
 
     it "default scope should return all albums by weight DESC" do
@@ -43,7 +43,7 @@ describe Album do
   describe 'before filters' do
     describe "should humanize text values" do
       before do
-        @album = FactoryGirl.create(:album, :title => 'BB bb Bb bB!')
+        @album = FactoryGirl.create(:album, title: 'BB bb Bb bB!')
       end
 
       it "should have humanized values" do

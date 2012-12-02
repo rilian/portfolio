@@ -1,6 +1,6 @@
 <h1>Albums <small>list of all albums</small></h1>
 
-<%= link_to 'New Album', new_album_path, :class => 'btn btn-primary' %>
+<%= link_to 'New Album', new_album_path, class: 'btn btn-primary' %>
 
 <table class="table">
   <thead>
@@ -29,8 +29,8 @@
         <td><%= link_to album.images.size, album_path(album) %></td>
         <td>
           <p>
-            <%= link_to 'Edit', edit_album_path(album), :class => 'btn btn-primary' %>
-            <%= link_to 'Delete', album_path(album), :class => 'btn', :method => 'delete', :data => { :confirm => 'Delete album?' } %>
+            <%= link_to 'Edit', edit_album_path(album), class: 'btn btn-primary' %>
+            <%= link_to 'Delete', album_path(album), class: 'btn', method: 'delete', data: { confirm: 'Delete album?' } %>
           </p>
         </td>
       </tr>

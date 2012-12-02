@@ -17,8 +17,8 @@ describe ImagesController do
           get :index
         end
         it "should redirect to homepage" do
-          @image = FactoryGirl.create(:image, :published_at => false)
-          get :show, :id => @image.id
+          @image = FactoryGirl.create(:image, published_at: false)
+          get :show, id: @image.id
         end
         it "should redirect to homepage" do
           get :new
@@ -39,21 +39,21 @@ describe ImagesController do
         end
 
         it "should redirect to homepage" do
-          get :edit, :id => @image.id
+          get :edit, id: @image.id
         end
         it "should redirect to homepage" do
-          put :update, :id => @image.id
+          put :update, id: @image.id
         end
         it "should redirect to homepage" do
-          delete :destroy, :id => @image.id
+          delete :destroy, id: @image.id
         end
       end
     end
 
     context "accessible pages" do
       before do
-        @image = FactoryGirl.create(:image, :published_at => Time.now)
-        get :show, :id => @image.id
+        @image = FactoryGirl.create(:image, published_at: Time.now)
+        get :show, id: @image.id
       end
 
       it "should be successful" do
@@ -72,8 +72,8 @@ describe ImagesController do
 
     describe "GET 'show'" do
       before do
-        @image = FactoryGirl.create(:image, :published_at => false)
-        get :show, :id => @image.id
+        @image = FactoryGirl.create(:image, published_at: false)
+        get :show, id: @image.id
       end
 
       it "should be successful" do
@@ -99,7 +99,7 @@ describe ImagesController do
         @album = FactoryGirl.create(:album)
         @file = fixture_file_upload('/file.jpg', 'image/jpg')
 
-        post :create, :image => {:album_id => @album.id, :asset => @file, :title => 'aa AA aA Aa', :desc => 'bb BB bB Bb', :place => 'cc CC Cc cC', :published_at_checkbox => '0'}
+        post :create, image: {album_id: @album.id, asset: @file, title: 'aa AA aA Aa', desc: 'bb BB bB Bb', place: 'cc CC Cc cC', published_at_checkbox: '0'}
       end
 
       it "should be successful" do
@@ -117,7 +117,7 @@ describe ImagesController do
     describe "GET 'edit'" do
       before do
         @image = FactoryGirl.create(:image)
-        get :edit, :id => @image.id
+        get :edit, id: @image.id
       end
 
       it "should be successful" do
@@ -129,7 +129,7 @@ describe ImagesController do
     describe "PUT 'update'" do
       before do
         @image = FactoryGirl.create(:image)
-        put :update, :id => @image.id, :image => {:title => 'BB bb Bb bB!'}
+        put :update, id: @image.id, image: {title: 'BB bb Bb bB!'}
       end
 
       it "should be successful" do
@@ -142,7 +142,7 @@ describe ImagesController do
     describe "DELETE 'destroy'" do
       before do
         @image = FactoryGirl.create(:image)
-        delete :destroy, :id => @image.id
+        delete :destroy, id: @image.id
       end
 
       it "should be successful" do

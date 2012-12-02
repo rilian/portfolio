@@ -1,4 +1,4 @@
-<%= link_to "Portfolio", root_path, :class => 'brand' %>
+<%= link_to "Portfolio", root_path, class: 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
     <% Album.includes([:images]).all.each do |album| %>
@@ -15,7 +15,7 @@
   <div class="nav-collapse collapse">
     <ul class="nav pull-left">
       <li>
-        <%= link_to 'New Image', new_image_path, :class => 'bnt-mini btn-primary' %>
+        <%= link_to 'New Image', new_image_path, class: 'bnt-mini btn-primary' %>
       </li>
       <li class="<%= current_page?(images_path) ? 'active' : '' %>">
         <%= link_to('Images', images_path) %>
@@ -35,20 +35,20 @@
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
     <li>
-      <%= link_to rss_feed_url, :target => '_blank' do
+      <%= link_to rss_feed_url, target: '_blank' do
         image_tag 'rss.png'
       end %>
     </li>
     <% if SITE[:flickr_user_id].present? %>
       <li>
-        <%= link_to "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/", :target => '_blank' do
+        <%= link_to "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/", target: '_blank' do
           image_tag 'flickr.png'
         end %>
       </li>
     <% end %>
     <% if SITE[:linkedin_account].present? %>
       <li>
-        <%= link_to SITE[:linkedin_account], :target => '_blank' do
+        <%= link_to SITE[:linkedin_account], target: '_blank' do
           image_tag 'linkedin.png'
         end %>
       </li>

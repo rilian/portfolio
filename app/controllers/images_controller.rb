@@ -1,17 +1,17 @@
 class ImagesController < ApplicationController
-  load_and_authorize_resource :image, :except => [:show]
-  load_resource :image, :only => [:show]
+  load_and_authorize_resource :image, except: [:show]
+  load_resource :image, only: [:show]
 
   def index
     @q = Image.unscoped.includes([:album]).search(params[:q])
-    @images = @q.result(:distinct => true)
+    @images = @q.result(distinct: true)
     @images = @images.order('created_at DESC') if params[:q].nil?
     @images = @images.page(params[:page]).per(Image::PER_PAGE)
   end
 
   def show
     unless @image.published_at.present? || user_signed_in?
-      redirect_to root_path, :alert => 'Image is not published yet'
+      redirect_to root_path, alert: 'Image is not published yet'
     end
   end
 

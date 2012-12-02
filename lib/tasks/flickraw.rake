@@ -35,7 +35,7 @@ namespace :flickraw do
       end
     else
       token = flickr.get_request_token
-      auth_url = flickr.get_authorize_url(token['oauth_token'], :perms => 'delete')
+      auth_url = flickr.get_authorize_url(token['oauth_token'], perms: 'delete')
 
       puts "Open this url in your process to complete the authication process : #{auth_url}"
       puts "Confirm access for the app"
@@ -71,12 +71,12 @@ namespace :flickraw do
 
       puts 'Uploading ...'
       flickr_photo_id = flickr.upload_photo(image_to_upload.asset.path,
-                                  :title => image_to_upload.title,
-                                  :description => image_to_upload.render_data)
+                                  title: image_to_upload.title,
+                                  description: image_to_upload.render_data)
       puts "Image uploaded id = #{flickr_photo_id}"
       puts "Updating tags"
 
-      flickr.photos.addTags(:photo_id => flickr_photo_id, :tags => image_to_upload.tags_resolved)
+      flickr.photos.addTags(photo_id: flickr_photo_id, tags: image_to_upload.tags_resolved)
       puts "Tags updated"
 
       puts "Getting list of Flickr photosets (albums)"
@@ -86,16 +86,16 @@ namespace :flickraw do
         # Add
         photoset_id = photosets.select {|p| p['title'] == image_to_upload.album.title}[0]['id']
         puts "Adding image #{flickr_photo_id} to photoset #{photoset_id}"
-        flickr.photosets.addPhoto(:photoset_id => photoset_id, :photo_id => flickr_photo_id)
+        flickr.photosets.addPhoto(photoset_id: photoset_id, photo_id: flickr_photo_id)
       else
         # Create photoset
         puts "Creating photoset '#{image_to_upload.album.title}'"
-        flickr.photosets.create(:title => image_to_upload.album.title, :description => '', :primary_photo_id => flickr_photo_id)
+        flickr.photosets.create(title: image_to_upload.album.title, description: '', primary_photo_id: flickr_photo_id)
         puts "Image #{flickr_photo_id} set as primary in photoset #{image_to_upload.album.title}"
       end
 
       time_now = Time.now
-      image_to_upload.update_attributes({:uploaded_to_flickr_at => time_now, :flickr_photo_id => flickr_photo_id, :updated_at => time_now})
+      image_to_upload.update_attributes({uploaded_to_flickr_at: time_now, flickr_photo_id: flickr_photo_id, updated_at: time_now})
     else
       puts "No images to upload"
     end
@@ -127,12 +127,12 @@ namespace :flickraw do
         puts "Updating image #{image.id}"
         begin
           # Updating tags
-          flickr.photos.setTags(:photo_id => image.flickr_photo_id, :tags => image.tags_resolved)
+          flickr.photos.setTags(photo_id: image.flickr_photo_id, tags: image.tags_resolved)
 
           # Updating title and description
-          flickr.photos.setMeta(:photo_id => image.flickr_photo_id, :title => image.title, :description => image.render_data)
+          flickr.photos.setMeta(photo_id: image.flickr_photo_id, title: image.title, description: image.render_data)
 
-          photo_context = flickr.photos.getAllContexts(:photo_id => image.flickr_photo_id)
+          photo_context = flickr.photos.getAllContexts(photo_id: image.flickr_photo_id)
 
           update_photoset = false
           current_photo_album = photo_context['set'][0]['title']
@@ -144,7 +144,7 @@ namespace :flickraw do
             photo_context['set'].each do |set|
               if image.album.title != set['title']
                 puts "Remove image #{image.flickr_photo_id} from set \"#{set['title']}\""
-                flickr.photosets.removePhoto(:photoset_id => photo_context['set'][0]['id'], :photo_id => image.flickr_photo_id)
+                flickr.photosets.removePhoto(photoset_id: photo_context['set'][0]['id'], photo_id: image.flickr_photo_id)
               end
             end
           end
@@ -157,18 +157,18 @@ namespace :flickraw do
               # Add
               photoset_id = photosets.select {|p| p['title'] == image.album.title}[0]['id']
               puts "Adding image #{image.flickr_photo_id} to photoset #{photoset_id}"
-              flickr.photosets.addPhoto(:photoset_id => photoset_id, :photo_id => image.flickr_photo_id)
+              flickr.photosets.addPhoto(photoset_id: photoset_id, photo_id: image.flickr_photo_id)
             else
               # Create photoset
               puts "Creating photoset '#{image.album.title}'"
-              flickr.photosets.create(:title => image.album.title, :description => '', :primary_photo_id => image.flickr_photo_id)
+              flickr.photosets.create(title: image.album.title, description: '', primary_photo_id: image.flickr_photo_id)
               puts "Image #{image.flickr_photo_id} set as primary in photoset #{image.album.title}"
             end
           end
 
           # Update image timestamp
           time_now = Time.now
-          image.update_attributes({:uploaded_to_flickr_at => time_now, :updated_at => time_now})
+          image.update_attributes({uploaded_to_flickr_at: time_now, updated_at: time_now})
         rescue Exception => e
           puts e.message
         end
@@ -193,12 +193,12 @@ namespace :flickraw do
 
     puts "You are now authenticated as #{login.username}"
 
-    all_flickr_image_ids = flickr.photos.search(:user_id => SITE[:flickr_user_id]).map(&:id)
+    all_flickr_image_ids = flickr.photos.search(user_id: SITE[:flickr_user_id]).map(&:id)
     all_existing_image_ids = Image.all.map(&:flickr_photo_id).reject {|i| i.empty? }
     flickr_image_ids_to_delete = all_flickr_image_ids - all_existing_image_ids
     flickr_image_ids_to_delete.each do |image_id|
       puts "deleting #{image_id}"
-      flickr.photos.delete(:photo_id => image_id)
+      flickr.photos.delete(photo_id: image_id)
     end
 
     not_existing_flickr_images = all_existing_image_ids - all_flickr_image_ids
@@ -206,7 +206,7 @@ namespace :flickraw do
       time_now = Time.now
       Image.where("flickr_photo_id IN (?)", not_existing_flickr_images).each do |image|
         puts "cleanup flickr_photo_id #{image.flickr_photo_id} on image ##{image.id}"
-        image.update_attributes({:flickr_photo_id => '', :uploaded_to_flickr_at => nil, :updated_at => time_now})
+        image.update_attributes({flickr_photo_id: '', uploaded_to_flickr_at: nil, updated_at: time_now})
       end
     end
   end
@@ -270,9 +270,9 @@ namespace :flickraw do
       comments = []
       begin
         comments = flickr.photos.comments.getList(
-          :photo_id => image.flickr_photo_id,
-          :min_comment_date => image.flickr_comment_time + 1,
-          :max_comment_date => Time.now.to_i,
+          photo_id: image.flickr_photo_id,
+          min_comment_date: image.flickr_comment_time + 1,
+          max_comment_date: Time.now.to_i,
           # Faves loading disabled cause this effectively disables the :min_comment_date option.
           #:include_faves => true
         )
@@ -308,7 +308,7 @@ namespace :flickraw do
           puts response.body
         end
         puts "image flickr_comment_time WAS #{image.flickr_comment_time}"
-        image.update_attributes({:flickr_comment_time => latest_flickr_comment_time.to_i, :updated_at => image.updated_at})
+        image.update_attributes({flickr_comment_time: latest_flickr_comment_time.to_i, updated_at: image.updated_at})
         image.save
         puts image.errors
         puts "image flickr_comment_time NOW #{image.flickr_comment_time}"

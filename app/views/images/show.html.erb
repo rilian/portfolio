@@ -2,7 +2,7 @@
   <li class="span12">
     <h2>
       <% if user_signed_in? %>
-        <%= link_to 'Edit', edit_image_path(@image), :class => 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_image_path(@image), class: 'btn btn-primary' %>
       <% end %>
 
       <%= @image.title %>
@@ -15,7 +15,7 @@
     </h2>
 
     <div class="thumbnail">
-      <%= image_tag(@image.asset.url(:big), :alt => @image.id) %>
+      <%= image_tag(@image.asset.url(:big), alt: @image.id) %>
     </div>
 
     <div class="row">
@@ -30,7 +30,7 @@
           <% unless @image.tags.empty? %>
             <br/>
             <% @image.tags.each do |tag| %>
-              <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), :class => 'label' %>
+              <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(q: {Image::DEFAULT_QUERY.to_sym => tag}), class: 'label' %>
             <% end %>
 
             <% if user_signed_in? %>

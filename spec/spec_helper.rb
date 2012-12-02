@@ -52,7 +52,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::TestHelpers, type: :controller
 end
 
 Capybara.run_server = true #Whether start server when testing

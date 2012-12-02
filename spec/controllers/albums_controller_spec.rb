@@ -11,8 +11,8 @@ describe AlbumsController do
       end
 
       it "should be success" do
-        @album = FactoryGirl.create(:album, :images => [FactoryGirl.create(:image)])
-        get :show, :id => @album.id
+        @album = FactoryGirl.create(:album, images: [FactoryGirl.create(:image)])
+        get :show, id: @album.id
         response.status.should eq(200)
         response.should render_template(:show)
       end
@@ -47,13 +47,13 @@ describe AlbumsController do
         end
 
         it "should redirect to homepage" do
-          get :edit, :id => @album.id
+          get :edit, id: @album.id
         end
         it "should redirect to homepage" do
-          put :update, :id => @album.id
+          put :update, id: @album.id
         end
         it "should redirect to homepage" do
-          delete :destroy, :id => @album.id
+          delete :destroy, id: @album.id
         end
       end
     end
@@ -78,7 +78,7 @@ describe AlbumsController do
 
     describe "POST 'create'" do
       before :each do
-        post :create, :album => {:title => 'aa AA Aa aA'}
+        post :create, album: {title: 'aa AA Aa aA'}
       end
 
       it "should be successful" do
@@ -91,7 +91,7 @@ describe AlbumsController do
     describe "GET 'edit'" do
       before :each do
         @album = FactoryGirl.create(:album)
-        get :edit, :id => @album.id
+        get :edit, id: @album.id
       end
 
       it "should be successful" do
@@ -103,7 +103,7 @@ describe AlbumsController do
     describe "PUT 'update'" do
       before :each do
         @album = FactoryGirl.create(:album)
-        put :update, :id => @album.id, :album => {:title => 'BB bb Bb bB!'}
+        put :update, id: @album.id, album: {title: 'BB bb Bb bB!'}
       end
 
       it "should be successful" do
@@ -116,7 +116,7 @@ describe AlbumsController do
     describe "DELETE 'destroy'" do
       before :each do
         @album = FactoryGirl.create(:album)
-        delete :destroy, :id => @album.id
+        delete :destroy, id: @album.id
       end
 
       it "should be successful" do

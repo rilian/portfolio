@@ -1,5 +1,5 @@
 <h1>
-  <%= link_to 'New Image', new_image_path, :class => 'btn btn-primary' %>
+  <%= link_to 'New Image', new_image_path, class: 'btn btn-primary' %>
   Images
   <small>list of all images</small>
 </h1>
@@ -36,7 +36,7 @@
           </p>
         </td>
         <td>
-          <%= link_to(edit_image_path(image.id), :class => 'thumbnail span2') do
+          <%= link_to(edit_image_path(image.id), class: 'thumbnail span2') do
             image_tag(image.asset.url(:span2))
           end %>
           <p class="pagination-centered"><%= "#{image.image_width}x#{image.image_height}" %></p>
@@ -90,7 +90,7 @@
           <p>
             DeviantArt
             <% if image.deviantart_link.present? %>
-              <span><%= link_to "Browse", image.deviantart_link, :target => '_blank' %></span>
+              <span><%= link_to "Browse", image.deviantart_link, target: '_blank' %></span>
             <% else %>
               <span><%= link_to 'upload', 'http://www.deviantart.com/submit/deviation' %></span>
             <% end %>
@@ -98,7 +98,7 @@
           <p>
             iStockPhoto
             <% if image.istockphoto_link.present? %>
-              <span><%= link_to "Browse", image.istockphoto_link, :target => '_blank' %></span>
+              <span><%= link_to "Browse", image.istockphoto_link, target: '_blank' %></span>
             <% else %>
               <span><%= link_to 'upload', 'http://istockphoto.com/' %></span>
             <% end %>
@@ -106,7 +106,7 @@
           <p>
             ShutterStock
             <% if image.shutterstock_link.present? %>
-              <span><%= link_to "Browse", image.shutterstock_link, :target => '_blank' %></span>
+              <span><%= link_to "Browse", image.shutterstock_link, target: '_blank' %></span>
             <% else %>
               <span><%= link_to 'upload', 'http://shutterstock.com/' %></span>
             <% end %>
@@ -114,10 +114,10 @@
         </td>
         <td>
           <p>
-            <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
+            <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-primary' %>
           </p>
           <p>
-            <%= link_to 'Delete', image_path(image), :class => 'btn', :method => 'delete', :data => { :confirm => 'Delete image?' } %>
+            <%= link_to 'Delete', image_path(image), class: 'btn', method: 'delete', data: { confirm: 'Delete image?' } %>
           </p>
         </td>
       </tr>

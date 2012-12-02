@@ -6,7 +6,7 @@
 </div>
 <div>
   <%= link_to(image_url(image)) do
-        image_tag(image.asset.url(:span2), :alt => image.id)
+        image_tag(image.asset.url(:span2), alt: image.id)
   end %>
 </div>
 <div>
@@ -17,7 +17,7 @@
   <div>
     Tags:
     <% image.tags.each do |tag| %>
-      <%= link_to tag, root_url(:q => {Image::DEFAULT_QUERY.to_sym => tag}) %>
+      <%= link_to tag, root_url(q: {Image::DEFAULT_QUERY.to_sym => tag}) %>
     <% end %>
   </div>
 <% end %>

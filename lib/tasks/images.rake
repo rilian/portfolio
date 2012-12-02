@@ -14,7 +14,7 @@ namespace :images do
     Image.all.each do |image|
       image.asset.recreate_versions!
       updated_at = image.updated_at
-      image.update_attributes({:image_width => image.image_width, :image_height => image.image_height, :updated_at => updated_at})
+      image.update_attributes({image_width: image.image_width, image_height: image.image_height, updated_at: updated_at})
       puts "Recreated asset versions for Image##{image.id}"
     end
   end

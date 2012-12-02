@@ -2,10 +2,10 @@ User.delete_all
 Album.delete_all
 Image.delete_all
 
-User.create!(:email => 'user@example.com', :password => 'please', :password_confirmation => 'please')
+User.create!(email: 'user@example.com', password: 'please', password_confirmation: 'please')
 
 %w(Photo Illustration Collage Art).each do |title|
-  FactoryGirl.create(:album, :title => title)
+  FactoryGirl.create(:album, title: title)
 end
 
 puts "#{User.all.count} users created"

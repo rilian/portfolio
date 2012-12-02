@@ -6,7 +6,7 @@ class Album < ActiveRecord::Base
   # Default scopes, default values (e.g. self.per_page =)
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
-  has_many :images, :dependent => :destroy
+  has_many :images, dependent: :destroy
 
   # Validations: presence > by type > validates
   validates_presence_of :title
@@ -17,7 +17,7 @@ class Album < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope :order => "albums.weight DESC"
+  default_scope order: "albums.weight DESC"
 
   class << self
   end

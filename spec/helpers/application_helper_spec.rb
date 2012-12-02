@@ -3,8 +3,8 @@ require 'spec_helper'
 describe ApplicationHelper do
   describe "get_tags_cloud" do
     before do
-      FactoryGirl.create(:image, :tags_resolved => 'apple, banana, cucumber')
-      FactoryGirl.create(:image, :tags_resolved => 'banana, cucumber, peach')
+      FactoryGirl.create(:image, tags_resolved: 'apple, banana, cucumber')
+      FactoryGirl.create(:image, tags_resolved: 'banana, cucumber, peach')
     end
 
     it "should return valid tags cloud" do

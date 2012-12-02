@@ -3,12 +3,12 @@
     <% images.each do |image| %>
       <li class="span" style="margin-bottom:5px;margin-left:5px;">
         <%= link_to("#img#{image.id}",
-                    :class => ' has_popover',
-                    :rel => 'group',
-                    :title => image.title,
+                    class: ' has_popover',
+                    rel: 'group',
+                    title: image.title,
                     'data-original-title' => image.title,
                     'data-content' => image.render_data) do
-          image_tag(image.asset.url(:span2), :alt => image.id)
+          image_tag(image.asset.url(:span2), alt: image.id)
         end %>
       </li>
     <% end %>
@@ -30,7 +30,7 @@
 
       <h2>
         <% if user_signed_in? %>
-          <%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-primary' %>
         <% end %>
 
         <%= link_to image.title, "#{image_url(image)}" %>
@@ -43,7 +43,7 @@
       </h2>
 
       <div class="thumbnail">
-        <%= image_tag(image.asset.url(:big), :alt => image.id) %>
+        <%= image_tag(image.asset.url(:big), alt: image.title, title: image.title) %>
       </div>
 
       <div class="row">
@@ -59,7 +59,7 @@
             <% unless image.tags.empty? %>
               <br/>
               <% image.tags.each do |tag| %>
-                <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), :class => 'label' %>
+                <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(q: {Image::DEFAULT_QUERY.to_sym => tag}), class: 'label' %>
               <% end %>
 
               <% if user_signed_in? %>
@@ -71,7 +71,7 @@
 
         <div class="span1">
           <p class="pull-right">
-            <%= link_to "... Comments", "#{image_url(image)}#disqus_thread", :class => 'label', 'data-disqus-identifier' => "image_#{image.id}" %>
+            <%= link_to "... Comments", "#{image_url(image)}#disqus_thread", class: 'label', 'data-disqus-identifier' => "image_#{image.id}" %>
           </p>
         </div>
       </div>
@@ -84,6 +84,6 @@
 
 <div>
   <% get_tags_cloud.each do |tag, count| %>
-    <%= link_to tag, root_path(:q => {Image::DEFAULT_QUERY.to_sym => tag}), {:style => "font-size:#{(count * 50) + 50}%;"} %>
+    <%= link_to tag, root_path(q: {Image::DEFAULT_QUERY.to_sym => tag}), {style: "font-size:#{(count * 50) + 50}%;"} %>
   <% end %>
 </div>

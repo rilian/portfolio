@@ -29,7 +29,7 @@ class Image < ActiveRecord::Base
 
   # Validations: presence > by type > validates
   validates_presence_of :asset, :album, :title
-  validates_numericality_of :flickr_photo_id, :if => Proc.new { |i| i.flickr_photo_id.present? }
+  validates_numericality_of :flickr_photo_id, if: Proc.new { |i| i.flickr_photo_id.present? }
 
   # Other properties (e.g. accepts_nested_attributes_for)
   attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :updated_at,
@@ -42,7 +42,7 @@ class Image < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope :order => "images.published_at DESC, images.created_at DESC"
+  default_scope order: "images.published_at DESC, images.created_at DESC"
 
   class << self
     def published

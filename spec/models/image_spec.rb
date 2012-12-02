@@ -10,12 +10,12 @@ describe Image do
   it { should have_db_column(:published_at).of_type(:datetime) }
   it { should have_db_column(:tags_cache).of_type(:string) }
   it { should have_db_column(:uploaded_to_flickr_at).of_type(:datetime) }
-  it { should have_db_column(:flickr_photo_id).of_type(:string).with_options(:limit => 11) }
+  it { should have_db_column(:flickr_photo_id).of_type(:string).with_options(limit: 11) }
   it { should have_db_column(:deviantart_link).of_type(:string) }
   it { should have_db_column(:istockphoto_link).of_type(:string) }
   it { should have_db_column(:shutterstock_link).of_type(:string) }
-  it { should have_db_column(:flickr_comment_time).of_type(:integer).with_options(:default => 0) }
-  it { should have_db_column(:is_for_sale).of_type(:boolean).with_options(:default => false) }
+  it { should have_db_column(:flickr_comment_time).of_type(:integer).with_options(default: 0) }
+  it { should have_db_column(:is_for_sale).of_type(:boolean).with_options(default: false) }
   it { should have_db_column(:image_width).of_type(:integer) }
   it { should have_db_column(:image_height).of_type(:integer) }
 
@@ -42,7 +42,7 @@ describe Image do
   describe 'before filters' do
     describe "should humanize text values" do
       before do
-        @image = FactoryGirl.create(:image, :title => 'aa AA aA Aa', :desc => 'bb BB bB Bb', :place => 'cc CC Cc cC', :tags => 'xx, yy, qQ')
+        @image = FactoryGirl.create(:image, title: 'aa AA aA Aa', desc: 'bb BB bB Bb', place: 'cc CC Cc cC', tags: 'xx, yy, qQ')
       end
 
       it "should have humanized values" do
@@ -56,9 +56,9 @@ describe Image do
 
   describe "scopes" do
     before do
-      @image_1 = FactoryGirl.create(:image, :published_at => 3.days.ago)
-      @image_2 = FactoryGirl.create(:image, :published_at => 2.days.ago)
-      @image_3 = FactoryGirl.create(:image, :published_at => 1.days.ago)
+      @image_1 = FactoryGirl.create(:image, published_at: 3.days.ago)
+      @image_2 = FactoryGirl.create(:image, published_at: 2.days.ago)
+      @image_3 = FactoryGirl.create(:image, published_at: 1.days.ago)
     end
 
     it "default scope should return all images by published_at DESC, created_at DESC order" do

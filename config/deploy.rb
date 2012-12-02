@@ -10,7 +10,7 @@ set :scm, :git
 set :production_server, 'naru.ihdev.net'
 role :web, production_server
 role :app, production_server
-role :db,  production_server, :primary => true
+role :db,  production_server, primary: true
 
 # target
 set :deploy_to, '/home/rilian/apps/portfolio'
@@ -78,32 +78,32 @@ namespace :deploy do
   end
 
   #desc "Zero-downtime restart of Unicorn"
-  #task :restart, :except => { :no_release => true } do
+  #task :restart, except: { no_release: true } do
   #  run "kill -s USR2 `cat /tmp/unicorn-tapwatch.pid`"
   #end
   #
   #desc "Start unicorn"
-  #task :start, :except => { :no_release => true } do
+  #task :start, except: { no_release: true } do
   #  run "cd #{current_path} ; bundle exec unicorn_rails -c config/unicorn.rb -D"
   #end
   #
   #desc "Stop unicorn"
-  #task :stop, :except => { :no_release => true } do
+  #task :stop, except: { no_release: true } do
   #  run "kill -s QUIT `cat /tmp/unicorn-tapwatch.pid`"
   #end
 
   desc "Down-up restart of Unicorn"
-  task :restart, :except => { :no_release => true } do
+  task :restart, except: { no_release: true } do
     run "kill -s HUP `cat #{unicorn_pid}`"
   end
 
   desc "Start unicorn"
-  task :start, :except => { :no_release => true } do
+  task :start, except: { no_release: true } do
     run "cd #{current_path} ; bundle exec unicorn_rails -c config/unicorn.rb -D"
   end
 
   desc "Stop unicorn"
-  task :stop, :except => { :no_release => true } do
+  task :stop, except: { no_release: true } do
     run "kill -s QUIT `cat #{unicorn_pid}`"
   end
 end
