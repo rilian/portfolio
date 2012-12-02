@@ -54,6 +54,8 @@ namespace :flickraw do
 
     puts "Will upload #{image_to_upload.inspect}"
 
+    return true
+
     if image_to_upload
       FlickRaw.api_key = SITE[:flickr_api_key]
       FlickRaw.shared_secret = SITE[:flickr_shared_secret]
