@@ -50,7 +50,9 @@ namespace :flickraw do
     puts "Starting upload images"
 
     image_to_upload = Image.published.not_from_hidden_album.readonly(false).
-        where("images.uploaded_to_flickr_at IS NULL AND (images.flickr_photo_id=? OR images.flickr_photo_id IS NULL) AND images.created_at < ?", '', (Time.now - 30.minutes)).last
+      where("images.uploaded_to_flickr_at IS NULL AND (images.flickr_photo_id=? OR images.flickr_photo_id IS NULL) AND images.created_at < ?", '', (Time.now - 30.minutes)).last
+
+    puts "Will upload #{image_to_upload.inspect}"
 
     if image_to_upload
       FlickRaw.api_key = SITE[:flickr_api_key]
