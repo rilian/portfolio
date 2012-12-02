@@ -23,7 +23,7 @@ every 30.minutes do
   rake 'images:publish_unpublished'
 end
 
-every 30.minutes do
+every 6.hours do
   rake 'flickraw:upload_images'
 end
 
