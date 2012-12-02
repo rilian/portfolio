@@ -1,6 +1,6 @@
 == Welcome to Portfolio
 
-Portfolio is a web-application based on Rails framework that allows you create portfolio with images
+Portfolio is a web-application based on Rails 3.2.x framework that allows you create portfolio with images
 
 == Build Status {<img src="https://secure.travis-ci.org/rilian/portfolio.png?branch=master" alt="Build Status" />}[http://travis-ci.org/rilian/portfolio] {<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/rilian/portfolio]
 
@@ -40,9 +40,10 @@ Portfolio is a web-application based on Rails framework that allows you create p
     cap deploy:site_config
     cap deploy
 
-5. If needed run remotely rake task
+5. If needed run remotely rake task, use `invoke`
 
     cap invoke COMMAND='cd PATH_TO_APPLICATION && bundle exec rake RAILS_ENV=production images:recreate_versions'
+    cap invoke COMMAND='cd /home/username/apps/portfolio/current && bundle exec rake RAILS_ENV=production flickraw:upload_images'
 
 == Contributing
 
