@@ -33,8 +33,7 @@ class Image < ActiveRecord::Base
 
   # Other properties (e.g. accepts_nested_attributes_for)
   attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :updated_at,
-                  :published_at_checkbox, :uploaded_to_flickr_at_checkbox, :tags, :tags_resolved,
-                  :uploaded_to_flickr_at, :flickr_photo_id, :flickr_comment_time,
+                  :published_at_checkbox, :tags, :tags_resolved, :flickr_photo_id, :flickr_comment_time,
                   :deviantart_link, :istockphoto_link, :shutterstock_link,
                   :is_for_sale, :image_width, :image_height
   attr_taggable :tags
@@ -64,14 +63,6 @@ class Image < ActiveRecord::Base
 
   def published_at_checkbox=(val)
     self.published_at = set_time(self.published_at, val)
-  end
-
-  def uploaded_to_flickr_at_checkbox
-    self.uploaded_to_flickr_at.present?
-  end
-
-  def uploaded_to_flickr_at_checkbox=(val)
-    self.uploaded_to_flickr_at = set_time(self.uploaded_to_flickr_at, val)
   end
 
   def tags_resolved

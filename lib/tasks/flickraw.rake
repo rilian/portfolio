@@ -95,7 +95,7 @@ namespace :flickraw do
       end
 
       time_now = Time.now
-      image_to_upload.update_attributes({uploaded_to_flickr_at: time_now, flickr_photo_id: flickr_photo_id, updated_at: time_now})
+      image_to_upload.update_attributes({flickr_photo_id: flickr_photo_id, updated_at: time_now})
     else
       puts "No images to upload"
     end
@@ -108,7 +108,7 @@ namespace :flickraw do
     puts "Starting update images"
 
     images_to_update = Image.published.not_from_hidden_album.readonly(false).
-        where('images.uploaded_to_flickr_at < images.updated_at AND images.flickr_photo_id != "" AND images.updated_at > ? ', (2.days.ago))
+        where('images.flickr_photo_id != "" AND images.updated_at > ? ', (7.days.ago))
 
     if images_to_update.size > 0
       FlickRaw.api_key = SITE[:flickr_api_key]
@@ -168,7 +168,7 @@ namespace :flickraw do
 
           # Update image timestamp
           time_now = Time.now
-          image.update_attributes({uploaded_to_flickr_at: time_now, updated_at: time_now})
+          image.update_attributes({updated_at: time_now})
         rescue Exception => e
           puts e.message
         end
@@ -180,6 +180,9 @@ namespace :flickraw do
   desc "Removes photos on Flickr which are deleted on the site"
   task :remove_deleted_on_site => :environment do
     return unless check_flickr_api_keys
+
+    puts "Removing images temporary disabled"
+    return true
 
     puts "Starting remove images"
 
@@ -193,6 +196,8 @@ namespace :flickraw do
 
     puts "You are now authenticated as #{login.username}"
 
+    #TODO: this loads only last 100 photos, and effectively disables images starting from 101
+    #      add loading of other images from flickr
     all_flickr_image_ids = flickr.photos.search(user_id: SITE[:flickr_user_id]).map(&:id)
     all_existing_image_ids = Image.all.map(&:flickr_photo_id).reject {|i| i.empty? }
     flickr_image_ids_to_delete = all_flickr_image_ids - all_existing_image_ids
@@ -206,7 +211,7 @@ namespace :flickraw do
       time_now = Time.now
       Image.where("flickr_photo_id IN (?)", not_existing_flickr_images).each do |image|
         puts "cleanup flickr_photo_id #{image.flickr_photo_id} on image ##{image.id}"
-        image.update_attributes({flickr_photo_id: '', uploaded_to_flickr_at: nil, updated_at: time_now})
+        image.update_attributes({flickr_photo_id: '', updated_at: time_now})
       end
     end
   end
@@ -215,6 +220,7 @@ namespace :flickraw do
   task :post_comments_to_disqus => :environment do
     return unless check_flickr_api_keys
 
+    #TODO: check why this task does not work. Probably Disqus token expired
     puts "Getting list of Disqus threads"
 
     # there is a limit 100, default 25, and we have to use cursor to get all the available threads
