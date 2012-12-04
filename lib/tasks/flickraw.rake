@@ -70,7 +70,7 @@ namespace :flickraw do
       puts "You are now authenticated as #{login.username}"
 
       puts 'Uploading ...'
-      flickr_photo_id = flickr.upload_photo(image_to_upload.asset.path,
+      flickr_photo_id = flickr.upload_photo(image_to_upload.asset.big.path,
                                   title: image_to_upload.title,
                                   description: image_to_upload.render_data)
       puts "Image uploaded id = #{flickr_photo_id}"
