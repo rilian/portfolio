@@ -291,27 +291,35 @@ namespace :flickraw do
       if comments.respond_to?(:each) && comments.size > 0
         comments.each do |comment|
           thread = disqus_threads_for_images[image.id.to_s.to_sym]
+          is_type_known = false
           if comment['type'] == 'comment'
             latest_flickr_comment_time = [latest_flickr_comment_time.to_i, comment['datecreate'].to_i].max
             message = "From Flickr by <b>#{comment['authorname']}</b>:\n---\n#{comment['_content']}\n---\nSee original message here #{comment['permalink']}"
+            is_type_known = true
           elsif comment['type'] == 'faves'
             latest_flickr_comment_time = [latest_flickr_comment_time.to_i, comment['faves']['person'][0]['favedate'].to_i].max
             message = "On Flickr <b>#{comment['faves']['person'][0]['username']}</b> added your picture to <b>favorites</b>"
+            is_type_known = true
           end
 
-          puts message
+          if is_type_known
+            puts message
 
-          # http://disqus.com/api/docs/posts/create/
-          request = Net::HTTP::Post.new("/api/3.0/posts/create.json?" +
-                                          "thread=#{thread}&" +
-                                          "message=#{CGI.escape(message)}&" +
-                                          "access_token=#{SITE[:disqus_access_token]}&" +
-                                          "api_key=#{SITE[:disqus_api_key]}"
-          )
+            # http://disqus.com/api/docs/posts/create/
+            request = Net::HTTP::Post.new("/api/3.0/posts/create.json?" +
+                                            "thread=#{thread}&" +
+                                            "message=#{CGI.escape(message)}&" +
+                                            "access_token=#{SITE[:disqus_access_token]}&" +
+                                            "api_key=#{SITE[:disqus_api_key]}"
+            )
 
-          response = disqus_http.request(request)
-          puts response.inspect
-          puts response.body
+            response = disqus_http.request(request)
+            puts response.inspect
+            puts response.body
+          else
+            puts 'type was not known'
+            puts "comment = #{comment.incpect}"
+          end
         end
         puts "image flickr_comment_time WAS #{image.flickr_comment_time}"
         image.update_attributes({flickr_comment_time: latest_flickr_comment_time.to_i, updated_at: image.updated_at})
