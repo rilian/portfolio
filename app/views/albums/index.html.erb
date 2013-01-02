@@ -16,8 +16,8 @@
   <tbody>
     <% @albums.each do |album| %>
       <tr>
-        <td><%= link_to album.id, edit_album_path(album) %></td>
-        <td><%= link_to album.title %></td>
+        <td><%= album.id %></td>
+        <td><%= link_to album.title, album_path(album) %></td>
         <td>
           <% if album.is_hidden? %>
             <span class="label label-important">hidden</span>
@@ -26,7 +26,7 @@
           <% end %>
         </td>
         <td><%= album.weight %></td>
-        <td><%= link_to album.images.size, album_path(album) %></td>
+        <td><%= album.images.size %></td>
         <td>
           <p>
             <%= link_to 'Edit', edit_album_path(album), class: 'btn btn-primary' %>
