@@ -318,7 +318,6 @@ namespace :flickraw do
             puts response.body
           else
             puts 'type was not known'
-            puts "comment = #{comment.incpect}"
           end
         end
         puts "image flickr_comment_time WAS #{image.flickr_comment_time}"
