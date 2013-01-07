@@ -35,6 +35,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :big do
     process resize_to_limit: [900, 700]
+    process :add_watermark
   end
   version :span2 do
     process resize_to_limit: [900, 110]
@@ -52,12 +53,28 @@ class ImageUploader < CarrierWave::Uploader::Base
   #  super.chomp(File.extname(super)) + '.png'
   #end
 
+protected
+
   def get_version_dimensions
     begin
       model.image_width, model.image_height = `identify -format "%wx%h" #{file.path}`.split(/x/)
     rescue
       model.image_width = 0
       model.image_height = 0
+    end
+  end
+
+  ##
+  # Adds watermark over the image
+  #
+  def add_watermark
+    manipulate! do |img|
+      path = "#{Rails.root}/app/assets/images/watermark.png"
+      if File.exists? path
+        img.composite(MiniMagick::Image.open path) do |c|
+          c.gravity 'SouthEast'
+        end
+      end
     end
   end
 end
