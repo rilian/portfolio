@@ -68,15 +68,16 @@ protected
   # Adds watermark over the image
   #
   def add_watermark
-    manipulate! do |img|
-      path = "#{Rails.root}/app/assets/images/watermark.png"
-      if File.exists? path
-        begin
+    path = "#{Rails.root}/app/assets/images/watermark.png"
+    if File.exists? path
+      begin
+        manipulate! do |img|
           img.composite(MiniMagick::Image.open path) do |c|
             c.gravity 'SouthEast'
           end
-        rescue
         end
+      rescue
+        puts "Could not add watermark for #{path}"
       end
     end
   end
