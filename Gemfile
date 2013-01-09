@@ -31,7 +31,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'therubyracer'
+  gem 'therubyracer', '0.10.2'
 end
 
 group :development, :test do

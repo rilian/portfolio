@@ -104,7 +104,7 @@ GEM
     kgio (2.7.4)
     launchy (2.1.2)
       addressable (~> 2.3)
-    libv8 (3.11.8.11)
+    libv8 (3.3.10.4)
     libwebsocket (0.1.7.1)
       addressable
       websocket
@@ -163,7 +163,6 @@ GEM
       polyamorous (~> 0.5.0)
     rdoc (3.12)
       json (~> 1.4)
-    ref (1.0.2)
     rocket_tag (0.5.6)
       activerecord (>= 3.2.0)
       squeel (~> 1.0.0)
@@ -213,9 +212,8 @@ GEM
       activesupport (~> 3.0)
       polyamorous (~> 0.5.0)
     subexec (0.2.2)
-    therubyracer (0.11.1)
-      libv8 (~> 3.11.8.7)
-      ref
+    therubyracer (0.10.2)
+      libv8 (~> 3.3.10)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -274,7 +272,7 @@ DEPENDENCIES
   simple_form
   sqlite3
   squeel
-  therubyracer
+  therubyracer (= 0.10.2)
   thin
   uglifier
   unicorn
