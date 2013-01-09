@@ -71,8 +71,11 @@ protected
     manipulate! do |img|
       path = "#{Rails.root}/app/assets/images/watermark.png"
       if File.exists? path
-        img.composite(MiniMagick::Image.open path) do |c|
-          c.gravity 'SouthEast'
+        begin
+          img.composite(MiniMagick::Image.open path) do |c|
+            c.gravity 'SouthEast'
+          end
+        rescue
         end
       end
     end
