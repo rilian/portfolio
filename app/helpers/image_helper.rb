@@ -15,12 +15,13 @@ module ImageHelper
   # Replace urls with links
   #
   def highlight_links(text)
-    while text =~ /( |^)(http:\/\/|https:\/\/|www.)([^\s]*\.[^\s]*)( |$)/
+    new_text = text.dup
+    while new_text =~ /( |^)(http:\/\/|https:\/\/|www.)([^\s]*\.[^\s]*)( |$)/
       protocol = $2
       href = $3
-      text.gsub!("#{protocol}#{href}", "<a href='#{protocol}#{href}' rel='nofollow'>#{protocol}#{href}</a>")
+      new_text.gsub!("#{protocol}#{href}", "<a href='#{protocol}#{href}' rel='nofollow'>#{protocol}#{href}</a>")
     end
-    text
+    new_text
   end
 
   private
