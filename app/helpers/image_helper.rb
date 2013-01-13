@@ -11,6 +11,18 @@ module ImageHelper
     get_notice(image.tags_resolved, image.is_for_sale? ? Image::TAGS_MIN_FOR_SALE : Image::TAGS_MIN, 'tags')
   end
 
+  ##
+  # Replace urls with links
+  #
+  def highlight_links(text)
+    while text =~ /( |^)(http:\/\/|https:\/\/|www.)([^\s]*\.[^\s]*)( |$)/
+      protocol = $2
+      href = $3
+      text.gsub!("#{protocol}#{href}", "<a href='#{protocol}#{href}' rel='nofollow'>#{protocol}#{href}</a>")
+    end
+    text
+  end
+
   private
 
   def get_notice(str, need_words, object_names)
