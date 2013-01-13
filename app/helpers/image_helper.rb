@@ -16,7 +16,7 @@ module ImageHelper
   #
   def highlight_links(text)
     new_text = text.dup
-    while new_text =~ /( |^)(http:\/\/|https:\/\/|www.)([^\s]*\.[^\s]*)( |$)/
+    while new_text =~ /([\s\r\n]+|^)(http:\/\/|https:\/\/|www.)([^\s\r\n]*\.[^\s\r\n]*)([\s\r\n]+|$)/s
       protocol = $2
       href = $3
       new_text.gsub!("#{protocol}#{href}", "<a href='#{protocol}#{href}' rel='nofollow'>#{protocol}#{href}</a>")

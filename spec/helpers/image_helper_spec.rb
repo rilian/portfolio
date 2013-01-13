@@ -40,14 +40,13 @@ describe ImageHelper do
   end
 
   describe 'highlight_links' do
-    %w[http://google.com
-       https://site.local/?xx=123-yy
-       http://www.site-site.org/Title-title
-    ].each do |link|
-      it "highlights link #{link} in text" do
-        highlight_links("test #{link} test").should == "test <a href='#{link}' rel='nofollow'>#{link}</a> test"
-        highlight_links(link).should == "<a href='#{link}' rel='nofollow'>#{link}</a>"
-      end
+    it "highlights link in text" do
+      highlight_links("http://google.com").should == "<a href='http://google.com' rel='nofollow'>http://google.com</a>"
+      highlight_links("test https://site.local/?xx=123-yy test").should ==
+        "test <a href='https://site.local/?xx=123-yy' rel='nofollow'>https://site.local/?xx=123-yy</a> test"
+      highlight_links("http://www.1-1.org/Title-1\r\nhttp://www.2-2.org/Title-2").should ==
+        "<a href='http://www.1-1.org/Title-1' rel='nofollow'>http://www.1-1.org/Title-1</a>\r\n"+
+        "<a href='http://www.2-2.org/Title-2' rel='nofollow'>http://www.2-2.org/Title-2</a>"
     end
   end
 end
