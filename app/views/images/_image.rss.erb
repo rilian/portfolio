@@ -1,7 +1,7 @@
 <div>
   <p>
     <strong><%= image.title %></strong>.
-    <%= image.render_data %>
+    <%= highlight_links(image.render_data).html_safe %>
   </p>
 </div>
 <div>

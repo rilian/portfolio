@@ -51,7 +51,7 @@
 
         <div class="span11">
           <p class="pull-left">
-            <%= image.render_data %>
+            <%= highlight_links(image.render_data).html_safe %>
             <% if user_signed_in? %>
               <%= check_desc(image) %>
             <% end %>
