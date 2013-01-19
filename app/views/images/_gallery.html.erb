@@ -2,12 +2,7 @@
   <ul class="thumbnails">
     <% images.each do |image| %>
       <li class="span" style="margin-bottom:5px;margin-left:5px;">
-        <%= link_to("#img#{image.id}",
-                    class: ' has_popover',
-                    rel: 'group',
-                    title: image.title,
-                    'data-original-title' => image.title,
-                    'data-content' => image.render_data) do
+        <%= link_to("#img#{image.id}", rel: 'group', title: image.title) do
           image_tag(image.asset.url(:span2), alt: image.id)
         end %>
       </li>
