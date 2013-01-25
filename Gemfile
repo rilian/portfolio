@@ -41,9 +41,6 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'selenium-client'
-  gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
 end

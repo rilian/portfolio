@@ -2,8 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'capybara/rspec'
-require 'capybara/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -55,12 +53,6 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
 end
 
-Capybara.run_server = true #Whether start server when testing
-Capybara.default_selector = :css #default selector , you can change to :css
-Capybara.default_wait_time = 10 #When we testing AJAX, we can set a default wait time
-Capybara.ignore_hidden_elements = false #Ignore hidden elements when testing, make helpful when you hide or show elements using javascript
-Capybara.javascript_driver = :selenium
-
 Devise.stretches = 1
 Rails.logger.level = 4
 
@@ -78,7 +70,3 @@ class ActiveRecord::Base
     @@shared_connection || retrieve_connection
   end
 end
-
-# Forces all threads to share the same connection. This works on
-# Capybara because it starts the web server in a thread.
-ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
