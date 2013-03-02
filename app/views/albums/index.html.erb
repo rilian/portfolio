@@ -8,6 +8,7 @@
       <th>#</th>
       <th>Title</th>
       <th>Visibility</th>
+      <th>Upload to stocks</th>
       <th>Weight</th>
       <th>Images</th>
       <th>Actions</th>
@@ -23,6 +24,13 @@
             <span class="label label-important">hidden</span>
           <% else %>
             visible
+          <% end %>
+        </td>
+        <td>
+          <% if album.is_upload_to_stock? %>
+            <span class="label label-important">no</span>
+          <% else %>
+            yes
           <% end %>
         </td>
         <td><%= album.weight %></td>
@@ -41,6 +49,7 @@
       <th>#</th>
       <th>Title</th>
       <th>Visibility</th>
+      <th>Upload to stocks</th>
       <th>Weight</th>
       <th>Images</th>
       <th>Actions</th>
