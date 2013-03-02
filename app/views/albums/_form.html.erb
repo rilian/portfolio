@@ -1,6 +1,7 @@
 <%= simple_form_for @album, html: { class: 'form-horizontal' } do |f| %>
   <%= f.input :title %>
   <%= f.input :is_hidden, as: :boolean, label: "Images hidden?" %>
+  <%= f.input :is_upload_to_stock, as: :boolean, label: "Upload to stocks?" %>
   <%= f.input :weight, label: "Weight" %>
 
   <%= f.button :submit, class: 'btn-primary' %>
