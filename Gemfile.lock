@@ -141,7 +141,7 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.10.0)
     rake (10.0.3)
-    ransack (0.7.3)
+    ransack (0.7.2)
       actionpack (~> 3.0)
       activerecord (~> 3.0)
       polyamorous (~> 0.5.0)
@@ -234,7 +234,7 @@ DEPENDENCIES
   nokogiri
   quiet_assets
   rails
-  ransack
+  ransack (= 0.7.2)
   rocket_tag
   rspec-rails
   rvm-capistrano
