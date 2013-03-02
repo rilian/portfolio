@@ -43,13 +43,11 @@ class Image < ActiveRecord::Base
   # Scopes
   default_scope order: "images.published_at DESC, images.created_at DESC"
 
+  scope :published, ->() { where("images.published_at IS NOT NULL") }
+
+  scope :not_from_hidden_album, ->() { joins(:album).where("(albums.is_hidden = ? OR albums.is_upload_to_stock = ?)", false, false) }
+
   class << self
-    def published
-      self.where("images.published_at IS NOT NULL")
-    end
-    def not_from_hidden_album
-      self.joins(:album).where("albums.is_hidden = ?", false)
-    end
   end
 
   # Other model methods

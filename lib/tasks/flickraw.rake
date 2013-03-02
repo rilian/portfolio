@@ -52,7 +52,7 @@ namespace :flickraw do
     image_to_upload = Image.published.not_from_hidden_album.readonly(false).
       where("(images.flickr_photo_id = ? OR images.flickr_photo_id IS NULL) AND images.created_at < ?", '', (Time.now - 30.minutes))
 
-    puts "Total images to upload: #{image_to_upload.all.inspect}"
+    puts "Total images to upload: #{image_to_upload.all.map(&:id).inspect}"
 
     image_to_upload = image_to_upload.last
 
