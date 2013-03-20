@@ -27,8 +27,11 @@
           </p>
           <p>
             <%= image.album.title %>
-            <% if image.album.is_hidden %>
+            <% if image.album.is_hidden? %>
               <span class="label label-important">hidden</span>
+            <% end %>
+            <% unless image.album.is_upload_to_stock? %>
+              <span class="label label-important">not uploading</span>
             <% end %>
           </p>
           <p>
