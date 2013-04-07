@@ -45,10 +45,6 @@ group :test do
   gem 'shoulda'
 end
 
-group :development do
-  gem 'quiet_assets'
-end
-
 group :production do
   gem 'unicorn'
 end
