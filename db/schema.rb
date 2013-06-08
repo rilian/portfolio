@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302082734) do
+ActiveRecord::Schema.define(:version => 20130608121222) do
 
   create_table "albums", :force => true do |t|
     t.string  "title",                                 :null => false
     t.boolean "is_hidden",          :default => false
     t.integer "weight",             :default => 0
     t.boolean "is_upload_to_stock", :default => true
+    t.text    "description"
   end
 
   add_index "albums", ["is_hidden"], :name => "index_albums_on_is_hidden"
