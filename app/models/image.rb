@@ -14,7 +14,7 @@ class Image < ActiveRecord::Base
     'public/uploads'
   end
 
-  DEFAULT_QUERY = 'title_or_desc_or_tags_cache_or_place_or_album_title_cont'
+  DEFAULT_QUERY = 'title_or_desc_or_tags_cache_or_place_or_collection_title_cont'
   TITLE_MIN_FOR_SALE = 7
   TITLE_MIN = 4
   DESC_MIN_FOR_SALE = 30
@@ -25,14 +25,14 @@ class Image < ActiveRecord::Base
   PER_PAGE = 25
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
-  belongs_to :album
+  belongs_to :collection
 
   # Validations: presence > by type > validates
-  validates_presence_of :asset, :album, :title
+  validates_presence_of :asset, :collection, :title
   validates_numericality_of :flickr_photo_id, if: Proc.new { |i| i.flickr_photo_id.present? }
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :desc, :place, :date, :updated_at,
+  attr_accessible :asset, :asset_cache, :collection_id, :title, :desc, :place, :date, :updated_at,
                   :published_at_checkbox, :tags, :tags_resolved, :flickr_photo_id, :flickr_comment_time,
                   :deviantart_link, :istockphoto_link, :shutterstock_link,
                   :is_for_sale, :image_width, :image_height
@@ -45,7 +45,7 @@ class Image < ActiveRecord::Base
 
   scope :published, ->() { where("images.published_at IS NOT NULL") }
 
-  scope :not_from_hidden_album, ->() { joins(:album).where("(albums.is_hidden = ? AND albums.is_upload_to_stock = ?)", false, true) }
+  scope :not_from_hidden_collection, ->() { joins(:collection).where("(collections.is_hidden = ? AND collections.is_upload_to_stock = ?)", false, true) }
 
   class << self
   end

@@ -96,10 +96,17 @@ describe ImagesController do
 
     describe "POST 'create'" do
       before do
-        @album = FactoryGirl.create(:album)
+        @collection = FactoryGirl.create(:collection)
         @file = fixture_file_upload('/file.jpg', 'image/jpg')
 
-        post :create, image: {album_id: @album.id, asset: @file, title: 'aa AA aA Aa', desc: 'bb BB bB Bb', place: 'cc CC Cc cC', published_at_checkbox: '0'}
+        post :create, image: {
+          collection_id: @collection.id,
+          asset: @file,
+          title: 'aa AA aA Aa',
+          desc: 'bb BB bB Bb',
+          place: 'cc CC Cc cC',
+          published_at_checkbox: '0'
+        }
       end
 
       it "should be successful" do
@@ -109,7 +116,7 @@ describe ImagesController do
         image.title.should eq('aa AA aA Aa')
         image.desc.should eq('bb BB bB Bb')
         image.place.should eq('cc CC Cc cC')
-        image.album_id.should eq(@album.id)
+        image.collection_id.should eq(@collection.id)
         image.published_at.should == nil
       end
     end

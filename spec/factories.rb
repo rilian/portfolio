@@ -1,10 +1,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  sequence :title do |n|
-    "Title #{n}"
-  end
-
   sequence :email do |n|
     "email.#{n+1}@example.local"
   end
@@ -21,16 +17,20 @@ FactoryGirl.define do
     # confirmed_at Time.now
   end
 
-  factory :album do
-    title     { FactoryGirl.generate(:title) }
-    images    []
+  factory :collection do
+    sequence(:title) { |n| "Title #{n}" }
+    images []
     is_hidden false
   end
 
+  factory :album, parent: :collection do
+    type 'Album'
+  end
+
   factory :image do
-    album
+    collection
     asset                 File.open("#{Rails.root}/spec/fixtures/file.jpg")
-    title                 'Untitled'
+    sequence(:title)      { |n| "Title #{n}" }
     desc                  { FactoryGirl.generate(:body) }
     place                 'Kiev'
     date                  Date.today

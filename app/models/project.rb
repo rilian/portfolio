@@ -1,4 +1,4 @@
-class Album < Collection
+class Project < Collection
   # Includes
 
   # Before, after callbacks

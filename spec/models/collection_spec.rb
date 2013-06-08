@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Album do
+describe Collection do
   it { should have_db_column(:title).of_type(:string).with_options(null: false) }
   it { should have_db_column(:is_hidden).of_type(:boolean).with_options(default: false) }
   it { should have_db_column(:weight).of_type(:integer).with_options(default: 0) }
@@ -12,9 +12,9 @@ describe Album do
 
   it { should validate_presence_of(:title) }
 
-  describe "instance" do
+  describe 'instance' do
     before :each do
-      FactoryGirl.create(:album)
+      FactoryGirl.create(:collection)
     end
 
     it { should validate_uniqueness_of(:title) }
@@ -22,45 +22,45 @@ describe Album do
 
   describe "generators" do
     before :each do
-      @album = FactoryGirl.create(:album)
+      @collection = FactoryGirl.create(:collection)
     end
 
     it "should be valid" do
-      @album.should be_valid
+      @collection.should be_valid
     end
   end
 
   describe "scopes" do
     before do
-      @album_1 = FactoryGirl.create(:album, weight: 1)
-      @album_2 = FactoryGirl.create(:album, weight: 3)
-      @album_3 = FactoryGirl.create(:album, weight: 2)
+      @collection_1 = FactoryGirl.create(:collection, weight: 1)
+      @collection_2 = FactoryGirl.create(:collection, weight: 3)
+      @collection_3 = FactoryGirl.create(:collection, weight: 2)
     end
 
     it "default scope should return all albums by weight DESC" do
-      Album.all.map(&:id).should == [@album_2.id, @album_3.id, @album_1.id]
+      Collection.all.map(&:id).should == [@collection_2.id, @collection_3.id, @collection_1.id]
     end
   end
 
   describe 'before filters' do
     describe "should humanize text values" do
       before do
-        @album = FactoryGirl.create(:album, title: 'BB bb Bb bB!')
+        @collection = FactoryGirl.create(:collection, title: 'BB bb Bb bB!')
       end
 
       it "should have humanized values" do
-        @album.title.should == 'BB bb Bb bB!'
+        @collection.title.should == 'BB bb Bb bB!'
       end
     end
   end
 
   describe 'other model methods' do
     before :each do
-      @album = FactoryGirl.build(:album)
+      @collection = FactoryGirl.build(:collection)
     end
 
     it "should return to_param" do
-      @album.to_param.should eq("#{@album.id}-#{@album.title.parameterize}")
+      @collection.to_param.should eq("#{@collection.id}-#{@collection.title.parameterize}")
     end
   end
 end

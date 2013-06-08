@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "Albums", type: :request do
+describe 'Collections', type: :request do
   pending
 end

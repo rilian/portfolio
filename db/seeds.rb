@@ -1,5 +1,5 @@
 User.delete_all
-Album.delete_all
+Collection.delete_all
 Image.delete_all
 
 User.create!(email: 'user@example.com', password: 'please', password_confirmation: 'please')

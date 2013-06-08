@@ -19,7 +19,7 @@ describe Ability do
     it "should not have user abilities" do
       @ability.should_not be_able_to(:manage, :all)
 
-      @ability.should be_able_to(:read, Album.new)
+      @ability.should be_able_to(:read, Collection.new)
     end
   end
 end

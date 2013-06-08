@@ -3,11 +3,12 @@
   <ul class="nav pull-left">
     <% Album.includes([:images]).all.each do |album| %>
       <% if album.images.size > 0 %>
-        <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
-          <%= link_to album.title, album_path(album) %>
+        <li class="<%= current_page?(collection_path(album)) || (@image && @image.collection == album) ? 'active' : '' %>">
+          <%= link_to album.title, collection_path(album) %>
         </li>
       <% end %>
     <% end %>
+    <!-- todo: add projects -->
   </ul>
 </div>
 
@@ -21,8 +22,8 @@
         <%= link_to('Images', images_path) %>
       </li>
       <li class="divider-vertical"></li>
-      <li class="<%= current_page?(albums_path) ? 'active' : '' %>">
-        <%= link_to('Albums', albums_path) %>
+      <li class="<%= current_page?(collections_path) ? 'active' : '' %>">
+        <%= link_to('Collections', collections_path) %>
       </li>
       <li class="divider-vertical"></li>
       <li>

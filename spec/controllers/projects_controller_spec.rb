@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'AlbumsController' do
+describe 'ProjectsController' do
   pending
 end
