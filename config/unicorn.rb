@@ -1,5 +1,5 @@
 # Set environment to development unless something else is specified
-env = ENV["RAILS_ENV"] || "production"
+env = ENV['RAILS_ENV'] || 'production'
 
 # See http://unicorn.bogomips.org/Unicorn/Configurator.html for complete
 # documentation.
@@ -18,9 +18,9 @@ timeout 30
 pid "/tmp/unicorn-irene-rilian-portfolio.pid"
 
 # Production specific settings
-if env == "production"
+if env == 'production'
   # Help ensure your application will always spawn in the symlinked
-  # "current" directory that Capistrano sets up.
+  # 'current' directory that Capistrano sets up.
   working_directory "/home/rilian/apps/portfolio/current"
 
   # feel free to point this anywhere accessible on the filesystem
@@ -32,7 +32,7 @@ if env == "production"
 end
 
 before_fork do |server, worker|
-  # the following is highly recomended for Rails + "preload_app true"
+  # the following is highly recomended for Rails + 'preload_app true'
   # as there's no need for the master process to hold a connection
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.connection.disconnect!
@@ -43,7 +43,7 @@ before_fork do |server, worker|
   old_pid = "/tmp/unicorn-irene-rilian-portfolio.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
-      Process.kill("QUIT", File.read(old_pid).to_i)
+      Process.kill('QUIT', File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
       # someone else did our job for us
     end
@@ -51,7 +51,7 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  # the following is *required* for Rails + "preload_app true",
+  # the following is *required* for Rails + 'preload_app true',
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.establish_connection
   end

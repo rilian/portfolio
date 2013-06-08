@@ -1,4 +1,4 @@
-<%= link_to "Portfolio", root_path, class: 'brand' %>
+<%= link_to 'Portfolio', root_path, class: 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
     <% Album.includes([:images]).all.each do |album| %>

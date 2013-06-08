@@ -1,34 +1,34 @@
 require 'spec_helper'
 
 describe ImagesController do
-  it "should use ImagesController" do
+  it 'should use ImagesController' do
     controller.should be_an_instance_of(ImagesController)
   end
 
-  describe "unauthorized request" do
-    context "inaccessible pages" do
-      context "collection" do
+  describe 'unauthorized request' do
+    context 'inaccessible pages' do
+      context 'collection' do
         after do
           response.should redirect_to root_path
           response.status.should eq(302)
         end
 
-        it "should redirect to homepage" do
+        it 'should redirect to homepage' do
           get :index
         end
-        it "should redirect to homepage" do
+        it 'should redirect to homepage' do
           @image = FactoryGirl.create(:image, published_at: false)
           get :show, id: @image.id
         end
-        it "should redirect to homepage" do
+        it 'should redirect to homepage' do
           get :new
         end
-        it "should redirect to homepage" do
+        it 'should redirect to homepage' do
           post :create
         end
       end
 
-      context "member" do
+      context 'member' do
         before do
           @image = FactoryGirl.create(:image)
         end
@@ -38,25 +38,25 @@ describe ImagesController do
           response.status.should eq(302)
         end
 
-        it "should redirect to homepage" do
+        it 'should redirect to homepage' do
           get :edit, id: @image.id
         end
-        it "should redirect to homepage" do
+        it 'should redirect to homepage' do
           put :update, id: @image.id
         end
-        it "should redirect to homepage" do
+        it 'should redirect to homepage' do
           delete :destroy, id: @image.id
         end
       end
     end
 
-    context "accessible pages" do
+    context 'accessible pages' do
       before do
         @image = FactoryGirl.create(:image, published_at: Time.now)
         get :show, id: @image.id
       end
 
-      it "should be successful" do
+      it 'should be successful' do
         response.should be_success
         response.should render_template(:show)
         assigns[:image].should == @image
@@ -64,7 +64,7 @@ describe ImagesController do
     end
   end
 
-  context "authorized request" do
+  context 'authorized request' do
     before do
       @user = FactoryGirl.create(:user)
       sign_in @user
@@ -76,7 +76,7 @@ describe ImagesController do
         get :show, id: @image.id
       end
 
-      it "should be successful" do
+      it 'should be successful' do
         response.should be_success
         response.should render_template(:show)
         assigns[:image].should == @image
@@ -88,7 +88,7 @@ describe ImagesController do
         get :new
       end
 
-      it "should be successful" do
+      it 'should be successful' do
         response.should be_success
         response.should render_template(:new)
       end
@@ -109,7 +109,7 @@ describe ImagesController do
         }
       end
 
-      it "should be successful" do
+      it 'should be successful' do
         response.status.should eq(302)
         image = Image.last
         image.present?.should be_true
@@ -127,7 +127,7 @@ describe ImagesController do
         get :edit, id: @image.id
       end
 
-      it "should be successful" do
+      it 'should be successful' do
         response.should be_success
         response.should render_template(:edit)
       end
@@ -139,7 +139,7 @@ describe ImagesController do
         put :update, id: @image.id, image: {title: 'BB bb Bb bB!'}
       end
 
-      it "should be successful" do
+      it 'should be successful' do
         response.status.should eq(302)
         @image.reload
         @image.title.should eq('BB bb Bb bB!')
@@ -152,7 +152,7 @@ describe ImagesController do
         delete :destroy, id: @image.id
       end
 
-      it "should be successful" do
+      it 'should be successful' do
         response.status.should eq(302)
         Image.find_by_id(@image.id).nil?.should be_true
       end

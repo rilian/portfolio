@@ -12,7 +12,7 @@ namespace :flickraw do
     true
   end
 
-  desc "Communicates with Flickr API to get OAuth access tokens for app"
+  desc 'Communicates with Flickr API to get OAuth access tokens for app'
   task :get_flickr_tokens => :environment do
     puts "Please refer to http://www.flickr.com/services/api/ to get your Flickr API key and secret. Put them into site config"
     puts "Current Flickr api_key=#{SITE[:flickr_api_key]} and secret=#{SITE[:flickr_shared_secret]}"
@@ -47,7 +47,7 @@ namespace :flickraw do
   task :upload_images => :environment do
     return unless check_flickr_api_keys
 
-    puts "Starting upload images"
+    puts 'Starting upload images'
 
     image_to_upload = Image.published.not_from_hidden_collection.readonly(false).
       where("(images.flickr_photo_id = ? OR images.flickr_photo_id IS NULL) AND images.created_at < ?", '', (Time.now - 30.minutes))
@@ -74,10 +74,10 @@ namespace :flickraw do
                                   title: image_to_upload.title,
                                   description: image_to_upload.render_data)
       puts "Image uploaded id = #{flickr_photo_id}"
-      puts "Updating tags"
+      puts 'Updating tags'
 
       flickr.photos.addTags(photo_id: flickr_photo_id, tags: image_to_upload.tags_resolved)
-      puts "Tags updated"
+      puts 'Tags updated'
 
       puts "Getting list of Flickr photosets (albums)"
       photosets = flickr.photosets.getList
@@ -97,15 +97,15 @@ namespace :flickraw do
       time_now = Time.now
       image_to_upload.update_attributes({flickr_photo_id: flickr_photo_id, updated_at: time_now})
     else
-      puts "No images to upload"
+      puts 'No images to upload'
     end
   end
 
-  desc "Updates metadata on Flickr images, which are changed in the last week"
+  desc 'Updates metadata on Flickr images, which are changed in the last week'
   task :update_images_data => :environment do
     return unless check_flickr_api_keys
 
-    puts "Starting update images"
+    puts 'Starting update images'
 
     images_to_update = Image.published.not_from_hidden_collection.readonly(false).
         where('images.flickr_photo_id != "" AND images.updated_at > ? ', (7.days.ago))
@@ -177,14 +177,14 @@ namespace :flickraw do
     end
   end
 
-  desc "Removes photos on Flickr which are deleted on the site"
+  desc 'Removes photos on Flickr which are deleted on the site'
   task :remove_deleted_on_site => :environment do
     return unless check_flickr_api_keys
 
-    puts "Removing images temporary disabled"
+    puts 'Removing images temporary disabled'
     return true
 
-    puts "Starting remove images"
+    puts 'Starting remove images'
 
     FlickRaw.api_key = SITE[:flickr_api_key]
     FlickRaw.shared_secret = SITE[:flickr_shared_secret]
@@ -216,12 +216,12 @@ namespace :flickraw do
     end
   end
 
-  desc "Gets latest comments on Flickr images and export to Disqus"
+  desc 'Gets latest comments on Flickr images and export to Disqus'
   task :post_comments_to_disqus => :environment do
     return unless check_flickr_api_keys
 
     #TODO: check why this task does not work. Probably Disqus token expired
-    puts "Getting list of Disqus threads"
+    puts 'Getting list of Disqus threads'
 
     # there is a limit 100, default 25, and we have to use cursor to get all the available threads
     has_next_cursor = true
@@ -248,13 +248,13 @@ namespace :flickraw do
         has_next_cursor = false
       end
 
-      # disqus_threads_for_images == {:"108"=>"802536169", :"107"=>"802508264", ... }
+      # disqus_threads_for_images == {:'108'=>'802536169', :'107'=>'802508264', ... }
       response_json['response'].each do |thread|
         disqus_threads_for_images[(thread['identifiers'][0].scan(/(\d+)/).last.first).to_sym] = thread['id']
       end
     end
 
-    puts "Starting update images"
+    puts 'Starting update images'
 
     FlickRaw.api_key = SITE[:flickr_api_key]
     FlickRaw.shared_secret = SITE[:flickr_shared_secret]

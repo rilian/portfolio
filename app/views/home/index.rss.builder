@@ -1,8 +1,8 @@
-xml.instruct! :xml, version: "1.0"
-xml.rss version: "2.0" do
+xml.instruct! :xml, version: '1.0'
+xml.rss version: '2.0' do
   xml.channel do
-    xml.title "Portfolio"
-    xml.description { xml.cdata!("Portfolio Works") }
+    xml.title 'Portfolio'
+    xml.description { xml.cdata!('Portfolio Works') }
     xml.link rss_feed_url
 
     @images.each do |image|

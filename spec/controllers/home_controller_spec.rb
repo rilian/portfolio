@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe HomeController do
-  it "should use HomeController" do
+  it 'should use HomeController' do
     controller.should be_an_instance_of(HomeController)
   end
 
   describe "GET 'index'" do
-    it "should be successful" do
+    it 'should be successful' do
       get :index
       response.should be_success
       response.should render_template(:index)
@@ -15,7 +15,7 @@ describe HomeController do
   end
 
   describe "GET 'rss'" do
-    it "should be successful" do
+    it 'should be successful' do
       get :index, format: :rss
       response.should be_success
       response.should render_template(:index)

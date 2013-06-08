@@ -3,11 +3,11 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
-  # note that it will be overwritten if you use your own mailer class with default "from" parameter.
+  # note that it will be overwritten if you use your own mailer class with default 'from' parameter.
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = "Devise::Mailer"
+  # config.mailer = 'Devise::Mailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -57,8 +57,8 @@ Devise.setup do |config|
   # If http headers should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
 
-  # The realm used in Http Basic Authentication. "Application" by default.
-  # config.http_authentication_realm = "Application"
+  # The realm used in Http Basic Authentication. 'Application' by default.
+  # config.http_authentication_realm = 'Application'
 
   # It will change confirmation, password recovery and other workflows
   # to behave the same regardless if the e-mail provided was right or wrong.
@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "48c817cced31a10a41b243701cb2a07e6dfaa17b52e1661169f30356d7243bc99ca80013e409e44159c4d51e941b74fc17ff74b700dea97c4ef83420c9dae22e"
+  # config.pepper = '48c817cced31a10a41b243701cb2a07e6dfaa17b52e1661169f30356d7243bc99ca80013e409e44159c4d51e941b74fc17ff74b700dea97c4ef83420c9dae22e'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

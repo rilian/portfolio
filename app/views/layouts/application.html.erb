@@ -7,8 +7,8 @@
     <title><%= content_for?(:title) ? yield(:title) : SITE[:title] %></title>
     <meta name="description" content="<%= SITE[:description] %>">
     <meta name="author" content="">
-    <%= stylesheet_link_tag    "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
     <%= auto_discovery_link_tag(:rss, rss_feed_url) %>
@@ -38,7 +38,7 @@
         <div class="row">
           <div class="span12">
             <% flash.each do |name, msg| %>
-              <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+              <div class="alert alert-<%= name == :notice ? 'success' : 'error' %>">
                 <a class="close" data-dismiss="alert">×</a>
                 <%= msg %>
               </div>

@@ -41,9 +41,9 @@ class Image < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope order: "images.published_at DESC, images.created_at DESC"
+  default_scope order: 'images.published_at DESC, images.created_at DESC'
 
-  scope :published, ->() { where("images.published_at IS NOT NULL") }
+  scope :published, ->() { where('images.published_at IS NOT NULL') }
 
   scope :not_from_hidden_collection, ->() { joins(:collection).where("(collections.is_hidden = ? AND collections.is_upload_to_stock = ?)", false, true) }
 

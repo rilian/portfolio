@@ -20,35 +20,35 @@ describe Collection do
     it { should validate_uniqueness_of(:title) }
   end
 
-  describe "generators" do
+  describe 'generators' do
     before :each do
       @collection = FactoryGirl.create(:collection)
     end
 
-    it "should be valid" do
+    it 'should be valid' do
       @collection.should be_valid
     end
   end
 
-  describe "scopes" do
+  describe 'scopes' do
     before do
       @collection_1 = FactoryGirl.create(:collection, weight: 1)
       @collection_2 = FactoryGirl.create(:collection, weight: 3)
       @collection_3 = FactoryGirl.create(:collection, weight: 2)
     end
 
-    it "default scope should return all albums by weight DESC" do
+    it 'default scope should return all albums by weight DESC' do
       Collection.all.map(&:id).should == [@collection_2.id, @collection_3.id, @collection_1.id]
     end
   end
 
   describe 'before filters' do
-    describe "should humanize text values" do
+    describe 'should humanize text values' do
       before do
         @collection = FactoryGirl.create(:collection, title: 'BB bb Bb bB!')
       end
 
-      it "should have humanized values" do
+      it 'should have humanized values' do
         @collection.title.should == 'BB bb Bb bB!'
       end
     end
@@ -59,7 +59,7 @@ describe Collection do
       @collection = FactoryGirl.build(:collection)
     end
 
-    it "should return to_param" do
+    it 'should return to_param' do
       @collection.to_param.should eq("#{@collection.id}-#{@collection.title.parameterize}")
     end
   end

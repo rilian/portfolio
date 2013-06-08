@@ -2,7 +2,7 @@ set :application, 'portfolio'
 set :repository,  'https://github.com/rilian/portfolio.git'
 
 set :rails_env, 'production'
-default_environment["RAILS_ENV"] = 'production'
+default_environment['RAILS_ENV'] = 'production'
 set :normalize_asset_timestamps, false
 
 set :scm, :git
@@ -24,7 +24,7 @@ set :use_sudo, false
 require 'bundler/capistrano'
 
 # use whenever
-set :whenever_command, "bundle exec whenever"
+set :whenever_command, 'bundle exec whenever'
 require 'whenever/capistrano'
 
 # use rvm
@@ -47,7 +47,7 @@ ssh_options[:forward_agent] = true
 set :unicorn_pid, '/tmp/unicorn-irene-rilian-portfolio.pid'
 
 namespace :deploy do
-  desc "Deploy production configs"
+  desc 'Deploy production configs'
   task :config do
     run <<-CMD
       mkdir -p #{shared_path}/uploads &&
@@ -61,7 +61,7 @@ namespace :deploy do
     CMD
   end
 
-  desc "Deploy site config"
+  desc 'Deploy site config'
   task :site_config do
     SITE = YAML.load_file("./config/site.yml")['production']
 
@@ -79,32 +79,32 @@ namespace :deploy do
     CMD
   end
 
-  #desc "Zero-downtime restart of Unicorn"
+  #desc 'Zero-downtime restart of Unicorn'
   #task :restart, except: { no_release: true } do
   #  run "kill -s USR2 `cat /tmp/unicorn-tapwatch.pid`"
   #end
   #
-  #desc "Start unicorn"
+  #desc 'Start unicorn'
   #task :start, except: { no_release: true } do
   #  run "cd #{current_path} ; bundle exec unicorn_rails -c config/unicorn.rb -D"
   #end
   #
-  #desc "Stop unicorn"
+  #desc 'Stop unicorn'
   #task :stop, except: { no_release: true } do
   #  run "kill -s QUIT `cat /tmp/unicorn-tapwatch.pid`"
   #end
 
-  desc "Down-up restart of Unicorn"
+  desc 'Down-up restart of Unicorn'
   task :restart, except: { no_release: true } do
     run "kill -s HUP `cat #{unicorn_pid}`"
   end
 
-  desc "Start unicorn"
+  desc 'Start unicorn'
   task :start, except: { no_release: true } do
     run "cd #{current_path} ; bundle exec unicorn_rails -c config/unicorn.rb -D"
   end
 
-  desc "Stop unicorn"
+  desc 'Stop unicorn'
   task :stop, except: { no_release: true } do
     run "kill -s QUIT `cat #{unicorn_pid}`"
   end

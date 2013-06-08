@@ -7,19 +7,19 @@
         </div>
       </div>
     <% end %>
-    <%= f.input :asset, as: :file, label: "Picture", required: !f.object.asset? %>
+    <%= f.input :asset, as: :file, label: 'Picture', required: !f.object.asset? %>
     <%= f.input :asset_cache, as: :hidden %>
     <%= f.input :collection_id, as: :select, collection: Collection.all, required: true, include_blank: false %>
-    <%= f.input :title, input_html: { class: "input-xxlarge" } %>
-    <%= f.input :desc, label: "Description (one sentence)", input_html: { rows: 2, cols: 40, class: "input-xxlarge" }  %>
-    <%= f.input :place, label: "Place: place, city, region, country", input_html: { class: "input-xxlarge" } %>
-    <%= f.input :date, label: "Year of the picture", as: :date, order: [:year] %>
-    <%= f.input :tags_resolved, label: "Tags (please add a lot relevant to picture)", as: :text, input_html: { rows: 2, cols: 40, class: "input-xxlarge" } %>
+    <%= f.input :title, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :desc, label: "Description (one sentence)", input_html: { rows: 2, cols: 40, class: 'input-xxlarge' }  %>
+    <%= f.input :place, label: 'Place: place, city, region, country', input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :date, label: 'Year of the picture', as: :date, order: [:year] %>
+    <%= f.input :tags_resolved, label: "Tags (please add a lot relevant to picture)", as: :text, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' } %>
     <%= f.input :published_at_checkbox, as: :boolean, label: "Published #{@image.published_at.present? ? " #{@image.published_at.strftime("%H:%M %d/%m/%Y")}" : ""}" %>
-    <%= f.input :flickr_photo_id, label: "Flickr Photo Id", input_html: { class: "input-xxlarge" } %>
-    <%= f.input :deviantart_link, label: "DeviantArt link", input_html: { class: "input-xxlarge" } %>
-    <%= f.input :istockphoto_link, label: "iStockPhoto link", input_html: { class: "input-xxlarge" } %>
-    <%= f.input :shutterstock_link, label: "ShutterStock link", input_html: { class: "input-xxlarge" } %>
+    <%= f.input :flickr_photo_id, label: 'Flickr Photo Id', input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :deviantart_link, label: 'DeviantArt link', input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :istockphoto_link, label: 'iStockPhoto link', input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :shutterstock_link, label: 'ShutterStock link', input_html: { class: 'input-xxlarge' } %>
     <%= f.input :is_for_sale, label: "For sale?" %>
     <%= f.button :submit, class: 'btn-primary' %>
   </div>
