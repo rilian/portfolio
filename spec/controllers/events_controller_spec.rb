@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'ProjectsController' do
+describe 'EventsController' do
   pending
 end

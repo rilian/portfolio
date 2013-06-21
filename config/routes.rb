@@ -14,5 +14,6 @@ Portfolio::Application.routes.draw do
   root to: 'home#index'
 
   resources :collections
+  resources :events, only: [:index, :show]
   resources :images
 end

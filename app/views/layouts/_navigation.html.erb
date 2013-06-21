@@ -8,7 +8,9 @@
         </li>
       <% end %>
     <% end %>
-    <!-- todo: add projects -->
+    <li class="<%= current_page?(events_path) || (@image && @image.collection == event_path(@image.collection)) ? 'active' : '' %>">
+      <%= link_to 'Events', events_path %>
+    </li>
   </ul>
 </div>
 

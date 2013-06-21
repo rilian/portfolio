@@ -1,4 +1,4 @@
-class Project < Collection
+class Event < Collection
   # Includes
 
   # Before, after callbacks
