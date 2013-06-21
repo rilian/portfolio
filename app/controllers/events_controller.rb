@@ -1,9 +1,7 @@
 class EventsController < ApplicationController
-  load_and_authorize_resource :event, except: [:show]
-  load_resource :event, only: [:show]
+  load_resource :event
 
   def index
-    authorize!(:manage, Event)
     @events = @events.includes([:images])
   end
 

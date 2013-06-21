@@ -13,6 +13,7 @@ class Collection < ActiveRecord::Base
   validates_uniqueness_of :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
+  attr_accessible :type, :title, :is_hidden, :weight, :is_upload_to_stock, :description
 
   # Model dictionaries, state machine
 

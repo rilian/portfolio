@@ -12,6 +12,13 @@ describe Collection do
 
   it { should validate_presence_of(:title) }
 
+  it { should allow_mass_assignment_of :type }
+  it { should allow_mass_assignment_of :title }
+  it { should allow_mass_assignment_of :is_hidden }
+  it { should allow_mass_assignment_of :weight }
+  it { should allow_mass_assignment_of :is_upload_to_stock }
+  it { should allow_mass_assignment_of :description }
+
   describe 'instance' do
     before :each do
       FactoryGirl.create(:collection)

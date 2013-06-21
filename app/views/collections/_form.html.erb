@@ -1,9 +1,10 @@
-<%= simple_form_for @collection, html: { class: 'form-horizontal' } do |f| %>
+<%= simple_form_for @collection, as: :collection, url: collection_path(@collection), html: { class: 'form-horizontal' } do |f| %>
   <%= f.input :title %>
   <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
   <%= f.input :is_hidden, as: :boolean, label: "Images hidden?" %>
   <%= f.input :is_upload_to_stock, as: :boolean, label: "Upload to stocks?" %>
   <%= f.input :weight, label: 'Weight' %>
+  <%= f.input :type, collection: %w[Album Event], include_blank: false %>
 
   <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
