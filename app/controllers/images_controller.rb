@@ -4,8 +4,8 @@ class ImagesController < ApplicationController
 
   def index
     @q = Image.unscoped.includes([:collection]).search(params[:q])
-    @images = @q.result(distinct: true)
-    @images = @images.order('created_at DESC') if params[:q].nil?
+    @images = @q.result
+    @images = @images.order('id DESC') if params[:q].nil?
     @images = @images.page(params[:page]).per(Image::PER_PAGE)
   end
 
