@@ -25,7 +25,7 @@
       </li>
       <li class="divider-vertical"></li>
       <li class="<%= current_page?(collections_path) ? 'active' : '' %>">
-        <%= link_to('Collections', collections_path) %>
+        <%= link_to 'Collections', collections_path(q: { s: 'weight desc'})  %>
       </li>
       <li class="divider-vertical"></li>
       <li>

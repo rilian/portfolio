@@ -3,8 +3,9 @@ class CollectionsController < ApplicationController
   load_resource :collection, only: [:show]
 
   def index
-    authorize!(:manage, Collection)
-    @collections = @collections.includes([:images])
+    authorize! :manage, Collection
+    @q = @collections.includes([:images]).search(params[:q])
+    @collections = @q.result
   end
 
   def show

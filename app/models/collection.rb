@@ -18,7 +18,6 @@ class Collection < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope order: 'collections.weight DESC'
 
   class << self
   end
