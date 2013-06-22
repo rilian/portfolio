@@ -20,7 +20,10 @@
       <tr>
         <td><%= collection.id %></td>
         <td><%= collection.type %></td>
-        <td><%= link_to collection.title, collection_path(collection) %></td>
+        <td>
+          <%= link_to collection.title, collection_path(collection) %><br/>
+          <%= collection.description %><br/>
+        </td>
         <td>
           <% if collection.is_hidden? %>
             <span class="label label-important">hidden</span>

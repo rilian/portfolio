@@ -4,6 +4,7 @@ class CollectionsController < ApplicationController
 
   def index
     authorize! :manage, Collection
+    @collections = @collections.unscoped if params[:q] && params[:q][:s]
     @q = @collections.includes([:images]).search(params[:q])
     @collections = @q.result
   end
