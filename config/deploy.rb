@@ -63,7 +63,7 @@ namespace :deploy do
 
   desc 'Deploy site config'
   task :site_config do
-    SITE = YAML.load_file("./config/site.yml")['production']
+    SITE = YAML.load_file('./config/site.yml')['production']
 
     run <<-CMD
       mkdir -p #{shared_path}/config &&

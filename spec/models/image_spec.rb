@@ -124,7 +124,7 @@ describe Image do
       it 'should render correct description and such' do
         @image.render_data.should match(@image.desc)
         @image.render_data.should match(@image.place)
-        @image.render_data.should match(@image.date.strftime("%Y"))
+        @image.render_data.should match(@image.date.strftime('%Y'))
       end
     end
   end

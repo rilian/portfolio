@@ -1,11 +1,11 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -34,7 +34,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
 
-    ActiveSupport::Notifications.subscribe("factory_girl.run_factory") do |name, start, finish, id, payload|
+    ActiveSupport::Notifications.subscribe('factory_girl.run_factory') do |name, start, finish, id, payload|
       execution_time_in_seconds = finish - start
       if execution_time_in_seconds >= 1.0
         $stderr.puts "Slow factory: #{payload[:name]} using strategy #{payload[:strategy]}, time=#{execution_time_in_seconds} sec"

@@ -18,7 +18,7 @@ describe User do
 
   before(:each) do
     @attr = {
-      email: "user@example.com",
+      email: 'user@example.com',
       password: 'foobar',
       password_confirmation: 'foobar'
     }
@@ -29,7 +29,7 @@ describe User do
   end
 
   it 'should require an email address' do
-    no_email_user = User.new(@attr.merge(email: ""))
+    no_email_user = User.new(@attr.merge(email: ''))
     no_email_user.should_not be_valid
   end
 
@@ -89,25 +89,25 @@ describe User do
         should_not be_valid
     end
 
-    it "should reject short passwords" do
-      short = "a" * 5
+    it 'should reject short passwords' do
+      short = 'a' * 5
       hash = @attr.merge(password: short, password_confirmation: short)
       User.new(hash).should_not be_valid
     end
 
   end
 
-  describe "password encryption" do
+  describe 'password encryption' do
 
     before(:each) do
       @user = User.create!(@attr)
     end
 
-    it "should have an encrypted password attribute" do
+    it 'should have an encrypted password attribute' do
       @user.should respond_to(:encrypted_password)
     end
 
-    it "should set the encrypted password attribute" do
+    it 'should set the encrypted password attribute' do
       @user.encrypted_password.should_not be_blank
     end
 

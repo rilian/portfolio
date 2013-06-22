@@ -10,7 +10,7 @@ describe HomeController do
       get :index
       response.should be_success
       response.should render_template(:index)
-      response.content_type.should eq("text/html")
+      response.content_type.should eq('text/html')
     end
   end
 
@@ -19,7 +19,7 @@ describe HomeController do
       get :index, format: :rss
       response.should be_success
       response.should render_template(:index)
-      response.content_type.should eq("application/rss+xml")
+      response.content_type.should eq('application/rss+xml')
     end
   end
 end

@@ -5,7 +5,7 @@ describe 'flickraw' do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "tasks/flickraw"
+    Rake.application.rake_require 'tasks/flickraw'
     Rake::Task.define_task(:environment)
   end
 

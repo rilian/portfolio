@@ -45,7 +45,7 @@ class Image < ActiveRecord::Base
 
   scope :published, ->() { where('images.published_at IS NOT NULL') }
 
-  scope :not_from_hidden_collection, ->() { joins(:collection).where("(collections.is_hidden = ? AND collections.is_upload_to_stock = ?)", false, true) }
+  scope :not_from_hidden_collection, ->() { joins(:collection).where('(collections.is_hidden = ? AND collections.is_upload_to_stock = ?)', false, true) }
 
   class << self
   end
@@ -73,7 +73,7 @@ class Image < ActiveRecord::Base
 
   def render_data
     data = ''
-    [self.desc, self.place, self.date.try(:strftime, "%Y")].each do |text|
+    [self.desc, self.place, self.date.try(:strftime, '%Y')].each do |text|
       unless text.empty?
         data << '. ' if data.length > 0
         data << text

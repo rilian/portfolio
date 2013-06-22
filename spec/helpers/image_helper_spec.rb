@@ -41,8 +41,8 @@ describe ImageHelper do
 
   describe 'highlight_links' do
     it 'highlights link in text' do
-      highlight_links("http://google.com").should == "<a href='http://google.com' rel='nofollow'>http://google.com</a>"
-      highlight_links("test https://site.local/?xx=123-yy test").should ==
+      highlight_links('http://google.com').should == "<a href='http://google.com' rel='nofollow'>http://google.com</a>"
+      highlight_links('test https://site.local/?xx=123-yy test').should ==
         "test <a href='https://site.local/?xx=123-yy' rel='nofollow'>https://site.local/?xx=123-yy</a> test"
       highlight_links("http://www.1-1.org/Title-1\r\nhttp://www.2-2.org/Title-2").should ==
         "<a href='http://www.1-1.org/Title-1' rel='nofollow'>http://www.1-1.org/Title-1</a>\r\n"+

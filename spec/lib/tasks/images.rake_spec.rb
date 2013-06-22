@@ -5,7 +5,7 @@ describe 'images' do
   before do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require "tasks/images"
+    Rake.application.rake_require 'tasks/images'
     Rake::Task.define_task(:environment)
   end
 
