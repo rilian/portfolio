@@ -28,6 +28,13 @@ class Collection < ActiveRecord::Base
     "#{self.id}-#{self.title.parameterize}"
   end
 
+  ##
+  # Returns item label in select
+  #
+  def to_label
+    "[#{self.type}] #{self.title}"
+  end
+
   # Private methods (for example: custom validators)
   private
 end
