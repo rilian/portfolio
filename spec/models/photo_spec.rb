@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Event do
+describe Photo do
   pending
 end
