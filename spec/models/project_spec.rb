@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Event do
+describe Project do
   pending
 end

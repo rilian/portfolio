@@ -1,4 +1,4 @@
-class Event < Collection
+class Project < ActiveRecord::Base
   # Includes
 
   # Before, after callbacks

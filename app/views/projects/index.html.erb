@@ -1,0 +1,22 @@
+<h1>
+  <% if user_signed_in? %>
+    <%= link_to 'New Project', new_collection_path, class: 'btn btn-primary' %>
+  <% end %>
+
+  Projects
+  <small>list of all projects</small>
+</h1>
+
+<table class="table">
+  <tbody>
+  <% @projects.each do |project| %>
+    <tr>
+      <td>
+        <p><%= link_to project.title, project_path(project) %></p>
+        <p><%= project.description %></p>
+        <p>first photo</p>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

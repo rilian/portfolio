@@ -8,8 +8,8 @@
         </li>
       <% end %>
     <% end %>
-    <li class="<%= current_page?(events_path) || (@image && @image.collection == event_path(@image.collection)) ? 'active' : '' %>">
-      <%= link_to 'Events', events_path %>
+    <li class="<%= current_page?(projects_path) || (@image && @image.collection == project_path(@image.collection)) ? 'active' : '' %>">
+      <%= link_to 'Projects', projects_path %>
     </li>
   </ul>
 </div>

@@ -3,7 +3,6 @@
 <%= link_to 'New Collection', new_collection_path, class: 'btn btn-primary' %>
 
 <%= link_to 'Albums', collections_path(q: { type_eq: 'Album', s: 'weight desc' }), class: 'btn' %>
-<%= link_to 'Events', collections_path(q: { type_eq: 'Event', s: 'weight desc' }), class: 'btn' %>
 
 <table class="table">
   <thead>
