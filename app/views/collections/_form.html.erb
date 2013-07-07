@@ -7,7 +7,7 @@
   <%= f.input :is_hidden, as: :boolean, label: "Images hidden?" %>
   <%= f.input :is_upload_to_stock, as: :boolean, label: "Upload to stocks?" %>
   <%= f.input :weight, label: 'Weight' %>
-  <%= f.input :type, collection: %w[Album Event], include_blank: false %>
+  <%= f.input :type, collection: Collection.TYPES, include_blank: false %>
 
   <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
