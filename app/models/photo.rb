@@ -14,15 +14,17 @@ class Photo < ActiveRecord::Base
   end
 
   PER_PAGE = 50
+  OWNER_TYPES = %w[Project] # Event
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
-  belongs_to :collection
+  belongs_to :owner, polymorphic: true
 
   # Validations: presence > by type > validates
-  validates_presence_of :asset, :collection
+  validates :owner_type, inclusion: {in: Photo::OWNER_TYPES}
+  validates_presence_of :asset, :owner_id, :owner_type
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :collection_id, :desc, :image_width, :image_height
+  attr_accessible :asset, :asset_cache, :owner_id, :owner_type, :desc, :image_width, :image_height
 
   # Model dictionaries, state machine
 
