@@ -28,6 +28,10 @@
         <%= link_to 'Albums', albums_path(q: { s: 'weight desc'})  %>
       </li>
       <li class="divider-vertical"></li>
+      <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
+        <%= link_to 'Projects', projects_path(q: { s: 'weight desc'})  %>
+      </li>
+      <li class="divider-vertical"></li>
       <li>
         <%= link_to('Edit account', edit_user_registration_path) %>
       </li>

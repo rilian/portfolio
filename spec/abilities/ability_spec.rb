@@ -20,6 +20,7 @@ describe Ability do
       @ability.should_not be_able_to(:manage, :all)
 
       @ability.should be_able_to(:read, Album.new)
+      @ability.should be_able_to(:read, Project.new)
     end
   end
 end
