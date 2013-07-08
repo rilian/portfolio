@@ -3,7 +3,7 @@ class UpdatePhotoParams < ActiveRecord::Migration
     add_column :photos, :image_width, :integer
     add_column :photos, :image_height, :integer
 
-    add_column :photos, :owner_type, :string, null: false
-    add_column :photos, :owner_id, :integer, null: false
+    add_column :photos, :owner_type, :string
+    add_column :photos, :owner_id, :integer
   end
 end

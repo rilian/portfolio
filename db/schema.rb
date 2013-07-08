@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623225258) do
+ActiveRecord::Schema.define(:version => 20130707221044) do
 
   create_table "collections", :force => true do |t|
     t.string  "title",                                 :null => false
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20130623225258) do
     t.integer "weight",             :default => 0
     t.boolean "is_upload_to_stock", :default => true
     t.text    "description"
-    t.string  "type"
   end
 
   add_index "collections", ["is_hidden"], :name => "index_albums_on_is_hidden"
@@ -56,6 +55,10 @@ ActiveRecord::Schema.define(:version => 20130623225258) do
     t.text     "desc"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "image_width"
+    t.integer  "image_height"
+    t.string   "owner_type"
+    t.integer  "owner_id"
   end
 
   add_index "photos", ["collection_id"], :name => "index_photos_on_collection_id"
