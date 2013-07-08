@@ -13,7 +13,7 @@ Portfolio::Application.routes.draw do
 
   root to: 'home#index'
 
-  resources :collections
+  resources :albums
   resources :projects
   resources :images
 end

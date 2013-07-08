@@ -6,7 +6,7 @@ class Ability
     if user
       can :manage, :all
     else
-      can :read, Collection
+      can :read, Album
     end
   end
 end

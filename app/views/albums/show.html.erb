@@ -1,0 +1,5 @@
+<% if @album.description %>
+  <p><%= @album.description %></p>
+<% end %>
+
+<%= render 'images/gallery', images: @images %>

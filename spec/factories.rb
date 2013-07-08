@@ -17,18 +17,14 @@ FactoryGirl.define do
     # confirmed_at Time.now
   end
 
-  factory :collection do
+  factory :album do
     sequence(:title) { |n| "Title #{n}" }
     images []
     is_hidden false
   end
 
-  factory :album, parent: :collection do
-    type 'Album'
-  end
-
   factory :image do
-    collection
+    album
     asset                 File.open("#{Rails.root}/spec/fixtures/file.jpg")
     sequence(:title)      { |n| "Title #{n}" }
     desc                  { FactoryGirl.generate(:body) }

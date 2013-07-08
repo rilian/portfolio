@@ -1,6 +1,6 @@
-<%= simple_form_for @collection,
-                    as: :collection,
-                    url: (@collection.new_record? ? collections_path : collection_path(@collection)),
+<%= simple_form_for @album,
+                    as: :album,
+                    url: (@album.new_record? ? albums_path : album_path(@album)),
                     html: { class: 'form-horizontal' } do |f| %>
   <%= f.input :title %>
   <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>

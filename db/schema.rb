@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130707221044) do
+ActiveRecord::Schema.define(:version => 20130708085732) do
 
-  create_table "collections", :force => true do |t|
+  create_table "albums", :force => true do |t|
     t.string  "title",                                 :null => false
     t.boolean "is_hidden",          :default => false
     t.integer "weight",             :default => 0
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(:version => 20130707221044) do
     t.text    "description"
   end
 
-  add_index "collections", ["is_hidden"], :name => "index_albums_on_is_hidden"
-  add_index "collections", ["title"], :name => "index_albums_on_title", :unique => true
-  add_index "collections", ["weight"], :name => "index_albums_on_weight"
+  add_index "albums", ["is_hidden"], :name => "index_albums_on_is_hidden"
+  add_index "albums", ["title"], :name => "index_albums_on_title", :unique => true
+  add_index "albums", ["weight"], :name => "index_albums_on_weight"
 
   create_table "images", :force => true do |t|
-    t.integer  "collection_id"
+    t.integer  "album_id"
     t.string   "asset"
     t.string   "title"
     t.string   "place"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20130707221044) do
     t.integer  "image_height"
   end
 
-  add_index "images", ["collection_id"], :name => "index_images_on_album_id"
+  add_index "images", ["album_id"], :name => "index_images_on_album_id"
   add_index "images", ["published_at"], :name => "index_images_on_published_at"
 
   create_table "photos", :force => true do |t|

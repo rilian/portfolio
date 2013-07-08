@@ -10,7 +10,7 @@
   end %>
 </div>
 <div>
-  Collection: <%= link_to(image.collection.title, collection_url(image.collection)) %>
+  Album: <%= link_to(image.album.title, album_url(image.album)) %>
 </div>
 
 <% unless image.tags.empty? %>

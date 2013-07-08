@@ -49,7 +49,7 @@ namespace :flickraw do
 
     puts 'Starting upload images'
 
-    image_to_upload = Image.published.not_from_hidden_collection.readonly(false).
+    image_to_upload = Image.published.not_from_hidden_album.readonly(false).
       where("(images.flickr_photo_id = ? OR images.flickr_photo_id IS NULL) AND images.created_at < ?", '', (Time.now - 30.minutes))
 
     puts "Total images to upload: #{image_to_upload.all.map(&:id).inspect}"
@@ -82,16 +82,16 @@ namespace :flickraw do
       puts "Getting list of Flickr photosets (albums)"
       photosets = flickr.photosets.getList
 
-      if photosets.map(&:title).include?(image_to_upload.collection.title)
+      if photosets.map(&:title).include?(image_to_upload.album.title)
         # Add
-        photoset_id = photosets.select {|p| p['title'] == image_to_upload.collection.title}[0]['id']
+        photoset_id = photosets.select {|p| p['title'] == image_to_upload.album.title}[0]['id']
         puts "Adding image #{flickr_photo_id} to photoset #{photoset_id}"
         flickr.photosets.addPhoto(photoset_id: photoset_id, photo_id: flickr_photo_id)
       else
         # Create photoset
-        puts "Creating photoset '#{image_to_upload.collection.title}'"
-        flickr.photosets.create(title: image_to_upload.collection.title, description: '', primary_photo_id: flickr_photo_id)
-        puts "Image #{flickr_photo_id} set as primary in photoset #{image_to_upload.collection.title}"
+        puts "Creating photoset '#{image_to_upload.album.title}'"
+        flickr.photosets.create(title: image_to_upload.album.title, description: '', primary_photo_id: flickr_photo_id)
+        puts "Image #{flickr_photo_id} set as primary in photoset #{image_to_upload.album.title}"
       end
 
       time_now = Time.now
@@ -107,7 +107,7 @@ namespace :flickraw do
 
     puts 'Starting update images'
 
-    images_to_update = Image.published.not_from_hidden_collection.readonly(false).
+    images_to_update = Image.published.not_from_hidden_album.readonly(false).
         where('images.flickr_photo_id != "" AND images.updated_at > ? ', (7.days.ago))
 
     if images_to_update.size > 0
@@ -137,12 +137,12 @@ namespace :flickraw do
           update_photoset = false
           current_photo_album = photo_context['set'][0]['title']
 
-          if image.collection.title != current_photo_album
+          if image.album.title != current_photo_album
             puts 'Updating photosets, removing image from other photosets'
             update_photoset = true
 
             photo_context['set'].each do |set|
-              if image.collection.title != set['title']
+              if image.album.title != set['title']
                 puts "Remove image #{image.flickr_photo_id} from set \"#{set['title']}\""
                 flickr.photosets.removePhoto(photoset_id: photo_context['set'][0]['id'], photo_id: image.flickr_photo_id)
               end
@@ -153,16 +153,16 @@ namespace :flickraw do
             puts "Getting list of Flickr photosets (albums)"
             photosets = flickr.photosets.getList
 
-            if photosets.map(&:title).include?(image.collection.title)
+            if photosets.map(&:title).include?(image.album.title)
               # Add
-              photoset_id = photosets.select {|p| p['title'] == image.collection.title}[0]['id']
+              photoset_id = photosets.select {|p| p['title'] == image.album.title}[0]['id']
               puts "Adding image #{image.flickr_photo_id} to photoset #{photoset_id}"
               flickr.photosets.addPhoto(photoset_id: photoset_id, photo_id: image.flickr_photo_id)
             else
               # Create photoset
-              puts "Creating photoset '#{image.collection.title}'"
-              flickr.photosets.create(title: image.collection.title, description: '', primary_photo_id: image.flickr_photo_id)
-              puts "Image #{image.flickr_photo_id} set as primary in photoset #{image.collection.title}"
+              puts "Creating photoset '#{image.album.title}'"
+              flickr.photosets.create(title: image.album.title, description: '', primary_photo_id: image.flickr_photo_id)
+              puts "Image #{image.flickr_photo_id} set as primary in photoset #{image.album.title}"
             end
           end
 
@@ -266,7 +266,7 @@ namespace :flickraw do
 
     puts "You are now authenticated as #{login.username}"
 
-    images = Image.published.not_from_hidden_collection.readonly(false).where('images.flickr_photo_id != ""')
+    images = Image.published.not_from_hidden_album.readonly(false).where('images.flickr_photo_id != ""')
 
     puts "Updating #{images.size} images ..."
 

@@ -7,7 +7,7 @@ describe ImagesController do
 
   describe 'unauthorized request' do
     context 'inaccessible pages' do
-      context 'collection' do
+      context 'album' do
         after do
           response.should redirect_to root_path
           response.status.should eq(302)
@@ -96,11 +96,11 @@ describe ImagesController do
 
     describe "POST 'create'" do
       before do
-        @collection = FactoryGirl.create(:collection)
+        @album = FactoryGirl.create(:album)
         @file = fixture_file_upload('/file.jpg', 'image/jpg')
 
         post :create, image: {
-          collection_id: @collection.id,
+          album_id: @album.id,
           asset: @file,
           title: 'aa AA aA Aa',
           desc: 'bb BB bB Bb',
@@ -116,7 +116,7 @@ describe ImagesController do
         image.title.should eq('aa AA aA Aa')
         image.desc.should eq('bb BB bB Bb')
         image.place.should eq('cc CC Cc cC')
-        image.collection_id.should eq(@collection.id)
+        image.album_id.should eq(@album.id)
         image.published_at.should == nil
       end
     end
