@@ -80,7 +80,7 @@ describe Image do
     describe 'published_at' do
       before :each do
         time_now = Time.now
-        Time.stub!(:now).and_return(time_now)
+        Time.stub(:now).and_return(time_now)
       end
 
       describe 'should be updated' do
