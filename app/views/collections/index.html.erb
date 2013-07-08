@@ -8,7 +8,6 @@
   <thead>
     <tr>
       <th><%= sort_link @q, :id %></th>
-      <th><%= sort_link @q, :type %></th>
       <th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :is_visible %></th>
       <th><%= sort_link @q, :is_upload_to_stock %></th>
@@ -21,7 +20,6 @@
     <% @collections.each do |collection| %>
       <tr>
         <td><%= collection.id %></td>
-        <td><%= collection.type %></td>
         <td>
           <%= link_to collection.title, collection_path(collection) %><br/>
           <%= collection.description %><br/>
@@ -54,7 +52,6 @@
   <thead>
     <tr>
       <th><%= sort_link @q, :id %></th>
-      <th><%= sort_link @q, :type %></th>
       <th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :is_visible %></th>
       <th><%= sort_link @q, :is_upload_to_stock %></th>
