@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708150748) do
+ActiveRecord::Schema.define(:version => 20130708200910) do
 
   create_table "albums", :force => true do |t|
     t.string  "title",                                :null => false
@@ -71,9 +71,12 @@ ActiveRecord::Schema.define(:version => 20130708150748) do
     t.text     "description"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.integer  "weight",       :default => 0,     :null => false
+    t.text     "info"
   end
 
   add_index "projects", ["is_published"], :name => "index_projects_on_is_published"
+  add_index "projects", ["weight"], :name => "index_projects_on_weight"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
