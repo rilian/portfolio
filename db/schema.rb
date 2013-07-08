@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708104211) do
+ActiveRecord::Schema.define(:version => 20130708135356) do
 
   create_table "albums", :force => true do |t|
     t.string  "title",                                 :null => false
@@ -53,12 +53,13 @@ ActiveRecord::Schema.define(:version => 20130708104211) do
     t.integer  "collection_id"
     t.string   "asset"
     t.text     "desc"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "owner_type"
     t.integer  "owner_id"
+    t.integer  "weight",        :default => 0, :null => false
   end
 
   add_index "photos", ["collection_id"], :name => "index_photos_on_collection_id"
