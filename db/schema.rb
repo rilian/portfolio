@@ -64,9 +64,11 @@ ActiveRecord::Schema.define(:version => 20130708104211) do
   add_index "photos", ["collection_id"], :name => "index_photos_on_collection_id"
 
   create_table "projects", :force => true do |t|
-    t.string  "title",                           :null => false
-    t.boolean "is_published", :default => false, :null => false
-    t.text    "description"
+    t.string   "title",                           :null => false
+    t.boolean  "is_published", :default => false, :null => false
+    t.text     "description"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "projects", ["is_published"], :name => "index_projects_on_is_published"

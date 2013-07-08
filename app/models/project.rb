@@ -21,6 +21,10 @@ class Project < ActiveRecord::Base
 
   # Other model methods
 
+  def cover_photo
+    nil
+  end
+
   # Private methods (for example: custom validators)
   private
 end
