@@ -11,18 +11,17 @@
     <th><%= sort_link @q, :id %></th>
     <th>Picture</th>
     <th>About</th>
-    <% if user_signed_in? %>
-      <th><%= sort_link @q, :created_at %></th>
-      <th><%= sort_link @q, :is_published %></th>
-      <th>Actions</th>
-    <% end %>
+    <th><%= sort_link @q, :created_at %></th>
+    <th><%= sort_link @q, :is_published %></th>
+    <th>Photos</th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
   <% @projects.each do |project| %>
     <tr>
       <td>
-        <%= project.id %>
+        <%= link_to project.id, project_path(project) %>
       </td>
       <td>
         <% if project.cover_photo %>
@@ -36,20 +35,21 @@
         <br/>
         <%= project.description %>
       </td>
-      <% if user_signed_in? %>
-        <td>
-          <%= project.created_at.strftime('%d %b %Y') %>
-        </td>
-        <td>
-          <%= project.is_published? ? 'yes' : 'no' %>
-        </td>
-        <td>
-          <p>
-            <%= link_to 'Edit', edit_project_path(project), class: 'btn btn-primary' %>
-            <%= link_to 'Delete', project_path(project), class: 'btn', method: 'delete', data: {confirm: 'Delete project ?'} %>
-          </p>
-        </td>
-      <% end %>
+      <td>
+        <%= project.created_at.strftime('%d %b %Y') %>
+      </td>
+      <td>
+        <%= project.is_published? ? 'yes' : 'no' %>
+      </td>
+      <td>
+        <%= project.photos.count %>
+      </td>
+      <td>
+        <p>
+          <%= link_to 'Edit', edit_project_path(project), class: 'btn btn-primary' %>
+          <%= link_to 'Delete', project_path(project), class: 'btn', method: 'delete', data: {confirm: 'Delete project ?'} %>
+        </p>
+      </td>
     </tr>
   <% end %>
   </tbody>
@@ -58,11 +58,10 @@
     <th><%= sort_link @q, :id %></th>
     <th>Picture</th>
     <th>About</th>
-    <% if user_signed_in? %>
-      <th><%= sort_link @q, :created_at %></th>
-      <th><%= sort_link @q, :is_published %></th>
-      <th>Actions</th>
-    <% end %>
+    <th><%= sort_link @q, :created_at %></th>
+    <th><%= sort_link @q, :is_published %></th>
+    <th>Photos</th>
+    <th>Actions</th>
   </tr>
   </thead>
 </table>

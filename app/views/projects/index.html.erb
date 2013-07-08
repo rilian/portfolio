@@ -1,5 +1,1 @@
-<% if user_signed_in? %>
-  <%= render 'index_admin' %>
-<% else %>
-  <%= render 'index_user' %>
-<% end %>
+<%= render user_signed_in? ? 'index_admin' : 'index_user' %>
