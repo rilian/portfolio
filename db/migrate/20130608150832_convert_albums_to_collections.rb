@@ -4,8 +4,12 @@ class ConvertAlbumsToCollections < ActiveRecord::Migration
 
     add_column :collections, :type, :string
 
-    Collection.all.each do |c|
-      c.update_attribute(:type, 'Album')
+    begin
+      Collection.all.each do |c|
+        c.update_attribute(:type, 'Album')
+      end
+    rescue
+      puts 'data migration failed. skipping'
     end
 
     rename_column :images, :album_id, :collection_id
