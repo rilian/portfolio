@@ -1,0 +1,13 @@
+<% @projects.each do |project| %>
+  <li class="span12">
+    <a name="p<%= project.id %>"></a>
+
+    <h2><%= link_to project.title, project_url(project) %></h2>
+
+    <div class="row">
+      text
+    </div>
+    <hr>
+  </li>
+<% end %>
+</ul>

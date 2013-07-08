@@ -28,7 +28,7 @@
           <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-primary' %>
         <% end %>
 
-        <%= link_to image.title, "#{image_url(image)}" %>
+        <%= link_to image.title, image_url(image) %>
 
         <% if user_signed_in? %>
           <%= check_title(image) %>
