@@ -1,8 +1,9 @@
-<h1>Albums <small>list of all albums</small></h1>
+<h1>
+  <%= link_to 'New Album', new_album_path, class: 'btn btn-primary' %>
+  Albums <small>list of all albums</small>
+</h1>
 
-<%= link_to 'New Album', new_album_path, class: 'btn btn-primary' %>
 
-<%= link_to 'Albums', albums_path(q: { type_eq: 'Album', s: 'weight desc' }), class: 'btn' %>
 
 <table class="table">
   <thead>

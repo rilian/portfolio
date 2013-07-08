@@ -1,6 +1,10 @@
 <%= link_to 'Portfolio', root_path, class: 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
+    <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
+      <%= link_to 'Projects', projects_path %>
+    </li>
+    <li class="divider-vertical"></li>
     <% Album.includes([:images]).all.each do |album| %>
       <% if album.images.size > 0 %>
         <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
@@ -8,9 +12,6 @@
         </li>
       <% end %>
     <% end %>
-    <li class="<%= current_page?(projects_path) ? 'active' : '' %>">
-      <%= link_to 'Projects', projects_path %>
-    </li>
   </ul>
 </div>
 
@@ -26,10 +27,6 @@
       <li class="divider-vertical"></li>
       <li class="<%= current_page?(albums_path) ? 'active' : '' %>">
         <%= link_to 'Albums', albums_path(q: { s: 'weight desc'})  %>
-      </li>
-      <li class="divider-vertical"></li>
-      <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
-        <%= link_to 'Projects', projects_path(q: { s: 'weight desc'})  %>
       </li>
       <li class="divider-vertical"></li>
       <li>
