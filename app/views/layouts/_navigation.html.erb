@@ -1,11 +1,11 @@
 <%= link_to 'Portfolio', root_path, class: 'brand' %>
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
-    <!--<li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
+    <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
       <%= link_to 'Projects', projects_path %>
-    </li>-->
+    </li>
     <li class="divider-vertical"></li>
-    <% Album.includes([:images]).all.each do |album| %>
+    <% Album.published.includes([:images]).each do |album| %>
       <% if album.images.size > 0 %>
         <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
           <%= link_to album.title, album_path(album) %>

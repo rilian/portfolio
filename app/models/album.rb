@@ -20,6 +20,8 @@ class Album < ActiveRecord::Base
   # Scopes
   default_scope order: 'albums.weight DESC'
 
+  scope :published, ->() { where(is_published: true) }
+
   class << self
   end
 
