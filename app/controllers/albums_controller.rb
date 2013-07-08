@@ -1,6 +1,5 @@
 class AlbumsController < ApplicationController
-  load_and_authorize_resource :album, except: [:show]
-  load_resource :album, only: [:show]
+  load_and_authorize_resource :album
 
   def index
     authorize! :manage, Album

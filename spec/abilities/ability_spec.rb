@@ -16,11 +16,25 @@ describe Ability do
     before do
       @ability = Ability.new(nil)
     end
-    it 'should not have user abilities' do
-      @ability.should_not be_able_to(:manage, :all)
 
-      @ability.should be_able_to(:read, Album.new)
-      @ability.should be_able_to(:read, Project.new)
+    it 'cannot manage all' do
+      @ability.should_not be_able_to(:manage, :all)
+    end
+
+    it 'can :read published Album' do
+      @ability.should be_able_to(:read, Album.new(is_published: true))
+    end
+
+    it 'cannot :read non-published Album' do
+      @ability.should_not be_able_to(:read, Album.new(is_published: false))
+    end
+
+    it 'can :read published Project' do
+      @ability.should be_able_to(:read, Project.new(is_published: true))
+    end
+
+    it 'cannot :read non-published Project' do
+      @ability.should_not be_able_to(:read, Project.new(is_published: false))
     end
   end
 end

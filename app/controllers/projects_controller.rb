@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  load_resource :project
+  load_and_authorize_resource :project
 
   def index
     @projects = @projects.unscoped if params[:q] && params[:q][:s]

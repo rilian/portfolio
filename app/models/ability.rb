@@ -6,8 +6,8 @@ class Ability
     if user
       can :manage, :all
     else
-      can :read, Album
-      can :read, Project
+      can :read, Album, is_published: true
+      can :read, Project, is_published: true
     end
   end
 end
