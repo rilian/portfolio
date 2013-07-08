@@ -1,0 +1,10 @@
+<%= simple_form_for @project,
+                    as: :project,
+                    url: (@project.new_record? ? projects_path : project_path(@project)),
+                    html: {class: 'form-horizontal'} do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :is_published, as: :boolean, label: "Published?" %>
+
+  <%= f.button :submit, class: 'btn-primary' %>
+<% end %>

@@ -12,10 +12,12 @@
     <tr>
       <th><%= sort_link @q, :id %></th>
       <th>Picture</th>
-      <th><%= sort_link @q, :created_at %></th>
       <th>About</th>
-      <th><%= sort_link @q, :is_published %></th>
-      <th>Actions</th>
+      <% if user_signed_in? %>
+        <th><%= sort_link @q, :created_at %></th>
+        <th><%= sort_link @q, :is_published %></th>
+        <th>Actions</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -25,21 +27,30 @@
         <%= project.id %>
       </td>
       <td>
-        thumb
-      </td>
-      <td>
-        <%= project.created_at.strftmi('%d-%M-%Y') %>
-      </td>
-      <td>
-        <%= link_to project.title, project_path(project) %>
+        <% if project.cover_photo %>
+          <%= link_to(edit_project_path(project), class: 'thumbnail span2') do
+            image_tag(project.cover_photo.asset.url(:span2))
+          end %>
+        <% end %>
       </td>
       <td>
         <%= link_to project.title, project_path(project) %><br/>
         <%= project.description %>
       </td>
-      <td>
-        actions
-      </td>
+      <% if user_signed_in? %>
+        <td>
+          <%= project.created_at.strftime('%d %b %Y') %>
+        </td>
+        <td>
+          <%= project.is_published? ? 'yes' : 'no' %>
+        </td>
+        <td>
+          <p>
+            <%= link_to 'Edit', edit_project_path(project), class: 'btn btn-primary' %>
+            <%= link_to 'Delete', project_path(project), class: 'btn', method: 'delete', data: {confirm: 'Delete project ?'} %>
+          </p>
+        </td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
@@ -47,10 +58,12 @@
     <tr>
       <th><%= sort_link @q, :id %></th>
       <th>Picture</th>
-      <th><%= sort_link @q, :created_at %></th>
       <th>About</th>
-      <th><%= sort_link @q, :is_published %></th>
-      <th>Actions</th>
+      <% if user_signed_in? %>
+        <th><%= sort_link @q, :created_at %></th>
+        <th><%= sort_link @q, :is_published %></th>
+        <th>Actions</th>
+      <% end %>
     </tr>
   </thead>
 </table>
