@@ -1,13 +1,27 @@
-<% @projects.each do |project| %>
-  <li class="span12">
-    <a name="p<%= project.id %>"></a>
+<%= paginate @projects %>
 
-    <h2><%= link_to project.title, project_url(project) %></h2>
+<ul class="thumbnails">
+  <% @projects.each do |project| %>
+    <li class="span12">
+      <h2>
+        <%= link_to project.title, project_url(project) %>
+        <small>project</small>
+      </h2>
 
-    <div class="row">
-      text
-    </div>
-    <hr>
-  </li>
-<% end %>
+      <div class="row">
+        <div class="span3">
+          <% if project.cover_photo %>
+            <%= link_to(edit_project_path(project), class: 'thumbnail span2') do
+              image_tag(project.cover_photo.asset.url(:span2))
+            end %>
+          <% end %>
+        </div>
+        <div class="span9">
+          <p><%= project.info %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
 </ul>
+
+<%= paginate @projects %>
