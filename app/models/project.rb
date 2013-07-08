@@ -21,8 +21,17 @@ class Project < ActiveRecord::Base
 
   # Other model methods
 
+  ##
+  # Get first cover photo of a project
+  #
+  # Returns {Photo}
+  #
   def cover_photo
-    nil
+    cover_photo = self.photos.where(is_cover: true).order('photos.created_at ASC').first
+    unless cover_photo
+      cover_photo = self.photos.order('photos.created_at ASC').first
+    end
+    cover_photo
   end
 
   # Private methods (for example: custom validators)
