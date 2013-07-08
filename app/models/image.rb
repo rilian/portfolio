@@ -45,7 +45,7 @@ class Image < ActiveRecord::Base
 
   scope :published, ->() { where('images.published_at IS NOT NULL') }
 
-  scope :not_from_hidden_album, ->() { joins(:album).where('(albums.is_hidden = ? AND albums.is_upload_to_stock = ?)', false, true) }
+  scope :from_published_album, ->() { joins(:album).where('(albums.is_published = ? AND albums.is_upload_to_stock = ?)', true, true) }
 
   class << self
   end

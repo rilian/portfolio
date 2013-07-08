@@ -2,18 +2,18 @@ require 'spec_helper'
 
 describe Album do
   it { should have_db_column(:title).of_type(:string).with_options(null: false) }
-  it { should have_db_column(:is_hidden).of_type(:boolean).with_options(default: false) }
+  it { should have_db_column(:is_published).of_type(:boolean).with_options(default: true, null: false) }
   it { should have_db_column(:weight).of_type(:integer).with_options(default: 0) }
   it { should have_db_column(:is_upload_to_stock).of_type(:boolean).with_options(default: true) }
   it { should have_db_column(:description).of_type(:text) }
   it { should have_db_index(:title).unique(true) }
-  it { should have_db_index(:is_hidden) }
+  it { should have_db_index(:is_published) }
   it { should have_db_index(:weight) }
 
   it { should validate_presence_of(:title) }
 
   it { should allow_mass_assignment_of :title }
-  it { should allow_mass_assignment_of :is_hidden }
+  it { should allow_mass_assignment_of :is_published }
   it { should allow_mass_assignment_of :weight }
   it { should allow_mass_assignment_of :is_upload_to_stock }
   it { should allow_mass_assignment_of :description }

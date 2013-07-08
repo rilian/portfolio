@@ -26,10 +26,10 @@
           <%= album.description %><br/>
         </td>
         <td>
-          <% if album.is_hidden? %>
-            <span class="label label-important">hidden</span>
-          <% else %>
+          <% if album.is_published? %>
             visible
+          <% else %>
+            <span class="label label-important">hidden</span>
           <% end %>
         </td>
         <td>
