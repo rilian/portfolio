@@ -1,5 +1,14 @@
+<h1>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary' %>
+  <% end %>
+
+  <%= @project.title %>
+  <small>project</small>
+</h1>
+
 <% if @project.description %>
   <p><%= @project.description %></p>
 <% end %>
 
-pictures go here
+<%= render 'photos/gallery', photos: @project.photos %>
