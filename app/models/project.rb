@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   # Before, after callbacks
 
   # Default scopes, default values (e.g. self.per_page =)
+  PER_PAGE = 50
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   has_many :photos, as: :owner, dependent: :destroy

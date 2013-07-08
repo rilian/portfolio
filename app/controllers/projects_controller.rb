@@ -5,6 +5,8 @@ class ProjectsController < ApplicationController
     @projects = @projects.unscoped if params[:q] && params[:q][:s]
     @q = @projects.search(params[:q])
     @projects = @q.result
+    @projects = @projects.order('weight DESC') if params[:q].nil?
+    @projects = @projects.page(params[:page]).per(Project::PER_PAGE)
   end
 
   def show
