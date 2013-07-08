@@ -1,6 +1,6 @@
 <h1>
   <% if user_signed_in? %>
-    <%= link_to 'New Project', new_album_path, class: 'btn btn-primary' %>
+    <%= link_to 'New Project', new_project_path, class: 'btn btn-primary' %>
   <% end %>
 
   Projects
@@ -8,15 +8,49 @@
 </h1>
 
 <table class="table">
+  <thead>
+    <tr>
+      <th><%= sort_link @q, :id %></th>
+      <th>Picture</th>
+      <th><%= sort_link @q, :created_at %></th>
+      <th>About</th>
+      <th><%= sort_link @q, :is_published %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
   <tbody>
   <% @projects.each do |project| %>
     <tr>
       <td>
-        <p><%= link_to project.title, project_path(project) %></p>
-        <p><%= project.description %></p>
-        <p>first photo</p>
+        <%= project.id %>
+      </td>
+      <td>
+        thumb
+      </td>
+      <td>
+        <%= project.created_at.strftmi('%d-%M-%Y') %>
+      </td>
+      <td>
+        <%= link_to project.title, project_path(project) %>
+      </td>
+      <td>
+        <%= link_to project.title, project_path(project) %><br/>
+        <%= project.description %>
+      </td>
+      <td>
+        actions
       </td>
     </tr>
   <% end %>
   </tbody>
+  <thead>
+    <tr>
+      <th><%= sort_link @q, :id %></th>
+      <th>Picture</th>
+      <th><%= sort_link @q, :created_at %></th>
+      <th>About</th>
+      <th><%= sort_link @q, :is_published %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 </table>
