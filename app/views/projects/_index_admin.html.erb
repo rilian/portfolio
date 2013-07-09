@@ -31,9 +31,8 @@
         <% end %>
       </td>
       <td>
-        <%= link_to project.title, project_path(project) %>
-        <br/>
-        <%= project.description %>
+        <p><%= link_to project.title, project_path(project) %></p>
+        <p><%= project.info %></p>
       </td>
       <td>
         <%= project.created_at.strftime('%d %b %Y') %>
