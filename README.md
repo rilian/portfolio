@@ -1,12 +1,12 @@
 Welcome to Portfolio
-====================
+--------------------
 
 Portfolio is a web-application based on Rails 3.2.x framework that allows you create portfolio with images
 
-Build Status {<img src="https://secure.travis-ci.org/rilian/portfolio.png?branch=master" alt="Build Status" />}[http://travis-ci.org/rilian/portfolio] {<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/rilian/portfolio]
+Build Status [![TravisCI](https://api.travis-ci.org/rilian/portfolio.png?branch=master)](https://travis-ci.org/rilian/portfolio) [![Code Climate](https://codeclimate.com/github/rilian/portfolio.png)](https://codeclimate.com/github/rilian/portfolio)
 
 Getting Started
-===============
+--------------------
 
 Make sure following software is installed:
 
@@ -27,7 +27,7 @@ Start the web server
 Go to http://localhost:3000
 
 Deploy
-======
+--------------------
 
 Modify seeded user account and password
 
@@ -49,12 +49,12 @@ If you need to run remotely rake task, use
 `cap invoke COMMAND='cd /home/username/apps/portfolio/current && bundle exec rake RAILS_ENV=production flickraw:upload_images'`
 
 Contributing
-============
+--------------------
 
 I encourage you to test and use the software, send your pull-requests with improvements and suggest cool features!
 
 Additional Info
-===============
+--------------------
 
 You may find useful information on API used in Portfolio project on these pages
 
@@ -62,6 +62,6 @@ You may find useful information on API used in Portfolio project on these pages
     http://disqus.com/api/
 
 License
-=======
+--------------------
 
 Portfolio is provided as is, without any responsibility
