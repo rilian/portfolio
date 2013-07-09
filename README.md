@@ -59,6 +59,7 @@ Additional Info
 You may find useful information on API used in Portfolio project on these pages
 
 [http://hanklords.github.com/flickraw/](http://hanklords.github.com/flickraw/)
+
 [http://disqus.com/api/](http://disqus.com/api/)
 
 License
