@@ -4,6 +4,8 @@ class Image < ActiveRecord::Base
 
   # Before, after callbacks
   before_save :update_values
+  after_create :update_rss_record, if: Proc.new {|i| i.published_at.present? }
+  after_update :update_rss_record, if: Proc.new {|i| i.published_at_was.blank? && i.published_at.present? }
 
   # Default scopes, default values (e.g. self.per_page =)
   def extension_white_list
@@ -94,6 +96,15 @@ class Image < ActiveRecord::Base
       Time.now
     else
       (checkbox_value != '1') ? nil : initial_value
+    end
+  end
+
+  def update_rss_record
+    rss_record = RssRecord.where(owner_type: self.class.to_s, owner_id: self.id).first
+    unless rss_record
+      RssRecord.create(owner_type: self.class.to_s, owner_id: self.id)
+    else
+      rss_record.touch
     end
   end
 end
