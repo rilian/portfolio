@@ -18,7 +18,7 @@ Clone project repo
 
 Migrate and seed database:
 
-cd portfolio && rake db:migrate && rake db:seed
+`cd portfolio && rake db:migrate && rake db:seed`
 
 Start the web server
 
@@ -31,7 +31,7 @@ Deploy
 
 Modify seeded user account and password
 
-Update +site.yml+ config
+Update `site.yml` config
 
 Set up Flickr API keys and use rake task to update tokens
 
@@ -58,8 +58,8 @@ Additional Info
 
 You may find useful information on API used in Portfolio project on these pages
 
-    http://hanklords.github.com/flickraw/
-    http://disqus.com/api/
+[http://hanklords.github.com/flickraw/](http://hanklords.github.com/flickraw/)
+[http://disqus.com/api/](http://disqus.com/api/)
 
 License
 --------------------
