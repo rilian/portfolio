@@ -1,5 +1,5 @@
 <h1>
-  <%= link_to 'View', project_path(@project), class: 'btn btn-primary' %>
+  <%= link_to 'View', project_path(@project), class: 'btn btn-primary' if @project.persisted? %>
   Edit Project
 </h1>
 

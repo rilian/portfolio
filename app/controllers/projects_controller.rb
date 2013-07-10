@@ -13,11 +13,12 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @project.photos.build
   end
 
   def create
     if @project.save
-      redirect_to projects_path
+      redirect_to edit_project_path(@project)
     else
       render :edit
     end
