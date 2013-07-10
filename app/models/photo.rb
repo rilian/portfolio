@@ -24,7 +24,7 @@ class Photo < ActiveRecord::Base
   validates_presence_of :asset, :owner_id, :owner_type
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :owner_id, :owner_type, :desc, :image_width, :image_height
+  attr_accessible :asset, :asset_cache, :owner_id, :owner_type, :desc, :image_width, :image_height, :is_cover
 
   # Model dictionaries, state machine
 
@@ -33,6 +33,8 @@ class Photo < ActiveRecord::Base
 
   class << self
   end
+
+  scope :ordered, ->() { order('photos.is_cover DESC, photos.weight DESC') }
 
   # Other model methods
 

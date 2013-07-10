@@ -14,6 +14,9 @@ class Project < ActiveRecord::Base
   # Validations: presence > by type > validates
 
   # Other properties (e.g. accepts_nested_attributes_for)
+  attr_accessible :title, :is_published, :description, :weight, :info, :photos_attributes
+
+  accepts_nested_attributes_for :photos, :allow_destroy => true
 
   # Model dictionaries, state machine
 

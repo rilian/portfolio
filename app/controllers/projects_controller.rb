@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project.photos.build
   end
 
   def update
