@@ -8,6 +8,8 @@
   <%= f.input :is_published, as: :boolean, label: "Published?" %>
   <%= f.input :weight %>
 
+  <%= f.button :submit, class: 'btn-primary' %>
+
   <h3>Edit Photos</h3>
 
   <%= f.simple_fields_for :photos do |pf| %>

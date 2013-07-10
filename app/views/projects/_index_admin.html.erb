@@ -11,6 +11,7 @@
     <th><%= sort_link @q, :id %></th>
     <th>Picture</th>
     <th>About</th>
+    <th><%= sort_link @q, :weight %></th>
     <th><%= sort_link @q, :created_at %></th>
     <th><%= sort_link @q, :is_published %></th>
     <th>Photos</th>
@@ -25,7 +26,7 @@
       </td>
       <td>
         <% if project.cover_photo %>
-          <%= link_to(edit_project_path(project), class: 'thumbnail span2') do
+          <%= link_to(project_path(project), class: 'thumbnail span2') do
             image_tag(project.cover_photo.asset.url(:span2))
           end %>
         <% end %>
@@ -33,6 +34,9 @@
       <td>
         <p><%= link_to project.title, project_path(project) %></p>
         <p><%= project.info %></p>
+      </td>
+      <td>
+        <%= project.weight %>
       </td>
       <td>
         <%= project.created_at.strftime('%d %b %Y') %>
@@ -57,6 +61,7 @@
     <th><%= sort_link @q, :id %></th>
     <th>Picture</th>
     <th>About</th>
+    <th><%= sort_link @q, :weight %></th>
     <th><%= sort_link @q, :created_at %></th>
     <th><%= sort_link @q, :is_published %></th>
     <th>Photos</th>

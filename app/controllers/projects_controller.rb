@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(params[:project])
-      redirect_to project_path(@project)
+      redirect_to edit_project_path(@project)
     else
       render :edit
     end
