@@ -3,10 +3,29 @@
                     url: (@project.new_record? ? projects_path : project_path(@project)),
                     html: {class: 'form-horizontal'} do |f| %>
   <%= f.input :title %>
-  <%= f.input :info, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
-  <%= f.input :description, input_html: {rows: 10, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :info, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
   <%= f.input :is_published, as: :boolean, label: "Published?" %>
   <%= f.input :weight %>
+
+  <h3>Edit Photos</h3>
+
+  <%= f.simple_fields_for :photos do |pf| %>
+    <% if pf.object && pf.object.asset? %>
+      <div class="control-group">
+        <div class="controls">
+          <%= link_to image_tag(pf.object.asset.url(:span2)), pf.object.asset.url(:big) %>
+        </div>
+      </div>
+    <% else %>
+      <h3>New Photo</h3>
+    <% end %>
+
+    <%= pf.input :asset, as: :file %>
+    <%= pf.input :asset_cache, as: :hidden %>
+    <%= pf.input :desc, input_html: {rows: 1, cols: 40, class: 'input-xxlarge'} %>
+    <%= pf.input :is_cover, as: :boolean, label: 'Cover photo?' %>
+  <% end %>
 
   <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
