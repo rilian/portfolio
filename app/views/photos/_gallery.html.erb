@@ -1,3 +1,21 @@
-<% photos.each do |photo| %>
-  <a name="photo<%= photo.id %>"></a>
-<% end %>
+<ul class="thumbnails">
+  <% photos.each_with_index do |photo, index| %>
+    <li class="span12">
+      <a name="photo<%= photo.id %>"></a>
+
+      <div class="thumbnail">
+        <%= image_tag(photo.asset.url(:big), alt: "#{photo.owner.title} - #{photo.id}", title: "#{photo.owner.title} - #{photo.id}") %>
+      </div>
+
+      <div class="row">
+        <p></p>
+
+        <div class="span12">
+          <p class="pull-left">
+            <%= index + 1 %>. <%= photo.desc %>
+          </p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

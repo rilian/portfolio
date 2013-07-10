@@ -29,12 +29,11 @@ class Photo < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope order: 'photos.weight DESC, photos.created_at ASC'
 
   class << self
   end
 
-  scope :ordered, ->() { order('photos.is_cover DESC, photos.weight DESC') }
+  scope :ordered, ->() { order('photos.is_cover DESC, photos.weight DESC, photos.created_at ASC') }
 
   # Other model methods
 

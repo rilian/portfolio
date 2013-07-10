@@ -11,6 +11,6 @@
   <p><%= @project.description %></p>
 <% end %>
 
-<%= render 'photos/gallery', photos: @project.photos %>
+<%= render 'photos/gallery', photos: @project.photos.ordered %>
 
 <%= render 'shared/disqus_comments', id: "project_#{@project.id}" %>
