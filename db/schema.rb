@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709121959) do
+ActiveRecord::Schema.define(:version => 20130710113218) do
 
   create_table "albums", :force => true do |t|
     t.string  "title",                                :null => false
@@ -50,20 +50,17 @@ ActiveRecord::Schema.define(:version => 20130709121959) do
   add_index "images", ["published_at"], :name => "index_images_on_published_at"
 
   create_table "photos", :force => true do |t|
-    t.integer  "collection_id"
     t.string   "asset"
     t.text     "desc"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "owner_type"
     t.integer  "owner_id"
-    t.integer  "weight",        :default => 0,     :null => false
-    t.boolean  "is_cover",      :default => false, :null => false
+    t.integer  "weight",       :default => 0,     :null => false
+    t.boolean  "is_cover",     :default => false, :null => false
   end
-
-  add_index "photos", ["collection_id"], :name => "index_photos_on_collection_id"
 
   create_table "projects", :force => true do |t|
     t.string   "title",                           :null => false
@@ -86,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20130709121959) do
   end
 
   add_index "rss_records", ["created_at"], :name => "index_rss_records_on_created_at"
+  add_index "rss_records", ["owner_type", "owner_id"], :name => "index_rss_records_on_owner_type_and_owner_id", :unique => true
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
