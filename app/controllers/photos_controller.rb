@@ -3,6 +3,6 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo.destroy
-    redirect_to url_for(controller: @photo.owner_type.underscore.pluralize, action: 'edit', id: 4), alert: 'Photo deleted'
+    redirect_to url_for(controller: @photo.owner_type.underscore.pluralize, action: 'edit', id: @photo.owner_id), alert: 'Photo deleted'
   end
 end
