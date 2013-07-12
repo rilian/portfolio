@@ -31,7 +31,7 @@ Deploy
 
 Modify seeded user account and password
 
-Update `site.yml` config
+Update settings -> 'production' in database or login and update on site
 
 Set up Flickr API keys and use rake task to update tokens
 
