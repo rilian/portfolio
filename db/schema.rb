@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710113218) do
+ActiveRecord::Schema.define(:version => 20130712154724) do
 
   create_table "albums", :force => true do |t|
     t.string  "title",                                :null => false
@@ -84,6 +84,30 @@ ActiveRecord::Schema.define(:version => 20130710113218) do
 
   add_index "rss_records", ["created_at"], :name => "index_rss_records_on_created_at"
   add_index "rss_records", ["owner_type", "owner_id"], :name => "index_rss_records_on_owner_type_and_owner_id", :unique => true
+
+  create_table "settings", :force => true do |t|
+    t.string   "env",                      :default => "development",                           :null => false
+    t.string   "host",                     :default => "http://portfolio.local"
+    t.string   "title",                    :default => "Username Portfolio"
+    t.string   "description",              :default => "Username Portfolio - Photo & Art work"
+    t.string   "copyright_holder",         :default => "Developer"
+    t.string   "flickr_api_key",           :default => "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    t.string   "flickr_shared_secret",     :default => "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    t.string   "flickr_access_token",      :default => "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    t.string   "flickr_access_secret",     :default => "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    t.string   "flickr_user_id",           :default => "Nickname"
+    t.string   "google_analytics_account", :default => "UA-000000-00"
+    t.string   "disqus_shortname",         :default => "example"
+    t.string   "disqus_developer",         :default => "1"
+    t.string   "disqus_api_secret",        :default => "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    t.string   "disqus_api_key",           :default => "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    t.string   "disqus_access_token",      :default => "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    t.string   "linkedin_account",         :default => "http://linkedin.com/"
+    t.datetime "created_at",                                                                    :null => false
+    t.datetime "updated_at",                                                                    :null => false
+  end
+
+  add_index "settings", ["env"], :name => "index_settings_on_env", :unique => true
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
