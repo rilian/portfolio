@@ -2,7 +2,7 @@ class CreateSetting < ActiveRecord::Migration
   def change
     create_table :settings, force: true do |t|
       t.string :env, null: false,         default: 'development'
-      t.string :host,                     default: 'http://portfolio.local'
+      t.string :host,                     default: 'http://0.0.0.0:3000'
       t.string :title,                    default: 'Username Portfolio'
       t.string :description,              default: 'Username Portfolio - Photo & Art work'
       t.string :copyright_holder,         default: 'Developer'
