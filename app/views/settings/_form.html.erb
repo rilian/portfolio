@@ -1,0 +1,21 @@
+<%= simple_form_for @setting, html: {class: 'form-inline'} do |f| %>
+  <%= f.input :env %>
+  <%= f.input :host %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :copyright_holder %>
+  <%= f.input :flickr_api_key %>
+  <%= f.input :flickr_shared_secret %>
+  <%= f.input :flickr_access_token %>
+  <%= f.input :flickr_access_secret %>
+  <%= f.input :flickr_user_id %>
+  <%= f.input :google_analytics_account %>
+  <%= f.input :disqus_shortname %>
+  <%= f.input :disqus_developer %>
+  <%= f.input :disqus_api_secret %>
+  <%= f.input :disqus_api_key %>
+  <%= f.input :disqus_access_token %>
+  <%= f.input :linkedin_account %>
+
+  <%= f.button :submit, class: 'btn-primary' %>
+<% end %>
