@@ -1,0 +1,52 @@
+<h1>
+  <%= link_to 'New Setting', new_setting_path, class: 'btn btn-primary' %>
+
+  Settings
+  <small>list of all setting</small>
+</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Environment</th>
+    <th>Values</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @settings.each do |setting| %>
+    <tr>
+      <td>
+        <strong><%= setting.env %></strong>
+      </td>
+      <td>
+        <table class="table">
+          <tr>
+            <th>Param</th>
+            <th>Value</th>
+          </tr>
+          <% setting.attributes.each do |attr| %>
+            <tr>
+              <td><%= attr[0] %></td>
+              <td><%= attr[1] %></td>
+            </tr>
+          <% end %>
+        </table>
+      </td>
+      <td>
+        <p>
+          <%= link_to 'Edit', edit_setting_path(setting), class: 'btn btn-primary' %>
+          <%= link_to 'Delete', setting_path(setting), class: 'btn', method: 'delete', data: {confirm: 'Delete setting ?'} %>
+        </p>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+  <thead>
+  <tr>
+    <th>Environment</th>
+    <th>Values</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+</table>

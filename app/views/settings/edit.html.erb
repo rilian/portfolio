@@ -1,0 +1,6 @@
+<h1>
+  <%= link_to 'View', setting_path(@setting), class: 'btn btn-primary' if @setting.persisted? %>
+  Edit Setting
+</h1>
+
+<%= render 'form' %>
