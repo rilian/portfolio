@@ -31,6 +31,11 @@
         <div class="container">
           <%= render 'layouts/navigation' %>
         </div>
+        <% if user_signed_in? %>
+          <div class="container">
+            <%= render 'layouts/admin_navigation' %>
+          </div>
+        <% end %>
       </nav>
     </header>
     <div class="container">

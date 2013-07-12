@@ -15,27 +15,6 @@
   </ul>
 </div>
 
-<% if user_signed_in? %>
-  <div class="nav-collapse collapse">
-    <ul class="nav pull-left">
-      <li>
-        <%= link_to 'New Image', new_image_path, class: 'bnt-mini btn-primary' %>
-      </li>
-      <li class="<%= current_page?(images_path) ? 'active' : '' %>">
-        <%= link_to('Images', images_path) %>
-      </li>
-      <li class="divider-vertical"></li>
-      <li class="<%= current_page?(albums_path) ? 'active' : '' %>">
-        <%= link_to 'Albums', albums_path(q: { s: 'weight desc'})  %>
-      </li>
-      <li class="divider-vertical"></li>
-      <li>
-        <%= link_to('Edit account', edit_user_registration_path) %>
-      </li>
-    </ul>
-  </div>
-<% end %>
-
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
     <li>

@@ -1,0 +1,23 @@
+<div class="nav-collapse collapse">
+  <ul class="nav pull-left">
+    <li class="<%= current_page?(images_path) ? 'active' : '' %>">
+      <%= link_to('Images', images_path) %>
+    </li>
+    <li class="<%= current_page?(new_image_path) ? 'active' : '' %>">
+      <%= link_to 'New Image', new_image_path, class: 'bnt-mini btn-primary' %>
+    </li>
+    <li class="divider-vertical"></li>
+    <li class="<%= current_page?(albums_path) ? 'active' : '' %>">
+      <%= link_to 'Albums', albums_path(q: {s: 'weight desc'}) %>
+    </li>
+    <li class="divider-vertical"></li>
+    <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
+      <%= link_to 'Projects', projects_path %>
+    </li>
+    <li class="divider-vertical"></li>
+    <li class="<%= current_page?(edit_user_registration_path) ? 'active' : '' %>">
+      <%= link_to('Edit account', edit_user_registration_path) %>
+    </li>
+  </ul>
+</div>
+
