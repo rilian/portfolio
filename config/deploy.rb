@@ -55,7 +55,6 @@ namespace :deploy do
       mkdir -p #{shared_path}/database &&
       ln -sf #{shared_path}/database #{latest_release}/db/shared &&
       mkdir -p #{shared_path}/config &&
-      ln -sf #{shared_path}/config/site.yml #{latest_release}/config/site.yml &&
       mkdir -p #{shared_path}/app/assets/images &&
       ln -sf #{shared_path}/app/assets/images/watermark.png #{latest_release}/app/assets/images/watermark.png
     CMD
