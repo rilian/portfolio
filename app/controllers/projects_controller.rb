@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project.weight = begin (Project.order('weight DESC').first.weight + 1) rescue 0 end if @project.weight == 0
     if @project.save
       redirect_to edit_project_path(@project)
     else

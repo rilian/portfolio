@@ -16,6 +16,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
+    @album.weight = begin Album.order('weight DESC').first.weight rescue 0 end if @album.weight == 0
     if @album.save
       redirect_to albums_path
     else

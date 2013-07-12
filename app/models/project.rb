@@ -12,6 +12,7 @@ class Project < ActiveRecord::Base
   has_many :photos, as: :owner, dependent: :destroy
 
   # Validations: presence > by type > validates
+  validates_presence_of :title, :info, :description
 
   # Other properties (e.g. accepts_nested_attributes_for)
   attr_accessible :title, :is_published, :description, :weight, :info, :photos_attributes
