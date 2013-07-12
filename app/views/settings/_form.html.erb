@@ -1,21 +1,24 @@
 <%= simple_form_for @setting, html: {class: 'form-inline'} do |f| %>
   <%= f.input :env %>
-  <%= f.input :host %>
-  <%= f.input :title %>
-  <%= f.input :description %>
+  <%= f.input :host, label: 'Site domain' %>
+  <%= f.input :title, label: 'Site title', input_html: {class: 'input-xxlarge'} %>
   <%= f.input :copyright_holder %>
-  <%= f.input :flickr_api_key %>
-  <%= f.input :flickr_shared_secret %>
-  <%= f.input :flickr_access_token %>
-  <%= f.input :flickr_access_secret %>
+  <%= f.input :contact_text, label: 'Contact information', input_html: {rows: 10, cols: 40, class: 'input-xxlarge'} %>
+  <h3>External profiles</h3>
   <%= f.input :flickr_user_id %>
+  <%= f.input :linkedin_account, input_html: {class: 'input-xxlarge'} %>
+  <h3>Technical stuff</h3>
+  <%= f.input :description, input_html: {class: 'input-xxlarge'} %>
+  <%= f.input :flickr_api_key, input_html: {class: 'input-xxlarge'} %>
+  <%= f.input :flickr_shared_secret, input_html: {class: 'input-xxlarge'} %>
+  <%= f.input :flickr_access_token, input_html: {class: 'input-xxlarge'} %>
+  <%= f.input :flickr_access_secret, input_html: {class: 'input-xxlarge'} %>
   <%= f.input :google_analytics_account %>
   <%= f.input :disqus_shortname %>
   <%= f.input :disqus_developer %>
-  <%= f.input :disqus_api_secret %>
-  <%= f.input :disqus_api_key %>
-  <%= f.input :disqus_access_token %>
-  <%= f.input :linkedin_account %>
+  <%= f.input :disqus_api_secret, input_html: {class: 'input-xxlarge'} %>
+  <%= f.input :disqus_api_key, input_html: {class: 'input-xxlarge'} %>
+  <%= f.input :disqus_access_token, input_html: {class: 'input-xxlarge'} %>
 
   <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
