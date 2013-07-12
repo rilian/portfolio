@@ -1,11 +1,10 @@
 class Image < ActiveRecord::Base
   # Includes
   mount_uploader :asset, ImageUploader
+  include RssRecordTouch
 
   # Before, after callbacks
   before_save :update_values
-  after_create :update_rss_record, if: Proc.new {|i| i.published_at.present? }
-  after_update :update_rss_record, if: Proc.new {|i| i.published_at_was.blank? && i.published_at.present? }
 
   # Default scopes, default values (e.g. self.per_page =)
   def extension_white_list
@@ -99,12 +98,13 @@ class Image < ActiveRecord::Base
     end
   end
 
-  def update_rss_record
-    rss_record = RssRecord.where(owner_type: self.class.to_s, owner_id: self.id).first
-    unless rss_record
-      RssRecord.create(owner_type: self.class.to_s, owner_id: self.id)
-    else
-      rss_record.touch
-    end
+  protected
+
+  def is_published?
+    self.published_at.present?
+  end
+
+  def is_published_was
+    i.published_at_was.blank?
   end
 end
