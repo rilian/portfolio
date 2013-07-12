@@ -1,1 +1,17 @@
-<%= @setting.inspect %>
+<h1>
+  <%= link_to 'Edit', edit_setting_path(@setting), class: 'btn btn-primary' if @setting.persisted? %>
+  <%= @setting.env.capitalize %> Setting
+</h1>
+
+<table class="table">
+  <tr>
+    <th>Param</th>
+    <th>Value</th>
+  </tr>
+  <% @setting.attributes.each do |attr| %>
+    <tr>
+      <td><%= attr[0] %></td>
+      <td><%= attr[1] %></td>
+    </tr>
+  <% end %>
+</table>
