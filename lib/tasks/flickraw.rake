@@ -14,7 +14,7 @@ namespace :flickraw do
 
   desc 'Communicates with Flickr API to get OAuth access tokens for app'
   task :get_flickr_tokens => :environment do
-    puts "Please refer to http://www.flickr.com/services/api/ to get your Flickr API key and secret. Put them into site config"
+    puts 'Please refer to http://www.flickr.com/services/api/ to get your Flickr API key and secret. Put them into site config'
     puts "Current Flickr api_key=#{get_setting('flickr_api_key')} and secret=#{get_setting('flickr_shared_secret')}"
 
     return if get_setting('flickr_api_key').empty? || get_setting('flickr_shared_secret').empty?
@@ -38,19 +38,19 @@ namespace :flickraw do
       auth_url = flickr.get_authorize_url(token['oauth_token'], perms: 'delete')
 
       puts "Open this url in your process to complete the authication process : #{auth_url}"
-      puts "Confirm access for the app"
+      puts 'Confirm access for the app'
       puts "run in console: \n\nrake flickraw:get_flickr_tokens oauth_token=#{token['oauth_token']} oauth_token_secret=#{token['oauth_token_secret']} verify="
     end
   end
 
-  desc "Uploads published Images to Flickr"
+  desc 'Uploads published Images to Flickr'
   task :upload_images => :environment do
     return unless check_flickr_api_keys
 
     puts 'Starting upload images'
 
     image_to_upload = Image.published.from_published_album.readonly(false).
-      where("(images.flickr_photo_id = ? OR images.flickr_photo_id IS NULL) AND images.created_at < ?", '', (Time.now - 30.minutes))
+      where('(images.flickr_photo_id = ? OR images.flickr_photo_id IS NULL) AND images.created_at < ?', '', (Time.now - 30.minutes))
 
     puts "Total images to upload: #{image_to_upload.all.map(&:id).inspect}"
 
@@ -79,7 +79,7 @@ namespace :flickraw do
       flickr.photos.addTags(photo_id: flickr_photo_id, tags: image_to_upload.tags_resolved)
       puts 'Tags updated'
 
-      puts "Getting list of Flickr photosets (albums)"
+      puts 'Getting list of Flickr photosets (albums)'
       photosets = flickr.photosets.getList
 
       if photosets.map(&:title).include?(image_to_upload.album.title)
@@ -150,7 +150,7 @@ namespace :flickraw do
           end
 
           if update_photoset
-            puts "Getting list of Flickr photosets (albums)"
+            puts 'Getting list of Flickr photosets (albums)'
             photosets = flickr.photosets.getList
 
             if photosets.map(&:title).include?(image.album.title)
@@ -209,7 +209,7 @@ namespace :flickraw do
     not_existing_flickr_images = all_existing_image_ids - all_flickr_image_ids
     if not_existing_flickr_images.size > 0
       time_now = Time.now
-      Image.where("flickr_photo_id IN (?)", not_existing_flickr_images).each do |image|
+      Image.where('flickr_photo_id IN (?)', not_existing_flickr_images).each do |image|
         puts "cleanup flickr_photo_id #{image.flickr_photo_id} on image ##{image.id}"
         image.update_attributes({flickr_photo_id: '', updated_at: time_now})
       end
@@ -233,8 +233,8 @@ namespace :flickraw do
       puts "Getting threads for cursor '#{cursor}'"
 
       # http://disqus.com/api/docs/threads/list/
-      request = Net::HTTP::Get.new("/api/3.0/threads/list.json?" +
-                                    "limit=100&"+
+      request = Net::HTTP::Get.new('/api/3.0/threads/list.json?' +
+                                     'limit=100&'+
                                     "cursor=#{cursor}&"+
                                     "forum=#{get_setting('disqus_shortname')}"+
                                     "&api_secret=#{get_setting('disqus_api_secret')}")
@@ -306,7 +306,7 @@ namespace :flickraw do
             puts message
 
             # http://disqus.com/api/docs/posts/create/
-            request = Net::HTTP::Post.new("/api/3.0/posts/create.json?" +
+            request = Net::HTTP::Post.new('/api/3.0/posts/create.json?' +
                                             "thread=#{thread}&" +
                                             "message=#{CGI.escape(message)}&" +
                                             "access_token=#{get_setting('disqus_access_token')}&" +
@@ -326,7 +326,7 @@ namespace :flickraw do
         puts image.errors
         puts "image flickr_comment_time NOW #{image.flickr_comment_time}"
       else
-        puts "No new comments yet after #{Time.at(image.flickr_comment_time).strftime("%d %b %Y")} for image #{image.id}"
+        puts "No new comments yet after #{Time.at(image.flickr_comment_time).strftime('%d %b %Y')} for image #{image.id}"
       end
     end
   end
