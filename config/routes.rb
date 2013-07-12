@@ -16,4 +16,5 @@ Portfolio::Application.routes.draw do
   resources :albums
   resources :projects
   resources :images
+  resources :photos, only: :destroy
 end
