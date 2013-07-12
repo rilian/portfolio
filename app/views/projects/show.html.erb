@@ -13,4 +13,4 @@
 
 <%= render 'photos/gallery', photos: @project.photos.ordered %>
 
-<%= render 'shared/disqus_comments', id: "project_#{@project.id}", url: project_url(@image) %>
+<%= render 'shared/disqus_comments', id: "project_#{@project.id}", url: project_url(@project) %>
