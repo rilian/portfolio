@@ -105,6 +105,6 @@ class Image < ActiveRecord::Base
   end
 
   def is_published_was
-    i.published_at_was.blank?
+    self.published_at_was.blank?
   end
 end
