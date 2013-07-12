@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : SITE[:title] %></title>
-    <meta name="description" content="<%= SITE[:description] %>">
-    <meta name="author" content="<%= SITE[:copyright_holder] %>">
+    <title><%= content_for?(:title) ? yield(:title) : get_setting('title') %></title>
+    <meta name="description" content="<%= get_setting('description') %>">
+    <meta name="author" content="<%= get_setting('copyright_holder') %>">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
     <%= auto_discovery_link_tag(:rss, rss_feed_url) %>
-    <% if SITE[:google_analytics_account].present? %>
+    <% if get_setting('google_analytics_account').present? %>
       <script type="text/javascript">
         var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '<%= SITE[:google_analytics_account] %>']);
+        _gaq.push(['_setAccount', '<%= get_setting('google_analytics_account') %>']);
         _gaq.push(['_trackPageview']);
         (function() {
           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -55,9 +55,9 @@
         <footer class="footer">
           <p>
             <small>
-              Copyright © 2011-<%= Time.now.year %> <%= SITE[:copyright_holder] %>
+              Copyright © 2011-<%= Time.now.year %> <%= get_setting('copyright_holder') %>
               <br/>
-              Except where otherwise noted, content on <a href="<%= SITE[:host] %>"><%= SITE[:host] %></a> is licensed under a <a rel="nofollow" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+              Except where otherwise noted, content on <a href="<%= get_setting('host') %>"><%= get_setting('host') %></a> is licensed under a <a rel="nofollow" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
               <br/>
               This site is based on <a href="https://github.com/rilian/portfolio" rel="nofollow">rilian/portfolio</a> engine.
             </small>
@@ -73,10 +73,10 @@
       </div>
     </div>
 
-  <% if SITE[:disqus_shortname].present? %>
+  <% if get_setting('disqus_shortname').present? %>
     <script type="text/javascript">
-      var disqus_shortname = '<%= SITE[:disqus_shortname] %>';
-      var disqus_developer = '<%= SITE[:disqus_developer] %>';
+      var disqus_shortname = '<%= get_setting('disqus_shortname') %>';
+      var disqus_developer = '<%= get_setting('disqus_developer') %>';
       (function () {
         var s = document.createElement('script'); s.async = true;
         s.type = 'text/javascript';

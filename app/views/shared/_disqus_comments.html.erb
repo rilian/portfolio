@@ -2,10 +2,10 @@
   <% if Rails.env.production? %>
       <div id="disqus_thread"></div>
       <script type="text/javascript">
-        var disqus_shortname = '<%= SITE[:disqus_shortname] %>';
+        var disqus_shortname = '<%= get_setting('disqus_shortname') %>';
         var disqus_identifier = '<%= id %>';
         var disqus_url = '<%= url %>';
-        var disqus_developer = '<%= SITE[:disqus_developer] %>';
+        var disqus_developer = '<%= get_setting('disqus_developer') %>';
         (function () {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';

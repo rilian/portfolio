@@ -72,7 +72,7 @@
         </td>
         <td>
           <% if image.flickr_photo_id.present? %>
-            <span><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/#{image.flickr_photo_id}" %></span>
+            <span><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/#{image.flickr_photo_id}" %></span>
           <% else %>
             <span><%= link_to 'upload', 'http://www.flickr.com/photos/upload/' %></span>
 

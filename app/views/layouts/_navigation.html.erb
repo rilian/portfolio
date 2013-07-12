@@ -22,16 +22,16 @@
         image_tag 'rss.png'
       end %>
     </li>
-    <% if SITE[:flickr_user_id].present? %>
+    <% if get_setting('flickr_user_id').present? %>
       <li>
-        <%= link_to "http://www.flickr.com/photos/#{SITE[:flickr_user_id]}/", target: '_blank' do
+        <%= link_to "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/", target: '_blank' do
           image_tag 'flickr.png'
         end %>
       </li>
     <% end %>
-    <% if SITE[:linkedin_account].present? %>
+    <% if get_setting('linkedin_account').present? %>
       <li>
-        <%= link_to SITE[:linkedin_account], target: '_blank' do
+        <%= link_to get_setting('linkedin_account'), target: '_blank' do
           image_tag 'linkedin.png'
         end %>
       </li>

@@ -1,8 +1,8 @@
 xml.instruct! :xml, version: '1.0'
 xml.rss version: '2.0' do
   xml.channel do
-    xml.title SITE[:title]
-    xml.description { xml.cdata!(SITE[:description]) }
+    xml.title get_setting('title')
+    xml.description { xml.cdata!(get_setting('description')) }
     xml.link rss_feed_url
 
     @rss_records.each do |rss_record|

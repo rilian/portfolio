@@ -61,24 +61,6 @@ namespace :deploy do
     CMD
   end
 
-  desc 'Deploy site config'
-  task :site_config do
-    SITE = YAML.load_file('./config/site.yml')['production']
-
-    run <<-CMD
-      mkdir -p #{shared_path}/config &&
-      touch #{shared_path}/config/site.yml
-    CMD
-
-    result_hash = {'production' => SITE}
-    puts YAML.dump(result_hash)
-    put YAML.dump(result_hash), "#{shared_path}/config/site.yml"
-
-    run <<-CMD
-      ln -sf #{shared_path}/config/site.yml #{latest_release}/config/site.yml
-    CMD
-  end
-
   #desc 'Zero-downtime restart of Unicorn'
   #task :restart, except: { no_release: true } do
   #  run "kill -s USR2 `cat /tmp/unicorn-tapwatch.pid`"

@@ -40,7 +40,6 @@ Set up Flickr API keys and use rake task to update tokens
 Deploy with capistrano
 
 `cap deploy:config`
-`cap deploy:site_config`
 `cap deploy`
 
 If you need to run remotely rake task, use

@@ -4,8 +4,8 @@ require 'disqus'
 namespace :flickraw do
 
   def check_flickr_api_keys
-    if SITE[:flickr_api_key].empty? || SITE[:flickr_shared_secret].empty? ||
-        SITE[:flickr_access_token].empty? || SITE[:flickr_access_secret].empty?
+    if get_setting('flickr_api_key').empty? || get_setting('flickr_shared_secret').empty? ||
+        get_setting('flickr_access_token').empty? || get_setting('flickr_access_secret').empty?
       puts "Error: not all Flickr api keys present. Please run\n\nrake flickraw:get_flickr_tokens"
       return false
     end
@@ -15,12 +15,12 @@ namespace :flickraw do
   desc 'Communicates with Flickr API to get OAuth access tokens for app'
   task :get_flickr_tokens => :environment do
     puts "Please refer to http://www.flickr.com/services/api/ to get your Flickr API key and secret. Put them into site config"
-    puts "Current Flickr api_key=#{SITE[:flickr_api_key]} and secret=#{SITE[:flickr_shared_secret]}"
+    puts "Current Flickr api_key=#{get_setting('flickr_api_key')} and secret=#{get_setting('flickr_shared_secret')}"
 
-    return if SITE[:flickr_api_key].empty? || SITE[:flickr_shared_secret].empty?
+    return if get_setting('flickr_api_key').empty? || get_setting('flickr_shared_secret').empty?
 
-    FlickRaw.api_key = SITE[:flickr_api_key]
-    FlickRaw.shared_secret = SITE[:flickr_shared_secret]
+    FlickRaw.api_key = get_setting('flickr_api_key')
+    FlickRaw.shared_secret = get_setting('flickr_shared_secret')
 
     if ENV['oauth_token'].present? && ENV['oauth_token_secret'].present? && ENV['verify'].present?
       begin
@@ -59,11 +59,11 @@ namespace :flickraw do
     puts "Will upload #{image_to_upload.inspect}"
 
     if image_to_upload
-      FlickRaw.api_key = SITE[:flickr_api_key]
-      FlickRaw.shared_secret = SITE[:flickr_shared_secret]
+      FlickRaw.api_key = get_setting('flickr_api_key')
+      FlickRaw.shared_secret = get_setting('flickr_shared_secret')
 
-      flickr.access_token = SITE[:flickr_access_token]
-      flickr.access_secret = SITE[:flickr_access_secret]
+      flickr.access_token = get_setting('flickr_access_token')
+      flickr.access_secret = get_setting('flickr_access_secret')
 
       login = flickr.test.login
 
@@ -111,11 +111,11 @@ namespace :flickraw do
         where('images.flickr_photo_id != "" AND images.updated_at > ? ', (7.days.ago))
 
     if images_to_update.size > 0
-      FlickRaw.api_key = SITE[:flickr_api_key]
-      FlickRaw.shared_secret = SITE[:flickr_shared_secret]
+      FlickRaw.api_key = get_setting('flickr_api_key')
+      FlickRaw.shared_secret = get_setting('flickr_shared_secret')
 
-      flickr.access_token = SITE[:flickr_access_token]
-      flickr.access_secret = SITE[:flickr_access_secret]
+      flickr.access_token = get_setting('flickr_access_token')
+      flickr.access_secret = get_setting('flickr_access_secret')
 
       login = flickr.test.login
 
@@ -186,11 +186,11 @@ namespace :flickraw do
 
     puts 'Starting remove images'
 
-    FlickRaw.api_key = SITE[:flickr_api_key]
-    FlickRaw.shared_secret = SITE[:flickr_shared_secret]
+    FlickRaw.api_key = get_setting('flickr_api_key')
+    FlickRaw.shared_secret = get_setting('flickr_shared_secret')
 
-    flickr.access_token = SITE[:flickr_access_token]
-    flickr.access_secret = SITE[:flickr_access_secret]
+    flickr.access_token = get_setting('flickr_access_token')
+    flickr.access_secret = get_setting('flickr_access_secret')
 
     login = flickr.test.login
 
@@ -198,7 +198,7 @@ namespace :flickraw do
 
     #TODO: this loads only last 100 photos, and effectively disables images starting from 101
     #      add loading of other images from flickr
-    all_flickr_image_ids = flickr.photos.search(user_id: SITE[:flickr_user_id]).map(&:id)
+    all_flickr_image_ids = flickr.photos.search(user_id: get_setting('flickr_user_id')).map(&:id)
     all_existing_image_ids = Image.all.map(&:flickr_photo_id).reject {|i| i.empty? }
     flickr_image_ids_to_delete = all_flickr_image_ids - all_existing_image_ids
     flickr_image_ids_to_delete.each do |image_id|
@@ -236,8 +236,8 @@ namespace :flickraw do
       request = Net::HTTP::Get.new("/api/3.0/threads/list.json?" +
                                     "limit=100&"+
                                     "cursor=#{cursor}&"+
-                                    "forum=#{SITE[:disqus_shortname]}"+
-                                    "&api_secret=#{SITE[:disqus_api_secret]}")
+                                    "forum=#{get_setting('disqus_shortname')}"+
+                                    "&api_secret=#{get_setting('disqus_api_secret')}")
       response = disqus_http.request(request)
       response_json = JSON(response.body)
 
@@ -256,11 +256,11 @@ namespace :flickraw do
 
     puts 'Starting update images'
 
-    FlickRaw.api_key = SITE[:flickr_api_key]
-    FlickRaw.shared_secret = SITE[:flickr_shared_secret]
+    FlickRaw.api_key = get_setting('flickr_api_key')
+    FlickRaw.shared_secret = get_setting('flickr_shared_secret')
 
-    flickr.access_token = SITE[:flickr_access_token]
-    flickr.access_secret = SITE[:flickr_access_secret]
+    flickr.access_token = get_setting('flickr_access_token')
+    flickr.access_secret = get_setting('flickr_access_secret')
 
     login = flickr.test.login
 
@@ -309,8 +309,8 @@ namespace :flickraw do
             request = Net::HTTP::Post.new("/api/3.0/posts/create.json?" +
                                             "thread=#{thread}&" +
                                             "message=#{CGI.escape(message)}&" +
-                                            "access_token=#{SITE[:disqus_access_token]}&" +
-                                            "api_key=#{SITE[:disqus_api_key]}"
+                                            "access_token=#{get_setting('disqus_access_token')}&" +
+                                            "api_key=#{get_setting('disqus_api_key')}"
             )
 
             response = disqus_http.request(request)
