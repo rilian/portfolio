@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   # Other properties (e.g. accepts_nested_attributes_for)
   attr_accessible :title, :is_published, :description, :weight, :info, :photos_attributes
 
-  accepts_nested_attributes_for :photos, :allow_destroy => true
+  accepts_nested_attributes_for :photos, :allow_destroy => true, reject_if: proc { |a| !a.has_key?('id') && !a.has_key?('asset') }
 
   # Model dictionaries, state machine
 
