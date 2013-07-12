@@ -43,4 +43,4 @@
   </li>
 </ul>
 
-<%= render 'shared/disqus_comments', id: "image_#{@image.id}" %>
+<%= render 'shared/disqus_comments', id: "image_#{@image.id}", url: image_url(@image) %>
