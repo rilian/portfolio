@@ -78,7 +78,7 @@
 <%= paginate images %>
 
 <div>
-  <% get_tags_cloud.each do |tag, count| %>
+  <% get_tags_cloud(images).each do |tag, count| %>
     <%= link_to tag, root_path(q: {Image::DEFAULT_QUERY.to_sym => tag}), {style: "font-size:#{(count * 50) + 50}%;"} %>
   <% end %>
 </div>

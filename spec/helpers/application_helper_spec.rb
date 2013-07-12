@@ -8,7 +8,7 @@ describe ApplicationHelper do
     end
 
     it 'should return valid tags cloud' do
-      get_tags_cloud.should =~ [['apple', 1], ['banana', 2], ['cucumber', 2], ['peach', 1]]
+      get_tags_cloud(Image.all).should =~ [['apple', 1], ['banana', 2], ['cucumber', 2], ['peach', 1]]
     end
   end
 end
