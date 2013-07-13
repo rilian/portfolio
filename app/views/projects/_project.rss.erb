@@ -1,0 +1,11 @@
+<p>Project <%= link_to project.title, project_url(project) %></p>
+
+<p>
+  <% if project.cover_photo %>
+    <%= link_to(project_path(project), class: 'thumbnail span2') do
+      image_tag(project.cover_photo.asset.url(:span2))
+    end %>
+  <% end %>
+</p>
+
+<p><%= project.info %></p>

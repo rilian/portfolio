@@ -9,19 +9,10 @@ xml.rss version: '2.0' do
       if rss_record.owner
         xml.item do
           xml.title { xml.cdata!(rss_record.owner.title) }
-
-          case rss_record.owner_type
-            when 'Image'
-              xml.description { xml.cdata!((render 'images/image', image: rss_record.owner).html_safe) }
-              xml.pubDate rss_record.owner.created_at.to_s(:rfc822)
-              xml.link image_url(rss_record.owner)
-              xml.guid image_url(rss_record.owner)
-            when 'Project'
-              xml.description { xml.cdata!(rss_record.owner.info) }
-              xml.pubDate rss_record.owner.created_at.to_s(:rfc822)
-              xml.link project_url(rss_record.owner)
-              xml.guid project_url(rss_record.owner)
-          end
+          xml.description { xml.cdata!((render "#{rss_record.owner_type.underscore.pluralize}/#{rss_record.owner_type.underscore}", rss_record.owner_type.underscore.to_sym => rss_record.owner).html_safe) }
+          xml.pubDate rss_record.owner.created_at.to_s(:rfc822)
+          xml.link image_url(rss_record.owner)
+          xml.guid image_url(rss_record.owner)
         end
       end
     end
