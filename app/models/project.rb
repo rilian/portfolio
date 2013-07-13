@@ -26,6 +26,9 @@ class Project < ActiveRecord::Base
   end
 
   # Other model methods
+  def to_param
+    "#{self.id}-#{self.title.parameterize}"
+  end
 
   ##
   # Get first cover photo of a project
