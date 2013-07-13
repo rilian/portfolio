@@ -4,9 +4,9 @@
                     html: { class: 'form-inline' } do |f| %>
   <%= f.input :title %>
   <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
-  <%= f.input :is_published, as: :boolean, label: 'Published? (Images will be visible)' %>
-  <%= f.input :is_upload_to_stock, as: :boolean, label: 'Upload to stocks?' %>
-  <%= f.input :weight, label: 'Weight' %>
+  <%= f.input :is_published, as: :boolean %>
+  <%= f.input :is_upload_to_stock, as: :boolean %>
+  <%= f.input :weight %>
 
   <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
