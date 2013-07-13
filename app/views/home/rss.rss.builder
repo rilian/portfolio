@@ -11,8 +11,8 @@ xml.rss version: '2.0' do
           xml.title { xml.cdata!(rss_record.owner.title) }
           xml.description { xml.cdata!((render "#{rss_record.owner_type.underscore.pluralize}/#{rss_record.owner_type.underscore}", rss_record.owner_type.underscore.to_sym => rss_record.owner).html_safe) }
           xml.pubDate rss_record.owner.created_at.to_s(:rfc822)
-          xml.link image_url(rss_record.owner)
-          xml.guid image_url(rss_record.owner)
+          xml.link send("#{rss_record.owner_type.underscore}_url".to_sym, rss_record.owner)
+          xml.guid send("#{rss_record.owner_type.underscore}_url".to_sym, rss_record.owner)
         end
       end
     end
