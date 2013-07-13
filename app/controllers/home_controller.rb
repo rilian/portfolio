@@ -4,6 +4,9 @@ class HomeController < ApplicationController
     @images = @q.result(distinct: true).page(params[:page]).per(Image::PER_PAGE)
   end
 
+  def contacts
+  end
+
   def rss
     @rss_records = RssRecord.order('updated_at DESC').limit(20)
 
