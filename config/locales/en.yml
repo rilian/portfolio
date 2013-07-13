@@ -10,7 +10,6 @@ en:
       last: "Last"
       next: "Next"
       previous: "Previous"
-
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -26,3 +25,10 @@ en:
         is_published: 'Is published ?'
         is_upload_to_stock: 'Upload to stocks ?'
         weight: 'Weight'
+  helpers:
+    submit:
+      create: "Create %{model}"
+      update: "Update %{model}"
+  activerecord:
+    models:
+      album: 'Album'

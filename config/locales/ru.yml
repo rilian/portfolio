@@ -11,7 +11,7 @@ ru:
     "yes": 'Да'
     "no": 'Нет'
     required:
-      text: 'обязательно'
+      text: 'обязательное поле'
       mark: '*'
     error_notification:
       default_message: "Пожалуйта исправьте ошибки:"
@@ -22,3 +22,11 @@ ru:
         is_published: 'Опубликован ?'
         is_upload_to_stock: 'Загружать работы из альбома на стоки ?'
         weight: 'Вес'
+  helpers:
+    submit:
+      create: "Создать %{model}"
+      update: "Обновить %{model}"
+  activerecord:
+    models:
+      album: 'Альбом'
+
