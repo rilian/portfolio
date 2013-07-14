@@ -16,4 +16,12 @@ module ApplicationHelper
     raise 'Setting not found' unless setting
     setting.send(field.to_sym)
   end
+
+  ##
+  # Return value by current ocation, or any other existing value
+  #
+  def get_local_value(current_locale, value_hash)
+    return value_hash[current_locale.to_sym] if value_hash[current_locale.to_sym].present?
+    value_hash.values.select{|v| v.present?}.first
+  end
 end

@@ -1,5 +1,3 @@
-<% if @album.description %>
-  <p><%= @album.description %></p>
-<% end %>
+<p><%= get_local_value(I18n.locale, {en: @album.description, ru: @album.description_ru}) %></p>
 
 <%= render 'images/gallery', images: @images %>

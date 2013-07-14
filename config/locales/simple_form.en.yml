@@ -9,8 +9,22 @@ en:
       default_message: "Please review the problems below:"
     labels:
       album:
-        title: 'Title'
-        description: 'Description'
+        title: 'Title (english)'
+        title_ru: 'Title (russian)'
+        description: 'Description (english)'
+        description_ru: 'Description (russian)'
         is_published: 'Is published ?'
         is_upload_to_stock: 'Upload to stocks ?'
         weight: 'Weight'
+      image:
+      photo:
+      project:
+        title: 'Title (english)'
+        title_ru: 'Title (russian)'
+        info: 'Short description (english)'
+        info_ru: 'Short description (russian)'
+        description: 'Full description (english)'
+        description_ru: 'Full description (russian)'
+        is_published: 'Published ?'
+        weight: 'Weight'
+      setting:
