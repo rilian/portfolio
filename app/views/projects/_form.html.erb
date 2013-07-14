@@ -3,11 +3,11 @@
                     url: (@project.new_record? ? projects_path : project_path(@project)),
                     html: {class: 'form-inline'} do |f| %>
   <%= f.input :title %>
-  <%= f.input :title_ru %>
+  <%= f.input :title_ua %>
   <%= f.input :info, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
-  <%= f.input :info_ru, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :info_ua, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
   <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
-  <%= f.input :description_ru, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :description_ua, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
   <%= f.input :is_published, as: :boolean, label: 'Published?' %>
   <%= f.input :weight %>
 
@@ -33,7 +33,7 @@
             <%= pf.input :asset, as: :file %>
             <%= pf.input :asset_cache, as: :hidden %>
             <%= pf.input :desc, input_html: {rows: 1, cols: 40, class: 'input-xxlarge'}, label: 'Description' %>
-            <%= pf.input :desc_ru, input_html: {rows: 1, cols: 40, class: 'input-xxlarge'}, label: 'Description' %>
+            <%= pf.input :desc_ua, input_html: {rows: 1, cols: 40, class: 'input-xxlarge'}, label: 'Description' %>
             <%= pf.input :is_cover, as: :boolean, label: 'Cover photo?' %>
             <%= pf.input :weight %>
 

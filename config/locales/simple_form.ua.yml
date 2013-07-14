@@ -1,0 +1,46 @@
+ua:
+  simple_form:
+    "yes": 'Так'
+    "no": 'Ні'
+    required:
+      text: "обов'язкове поле"
+      mark: '*'
+    error_notification:
+      default_message: "Будь-ласка виправте помилки:"
+    labels:
+      album:
+        title: 'Назва (EN)'
+        title_ua: 'Назва (UA)'
+        description: 'Опис (EN)'
+        description_ua: 'Опис (UA)'
+        is_published: 'Опубликован ?'
+        is_upload_to_stock: 'Загружать работы из альбома на стоки ?'
+        weight: 'Вес'
+      image:
+        asset: 'Picture'
+        album_id: 'Album'
+        title: 'Title (EN)'
+        title_ua: 'Title (UA)'
+        desc: 'Description (EN)'
+        desc_ua: 'Description (UA)'
+        place: 'Place pictured: place, city, region, country (EN)'
+        place_ua: 'Place pictured: place, city, region, country (UA)'
+        date: 'Year of the picture'
+        tags_resolved: 'Tags (please add a lot relevant!)'
+        published: 'Published'
+        flickr_photo_id: 'Flickr Photo ID'
+        deviantart_link: 'DeviantArt link'
+        istockphoto_link: 'iStockPhoto link'
+        shutterstock_link: 'ShutterStock link'
+        is_for_sale: 'For sale?'
+      photo:
+      project:
+        title: 'Title (EN)'
+        title_ua: 'Title (UA)'
+        info: 'Short description (EN)'
+        info_ua: 'Short description (UA)'
+        description: 'Full description (EN)'
+        description_ua: 'Full description (UA)'
+        is_published: 'Published ?'
+        weight: 'Weight'
+      setting:

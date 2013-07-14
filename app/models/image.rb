@@ -33,7 +33,7 @@ class Image < ActiveRecord::Base
   validates_numericality_of :flickr_photo_id, if: Proc.new { |i| i.flickr_photo_id.present? }
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :title_ru, :desc, :desc_ru, :place, :place_ru, :date,
+  attr_accessible :asset, :asset_cache, :album_id, :title, :title_ua, :desc, :desc_ua, :place, :place_ua, :date,
                   :updated_at, :published_at_checkbox, :tags, :tags_resolved, :flickr_photo_id, :flickr_comment_time,
                   :deviantart_link, :istockphoto_link, :shutterstock_link, :is_for_sale, :image_width, :image_height
   attr_taggable :tags

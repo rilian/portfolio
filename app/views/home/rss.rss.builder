@@ -8,7 +8,7 @@ xml.rss version: '2.0' do
     @rss_records.each do |rss_record|
       if rss_record.owner
         xml.item do
-          xml.title { xml.cdata!(get_local_value(I18n.locale, {en: rss_record.owner.title, ru: rss_record.owner.title_ru})) }
+          xml.title { xml.cdata!(get_local_value(I18n.locale, {en: rss_record.owner.title, ua: rss_record.owner.title_ua})) }
           xml.description { xml.cdata!((render "#{rss_record.owner_type.underscore.pluralize}/#{rss_record.owner_type.underscore}", rss_record.owner_type.underscore.to_sym => rss_record.owner).html_safe) }
           xml.pubDate rss_record.owner.created_at.to_s(:rfc822)
           xml.link send("#{rss_record.owner_type.underscore}_url".to_sym, rss_record.owner)

@@ -1,6 +1,6 @@
 <div>
   <p>
-    <strong><%= get_local_value(I18n.locale, {en: image.title, ru: image.title_ru}) %></strong>.
+    <strong><%= get_local_value(I18n.locale, {en: image.title, ua: image.title_ua}) %></strong>.
     <!-- TODO: i18n -->
     <%= highlight_links(image.render_data).html_safe %>
   </p>
@@ -11,7 +11,7 @@
   end %>
 </div>
 <div>
-  <%= I18n.t 'activerecord.models.album'%>: <%= link_to get_local_value(I18n.locale, {en: image.album.title, ru: image.album.title_ru}), album_url(image.album) %>
+  <%= I18n.t 'activerecord.models.album'%>: <%= link_to get_local_value(I18n.locale, {en: image.album.title, ua: image.album.title_ua}), album_url(image.album) %>
 </div>
 
 <% unless image.tags.empty? %>

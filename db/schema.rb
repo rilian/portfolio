@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714193319) do
+ActiveRecord::Schema.define(:version => 20130714215623) do
 
   create_table "albums", :force => true do |t|
     t.string  "title",                                :null => false
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20130714193319) do
     t.integer "weight",             :default => 0
     t.boolean "is_upload_to_stock", :default => true
     t.text    "description"
-    t.string  "title_ru"
-    t.text    "description_ru"
+    t.string  "title_ua"
+    t.text    "description_ua"
   end
 
   add_index "albums", ["is_published"], :name => "index_albums_on_is_hidden"
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(:version => 20130714193319) do
     t.boolean  "is_for_sale",                       :default => false
     t.integer  "image_width"
     t.integer  "image_height"
-    t.string   "title_ru"
-    t.string   "place_ru"
-    t.text     "desc_ru"
+    t.string   "title_ua"
+    t.string   "place_ua"
+    t.text     "desc_ua"
   end
 
   add_index "images", ["album_id"], :name => "index_images_on_album_id"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20130714193319) do
     t.integer  "owner_id"
     t.integer  "weight",       :default => 0,     :null => false
     t.boolean  "is_cover",     :default => false, :null => false
-    t.text     "desc_ru"
+    t.text     "desc_ua"
   end
 
   create_table "projects", :force => true do |t|
@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(:version => 20130714193319) do
     t.datetime "updated_at",                        :null => false
     t.integer  "weight",         :default => 0,     :null => false
     t.text     "info"
-    t.string   "title_ru"
-    t.text     "description_ru"
-    t.text     "info_ru"
+    t.string   "title_ua"
+    t.text     "description_ua"
+    t.text     "info_ua"
   end
 
   add_index "projects", ["is_published"], :name => "index_projects_on_is_published"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(:version => 20130714193319) do
     t.datetime "created_at",                                                                    :null => false
     t.datetime "updated_at",                                                                    :null => false
     t.text     "contact_text"
-    t.text     "contact_text_ru"
+    t.text     "contact_text_ua"
   end
 
   add_index "settings", ["env"], :name => "index_settings_on_env", :unique => true

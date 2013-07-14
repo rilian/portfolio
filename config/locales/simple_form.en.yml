@@ -10,9 +10,9 @@ en:
     labels:
       album:
         title: 'Title (english)'
-        title_ru: 'Title (russian)'
+        title_ua: 'Title (russian)'
         description: 'Description (english)'
-        description_ru: 'Description (russian)'
+        description_ua: 'Description (russian)'
         is_published: 'Is published ?'
         is_upload_to_stock: 'Upload to stocks ?'
         weight: 'Weight'
@@ -20,11 +20,11 @@ en:
         asset: 'Picture'
         album_id: 'Album'
         title: 'Title (english)'
-        title_ru: 'Title (russian)'
+        title_ua: 'Title (russian)'
         desc: 'Description (english)'
-        desc_ru: 'Description (russian)'
+        desc_ua: 'Description (russian)'
         place: 'Place pictured: place, city, region, country (english)'
-        place_ru: 'Place pictured: place, city, region, country (russian)'
+        place_ua: 'Place pictured: place, city, region, country (russian)'
         date: 'Year of the picture'
         tags_resolved: 'Tags (please add a lot relevant!)'
         published: 'Published'
@@ -36,11 +36,11 @@ en:
       photo:
       project:
         title: 'Title (english)'
-        title_ru: 'Title (russian)'
+        title_ua: 'Title (russian)'
         info: 'Short description (english)'
-        info_ru: 'Short description (russian)'
+        info_ua: 'Short description (russian)'
         description: 'Full description (english)'
-        description_ru: 'Full description (russian)'
+        description_ua: 'Full description (russian)'
         is_published: 'Published ?'
         weight: 'Weight'
       setting:

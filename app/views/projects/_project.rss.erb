@@ -1,4 +1,4 @@
-<p><%= I18n.t 'activerecord.models.project' %> <%= link_to get_local_value(I18n.locale, {en: project.title, ru: project.title_ru}), project_url(project) %></p>
+<p><%= I18n.t 'activerecord.models.project' %> <%= link_to get_local_value(I18n.locale, {en: project.title, ua: project.title_ua}), project_url(project) %></p>
 
 <p>
   <% if project.cover_photo %>
@@ -8,4 +8,4 @@
   <% end %>
 </p>
 
-<p><%= get_local_value(I18n.locale, {en: project.info, ru: project.info_ru}) %></p>
+<p><%= get_local_value(I18n.locale, {en: project.info, ua: project.info_ua}) %></p>

@@ -1,0 +1,21 @@
+ua:
+  views:
+    pagination:
+      first: "Початок"
+      truncate: "обрізати"
+      last: "Кінець"
+      next: "Туда"
+      previous: "Сюда"
+
+  activerecord:
+    models:
+      album: 'Альбом'
+      image: 'Робота'
+      photo: 'Фото'
+      project: 'Проект'
+      setting: 'Налаштування'
+
+  helpers:
+    submit:
+      create: "Створити %{model}"
+      update: "Оновити %{model}"

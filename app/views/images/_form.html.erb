@@ -11,11 +11,11 @@
     <%= f.input :asset_cache, as: :hidden %>
     <%= f.input :album_id, as: :select, collection: Album.all, required: true, include_blank: false %>
     <%= f.input :title, input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :title_ru, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :title_ua, input_html: { class: 'input-xxlarge' } %>
     <%= f.input :desc, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' }  %>
-    <%= f.input :desc_ru, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' }  %>
+    <%= f.input :desc_ua, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' }  %>
     <%= f.input :place, input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :place_ru, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :place_ua, input_html: { class: 'input-xxlarge' } %>
     <%= f.input :date, as: :date, order: [:year] %>
     <%= f.input :tags_resolved, as: :text, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' } %>
     <%= f.input :published_at_checkbox, as: :boolean, label: "#{I18n.t 'simple_form.labels.image.published'} #{@image.published_at.present? ? " #{@image.published_at.strftime('%H:%M %d/%m/%Y')}" : ''}" %>

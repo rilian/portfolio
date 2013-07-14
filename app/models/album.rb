@@ -13,7 +13,7 @@ class Album < ActiveRecord::Base
   validates_uniqueness_of :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :title, :title_ru, :is_published, :weight, :is_upload_to_stock, :description, :description_ru
+  attr_accessible :title, :title_ua, :is_published, :weight, :is_upload_to_stock, :description, :description_ua
 
   # Model dictionaries, state machine
 
