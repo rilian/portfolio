@@ -17,7 +17,7 @@
   <div>
     Tags:
     <% image.tags.each do |tag| %>
-      <%= link_to tag, root_url(q: {Image::DEFAULT_QUERY.to_sym => tag}) %>
+      <%= link_to tag, root_url(q: {anything_like: tag}) %>
     <% end %>
   </div>
 <% end %>

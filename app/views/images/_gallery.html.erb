@@ -54,7 +54,7 @@
             <% unless image.tags.empty? %>
               <br/>
               <% image.tags.each do |tag| %>
-                <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(q: {Image::DEFAULT_QUERY.to_sym => tag}), class: 'label' %>
+                <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(q: {anything_like: tag}), class: 'label' %>
               <% end %>
 
               <% if user_signed_in? %>
@@ -79,6 +79,6 @@
 
 <div>
   <% get_tags_cloud(images).each do |tag, count| %>
-    <%= link_to tag, root_path(q: {Image::DEFAULT_QUERY.to_sym => tag}), {style: "font-size:#{(count * 50) + 50}%;"} %>
+    <%= link_to tag, root_path(q: {anything_like: tag}), {style: "font-size:#{(count * 50) + 50}%;"} %>
   <% end %>
 </div>
