@@ -19,3 +19,6 @@ en:
     submit:
       create: "Create %{model}"
       update: "Update %{model}"
+
+  site:
+    contacts_title: 'Contacts'

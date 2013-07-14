@@ -3,7 +3,8 @@
   <%= f.input :host, label: 'Site domain' %>
   <%= f.input :title, label: 'Site title', input_html: {class: 'input-xxlarge'} %>
   <%= f.input :copyright_holder %>
-  <%= f.input :contact_text, label: 'Contact information', input_html: {rows: 10, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :contact_text, input_html: {rows: 10, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :contact_text_ru, input_html: {rows: 10, cols: 40, class: 'input-xxlarge'} %>
   <h3>External profiles</h3>
   <%= f.input :flickr_user_id %>
   <%= f.input :linkedin_account, input_html: {class: 'input-xxlarge'} %>
