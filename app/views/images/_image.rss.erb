@@ -1,21 +1,22 @@
 <div>
   <p>
-    <strong><%= image.title %></strong>.
+    <strong><%= get_local_value(I18n.locale, {en: image.title, ru: image.title_ru}) %></strong>.
+    <!-- TODO: i18n -->
     <%= highlight_links(image.render_data).html_safe %>
   </p>
 </div>
 <div>
-  <%= link_to(image_url(image)) do
+  <%= link_to image_url(image) do
         image_tag(image.asset.url(:span2), alt: image.id)
   end %>
 </div>
 <div>
-  Album: <%= link_to(image.album.title, album_url(image.album)) %>
+  <%= I18n.t 'activerecord.models.album'%>: <%= link_to get_local_value(I18n.locale, {en: image.album.title, ru: image.album.title_ru}), album_url(image.album) %>
 </div>
 
 <% unless image.tags.empty? %>
   <div>
-    Tags:
+    <%= I18n.t 'site.tags' %>:
     <% image.tags.each do |tag| %>
       <%= link_to tag, root_url(q: {anything_like: tag}) %>
     <% end %>
@@ -24,12 +25,12 @@
 
 <% if get_setting('flickr_user_id').present? && image.flickr_photo_id.present? %>
   <div>
-    See on <%= link_to 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/#{image.flickr_photo_id}" %>
+    <%= I18n.t 'site.see_on' %> <%= link_to 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/#{image.flickr_photo_id}" %>
   </div>
 <% end %>
 
 <div>
-  All images: <%= link_to_if get_setting('flickr_user_id').present?, 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/" %>
+  <%= I18n.t 'site.all_images' %>: <%= link_to_if get_setting('flickr_user_id').present?, 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/" %>
 </div>
 
 
