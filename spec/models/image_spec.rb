@@ -4,8 +4,11 @@ describe Image do
   it { should have_db_column(:album_id).of_type(:integer) }
   it { should have_db_column(:asset).of_type(:string) }
   it { should have_db_column(:title).of_type(:string) }
+  it { should have_db_column(:title_ru).of_type(:string) }
   it { should have_db_column(:desc).of_type(:text) }
+  it { should have_db_column(:desc_ru).of_type(:text) }
   it { should have_db_column(:place).of_type(:string) }
+  it { should have_db_column(:place_ru).of_type(:string) }
   it { should have_db_column(:date).of_type(:date) }
   it { should have_db_column(:published_at).of_type(:datetime) }
   it { should have_db_column(:tags_cache).of_type(:string) }
@@ -26,6 +29,13 @@ describe Image do
   it { should validate_presence_of(:title) }
 
   it { should validate_numericality_of(:flickr_photo_id) }
+
+  it { should allow_mass_assignment_of :title }
+  it { should allow_mass_assignment_of :title_ru }
+  it { should allow_mass_assignment_of :desc }
+  it { should allow_mass_assignment_of :desc_ru }
+  it { should allow_mass_assignment_of :place }
+  it { should allow_mass_assignment_of :place_ru }
 
   describe 'generators' do
     before :each do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712222333) do
+ActiveRecord::Schema.define(:version => 20130714113152) do
 
   create_table "albums", :force => true do |t|
     t.string  "title",                                :null => false
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20130712222333) do
     t.integer "weight",             :default => 0
     t.boolean "is_upload_to_stock", :default => true
     t.text    "description"
+    t.string  "title_ru"
+    t.text    "description_ru"
   end
 
   add_index "albums", ["is_published"], :name => "index_albums_on_is_hidden"
@@ -44,6 +46,9 @@ ActiveRecord::Schema.define(:version => 20130712222333) do
     t.boolean  "is_for_sale",                       :default => false
     t.integer  "image_width"
     t.integer  "image_height"
+    t.string   "title_ru"
+    t.string   "place_ru"
+    t.text     "desc_ru"
   end
 
   add_index "images", ["album_id"], :name => "index_images_on_album_id"
@@ -60,16 +65,20 @@ ActiveRecord::Schema.define(:version => 20130712222333) do
     t.integer  "owner_id"
     t.integer  "weight",       :default => 0,     :null => false
     t.boolean  "is_cover",     :default => false, :null => false
+    t.text     "desc_ru"
   end
 
   create_table "projects", :force => true do |t|
-    t.string   "title",                           :null => false
-    t.boolean  "is_published", :default => false, :null => false
+    t.string   "title",                             :null => false
+    t.boolean  "is_published",   :default => false, :null => false
     t.text     "description"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.integer  "weight",       :default => 0,     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "weight",         :default => 0,     :null => false
     t.text     "info"
+    t.string   "title_ru"
+    t.text     "description_ru"
+    t.text     "info_ru"
   end
 
   add_index "projects", ["is_published"], :name => "index_projects_on_is_published"

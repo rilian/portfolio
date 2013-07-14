@@ -24,7 +24,8 @@ class Photo < ActiveRecord::Base
   validates_presence_of :asset, :owner_id, :owner_type
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :owner_id, :owner_type, :desc, :image_width, :image_height, :is_cover, :weight
+  attr_accessible :asset, :asset_cache, :owner_id, :owner_type, :desc, :desc_ru, :image_width, :image_height,
+                  :is_cover, :weight
 
   # Model dictionaries, state machine
 
