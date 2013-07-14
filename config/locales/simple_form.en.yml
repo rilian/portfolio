@@ -17,6 +17,22 @@ en:
         is_upload_to_stock: 'Upload to stocks ?'
         weight: 'Weight'
       image:
+        asset: 'Picture'
+        album_id: 'Album'
+        title: 'Title (english)'
+        title_ru: 'Title (russian)'
+        desc: 'Description (english)'
+        desc_ru: 'Description (russian)'
+        place: 'Place pictured: place, city, region, country (english)'
+        place_ru: 'Place pictured: place, city, region, country (russian)'
+        date: 'Year of the picture'
+        tags_resolved: 'Tags (please add a lot relevant!)'
+        published: 'Published'
+        flickr_photo_id: 'Flickr Photo ID'
+        deviantart_link: 'DeviantArt link'
+        istockphoto_link: 'iStockPhoto link'
+        shutterstock_link: 'ShutterStock link'
+        is_for_sale: 'For sale?'
       photo:
       project:
         title: 'Title (english)'

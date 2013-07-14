@@ -7,23 +7,23 @@
         </div>
       </div>
     <% end %>
-    <%= f.input :asset, as: :file, label: 'Picture', required: !f.object.asset? %>
+    <%= f.input :asset, as: :file, required: !f.object.asset? %>
     <%= f.input :asset_cache, as: :hidden %>
     <%= f.input :album_id, as: :select, collection: Album.all, required: true, include_blank: false %>
     <%= f.input :title, input_html: { class: 'input-xxlarge' } %>
     <%= f.input :title_ru, input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :desc, label: 'Description (one sentence)', input_html: { rows: 2, cols: 40, class: 'input-xxlarge' }  %>
-    <%= f.input :desc_ru, label: 'Description (one sentence)', input_html: { rows: 2, cols: 40, class: 'input-xxlarge' }  %>
-    <%= f.input :place, label: 'Place: place, city, region, country', input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :place_ru, label: 'Place: place, city, region, country', input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :date, label: 'Year of the picture', as: :date, order: [:year] %>
-    <%= f.input :tags_resolved, label: 'Tags (please add a lot relevant to picture)', as: :text, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' } %>
-    <%= f.input :published_at_checkbox, as: :boolean, label: "Published #{@image.published_at.present? ? " #{@image.published_at.strftime('%H:%M %d/%m/%Y')}" : ''}" %>
-    <%= f.input :flickr_photo_id, label: 'Flickr Photo Id', input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :deviantart_link, label: 'DeviantArt link', input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :istockphoto_link, label: 'iStockPhoto link', input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :shutterstock_link, label: 'ShutterStock link', input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :is_for_sale, label: 'For sale?' %>
+    <%= f.input :desc, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' }  %>
+    <%= f.input :desc_ru, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' }  %>
+    <%= f.input :place, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :place_ru, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :date, as: :date, order: [:year] %>
+    <%= f.input :tags_resolved, as: :text, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' } %>
+    <%= f.input :published_at_checkbox, as: :boolean, label: "#{I18n.t 'simple_form.labels.image.published'} #{@image.published_at.present? ? " #{@image.published_at.strftime('%H:%M %d/%m/%Y')}" : ''}" %>
+    <%= f.input :flickr_photo_id, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :deviantart_link, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :istockphoto_link, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :shutterstock_link, input_html: { class: 'input-xxlarge' } %>
+    <%= f.input :is_for_sale %>
     <%= f.button :submit, class: 'btn-primary' %>
   </div>
 <% end %>

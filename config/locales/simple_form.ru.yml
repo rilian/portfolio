@@ -9,8 +9,38 @@ ru:
       default_message: "Пожалуйта исправьте ошибки:"
     labels:
       album:
-        title: 'Название'
-        description: 'Описание'
+        title: 'Название (английский)'
+        title_ru: 'Название (русский)'
+        description: 'Описание  (английский)'
+        description_ru: 'Описание (русский)'
         is_published: 'Опубликован ?'
         is_upload_to_stock: 'Загружать работы из альбома на стоки ?'
         weight: 'Вес'
+      image:
+        asset: 'Picture'
+        album_id: 'Album'
+        title: 'Title (english)'
+        title_ru: 'Title (russian)'
+        desc: 'Description (english)'
+        desc_ru: 'Description (russian)'
+        place: 'Place pictured: place, city, region, country (english)'
+        place_ru: 'Place pictured: place, city, region, country (russian)'
+        date: 'Year of the picture'
+        tags_resolved: 'Tags (please add a lot relevant!)'
+        published: 'Published'
+        flickr_photo_id: 'Flickr Photo ID'
+        deviantart_link: 'DeviantArt link'
+        istockphoto_link: 'iStockPhoto link'
+        shutterstock_link: 'ShutterStock link'
+        is_for_sale: 'For sale?'
+      photo:
+      project:
+        title: 'Title (english)'
+        title_ru: 'Title (russian)'
+        info: 'Short description (english)'
+        info_ru: 'Short description (russian)'
+        description: 'Full description (english)'
+        description_ru: 'Full description (russian)'
+        is_published: 'Published ?'
+        weight: 'Weight'
+      setting:
