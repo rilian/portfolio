@@ -3,7 +3,9 @@
                     url: (@album.new_record? ? albums_path : album_path(@album)),
                     html: { class: 'form-inline' } do |f| %>
   <%= f.input :title %>
+  <%= f.input :title_ru %>
   <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :description_ru, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
   <%= f.input :is_published, as: :boolean %>
   <%= f.input :is_upload_to_stock, as: :boolean %>
   <%= f.input :weight %>
