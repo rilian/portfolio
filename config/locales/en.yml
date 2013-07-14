@@ -1,8 +1,4 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
   views:
     pagination:
       first: "First"
@@ -10,25 +6,16 @@ en:
       last: "Last"
       next: "Next"
       previous: "Previous"
-  simple_form:
-    "yes": 'Yes'
-    "no": 'No'
-    required:
-      text: 'required'
-      mark: '*'
-    error_notification:
-      default_message: "Please review the problems below:"
-    labels:
-      album:
-        title: 'Title'
-        description: 'Description'
-        is_published: 'Is published ?'
-        is_upload_to_stock: 'Upload to stocks ?'
-        weight: 'Weight'
+
+  activerecord:
+    models:
+      album: 'Album'
+      image: 'Image'
+      photo: 'Photo'
+      project: 'Project'
+      setting: 'Setting'
+
   helpers:
     submit:
       create: "Create %{model}"
       update: "Update %{model}"
-  activerecord:
-    models:
-      album: 'Album'

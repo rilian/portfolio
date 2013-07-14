@@ -2,31 +2,20 @@ ru:
   views:
     pagination:
       first: "Начало"
-      truncate: "truncate"
-      last: "Конец"
+      truncate: "обрезать"
+      last: "Конце"
       next: "Туда"
       previous: "Сюда"
 
-  simple_form:
-    "yes": 'Да'
-    "no": 'Нет'
-    required:
-      text: 'обязательное поле'
-      mark: '*'
-    error_notification:
-      default_message: "Пожалуйта исправьте ошибки:"
-    labels:
-      album:
-        title: 'Название'
-        description: 'Описание'
-        is_published: 'Опубликован ?'
-        is_upload_to_stock: 'Загружать работы из альбома на стоки ?'
-        weight: 'Вес'
+  activerecord:
+    models:
+      album: 'Альбом'
+      image: 'Работа'
+      photo: 'Photo'
+      project: 'Проект'
+      setting: 'Настройка'
+
   helpers:
     submit:
       create: "Создать %{model}"
       update: "Обновить %{model}"
-  activerecord:
-    models:
-      album: 'Альбом'
-
