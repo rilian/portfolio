@@ -4,11 +4,11 @@
                     html: {class: 'form-inline'} do |f| %>
   <%= f.input :title, input_html: {class: 'input-xxlarge'} %>
   <%= f.input :title_ua, input_html: {class: 'input-xxlarge'} %>
-  <%= f.input :info, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
-  <%= f.input :info_ua, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
-  <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
-  <%= f.input :description_ua, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
-  <%= f.input :is_published, as: :boolean, label: 'Published?' %>
+  <%= f.input :info, input_html: {rows: 4, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :info_ua, input_html: {rows: 4, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :description, input_html: {rows: 8, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :description_ua, input_html: {rows: 8, cols: 40, class: 'input-xxlarge'} %>
+  <%= f.input :is_published, as: :boolean %>
   <%= f.input :weight %>
 
   <%= f.button :submit, class: 'btn-primary' %>
@@ -32,9 +32,9 @@
 
             <%= pf.input :asset, as: :file %>
             <%= pf.input :asset_cache, as: :hidden %>
-            <%= pf.input :desc, input_html: {rows: 1, cols: 40, class: 'input-xxlarge'}, label: 'Description' %>
-            <%= pf.input :desc_ua, input_html: {rows: 1, cols: 40, class: 'input-xxlarge'}, label: 'Description' %>
-            <%= pf.input :is_cover, as: :boolean, label: 'Cover photo?' %>
+            <%= pf.input :desc, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
+            <%= pf.input :desc_ua, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
+            <%= pf.input :is_cover, as: :boolean %>
             <%= pf.input :weight %>
 
             <% if pf.object.persisted? %>
