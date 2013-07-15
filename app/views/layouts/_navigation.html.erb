@@ -3,12 +3,12 @@
   <ul class="nav pull-left">
     <% if get_setting('contact_text').present? %>
       <li class="<%= current_page?(contacts_path) ? 'active' : '' %>">
-        <%= link_to I18n.t 'site.contacts_title', contacts_path %>
+        <%= link_to (I18n.t 'site.contacts_title'), contacts_path %>
       </li>
       <li class="divider-vertical"></li>
     <% end %>
     <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
-      <%= link_to I18n.t 'site.projects_title', projects_path %>
+      <%= link_to (I18n.t 'site.projects_title'), projects_path %>
     </li>
     <li class="divider-vertical"></li>
     <% Album.published.includes([:images]).each do |album| %>

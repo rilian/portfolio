@@ -21,9 +21,14 @@ ua:
       update: "Оновити %{model}"
 
   site:
+    images_title: 'Роботи'
+    new_image: 'Нова Робота'
+    albums_title: 'Альбоми'
+    settings_title: 'Налаштування'
     contacts_title: 'Контакти'
     projects_title: 'Проекти'
     search: 'Пошук'
     tags: 'Теги'
     see_on: 'Дивіться на'
     all_images: 'Всі роботи'
+    edit_account: 'Акаунт'
