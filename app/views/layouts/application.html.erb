@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : get_setting('title') %></title>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield(:title) %> -
+      <% end %>
+      <%= get_setting('title') %>
+    </title>
     <meta name="description" content="<%= get_setting('description') %>">
     <meta name="author" content="<%= get_setting('copyright_holder') %>">
     <%= stylesheet_link_tag    'application', media: 'all' %>
