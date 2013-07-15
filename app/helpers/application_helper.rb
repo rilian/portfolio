@@ -38,4 +38,22 @@ module ApplicationHelper
     end
     data
   end
+
+  ##
+  # Replace urls with links
+  #
+  def highlight_links(text)
+    text = '' if text.nil?
+    begin
+      new_text = text.dup
+      while new_text =~ /([\s\r\n]+|^)(http:\/\/|https:\/\/|www.)([^\s\r\n]*\.[^\s\r\n]*)([\s\r\n]+|$)/su
+        protocol = $2
+        href = $3
+        new_text.gsub!("#{protocol}#{href}", "<a href=\"#{protocol}#{href}\" rel=\"nofollow\" target=\"_blank\">#{protocol}#{href}</a>")
+      end
+      new_text
+    rescue
+      text
+    end
+  end
 end
