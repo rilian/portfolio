@@ -1,3 +1,5 @@
+<% content_for(:title) { get_local_value(I18n.locale, {en: @project.title, ua: @project.title_ua}) } %>
+
 <h1>
   <% if user_signed_in? %>
     <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary' %>
