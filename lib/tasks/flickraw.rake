@@ -1,7 +1,7 @@
 require 'flickraw'
 require 'disqus'
 
-require 'app/helpers/application_helper'
+require File.join(Rails.root, 'app/helpers/application_helper.rb')
 include ApplicationHelper
 
 namespace :flickraw do
