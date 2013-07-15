@@ -19,3 +19,11 @@ ua:
     submit:
       create: "Створити %{model}"
       update: "Оновити %{model}"
+
+  site:
+    contacts_title: 'Контакти'
+    projects_title: 'Проекти'
+    search: 'Пошук'
+    tags: 'Теги'
+    see_on: 'Дивіться на'
+    all_images: 'Всі роботи'

@@ -22,6 +22,8 @@ en:
 
   site:
     contacts_title: 'Contacts'
+    projects_title: 'Projects'
+    search: 'Search'
     tags: 'Tags'
     see_on: 'See on'
     all_images: 'All images'

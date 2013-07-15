@@ -3,18 +3,18 @@
   <ul class="nav pull-left">
     <% if get_setting('contact_text').present? %>
       <li class="<%= current_page?(contacts_path) ? 'active' : '' %>">
-        <%= link_to 'Contacts', contacts_path %>
+        <%= link_to I18n.t 'site.contacts_title', contacts_path %>
       </li>
       <li class="divider-vertical"></li>
     <% end %>
     <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
-      <%= link_to 'Projects', projects_path %>
+      <%= link_to I18n.t 'site.projects_title', projects_path %>
     </li>
     <li class="divider-vertical"></li>
     <% Album.published.includes([:images]).each do |album| %>
       <% if album.images.size > 0 %>
         <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
-          <%= link_to album.title, album_path(album) %>
+          <%= link_to get_local_value(I18n.locale, {en: album.title, ua: album.title_ua}), album_path(album) %>
         </li>
       <% end %>
     <% end %>
@@ -45,7 +45,7 @@
     <li>
       <form class="navbar-search pull-right" method="get" action="/">
         <label>
-          <input type="text" class="input-medium search-query" placeholder="Search" name="q[anything_like]" value="<%= params[:q][:anything_like] if params[:q] %>">
+          <input type="text" class="input-medium search-query" placeholder="<%= I18n.t 'site.search' %>" name="q[anything_like]" value="<%= params[:q][:anything_like] if params[:q] %>">
         </label>
       </form>
     </li>
