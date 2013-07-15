@@ -1,0 +1,32 @@
+en:
+  views:
+    pagination:
+      first: "First"
+      truncate: "truncate"
+      last: "Last"
+      next: "Next"
+      previous: "Previous"
+
+  activerecord:
+    models:
+      album: 'Album'
+      image: 'Image'
+      photo: 'Photo'
+      project: 'Project'
+      setting: 'Setting'
+
+  site:
+    images_title: 'Images'
+    new_image: 'New Image'
+    albums_title: 'Albums'
+    settings_title: 'Settings'
+    contacts_title: 'Contacts'
+    projects_title: 'Projects'
+    photos_title: 'Photos'
+    new_photo: 'New Photo'
+    search: 'Search'
+    tags: 'Tags'
+    see_on: 'See on'
+    all_images: 'All images'
+    edit_account: 'Edit Account'
+    delete: 'Delete'
