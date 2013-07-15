@@ -1,6 +1,8 @@
 require 'flickraw'
 require 'disqus'
 
+include ApplicationHelper
+
 namespace :flickraw do
 
   def check_flickr_api_keys
