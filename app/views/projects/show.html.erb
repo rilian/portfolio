@@ -5,13 +5,11 @@
     <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary' %>
   <% end %>
 
-  <%= @project.title %>
+  <%= get_local_value(I18n.locale, {en: @project.title, ua: @project.title_ua}) %>
   <small>project</small>
 </h1>
 
-<% if @project.description %>
-  <p><%= @project.description %></p>
-<% end %>
+<p><%= highlight_links(get_local_value(I18n.locale, {en: @project.description, ua: @project.description_ua})).html_safe %></p>
 
 <%= render 'photos/gallery', photos: @project.photos.ordered %>
 

@@ -33,7 +33,7 @@
       </td>
       <td>
         <p><%= link_to project.title, project_path(project) %></p>
-        <p><%= project.info %></p>
+        <p><%= highlight_links(project.info).html_safe %></p>
       </td>
       <td>
         <%= project.weight %>

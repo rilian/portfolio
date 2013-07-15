@@ -12,7 +12,7 @@
 
         <div class="span12">
           <p class="pull-left">
-            <%= index + 1 %>. <%= get_local_value(I18n.locale, {en: photo.desc, ua: photo.desc_ua}) %>
+            <%= index + 1 %>. <%= highlight_links(get_local_value(I18n.locale, {en: photo.desc, ua: photo.desc_ua})).html_safe %>
           </p>
         </div>
       </div>
