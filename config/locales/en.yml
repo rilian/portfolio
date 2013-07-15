@@ -22,6 +22,7 @@ en:
 
   site:
     images_title: 'Images'
+    new_image: 'New Image'
     albums_title: 'Albums'
     settings_title: 'Settings'
     contacts_title: 'Contacts'

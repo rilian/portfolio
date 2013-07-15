@@ -4,7 +4,7 @@
       <a name="photo<%= photo.id %>"></a>
 
       <div class="thumbnail">
-        <%= image_tag(photo.asset.url(:big), alt: "#{photo.owner.title} - #{photo.id}", title: "#{photo.owner.title} - #{photo.id}") %>
+        <%= image_tag(photo.asset.url(:big), alt: "#{get_local_value(I18n.locale, {en: photo.owner.title, ua: photo.owner.title_ua})} - #{photo.id}", title: "#{get_local_value(I18n.locale, {en: photo.owner.title, ua: photo.owner.title_ua})} - #{photo.id}") %>
       </div>
 
       <div class="row">
@@ -12,7 +12,7 @@
 
         <div class="span12">
           <p class="pull-left">
-            <%= index + 1 %>. <%= photo.desc %>
+            <%= index + 1 %>. <%= get_local_value(I18n.locale, {en: photo.desc, ua: photo.desc_ua}) %>
           </p>
         </div>
       </div>
