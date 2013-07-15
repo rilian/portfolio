@@ -2,8 +2,8 @@
                     as: :project,
                     url: (@project.new_record? ? projects_path : project_path(@project)),
                     html: {class: 'form-inline'} do |f| %>
-  <%= f.input :title %>
-  <%= f.input :title_ua %>
+  <%= f.input :title, input_html: {class: 'input-xxlarge'} %>
+  <%= f.input :title_ua, input_html: {class: 'input-xxlarge'} %>
   <%= f.input :info, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
   <%= f.input :info_ua, input_html: {rows: 2, cols: 40, class: 'input-xxlarge'} %>
   <%= f.input :description, input_html: {rows: 5, cols: 40, class: 'input-xxlarge'} %>
