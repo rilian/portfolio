@@ -24,4 +24,18 @@ module ApplicationHelper
     return value_hash[current_locale.to_sym] if value_hash[current_locale.to_sym].present?
     value_hash.values.select{|v| v.present?}.first
   end
+
+  def render_image_data(current_locale, image)
+    data = ''
+    desc = get_local_value(current_locale, {en: image.desc, ua: image.desc_ua})
+    place = get_local_value(current_locale, {en: image.place, ua: image.place_ua})
+
+    [desc, place, image.date.try(:strftime, '%Y')].each do |text|
+      unless text.nil? || text.empty?
+        data << '. ' if data.length > 0
+        data << text
+      end
+    end
+    data
+  end
 end

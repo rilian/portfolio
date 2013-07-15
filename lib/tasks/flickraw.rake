@@ -72,7 +72,7 @@ namespace :flickraw do
       puts 'Uploading ...'
       flickr_photo_id = flickr.upload_photo(image_to_upload.asset.big.path,
                                   title: image_to_upload.title,
-                                  description: image_to_upload.render_data)
+                                  description: render_image_data(:en, image))
       puts "Image uploaded id = #{flickr_photo_id}"
       puts 'Updating tags'
 
@@ -130,7 +130,7 @@ namespace :flickraw do
           flickr.photos.setTags(photo_id: image.flickr_photo_id, tags: image.tags_resolved)
 
           # Updating title and description
-          flickr.photos.setMeta(photo_id: image.flickr_photo_id, title: image.title, description: image.render_data)
+          flickr.photos.setMeta(photo_id: image.flickr_photo_id, title: image.title, description: render_image_data(:en, image))
 
           photo_context = flickr.photos.getAllContexts(photo_id: image.flickr_photo_id)
 

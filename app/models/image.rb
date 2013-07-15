@@ -71,17 +71,6 @@ class Image < ActiveRecord::Base
     self.tags = value if value.present?
   end
 
-  def render_data
-    data = ''
-    [self.desc, self.place, self.date.try(:strftime, '%Y')].each do |text|
-      unless text.empty?
-        data << '. ' if data.length > 0
-        data << text
-      end
-    end
-    data
-  end
-
   # Private methods (for example: custom validators)
   private
 

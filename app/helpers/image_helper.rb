@@ -4,7 +4,7 @@ module ImageHelper
   end
 
   def check_desc(image)
-    get_notice(image.render_data, image.is_for_sale? ? Image::DESC_MIN_FOR_SALE : Image::DESC_MIN, 'words')
+    get_notice(render_image_data(I18n.locale, image), image.is_for_sale? ? Image::DESC_MIN_FOR_SALE : Image::DESC_MIN, 'words')
   end
 
   def check_tags(image)
