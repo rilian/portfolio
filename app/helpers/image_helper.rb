@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module ImageHelper
   def check_title(image)
     get_notice(image.title, image.is_for_sale? ? Image::TITLE_MIN_FOR_SALE : Image::TITLE_MIN, 'words')
@@ -17,7 +19,7 @@ module ImageHelper
   def highlight_links(text)
     begin
       new_text = text.dup
-      while new_text =~ /([\s\r\n]+|^)(http:\/\/|https:\/\/|www.)([^\s\r\n]*\.[^\s\r\n]*)([\s\r\n]+|$)/s
+      while new_text =~ /([\s\r\n]+|^)(http:\/\/|https:\/\/|www.)([^\s\r\n]*\.[^\s\r\n]*)([\s\r\n]+|$)/su
         protocol = $2
         href = $3
         new_text.gsub!("#{protocol}#{href}", "<a href='#{protocol}#{href}' rel='nofollow'>#{protocol}#{href}</a>")
@@ -31,7 +33,7 @@ module ImageHelper
   private
 
   def get_notice(str, need_words, object_names)
-    if str.scan(/\w+/).size < need_words
+    if str.scan(/\w+/u).size < need_words
       "<span class=\"label label-important\">need #{need_words} #{object_names}</span>".html_safe
     end
   end
