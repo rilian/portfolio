@@ -3,6 +3,14 @@ Welcome to Portfolio
 
 Portfolio is a web-application based on Rails 3.2.x framework that allows you create portfolio with images
 
+Key features:
+
+* Upload artworks and show them in Gallery or Album
+* Organize photos in Projects, connecting a topic or event
+* Automatic upload to Flickr in proper sets
+* Watermarks, Tags, Search, Contacts page, Localization
+* Useful admin UI
+
 Build Status [![TravisCI](https://api.travis-ci.org/rilian/portfolio.png?branch=master)](https://travis-ci.org/rilian/portfolio) [![Code Climate](https://codeclimate.com/github/rilian/portfolio.png)](https://codeclimate.com/github/rilian/portfolio)
 
 Getting Started
