@@ -1,8 +1,7 @@
 <div>
   <p>
     <strong><%= get_local_value(I18n.locale, {en: image.title, ua: image.title_ua}) %></strong>.
-    <!-- TODO: i18n -->
-    <%= highlight_links(image.render_data).html_safe %>
+    <%= highlight_links(render_image_data(I18n.locale, image)).html_safe %>
   </p>
 </div>
 <div>

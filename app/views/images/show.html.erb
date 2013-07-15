@@ -7,13 +7,13 @@
         <%= link_to 'Edit', edit_image_path(@image), class: 'btn btn-primary' %>
       <% end %>
 
-      <%= @image.title %>
+      <%= get_local_value(I18n.locale, {en: @image.title, ua: @image.title_ua}) %>
 
       <% if user_signed_in? %>
         <%= check_title(@image) %>
       <% end %>
 
-      <small class="pull-right"><%= @image.album.title %></small>
+      <small class="pull-right"><%= get_local_value(I18n.locale, {en: @image.album.title, ua: @image.album.title_ua}) %></small>
     </h2>
 
     <div class="thumbnail">
@@ -24,7 +24,7 @@
       <p></p>
       <div class="span11">
         <p class="pull-left">
-          <%= highlight_links(@image.render_data).html_safe %>
+          <%= highlight_links(render_image_data(I18n.locale, @image)).html_safe %>
           <% if user_signed_in? %>
             <%= check_desc(@image) %>
           <% end %>
