@@ -2,7 +2,7 @@
   <ul class="thumbnails">
     <% images.each do |image| %>
       <li class="span" style="margin-bottom:5px;margin-left:5px;">
-        <%= link_to("#img#{image.id}", rel: 'group', title: image.title) do
+        <%= link_to "#img#{image.id}", rel: 'group', title: get_local_value(I18n.locale, {en: image.title, ua: image.title_ua}) do
           image_tag(image.asset.url(:span2), alt: image.id)
         end %>
       </li>
@@ -10,7 +10,7 @@
 
     <% if images.size == 0 %>
       <li class="span2">
-        <h3>No images</h3>
+        <h3><%= I18n.t 'site.no_images' %></h3>
       </li>
     <% end %>
   </ul>
@@ -28,13 +28,13 @@
           <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-primary' %>
         <% end %>
 
-        <%= link_to image.title, image_url(image) %>
+        <%= link_to get_local_value(I18n.locale, {en: image.title, ua: image.title_ua}), image_url(image) %>
 
         <% if user_signed_in? %>
           <%= check_title(image) %>
         <% end %>
 
-        <small class="pull-right"><%= image.album.title %></small>
+        <small class="pull-right"><%= get_local_value(I18n.locale, {en: image.album.title, ua: image.album.title_ua}) %></small>
       </h2>
 
       <div class="thumbnail">
