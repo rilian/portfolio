@@ -12,6 +12,7 @@ class Project < ActiveRecord::Base
 
   # Validations: presence > by type > validates
   validates_presence_of :title, :info, :description, :title_ua, :info_ua, :description_ua
+  validates_uniqueness_of :title, :title_ua
 
   # Other properties (e.g. accepts_nested_attributes_for)
   attr_accessible :title, :title_ua, :is_published, :description, :description_ua, :weight, :info, :info_ua,
