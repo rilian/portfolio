@@ -32,8 +32,8 @@
         <% end %>
       </td>
       <td>
-        <p><%= link_to project.title, project_path(project) %></p>
-        <p><%= highlight_links(project.info).html_safe %></p>
+        <p><%= link_to get_local_value(I18n.locale, {en: project.title, ua: project.title_ua}), project_path(project) %></p>
+        <p><%= highlight_links(get_local_value(I18n.locale, {en: project.info, ua: project.info_ua})).html_safe %></p>
       </td>
       <td>
         <%= project.weight %>
