@@ -75,7 +75,7 @@ namespace :flickraw do
       puts 'Uploading ...'
       flickr_photo_id = flickr.upload_photo(image_to_upload.asset.big.path,
                                   title: image_to_upload.title,
-                                  description: render_image_data(:en, image))
+                                  description: render_image_data(:en, image_to_upload))
       puts "Image uploaded id = #{flickr_photo_id}"
       puts 'Updating tags'
 
