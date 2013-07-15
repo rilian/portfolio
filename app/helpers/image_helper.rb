@@ -17,6 +17,7 @@ module ImageHelper
   # Replace urls with links
   #
   def highlight_links(text)
+    text = '' if text.nil?
     begin
       new_text = text.dup
       while new_text =~ /([\s\r\n]+|^)(http:\/\/|https:\/\/|www.)([^\s\r\n]*\.[^\s\r\n]*)([\s\r\n]+|$)/su
