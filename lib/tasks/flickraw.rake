@@ -1,6 +1,7 @@
 require 'flickraw'
 require 'disqus'
 
+require 'app/helpers/application_helper'
 include ApplicationHelper
 
 namespace :flickraw do
