@@ -13,7 +13,7 @@
 
   <%= f.button :submit, class: 'btn-primary' %>
 
-  <h3>Photos <small>added after Project is created</small></h3>
+  <h3><%= I18n.t 'site.photos_title' %> <small>added after Project is created</small></h3>
 
   <ul class="thumbnails">
     <% if @project.persisted? %>
@@ -27,7 +27,7 @@
                 </div>
               </div>
             <% else %>
-              <h3>New Photo</h3>
+              <h3><%= I18n.t 'site.new_photo' %></h3>
             <% end %>
 
             <%= pf.input :asset, as: :file %>
@@ -38,7 +38,7 @@
             <%= pf.input :weight %>
 
             <% if pf.object.persisted? %>
-              <%= link_to 'Delete', photo_path(pf.object), class: 'btn', method: 'delete', data: {confirm: 'Delete photo?'} %>
+              <%= link_to (I18n.t 'site.delete'), photo_path(pf.object), class: 'btn', method: 'delete', data: {confirm: 'Delete photo?'} %>
             <% end %>
           </div>
         </li>
