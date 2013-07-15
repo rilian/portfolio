@@ -4,8 +4,8 @@
   <% @projects.each do |project| %>
     <li class="span12">
       <h2>
-        <%= link_to project.title, project_url(project) %>
-        <small>project</small>
+        <%= link_to get_local_value(I18n.locale, {en: project.title, ua: project.title_ua}), project_url(project) %>
+        <small><%= (I18n.t 'activerecord.models.project').downcase %></small>
       </h2>
 
       <div class="row">
@@ -17,7 +17,7 @@
           <% end %>
         </div>
         <div class="span9">
-          <p><%= project.info %></p>
+          <p><%= highlight_links(get_local_value(I18n.locale, {en: project.info, ua: project.info_ua})).html_safe %></p>
         </div>
       </div>
     </li>
