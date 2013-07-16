@@ -88,11 +88,11 @@ class Image < ActiveRecord::Base
 
   protected
 
-  def is_published?
-    self.published_at.present?
+  def is_published_changed?
+    self.published_at_changed?
   end
 
-  def is_published_was
-    self.published_at_was.blank?
+  def is_published?
+    self.published_at.present?
   end
 end
