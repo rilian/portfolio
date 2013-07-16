@@ -35,7 +35,8 @@ set :rvm_type, :user
 
 namespace :rvm do
   task :trust_rvmrc do
-    run "rvm rvmrc trust #{release_path}"
+    run "echo 'rvm use #{rvm_ruby_string}' > #{current_release}/.rvmrc"
+    run "rvm rvmrc trust #{current_release}"
   end
 end
 after 'deploy', 'rvm:trust_rvmrc'
