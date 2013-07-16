@@ -55,12 +55,12 @@
 <div class="nav-collapse collapse">
   <ul class="nav pull-left">
     <li>
-      <%= link_to locale: 'en' do
+      <%= link_to request.query_parameters.merge({locale: 'en'}) do
         image_tag 'flag_gb.png'
       end %>
     </li>
     <li>
-      <%= link_to locale: 'ua' do
+      <%= link_to request.query_parameters.merge({locale: 'ua'}) do
         image_tag 'flag_ua.png'
       end %>
     </li>
