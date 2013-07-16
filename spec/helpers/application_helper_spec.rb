@@ -32,6 +32,9 @@ describe ApplicationHelper do
       highlight_links("http://www.1-1.org/Title-1\r\nhttp://www.2-2.org/Title-2").should ==
         "<a href=\"http://www.1-1.org/Title-1\" rel=\"nofollow\" target=\"_blank\">http://www.1-1.org/Title-1</a>\r\n"+
           "<a href=\"http://www.2-2.org/Title-2\" rel=\"nofollow\" target=\"_blank\">http://www.2-2.org/Title-2</a>"
+      highlight_links(' aa http://unuj.org/ru/my-i-iskusstvo/item/2103-macdougall-s-privez-shedevryi-no-ne-vse.html').should ==
+        " aa <a href=\"http://unuj.org/ru/my-i-iskusstvo/item/2103-macdougall-s-privez-shedevryi-no-ne-vse.html\" "+
+          "rel=\"nofollow\" target=\"_blank\">http://unuj.org/ru/my-i-iskusstvo/item/2103-macdougall-s-privez-shedevryi-no-ne-vse.html</a>"
     end
   end
 end

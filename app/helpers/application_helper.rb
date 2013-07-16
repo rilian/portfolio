@@ -46,10 +46,9 @@ module ApplicationHelper
     text = '' if text.nil?
     begin
       new_text = text.dup
-      while new_text =~ /([\s\r\n]+|^)(http:\/\/|https:\/\/|www.)([^\s\r\n]*\.[^\s\r\n]*)([\s\r\n]+|$)/su
-        protocol = $2
-        href = $3
-        new_text.gsub!("#{protocol}#{href}", "<a href=\"#{protocol}#{href}\" rel=\"nofollow\" target=\"_blank\">#{protocol}#{href}</a>")
+      while new_text =~ /([\s\r\n]+|^)[^"]*(http[s]{0,1}:\/\/[^\s\r\n<]*)/u
+        link = $2
+        new_text.gsub!(link, "<a href=\"#{link}\" rel=\"nofollow\" target=\"_blank\">#{link}</a>")
       end
       new_text
     rescue
