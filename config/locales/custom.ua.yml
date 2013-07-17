@@ -4,8 +4,8 @@ ua:
       first: "Початок"
       truncate: "обрізати"
       last: "Кінець"
-      next: "Туда"
-      previous: "Сюда"
+      next: "&rarr;"
+      previous: "&larr;"
 
   activerecord:
     models:
