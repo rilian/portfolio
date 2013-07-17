@@ -26,7 +26,7 @@ class Image < ActiveRecord::Base
   PER_PAGE = 25
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
-  belongs_to :album
+  belongs_to :album, touch: true
 
   # Validations: presence > by type > validates
   validates_presence_of :asset, :album, :title

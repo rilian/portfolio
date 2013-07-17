@@ -17,7 +17,7 @@ class Photo < ActiveRecord::Base
   OWNER_TYPES = %w[Project] # Event
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
-  belongs_to :owner, polymorphic: true
+  belongs_to :owner, polymorphic: true, touch: true
 
   # Validations: presence > by type > validates
   validates :owner_type, inclusion: {in: Photo::OWNER_TYPES}
