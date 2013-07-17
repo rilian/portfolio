@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
 
   # Scopes
 
-  scope :recent, ->() { includes(:photos).where(Project.arel_table[:updated_at].gt(Time.now - 1.day).or(Photo.arel_table[:updated_at].gt(Time.now - 1.day))).limit(1) }
+  scope :recent, ->() { includes(:photos).where(Project.arel_table[:created_at].gt(Time.now - 1.day).or(Photo.arel_table[:created_at].gt(Time.now - 1.day))).limit(1) }
 
   class << self
   end

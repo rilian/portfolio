@@ -22,7 +22,7 @@ class Album < ActiveRecord::Base
 
   scope :published, ->() { where(is_published: true) }
 
-  scope :recent, ->() { includes(:images).where(Image.arel_table[:updated_at].gt(Time.now - 1.day)).limit(1) }
+  scope :recent, ->() { includes(:images).where(Image.arel_table[:created_at].gt(Time.now - 1.day)).limit(1) }
 
   class << self
   end
