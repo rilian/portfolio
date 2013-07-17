@@ -8,13 +8,19 @@
       <li class="divider-vertical"></li>
     <% end %>
     <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
-      <%= link_to (I18n.t 'site.projects_title'), projects_path %>
+      <%= link_to projects_path do %>
+        <%= (I18n.t 'site.projects_title') %>
+        <%= image_tag('star.png') if Project.recent.size > 0 %>
+      <% end %>
     </li>
     <li class="divider-vertical"></li>
     <% Album.published.includes([:images]).each do |album| %>
       <% if album.images.size > 0 %>
         <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
-          <%= link_to get_local_value(I18n.locale, {en: album.title, ua: album.title_ua}), album_path(album) %>
+          <%= link_to album_path(album) do %>
+            <%= get_local_value(I18n.locale, {en: album.title, ua: album.title_ua}) %>
+            <%= image_tag('star.png') if album.is_recent? %>
+          <% end %>
         </li>
       <% end %>
     <% end %>

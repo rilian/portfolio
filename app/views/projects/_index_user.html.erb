@@ -4,7 +4,10 @@
   <% @projects.each do |project| %>
     <li class="span12">
       <h4>
-        <%= link_to get_local_value(I18n.locale, {en: project.title, ua: project.title_ua}), project_url(project) %>
+        <%= link_to project_url(project) do %>
+          <%= image_tag('star.png') if project.is_recent? %>
+          <%= get_local_value(I18n.locale, {en: project.title, ua: project.title_ua}) %>
+        <% end %>
         <small><%= (I18n.t 'activerecord.models.project').downcase %></small>
       </h4>
 

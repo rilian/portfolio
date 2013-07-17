@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
   # Before, after callbacks
 
   # Default scopes, default values (e.g. self.per_page =)
-  PER_PAGE = 50
+  PER_PAGE = 25
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   has_many :photos, as: :owner, dependent: :destroy
@@ -23,6 +23,8 @@ class Project < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
+
+  scope :recent, ->() { includes(:photos).where(Project.arel_table[:updated_at].gt(Time.now - 1.day).or(Photo.arel_table[:updated_at].gt(Time.now - 1.day))).limit(1) }
 
   class << self
   end
@@ -43,6 +45,10 @@ class Project < ActiveRecord::Base
       cover_photo = self.photos.order('photos.created_at ASC').first
     end
     cover_photo
+  end
+
+  def is_recent?
+    Project.where(id: self.id).recent.size > 0
   end
 
   # Private methods (for example: custom validators)
