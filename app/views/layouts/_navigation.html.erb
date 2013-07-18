@@ -5,7 +5,6 @@
       <li class="<%= current_page?(contacts_path) ? 'active' : '' %>">
         <%= link_to (I18n.t 'site.contacts_title'), contacts_path %>
       </li>
-      <li class="divider-vertical"></li>
     <% end %>
     <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
       <%= link_to projects_path do %>
@@ -15,7 +14,6 @@
         <% end %>
       <% end %>
     </li>
-    <li class="divider-vertical"></li>
     <% Album.published.includes([:images]).each do |album| %>
       <% if album.images.size > 0 %>
         <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
@@ -28,11 +26,6 @@
         </li>
       <% end %>
     <% end %>
-  </ul>
-</div>
-
-<div class="nav-collapse collapse">
-  <ul class="nav pull-left">
     <li>
       <%= link_to rss_feed_url, target: '_blank' do
         image_tag 'rss.png'
@@ -66,11 +59,6 @@
         </label>
       </form>
     </li>
-  </ul>
-</div>
-
-<div class="nav-collapse collapse">
-  <ul class="nav pull-left">
     <li>
       <%= link_to request.query_parameters.merge({locale: 'en'}) do
         image_tag 'flag_gb.png'
