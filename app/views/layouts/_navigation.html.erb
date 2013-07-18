@@ -26,6 +26,11 @@
         </li>
       <% end %>
     <% end %>
+  </ul>
+</div>
+
+<div class="nav-collapse collapse">
+  <ul class="nav pull-left">
     <li>
       <%= link_to rss_feed_url, target: '_blank' do
         image_tag 'rss.png'
@@ -59,6 +64,11 @@
         </label>
       </form>
     </li>
+  </ul>
+</div>
+
+<div class="nav-collapse collapse">
+  <ul class="nav pull-left">
     <li>
       <%= link_to request.query_parameters.merge({locale: 'en'}) do
         image_tag 'flag_gb.png'
