@@ -5,7 +5,9 @@
     <li class="span12">
       <h4>
         <%= link_to project_url(project) do %>
-          <%= image_tag('star.png') if project.is_recent? %>
+          <% if project.is_recent? %>
+            <i class="unread"></i>
+          <% end %>
           <%= get_local_value(I18n.locale, {en: project.title, ua: project.title_ua}) %>
         <% end %>
         <small><%= (I18n.t 'activerecord.models.project').downcase %></small>

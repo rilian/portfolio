@@ -10,7 +10,9 @@
     <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
       <%= link_to projects_path do %>
         <%= (I18n.t 'site.projects_title') %>
-        <%= image_tag('star.png') if Project.recent.size > 0 %>
+        <% if Project.recent.size > 0 %>
+          <i class="unread"></i>
+        <% end %>
       <% end %>
     </li>
     <li class="divider-vertical"></li>
@@ -19,7 +21,9 @@
         <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
           <%= link_to album_path(album) do %>
             <%= get_local_value(I18n.locale, {en: album.title, ua: album.title_ua}) %>
-            <%= image_tag('star.png') if album.is_recent? %>
+            <% if album.is_recent? %>
+              <i class="unread"></i>
+            <% end %>
           <% end %>
         </li>
       <% end %>
