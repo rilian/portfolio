@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714215623) do
+ActiveRecord::Schema.define(:version => 20130718122304) do
 
   create_table "albums", :force => true do |t|
     t.string  "title",                                :null => false
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20130714215623) do
     t.datetime "updated_at",                                                                    :null => false
     t.text     "contact_text"
     t.text     "contact_text_ua"
+    t.string   "facebook_account"
   end
 
   add_index "settings", ["env"], :name => "index_settings_on_env", :unique => true

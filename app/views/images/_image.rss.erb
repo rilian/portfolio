@@ -29,7 +29,8 @@
 <% end %>
 
 <div>
-  <%= I18n.t 'site.all_images' %>: <%= link_to_if get_setting('flickr_user_id').present?, 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/" %>
+  <%= I18n.t 'site.all_images' %>:
+  <%= link_to_if get_setting('flickr_user_id').present?, 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/" %>
 </div>
 
 

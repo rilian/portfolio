@@ -45,6 +45,13 @@
         end %>
       </li>
     <% end %>
+    <% if get_setting('facebook_account').present? %>
+      <li>
+        <%= link_to "https://www.facebook.com/#{get_setting('facebook_account')}/", target: '_blank' do
+          image_tag 'facebook.png'
+        end %>
+      </li>
+    <% end %>
     <% if get_setting('linkedin_account').present? %>
       <li>
         <%= link_to get_setting('linkedin_account'), target: '_blank' do

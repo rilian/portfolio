@@ -44,3 +44,4 @@ ua:
         is_published: 'Опубліковано ?'
         weight: 'Вага'
       setting:
+        facebook_account: 'Facebook Акаунт'
