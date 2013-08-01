@@ -23,7 +23,7 @@ class Project < ActiveRecord::Base
 
   # Scopes
 
-  scope :recent, ->() {
+  scope :recent, -> {
     includes(:photos).
       where(Project.arel_table[:created_at].gt(Time.now - 1.day).or(
               Photo.arel_table[:created_at].gt(Time.now - 1.day))).

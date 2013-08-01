@@ -30,7 +30,7 @@ class Photo < ActiveRecord::Base
 
   # Scopes
 
-  scope :ordered, ->() { order('photos.is_cover DESC, photos.weight DESC, photos.created_at ASC') }
+  scope :ordered, -> { order('photos.is_cover DESC, photos.weight DESC, photos.created_at ASC') }
 
   # Other model methods
 
