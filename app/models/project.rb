@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   attr_accessible :title, :title_ua, :is_published, :description, :description_ua, :weight, :info, :info_ua,
                   :photos_attributes
 
-  accepts_nested_attributes_for :photos, :allow_destroy => true, reject_if: proc { |a| !a.has_key?('id') && !a.has_key?('asset') }
+  accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: proc { |a| !a.has_key?('id') && !a.has_key?('asset') }
 
   # Model dictionaries, state machine
 
@@ -26,8 +26,7 @@ class Project < ActiveRecord::Base
   scope :recent, -> {
     includes(:photos).
       where(Project.arel_table[:created_at].gt(Time.now - 1.day).or(
-              Photo.arel_table[:created_at].gt(Time.now - 1.day))).
-      limit(1)
+              Photo.arel_table[:created_at].gt(Time.now - 1.day)))
   }
 
   # Other model methods
@@ -46,7 +45,7 @@ class Project < ActiveRecord::Base
   end
 
   def is_recent?
-    Project.where(id: self.id).recent.size > 0
+    Project.where(id: self.id).recent.exists?
   end
 
   # Private methods (for example: custom validators)

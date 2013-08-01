@@ -9,7 +9,7 @@
     <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
       <%= link_to projects_path do %>
         <%= (I18n.t 'site.projects_title') %>
-        <% if Project.recent.size > 0 %>
+        <% if Project.recent.exists? %>
           <i class="unread"></i>
         <% end %>
       <% end %>
