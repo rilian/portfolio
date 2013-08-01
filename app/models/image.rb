@@ -45,10 +45,8 @@ class Image < ActiveRecord::Base
 
   scope :from_published_album, ->() { joins(:album).where('(albums.is_published = ? AND albums.is_upload_to_stock = ?)', true, true) }
 
-  class << self
-  end
-
   # Other model methods
+
   def to_param
     "#{self.id}-#{self.title.parameterize}"
   end

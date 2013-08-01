@@ -24,10 +24,8 @@ class Album < ActiveRecord::Base
 
   scope :recent, ->() { includes(:images).where(Image.arel_table[:created_at].gt(Time.now - 1.day)).limit(1) }
 
-  class << self
-  end
-
   # Other model methods
+
   def to_param
     "#{self.id}-#{self.title.parameterize}"
   end

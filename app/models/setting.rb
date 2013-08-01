@@ -15,9 +15,6 @@ class Setting < ActiveRecord::Base
 
   # Scopes
 
-  class << self
-  end
-
   # Other model methods
 
   # Private methods (for example: custom validators)
