@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
     @q = Image.unscoped.includes([:album]).search(params[:q])
     @images = @q.result
     @images = @images.order('id DESC') if params[:q].nil?
-    @images = @images.page(params[:page]).per(Image::PER_PAGE)
+    @images = @images.page(params[:page])
   end
 
   def show

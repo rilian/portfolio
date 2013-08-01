@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     end
 
     @q = Image.from_published_album.published.includes([:taggings, :tags]).search(params[:q])
-    @images = @q.result(distinct: true).page(params[:page]).per(Image::PER_PAGE)
+    @images = @q.result(distinct: true).page(params[:page])
   end
 
   def contacts

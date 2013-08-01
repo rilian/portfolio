@@ -13,7 +13,6 @@ class Photo < ActiveRecord::Base
     'public/uploads'
   end
 
-  PER_PAGE = 50
   OWNER_TYPES = %w[Project] # Event
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many

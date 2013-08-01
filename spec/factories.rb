@@ -19,7 +19,6 @@ FactoryGirl.define do
 
   factory :album do
     sequence(:title) { |n| "Title #{n}" }
-    images []
     is_published true
   end
 

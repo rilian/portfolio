@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
     @q = @projects.search(params[:q])
     @projects = @q.result
     @projects = @projects.order('weight DESC') if params[:q].nil?
-    @projects = @projects.page(params[:page]).per(Project::PER_PAGE)
+    @projects = @projects.page(params[:page])
   end
 
   def show
