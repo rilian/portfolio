@@ -23,7 +23,12 @@ class Project < ActiveRecord::Base
 
   # Scopes
 
-  scope :recent, ->() { includes(:photos).where(Project.arel_table[:created_at].gt(Time.now - 1.day).or(Photo.arel_table[:created_at].gt(Time.now - 1.day))).limit(1) }
+  scope :recent, ->() {
+    includes(:photos).
+      where(Project.arel_table[:created_at].gt(Time.now - 1.day).or(
+              Photo.arel_table[:created_at].gt(Time.now - 1.day))).
+      limit(1)
+  }
 
   # Other model methods
 
@@ -37,11 +42,7 @@ class Project < ActiveRecord::Base
   # Returns {Photo}
   #
   def cover_photo
-    cover_photo = self.photos.where(is_cover: true).ordered.first
-    unless cover_photo
-      cover_photo = self.photos.ordered.first
-    end
-    cover_photo
+    self.photos.where(is_cover: true).ordered.first || self.photos.ordered.first
   end
 
   def is_recent?
