@@ -8,4 +8,5 @@ log/*.log
 public/uploads
 tmp
 .rvmrc
+coverage/
 
