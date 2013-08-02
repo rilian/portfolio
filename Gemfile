@@ -28,6 +28,8 @@ gem 'flickraw'
 gem 'disqus'
 gem 'nokogiri'
 
+gem 'coveralls', require: false
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
