@@ -11,7 +11,7 @@ Key features:
 * Watermarks, Tags, Search, Contacts page, Localization
 * Useful admin UI
 
-Build Status [![TravisCI](https://api.travis-ci.org/rilian/portfolio.png?branch=master)](https://travis-ci.org/rilian/portfolio) [![Code Climate](https://codeclimate.com/github/rilian/portfolio.png)](https://codeclimate.com/github/rilian/portfolio) [![Coverage Status](https://coveralls.io/repos/rilian/portfolio/badge.png?branch=master)](https://coveralls.io/r/rilian/portfolio?branch=master)
+Build Status [![TravisCI](https://api.travis-ci.org/rilian/portfolio.png?branch=master)](https://travis-ci.org/rilian/portfolio) [![Code Climate](https://codeclimate.com/github/rilian/portfolio.png)](https://codeclimate.com/github/rilian/portfolio) [![Coverage Status](https://coveralls.io/repos/rilian/portfolio/badge.png?branch=master)](https://coveralls.io/r/rilian/portfolio?branch=master) [![Dependency Status](https://gemnasium.com/rilian/portfolio.png)](https://gemnasium.com/rilian/portfolio)
 
 Getting Started
 --------------------
