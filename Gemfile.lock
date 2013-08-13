@@ -247,7 +247,7 @@ DEPENDENCIES
   mini_magick
   nokogiri
   rails (= 3.2.14)
-  ransack (= 0.7.2)
+  ransack
   rocket_tag
   rspec-rails
   rvm-capistrano

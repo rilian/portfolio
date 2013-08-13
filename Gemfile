@@ -13,7 +13,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-imageoptimizer'
 
-gem 'ransack', '0.7.2' # due to yanked 0.7.3
+gem 'ransack'
 gem 'squeel'
 gem 'kaminari'
 gem 'rocket_tag'
