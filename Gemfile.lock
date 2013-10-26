@@ -107,7 +107,7 @@ GEM
     mime-types (1.25)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
-    mini_portile (0.5.1)
+    mini_portile (0.5.2)
     multi_json (1.8.2)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
