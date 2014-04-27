@@ -24,7 +24,6 @@ describe Image do
   it { should have_db_index(:album_id) }
   it { should have_db_index(:published_at) }
 
-  it { should validate_presence_of(:asset) }
   it { should validate_presence_of(:album) }
   it { should validate_presence_of(:title) }
 

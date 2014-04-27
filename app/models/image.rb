@@ -27,7 +27,7 @@ class Image < ActiveRecord::Base
   belongs_to :album, touch: true
 
   # Validations: presence > by type > validates
-  validates_presence_of :asset, :album, :title
+  validates_presence_of :album, :title
   validates_numericality_of :flickr_photo_id, if: Proc.new { |i| i.flickr_photo_id.present? }
 
   # Other properties (e.g. accepts_nested_attributes_for)

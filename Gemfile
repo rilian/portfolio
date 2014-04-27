@@ -11,7 +11,6 @@ gem 'simple_form'
 
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'carrierwave-imageoptimizer'
 
 gem 'ransack'
 gem 'squeel'
@@ -38,7 +37,7 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'debugger'
+  gem 'byebug'
   gem 'thin'
 end
 
@@ -50,4 +49,5 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'carrierwave-imageoptimizer'
 end
