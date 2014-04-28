@@ -37,7 +37,7 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'byebug'
+  gem 'debugger'
   gem 'thin'
 end
 
