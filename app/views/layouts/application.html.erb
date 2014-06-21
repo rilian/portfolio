@@ -13,7 +13,6 @@
     <meta name="description" content="<%= get_setting('description') %>">
     <meta name="author" content="<%= get_setting('copyright_holder') %>">
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
     <%= auto_discovery_link_tag(:rss, rss_feed_url) %>
@@ -90,5 +89,8 @@
       }());
     </script>
   <% end %>
+
+  <%= javascript_include_tag 'application' %>
+
   </body>
 </html>

@@ -35,7 +35,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseRewinder.strategy = :transaction
 
     ActiveSupport::Notifications.subscribe('factory_girl.run_factory') do |name, start, finish, id, payload|
       execution_time_in_seconds = finish - start
@@ -46,11 +46,11 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    DatabaseCleaner.start
+    DatabaseRewinder.start
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean
+    DatabaseRewinder.clean
   end
 
   config.include Devise::TestHelpers, type: :controller

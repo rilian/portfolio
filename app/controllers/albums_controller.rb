@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   load_and_authorize_resource :album
 
   def index
-    authorize! :manage, Album
+    authorize! :manage, Album.new
     @albums = @albums.unscoped if params[:q] && params[:q][:s]
     @q = @albums.includes([:images]).search(params[:q])
     @albums = @q.result

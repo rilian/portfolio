@@ -8,7 +8,7 @@ describe Ability do
       @ability = Ability.new(@user)
     end
     it 'should have user abilities' do
-      @ability.should be_able_to(:manage, :all)
+      expect(@ability.can?(:manage, :all)).to eq true
     end
   end
 

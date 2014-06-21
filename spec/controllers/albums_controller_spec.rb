@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe AlbumsController do
-  it 'should use AlbumsController' do
-    controller.should be_an_instance_of(AlbumsController)
-  end
-
   describe 'unauthorized request' do
     context 'accessible pages' do
       after :each do

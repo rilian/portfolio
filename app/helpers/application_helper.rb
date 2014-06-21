@@ -1,7 +1,7 @@
 module ApplicationHelper
-  ##
-  # Returns array of weighted tags, extracted from all Image
-  #
+##
+# Returns array of weighted tags, extracted from all Image
+#
   def get_tags_cloud(images)
     tags_cloud = Hash.new(0)
     images.map(&:tags).flatten.each { |tag| tags_cloud[tag] += 1 }
@@ -13,7 +13,7 @@ module ApplicationHelper
   #
   def get_setting(field)
     setting = Setting.where(env: Rails.env).first
-    raise 'Setting not found' unless setting
+    raise "Setting not found for RAILS_ENV=#{Rails.env}" unless setting
     setting.send(field.to_sym)
   end
 

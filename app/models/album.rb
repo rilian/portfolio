@@ -13,12 +13,14 @@ class Album < ActiveRecord::Base
   validates_uniqueness_of :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :title, :title_ua, :is_published, :weight, :is_upload_to_stock, :description, :description_ua
+  # TODO: move to strong_parameters
+  #attr_accessible :title, :title_ua, :is_published, :weight, :is_upload_to_stock, :description, :description_ua
 
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope order: 'albums.weight DESC'
+  # TODO: move to controller
+  #default_scope order: 'albums.weight DESC'
 
   scope :published, -> { where(is_published: true) }
 

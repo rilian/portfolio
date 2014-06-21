@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe ImagesController do
-  it 'should use ImagesController' do
-    controller.should be_an_instance_of(ImagesController)
-  end
-
   describe 'unauthorized request' do
     context 'inaccessible pages' do
       context 'album' do
@@ -157,7 +153,6 @@ describe ImagesController do
         Image.find_by_id(@image.id).nil?.should be_true
       end
     end
-
   end
 end
 
