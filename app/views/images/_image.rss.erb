@@ -16,7 +16,7 @@
 <% unless image.tags.empty? %>
   <div>
     <%= I18n.t 'site.tags' %>:
-    <% image.tags.each do |tag| %>
+    <% image.tags.map(&:name).each do |tag| %>
       <%= link_to tag, root_url(q: {anything_like: tag}) %>
     <% end %>
   </div>

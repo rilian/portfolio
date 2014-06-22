@@ -25,6 +25,8 @@ class Image < ActiveRecord::Base
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :album, touch: true
+  has_many :image_tags
+  has_many :tags, through: :image_tags
 
   # Validations: presence > by type > validates
   validates_presence_of :album, :title
@@ -59,11 +61,17 @@ class Image < ActiveRecord::Base
   end
 
   def tags_resolved
-    self.tags * ', '
+    self.tags.map(&:name) * ', '
   end
 
-  def tags_resolved=(value)
-    self.tags = value if value.present?
+  def tags_resolved=(names)
+    tags_arr = []
+    names.split(', ').uniq.each do |name|
+      tag = Tag.where(name: name.strip).first_or_create
+      ImageTag.where(image: self, tag: tag).first_or_create
+      tags_arr << tag
+    end
+    self.tags_cache = tags_arr
   end
 
   # Private methods (for example: custom validators)

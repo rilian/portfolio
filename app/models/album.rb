@@ -18,11 +18,11 @@ class Album < ActiveRecord::Base
 
   # Scopes
 
-  scope :by_weight, ->() { order('albums.weight DESC') }
+  scope :by_weight, ->() { order('"albums"."weight" DESC') }
 
   scope :published, -> { where(is_published: true) }
 
-  scope :recent, -> { includes(:images).where(Image.arel_table[:created_at].gt(Time.now - 1.day)).limit(1) }
+  scope :recent, -> { joins(:images).where(Image.arel_table[:created_at].gt(Time.now - 1.day)).limit(1) }
 
   # Other model methods
 

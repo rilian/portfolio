@@ -4,7 +4,7 @@ class HomeController < ApplicationController
       params[:q][Image::DEFAULT_QUERY.to_sym] = params[:q].delete('anything_like')
     end
 
-    @q = Image.from_published_album.published.includes([:taggings, :tags]).search(params[:q])
+    @q = Image.from_published_album.published.includes([:image_tags, :tags]).search(params[:q])
     @images = @q.result(distinct: true).page(params[:page])
   end
 

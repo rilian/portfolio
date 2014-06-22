@@ -53,7 +53,7 @@
 
             <% unless image.tags.empty? %>
               <br/>
-              <% image.tags.each do |tag| %>
+              <% image.tags.map(&:name).each do |tag| %>
                 <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(q: {anything_like: tag}), class: 'label' %>
               <% end %>
 
@@ -79,6 +79,6 @@
 
 <div>
   <% get_tags_cloud(images).each do |tag, count| %>
-    <%= link_to tag, root_path(q: {anything_like: tag}), {style: "font-size:#{(count * 50) + 50}%;"} %>
+    <%= link_to tag.name, root_path(q: {anything_like: tag}), {style: "font-size:#{(count * 50) + 50}%;"} %>
   <% end %>
 </div>
