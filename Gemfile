@@ -4,10 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 gem 'sqlite3'
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
 gem 'carrierwave'
 gem 'mini_magick'
-gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4.1"
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
 gem 'kaminari'
 #gem 'rocket_tag', github: 'rilian/rocket_tag', branch: 'feature/rails4-compatibility'
 gem 'whenever', require: false

@@ -12,13 +12,4 @@ describe Project do
 
   it { should have_db_index :is_published }
   it { should have_db_index :weight }
-
-  it { should allow_mass_assignment_of :title }
-  it { should allow_mass_assignment_of :title_ua }
-  it { should allow_mass_assignment_of :info }
-  it { should allow_mass_assignment_of :info_ua }
-  it { should allow_mass_assignment_of :description }
-  it { should allow_mass_assignment_of :description_ua }
-
-  pending
 end

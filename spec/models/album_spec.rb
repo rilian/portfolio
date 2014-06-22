@@ -15,14 +15,6 @@ describe Album do
 
   it { should validate_presence_of(:title) }
 
-  it { should allow_mass_assignment_of :title }
-  it { should allow_mass_assignment_of :title_ua }
-  it { should allow_mass_assignment_of :is_published }
-  it { should allow_mass_assignment_of :weight }
-  it { should allow_mass_assignment_of :is_upload_to_stock }
-  it { should allow_mass_assignment_of :description }
-  it { should allow_mass_assignment_of :description_ua }
-
   describe 'instance' do
     before :each do
       FactoryGirl.create(:album)
@@ -49,7 +41,7 @@ describe Album do
     end
 
     it 'default scope should return all albums by weight DESC' do
-      Album.all.map(&:id).should == [@album_2.id, @album_3.id, @album_1.id]
+      expect(Album.by_weight.map(&:id)).to eq [@album_2.id, @album_3.id, @album_1.id]
     end
   end
 

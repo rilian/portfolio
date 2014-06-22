@@ -45,7 +45,7 @@ GEM
     byebug (3.1.2)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
-    cancan (1.6.10)
+    cancancan (1.8.2)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -236,7 +236,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  cancan
+  cancancan
   capistrano
   carrierwave
   carrierwave-imageoptimizer

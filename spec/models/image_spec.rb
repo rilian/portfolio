@@ -29,13 +29,6 @@ describe Image do
 
   it { should validate_numericality_of(:flickr_photo_id) }
 
-  it { should allow_mass_assignment_of :title }
-  it { should allow_mass_assignment_of :title_ua }
-  it { should allow_mass_assignment_of :desc }
-  it { should allow_mass_assignment_of :desc_ua }
-  it { should allow_mass_assignment_of :place }
-  it { should allow_mass_assignment_of :place_ua }
-
   describe 'generators' do
     before :each do
       @image = FactoryGirl.create(:image)
