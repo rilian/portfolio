@@ -2,10 +2,6 @@ class User < ActiveRecord::Base
   # disable registrations on PROD
   devise :database_authenticatable, :recoverable, :rememberable, :registerable
 
-  # # Setup accessible (or protected) attributes for your model
-  # TODO: move to strong_parameters
-  # attr_accessible :email, :password, :password_confirmation, :remember_me
-
   validates_presence_of :password, :password_confirmation
   validates_length_of :password, minimum: 6
 
@@ -15,7 +11,8 @@ class User < ActiveRecord::Base
 
   validate :passwords_match
 
-  private
+private
+
   def passwords_match
     if self.password != self.password_confirmation
       self.errors.add(:base, 'password confirmation should match password') and return false

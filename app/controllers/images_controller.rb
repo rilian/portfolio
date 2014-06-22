@@ -27,7 +27,7 @@ class ImagesController < ApplicationController
   end
 
   def update
-    if @image.update_attributes(params[:image])
+    if @image.update_attributes(image_params)
       redirect_to image_path(@image)
     else
       render :edit
@@ -40,5 +40,15 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     redirect_to images_path
+  end
+
+private
+
+  def image_params
+    params.require(:image).permit(
+      :asset, :asset_cache, :album_id, :title, :title_ua, :desc, :desc_ua, :place, :place_ua, :date,
+      :updated_at, :published_at_checkbox, :tags, :tags_resolved, :flickr_photo_id, :flickr_comment_time,
+      :deviantart_link, :istockphoto_link, :shutterstock_link, :is_for_sale, :image_width, :image_height
+    )
   end
 end

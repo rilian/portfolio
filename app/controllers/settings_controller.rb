@@ -22,7 +22,7 @@ class SettingsController < ApplicationController
   end
 
   def update
-    if @setting.update_attributes(params[:setting])
+    if @setting.update_attributes(setting_params)
       redirect_to setting_path(@setting)
     else
       render :edit
@@ -32,5 +32,17 @@ class SettingsController < ApplicationController
   def destroy
     @setting.destroy
     redirect_to settings_path
+  end
+
+private
+
+  def setting_params
+    params.require(:setting).permit(
+      :env, :host, :title, :copyright_holder, :contact_text,
+      :contact_text_ua, :facebook_account, :flickr_user_id, :linkedin_account,
+      :description, :flickr_api_key, :flickr_shared_secret, :flickr_access_token,
+      :flickr_access_secret, :google_analytics_account, :disqus_shortname, :disqus_developer,
+      :disqus_api_secret, :disqus_api_key, :disqus_access_token
+    )
   end
 end
