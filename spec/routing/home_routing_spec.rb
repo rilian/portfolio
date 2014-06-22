@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe HomeController do
+describe HomeController, type: :routing do
   describe 'routing' do
     it 'recognizes and generates actions' do
-      { get: '/rss'}.should route_to(controller: 'home', action: 'rss', format: 'rss')
+      expect(get: '/rss').to route_to(controller: 'home', action: 'rss', format: 'rss')
     end
   end
 end
