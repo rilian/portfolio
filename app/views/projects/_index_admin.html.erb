@@ -5,6 +5,8 @@
   <small>list of all projects</small>
 </h1>
 
+<%= paginate @projects %>
+
 <table class="table">
   <thead>
   <tr>
@@ -69,3 +71,5 @@
   </tr>
   </thead>
 </table>
+
+<%= paginate @projects %>
