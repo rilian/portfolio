@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ImagesController do
+describe ImagesController, type: :controller do
   describe 'unauthorized request' do
     context 'inaccessible pages' do
       context 'album' do
@@ -20,7 +20,7 @@ describe ImagesController do
           get :new
         end
         it 'should redirect to homepage' do
-          post :create
+          post :create, { image: { album_id: 0 } }
         end
       end
 
@@ -106,14 +106,13 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
-        image = Image.last
-        image.present?.should be_true
-        image.title.should eq('aa AA aA Aa')
-        image.desc.should eq('bb BB bB Bb')
-        image.place.should eq('cc CC Cc cC')
-        image.album_id.should eq(@album.id)
-        image.published_at.should == nil
+        image = Image.first
+        expect(image.title).to eq('aa AA aA Aa')
+        expect(image.desc).to eq('bb BB bB Bb')
+        expect(image.place).to eq('cc CC Cc cC')
+        expect(image.album_id).to eq(@album.id)
+        expect(image.published_at).to eq nil
+        expect(response.status).to eq 302
       end
     end
 
@@ -136,7 +135,7 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
+        expect(response.status).to eq 302
         @image.reload
         @image.title.should eq('BB bb Bb bB!')
       end
@@ -149,8 +148,8 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
-        Image.find_by_id(@image.id).nil?.should be_true
+        expect(response.status).to eq 302
+        expect(Image.find_by_id(@image.id)).to eq nil
       end
     end
   end

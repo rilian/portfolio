@@ -3,8 +3,16 @@ module ApplicationHelper
 # Returns array of weighted tags, extracted from all Image
 #
   def get_tags_cloud(images)
-    tags_cloud = Hash.new(0)
-    images.map(&:tags).flatten.each { |tag| tags_cloud[tag] += 1 }
+    tags_cloud = {}
+    images.each do |image|
+      image.tags.map(&:name).each do |tag_name|
+        if tags_cloud[tag_name].present?
+          tags_cloud[tag_name] += 1
+        else
+          tags_cloud[tag_name] = 1
+        end
+      end
+    end
     tags_cloud.sort_by { rand }
   end
 

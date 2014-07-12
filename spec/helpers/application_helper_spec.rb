@@ -5,12 +5,15 @@ include ApplicationHelper
 describe ApplicationHelper do
   describe 'get_tags_cloud' do
     before do
-      FactoryGirl.create(:image, tags_resolved: 'apple, banana, cucumber')
-      FactoryGirl.create(:image, tags_resolved: 'banana, cucumber, peach')
+      image_1 = FactoryGirl.create(:image)
+      image_1.tags_resolved = 'apple, banana, cucumber'
+      image_2 = FactoryGirl.create(:image)
+      image_2.tags_resolved = 'banana, cucumber, peach'
     end
 
     it 'should return valid tags cloud' do
-      get_tags_cloud(Image.all).should =~ [['apple', 1], ['banana', 2], ['cucumber', 2], ['peach', 1]]
+      tags_cloud = get_tags_cloud(Image.all)
+      expect(tags_cloud).to match_array([['apple', 1], ['banana', 2], ['cucumber', 2], ['peach', 1]])
     end
   end
 

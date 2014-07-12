@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AlbumsController do
+describe AlbumsController, type: :controller do
   describe 'unauthorized request' do
     context 'accessible pages' do
       after :each do
@@ -28,7 +28,7 @@ describe AlbumsController do
           get :new
         end
         it 'should redirect to homepage' do
-          post :create
+          post :create, { album: { title: '' } }
         end
       end
 
@@ -78,10 +78,10 @@ describe AlbumsController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
-        Album.last.present?.should be_true
-        Album.last.title.should eq('aa AA Aa aA')
-        Album.last.description.should eq('Bb')
+        expect(response.status).to eq 302
+        album = Album.last
+        expect(album.title).to eq 'aa AA Aa aA'
+        expect(album.description).to eq 'Bb'
       end
     end
 
@@ -92,8 +92,8 @@ describe AlbumsController do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:edit)
+        expect(response.status).to eq 200
+        expect(response).to render_template(:edit)
       end
     end
 
@@ -104,10 +104,10 @@ describe AlbumsController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
+        expect(response.status).to eq 302
         @album.reload
-        @album.title.should eq('BB bb Bb bB!')
-        @album.description.should eq('Bb')
+        expect(@album.title).to eq('BB bb Bb bB!')
+        expect(@album.description).to eq('Bb')
       end
     end
 
@@ -118,8 +118,8 @@ describe AlbumsController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
-        Album.find_by_id(@album.id).nil?.should be_true
+        expect(response.status).to eq 302
+        expect(Album.find_by_id(@album.id)).to eq nil
       end
     end
   end
