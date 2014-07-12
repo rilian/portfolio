@@ -24,7 +24,7 @@ FactoryGirl.define do
 
   factory :image do
     album
-    asset                 File.open("#{Rails.root}/spec/fixtures/file.jpg")
+    asset                 File.open("#{Rails.root}/spec/fixtures/file.png")
     sequence(:title)      { |n| "Title #{n}" }
     desc                  { FactoryGirl.generate(:body) }
     place                 'Kiev'

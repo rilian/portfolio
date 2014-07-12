@@ -93,7 +93,7 @@ describe ImagesController, type: :controller do
     describe "POST 'create'" do
       before do
         @album = FactoryGirl.create(:album)
-        @file = fixture_file_upload('/file.jpg', 'image/jpg')
+        @file = fixture_file_upload('/file.png', 'image/png')
 
         post :create, image: {
           album_id: @album.id,
