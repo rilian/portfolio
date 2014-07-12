@@ -71,7 +71,7 @@ class Image < ActiveRecord::Base
       ImageTag.where(image: self, tag: tag).first_or_create
       tags_arr << tag
     end
-    self.tags_cache = tags_arr
+    update_values
   end
 
   # Private methods (for example: custom validators)

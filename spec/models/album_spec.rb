@@ -29,7 +29,7 @@ describe Album do
     end
 
     it 'should be valid' do
-      @album.should be_valid
+      expect(@album).to be_valid
     end
   end
 
@@ -52,7 +52,7 @@ describe Album do
       end
 
       it 'should have humanized values' do
-        @album.title.should == 'BB bb Bb bB!'
+        expect(@album.title).to eq 'BB bb Bb bB!'
       end
     end
   end
@@ -63,7 +63,7 @@ describe Album do
     end
 
     it 'should return to_param' do
-      @album.to_param.should eq("#{@album.id}-#{@album.title.parameterize}")
+      expect(@album.to_param).to eq("#{@album.id}-#{@album.title.parameterize}")
     end
   end
 end

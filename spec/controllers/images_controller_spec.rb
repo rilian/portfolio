@@ -5,8 +5,8 @@ describe ImagesController, type: :controller do
     context 'inaccessible pages' do
       context 'album' do
         after do
-          response.should redirect_to root_path
-          response.status.should eq(302)
+          expect(response).to redirect_to root_path
+          expect(response.status).to eq(302)
         end
 
         it 'should redirect to homepage' do
@@ -30,8 +30,8 @@ describe ImagesController, type: :controller do
         end
 
         after do
-          response.should redirect_to root_path
-          response.status.should eq(302)
+          expect(response).to redirect_to root_path
+          expect(response.status).to eq(302)
         end
 
         it 'should redirect to homepage' do
@@ -53,9 +53,9 @@ describe ImagesController, type: :controller do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:show)
-        assigns[:image].should == @image
+        expect(response).to be_success
+        expect(response).to render_template(:show)
+        expect(assigns[:image]).to eq @image
       end
     end
   end
@@ -73,9 +73,9 @@ describe ImagesController, type: :controller do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:show)
-        assigns[:image].should == @image
+        expect(response).to be_success
+        expect(response).to render_template(:show)
+        expect(assigns[:image]).to eq @image
       end
     end
 
@@ -85,8 +85,8 @@ describe ImagesController, type: :controller do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:new)
+        expect(response).to be_success
+        expect(response).to render_template(:new)
       end
     end
 
@@ -123,8 +123,8 @@ describe ImagesController, type: :controller do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:edit)
+        expect(response).to be_success
+        expect(response).to render_template(:edit)
       end
     end
 
@@ -136,8 +136,7 @@ describe ImagesController, type: :controller do
 
       it 'should be successful' do
         expect(response.status).to eq 302
-        @image.reload
-        @image.title.should eq('BB bb Bb bB!')
+        expect(@image.reload.title).to eq('BB bb Bb bB!')
       end
     end
 

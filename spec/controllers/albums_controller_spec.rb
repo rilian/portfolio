@@ -9,16 +9,16 @@ describe AlbumsController, type: :controller do
       it 'should be success' do
         @album = FactoryGirl.create(:album, images: [FactoryGirl.create(:image)])
         get :show, id: @album.id
-        response.status.should eq(200)
-        response.should render_template(:show)
+        expect(response.status).to eq(200)
+        expect(response).to render_template(:show)
       end
     end
 
     context 'inaccessible pages' do
       context 'albums' do
         after :each do
-          response.should redirect_to root_path
-          response.status.should eq(302)
+          expect(response).to redirect_to root_path
+          expect(response.status).to eq(302)
         end
 
         it 'should redirect to homepage' do
@@ -38,8 +38,8 @@ describe AlbumsController, type: :controller do
         end
 
         after :each do
-          response.should redirect_to root_path
-          response.status.should eq(302)
+          expect(response).to redirect_to root_path
+          expect(response.status).to eq(302)
         end
 
         it 'should redirect to homepage' do
@@ -67,8 +67,8 @@ describe AlbumsController, type: :controller do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:new)
+        expect(response).to be_success
+        expect(response).to render_template(:new)
       end
     end
 

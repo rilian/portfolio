@@ -35,34 +35,16 @@ describe Image do
     end
 
     it 'should be valid' do
-      @image.should be_valid
-    end
-  end
-
-  describe 'before filters' do
-    describe 'should humanize text values' do
-      before do
-        @image = FactoryGirl.create(:image, title: 'aa AA aA Aa', desc: 'bb BB bB Bb', place: 'cc CC Cc cC', tags: 'xx, yy, qQ')
-      end
-
-      it 'should have humanized values' do
-        @image.title.should == 'aa AA aA Aa'
-        @image.desc.should == 'bb BB bB Bb'
-        @image.place.should == 'cc CC Cc cC'
-        @image.tags_cache.should == 'xx, yy, qQ'
-      end
+      expect(@image).to be_valid
     end
   end
 
   describe 'scopes' do
-    before do
-      @image_1 = FactoryGirl.create(:image, published_at: 3.days.ago)
-      @image_2 = FactoryGirl.create(:image, published_at: 2.days.ago)
-      @image_3 = FactoryGirl.create(:image, published_at: 1.days.ago)
+    describe '.published' do
+      pending
     end
-
-    it 'default scope should return all images by published_at DESC, created_at DESC order' do
-      Image.all.map(&:id).should == [@image_3.id, @image_2.id, @image_1.id]
+    describe '.from_published_album' do
+      pending
     end
   end
 
@@ -72,11 +54,11 @@ describe Image do
     end
 
     it 'should return to_param' do
-      @image.to_param.should eq("#{@image.id}-#{@image.title.parameterize}")
+      expect(@image.to_param).to eq("#{@image.id}-#{@image.title.parameterize}")
     end
 
     it 'should have published_at_checkbox' do
-      @image.published_at_checkbox.should == @image.published_at.present?
+      expect(@image.published_at_checkbox).to eq @image.published_at.present?
     end
 
     describe 'published_at' do
@@ -92,7 +74,7 @@ describe Image do
 
         it 'when value is nil' do
           @image.published_at_checkbox = '1'
-          @image.published_at.should == Time.now
+          expect(@image.published_at).to eq Time.now
         end
       end
 
@@ -100,25 +82,26 @@ describe Image do
         it 'when value is not nil initially' do
           published_at_cached = @image.published_at
           @image.published_at_checkbox = '1'
-          @image.published_at.should == published_at_cached
+          expect(@image.published_at).to eq published_at_cached
         end
       end
 
       it 'should set published_at to nil' do
         @image.published_at_checkbox = '0'
-        @image.published_at.should == nil
+        expect(@image.published_at).to eq nil
       end
     end
 
     describe 'tags_resolved' do
-      it 'should return well-formatted tags' do
-        @image.tags = %w(aa bb cc)
-        @image.tags_resolved.should == 'aa, bb, cc'
+      before do
+        @image = FactoryGirl.create(:image)
+        @image.tags_resolved = 'apple, banana, cucumber'
       end
 
-      it 'should set published_at to nil' do
-        @image.tags_resolved = 'a, b'
-        @image.tags.should == %w(a b)
+      it 'should return well-formatted tags' do
+        expect(@image.reload.tags_resolved).to eq 'apple, banana, cucumber'
+        expect(Tag.count).to eq 3
+        expect(ImageTag.count).to eq 3
       end
     end
   end
