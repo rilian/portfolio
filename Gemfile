@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.4'
 gem 'sqlite3'
 gem 'devise'
 gem 'cancancan'
