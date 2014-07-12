@@ -62,11 +62,6 @@ describe Image do
     end
 
     describe 'published_at' do
-      before :each do
-        time_now = Time.now
-        Time.stub(:now).and_return(time_now)
-      end
-
       describe 'should be updated' do
         before :each do
           @image.published_at = nil
@@ -74,7 +69,7 @@ describe Image do
 
         it 'when value is nil' do
           @image.published_at_checkbox = '1'
-          expect(@image.published_at).to eq Time.now
+          expect(@image.published_at).to_not eq nil
         end
       end
 
