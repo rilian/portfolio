@@ -8,16 +8,17 @@ gem 'cancancan'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
-gem 'kaminari'
-#gem 'rocket_tag', github: 'rilian/rocket_tag', branch: 'feature/rails4-compatibility'
 gem 'whenever', require: false
-gem 'flickraw'
-gem 'disqus'
 gem 'nokogiri'
 
 # Frontend
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'kaminari'
+
+# 3rd party
+gem 'flickraw'
+gem 'disqus'
 
 group :assets do
   gem 'sass-rails', '4.0.3'
