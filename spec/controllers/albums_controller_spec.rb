@@ -33,7 +33,7 @@ describe AlbumsController, type: :controller do
       end
 
       context 'members' do
-        before :each do
+        before do
           @album = FactoryGirl.create(:album)
         end
 
@@ -56,13 +56,13 @@ describe AlbumsController, type: :controller do
   end
 
   context 'authorized request' do
-    before :each do
+    before do
       @user = FactoryGirl.create(:user)
       sign_in @user
     end
 
     describe "GET 'new'" do
-      before :each do
+      before do
         get :new
       end
 
@@ -73,7 +73,7 @@ describe AlbumsController, type: :controller do
     end
 
     describe "POST 'create'" do
-      before :each do
+      before do
         post :create, album: { title: 'aa AA Aa aA', description: 'Bb' }
       end
 
@@ -86,7 +86,7 @@ describe AlbumsController, type: :controller do
     end
 
     describe "GET 'edit'" do
-      before :each do
+      before do
         @album = FactoryGirl.create(:album)
         get :edit, id: @album.id
       end
@@ -98,7 +98,7 @@ describe AlbumsController, type: :controller do
     end
 
     describe "PUT 'update'" do
-      before :each do
+      before do
         @album = FactoryGirl.create(:album)
         put :update, id: @album.id, album: { title: 'BB bb Bb bB!', description: 'Bb' }
       end
@@ -112,7 +112,7 @@ describe AlbumsController, type: :controller do
     end
 
     describe "DELETE 'destroy'" do
-      before :each do
+      before do
         @album = FactoryGirl.create(:album)
         delete :destroy, id: @album.id
       end

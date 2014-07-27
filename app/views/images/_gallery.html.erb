@@ -63,12 +63,6 @@
             <% end %>
           </p>
         </div>
-
-        <div class="span1">
-          <p class="pull-right">
-            <%= link_to '... Comments', "#{image_url(image)}#disqus_thread", class: 'label', 'data-disqus-identifier' => "image_#{image.id}" %>
-          </p>
-        </div>
       </div>
       <hr>
     </li>
@@ -79,6 +73,6 @@
 
 <div>
   <% get_tags_cloud(images).each do |tag, count| %>
-    <%= link_to tag.name, root_path(q: {anything_like: tag}), {style: "font-size:#{(count * 50) + 50}%;"} %>
+    <%= link_to tag, root_path(q: {anything_like: tag}), {style: "font-size:#{(count * 50) + 50}%;"} %>
   <% end %>
 </div>

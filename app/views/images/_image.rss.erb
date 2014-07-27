@@ -22,12 +22,6 @@
   </div>
 <% end %>
 
-<% if get_setting('flickr_user_id').present? && image.flickr_photo_id.present? %>
-  <div>
-    <%= I18n.t 'site.see_on' %> <%= link_to 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/#{image.flickr_photo_id}" %>
-  </div>
-<% end %>
-
 <div>
   <%= I18n.t 'site.all_images' %>:
   <%= link_to_if get_setting('flickr_user_id').present?, 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/" %>

@@ -40,9 +40,7 @@ private
     params.require(:setting).permit(
       :env, :host, :title, :copyright_holder, :contact_text,
       :contact_text_ua, :facebook_account, :flickr_user_id, :linkedin_account,
-      :description, :flickr_api_key, :flickr_shared_secret, :flickr_access_token,
-      :flickr_access_secret, :google_analytics_account, :disqus_shortname, :disqus_developer,
-      :disqus_api_secret, :disqus_api_key, :disqus_access_token
+      :description, :google_analytics_account
     )
   end
 end

@@ -30,7 +30,6 @@ class Image < ActiveRecord::Base
 
   # Validations: presence > by type > validates
   validates_presence_of :album, :title
-  validates_numericality_of :flickr_photo_id, if: Proc.new { |i| i.flickr_photo_id.present? }
 
   # Other properties (e.g. accepts_nested_attributes_for)
   # TODO: implement

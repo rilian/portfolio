@@ -16,7 +16,7 @@ describe Album do
   it { should validate_presence_of(:title) }
 
   describe 'instance' do
-    before :each do
+    before do
       FactoryGirl.create(:album)
     end
 
@@ -24,7 +24,7 @@ describe Album do
   end
 
   describe 'generators' do
-    before :each do
+    before do
       @album = FactoryGirl.create(:album)
     end
 
@@ -58,7 +58,7 @@ describe Album do
   end
 
   describe 'other model methods' do
-    before :each do
+    before do
       @album = FactoryGirl.build(:album)
     end
 

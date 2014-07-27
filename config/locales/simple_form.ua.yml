@@ -28,7 +28,6 @@ ua:
         date: 'Рік створення'
         tags_resolved: 'Теги (якомога більше релевантних тегів по яким хтось буде шукати!)'
         published: 'Опубліковано'
-        flickr_photo_id: 'Flickr фото ID'
         is_for_sale: 'Фото на продаж ?'
       photo:
       project:

@@ -7,7 +7,6 @@ Key features:
 
 * Upload artworks and show them in Gallery or Album
 * Organize photos in Projects, connecting a topic or event
-* Automatic upload to Flickr in proper sets
 * Watermarks, Tags, Search, Contacts page, Localization
 * Useful admin UI
 
@@ -41,10 +40,6 @@ Modify seeded user account and password
 
 Update settings -> 'production' in database or login and update on site
 
-Set up Flickr API keys and use rake task to update tokens
-
-`rake flickraw:get_flickr_tokens`
-
 Deploy with capistrano
 
 `cap deploy:config`
@@ -53,21 +48,12 @@ Deploy with capistrano
 If you need to run remotely rake task, use
 
 `cap invoke COMMAND='cd PATH_TO_APPLICATION && bundle exec rake RAILS_ENV=production images:recreate_versions'`
-`cap invoke COMMAND='cd /home/username/apps/portfolio/current && bundle exec rake RAILS_ENV=production flickraw:upload_images'`
+`cap invoke COMMAND='cd /home/username/apps/portfolio/current && bundle exec rake RAILS_ENV=production images:publish_unpublished'`
 
 Contributing
 --------------------
 
 I encourage you to test and use the software, send your pull-requests with improvements and suggest cool features!
-
-Additional Info
---------------------
-
-You may find useful information on API used in Portfolio project on these pages
-
-[http://hanklords.github.com/flickraw/](http://hanklords.github.com/flickraw/)
-
-[http://disqus.com/api/](http://disqus.com/api/)
 
 License
 --------------------

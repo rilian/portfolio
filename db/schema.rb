@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727104751) do
+ActiveRecord::Schema.define(version: 20140727110226) do
 
   create_table "albums", force: true do |t|
     t.string  "title",                             null: false
@@ -45,13 +45,11 @@ ActiveRecord::Schema.define(version: 20140727104751) do
     t.string   "place"
     t.text     "desc"
     t.date     "date"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.datetime "published_at"
     t.string   "tags_cache"
-    t.string   "flickr_photo_id",     limit: 11
-    t.integer  "flickr_comment_time",            default: 0
-    t.boolean  "is_for_sale",                    default: false
+    t.boolean  "is_for_sale",  default: false
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "title_ua"
@@ -108,17 +106,8 @@ ActiveRecord::Schema.define(version: 20140727104751) do
     t.string   "title",                    default: "Username Portfolio"
     t.string   "description",              default: "Username Portfolio - Photo & Art work"
     t.string   "copyright_holder",         default: "Developer"
-    t.string   "flickr_api_key",           default: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    t.string   "flickr_shared_secret",     default: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    t.string   "flickr_access_token",      default: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    t.string   "flickr_access_secret",     default: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     t.string   "flickr_user_id",           default: "Nickname"
     t.string   "google_analytics_account", default: "UA-000000-00"
-    t.string   "disqus_shortname",         default: "example"
-    t.string   "disqus_developer",         default: "1"
-    t.string   "disqus_api_secret",        default: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    t.string   "disqus_api_key",           default: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    t.string   "disqus_access_token",      default: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     t.string   "linkedin_account",         default: "http://linkedin.com/"
     t.datetime "created_at",                                                                 null: false
     t.datetime "updated_at",                                                                 null: false

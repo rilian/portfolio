@@ -16,10 +16,6 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari'
 
-# 3rd party
-gem 'flickraw'
-gem 'disqus'
-
 group :assets do
   gem 'sass-rails', '4.0.3'
   gem 'coffee-rails'

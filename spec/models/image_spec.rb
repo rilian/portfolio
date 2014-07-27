@@ -12,8 +12,6 @@ describe Image do
   it { should have_db_column(:date).of_type(:date) }
   it { should have_db_column(:published_at).of_type(:datetime) }
   it { should have_db_column(:tags_cache).of_type(:string) }
-  it { should have_db_column(:flickr_photo_id).of_type(:string).with_options(limit: 11) }
-  it { should have_db_column(:flickr_comment_time).of_type(:integer).with_options(default: 0) }
   it { should have_db_column(:is_for_sale).of_type(:boolean).with_options(default: false) }
   it { should have_db_column(:image_width).of_type(:integer) }
   it { should have_db_column(:image_height).of_type(:integer) }
@@ -24,10 +22,8 @@ describe Image do
   it { should validate_presence_of(:album) }
   it { should validate_presence_of(:title) }
 
-  it { should validate_numericality_of(:flickr_photo_id) }
-
   describe 'generators' do
-    before :each do
+    before do
       @image = FactoryGirl.create(:image)
     end
 
@@ -68,7 +64,7 @@ describe Image do
   end
 
   describe 'instance methods' do
-    before :each do
+    before do
       @image = FactoryGirl.build(:image)
     end
 
@@ -82,7 +78,7 @@ describe Image do
 
     describe 'published_at' do
       describe 'should be updated' do
-        before :each do
+        before do
           @image.published_at = nil
         end
 

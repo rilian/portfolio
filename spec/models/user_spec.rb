@@ -7,7 +7,7 @@ describe User do
   it { should have_db_index(:email).unique(true) }
 
   describe 'generators' do
-    before :each do
+    before do
       @user = FactoryGirl.create(:user)
     end
 
@@ -16,7 +16,7 @@ describe User do
     end
   end
 
-  before(:each) do
+  before do
     @attr = {
       email: 'user@example.com',
       password: 'foobar',
@@ -64,7 +64,7 @@ describe User do
 
   describe 'passwords' do
 
-    before(:each) do
+    before do
       @user = User.new(@attr)
     end
 
@@ -96,7 +96,7 @@ describe User do
 
   describe 'password encryption' do
 
-    before(:each) do
+    before do
       @user = User.create!(@attr)
     end
 

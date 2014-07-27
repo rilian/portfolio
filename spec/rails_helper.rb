@@ -48,11 +48,11 @@ RSpec.configure do |config|
     DatabaseRewinder.strategy = :transaction
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseRewinder.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseRewinder.clean
   end
 

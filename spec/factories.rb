@@ -30,7 +30,6 @@ FactoryGirl.define do
     place                 'Kiev'
     date                  Date.today
     published_at          Time.now
-    flickr_photo_id       '1234567890'
     is_for_sale           false
   end
 end

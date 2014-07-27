@@ -47,7 +47,7 @@ private
   def image_params
     params.require(:image).permit(
       :asset, :asset_cache, :album_id, :title, :title_ua, :desc, :desc_ua, :place, :place_ua, :date,
-      :updated_at, :published_at_checkbox, :tags, :tags_resolved, :flickr_photo_id, :flickr_comment_time,
+      :updated_at, :published_at_checkbox, :tags, :tags_resolved,
       :is_for_sale, :image_width, :image_height
     )
   end
