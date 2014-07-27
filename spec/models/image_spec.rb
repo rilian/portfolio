@@ -13,9 +13,6 @@ describe Image do
   it { should have_db_column(:published_at).of_type(:datetime) }
   it { should have_db_column(:tags_cache).of_type(:string) }
   it { should have_db_column(:flickr_photo_id).of_type(:string).with_options(limit: 11) }
-  it { should have_db_column(:deviantart_link).of_type(:string) }
-  it { should have_db_column(:istockphoto_link).of_type(:string) }
-  it { should have_db_column(:shutterstock_link).of_type(:string) }
   it { should have_db_column(:flickr_comment_time).of_type(:integer).with_options(default: 0) }
   it { should have_db_column(:is_for_sale).of_type(:boolean).with_options(default: false) }
   it { should have_db_column(:image_width).of_type(:integer) }

@@ -14,7 +14,6 @@
       <th>Info</th>
       <th><%= sort_link @q, :created_at, 'Dates' %></th>
       <th>Flickr</th>
-      <th>Photobanks</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -86,32 +85,6 @@
           <% if image.flickr_comment_time != 0 %>
             <p>Last comment <%= time_ago_in_words(Time.at(image.flickr_comment_time)) %> ago</p>
           <% end %>
-        </td>
-        <td>
-          <p>
-            DeviantArt
-            <% if image.deviantart_link.present? %>
-              <span><%= link_to 'Browse', image.deviantart_link, target: '_blank' %></span>
-            <% else %>
-              <span><%= link_to 'upload', 'http://www.deviantart.com/submit/deviation' %></span>
-            <% end %>
-          </p>
-          <p>
-            iStockPhoto
-            <% if image.istockphoto_link.present? %>
-              <span><%= link_to 'Browse', image.istockphoto_link, target: '_blank' %></span>
-            <% else %>
-              <span><%= link_to 'upload', 'http://istockphoto.com/' %></span>
-            <% end %>
-          </p>
-          <p>
-            ShutterStock
-            <% if image.shutterstock_link.present? %>
-              <span><%= link_to 'Browse', image.shutterstock_link, target: '_blank' %></span>
-            <% else %>
-              <span><%= link_to 'upload', 'http://shutterstock.com/' %></span>
-            <% end %>
-          </p>
         </td>
         <td>
           <p>

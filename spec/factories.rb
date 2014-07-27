@@ -31,9 +31,6 @@ FactoryGirl.define do
     date                  Date.today
     published_at          Time.now
     flickr_photo_id       '1234567890'
-    deviantart_link       'http://deviantart.com/'
-    istockphoto_link      'http://istockphoto.com/'
-    shutterstock_link     'http://shutterstock.com/'
     is_for_sale           false
   end
 end

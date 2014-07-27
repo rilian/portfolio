@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622124236) do
+ActiveRecord::Schema.define(version: 20140727104751) do
 
   create_table "albums", force: true do |t|
     t.string  "title",                             null: false
@@ -50,9 +50,6 @@ ActiveRecord::Schema.define(version: 20140622124236) do
     t.datetime "published_at"
     t.string   "tags_cache"
     t.string   "flickr_photo_id",     limit: 11
-    t.string   "deviantart_link"
-    t.string   "istockphoto_link"
-    t.string   "shutterstock_link"
     t.integer  "flickr_comment_time",            default: 0
     t.boolean  "is_for_sale",                    default: false
     t.integer  "image_width"

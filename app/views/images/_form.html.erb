@@ -20,9 +20,6 @@
     <%= f.input :tags_resolved, as: :text, input_html: { rows: 2, cols: 40, class: 'input-xxlarge' } %>
     <%= f.input :published_at_checkbox, as: :boolean, label: "#{I18n.t 'simple_form.labels.image.published'} #{@image.published_at.present? ? " #{@image.published_at.strftime('%H:%M %d/%m/%Y')}" : ''}" %>
     <%= f.input :flickr_photo_id, input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :deviantart_link, input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :istockphoto_link, input_html: { class: 'input-xxlarge' } %>
-    <%= f.input :shutterstock_link, input_html: { class: 'input-xxlarge' } %>
     <%= f.input :is_for_sale %>
     <%= f.button :submit, class: 'btn-primary' %>
   </div>
