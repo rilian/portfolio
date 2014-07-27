@@ -10,4 +10,4 @@ public/uploads
 tmp
 .rvmrc
 coverage/
-
+config/deploy

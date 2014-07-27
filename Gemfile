@@ -10,6 +10,7 @@ gem 'mini_magick'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
 gem 'whenever', require: false
 gem 'nokogiri'
+gem 'foreman'
 
 # Frontend
 gem 'jquery-rails'
@@ -24,8 +25,9 @@ group :assets do
 end
 
 group :development do
-  gem 'capistrano'
-  gem 'rvm-capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
   gem 'quiet_assets'
 end
 
