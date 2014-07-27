@@ -44,7 +44,7 @@ class Image < ActiveRecord::Base
 
   scope :published, -> { where('images.published_at IS NOT NULL') }
 
-  scope :from_published_album, -> { joins(:album).where('(albums.is_published = ? AND albums.is_upload_to_stock = ?)', true, true) }
+  scope :from_published_albums, -> { joins(:album).where('(albums.is_published = ? AND albums.is_upload_to_stock = ?)', true, true) }
 
   # Other model methods
 

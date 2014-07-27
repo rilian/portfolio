@@ -52,7 +52,7 @@ namespace :flickraw do
 
     puts 'Starting upload images'
 
-    image_to_upload = Image.published.from_published_album.readonly(false).
+    image_to_upload = Image.published.from_published_albums.readonly(false).
       where('(images.flickr_photo_id = ? OR images.flickr_photo_id IS NULL) AND images.created_at < ?', '', (Time.now - 30.minutes))
 
     puts "Total images to upload: #{image_to_upload.all.map(&:id).inspect}"
@@ -110,7 +110,7 @@ namespace :flickraw do
 
     puts 'Starting update images'
 
-    images_to_update = Image.published.from_published_album.readonly(false).
+    images_to_update = Image.published.from_published_albums.readonly(false).
         where('images.flickr_photo_id != "" AND images.updated_at > ? ', (7.days.ago))
 
     if images_to_update.size > 0
@@ -269,7 +269,7 @@ namespace :flickraw do
 
     puts "You are now authenticated as #{login.username}"
 
-    images = Image.published.from_published_album.readonly(false).where('images.flickr_photo_id != ""')
+    images = Image.published.from_published_albums.readonly(false).where('images.flickr_photo_id != ""')
 
     puts "Updating #{images.size} images ..."
 
