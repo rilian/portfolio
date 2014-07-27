@@ -36,13 +36,6 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseRewinder.strategy = :transaction
-
-    ActiveSupport::Notifications.subscribe('factory_girl.run_factory') do |name, start, finish, id, payload|
-      execution_time_in_seconds = finish - start
-      if execution_time_in_seconds >= 1.0
-        $stderr.puts "Slow factory: #{payload[:name]} using strategy #{payload[:strategy]}, time=#{execution_time_in_seconds} sec"
-      end
-    end
   end
 
   config.before do
