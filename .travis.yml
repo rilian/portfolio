@@ -11,6 +11,7 @@ before_install:
 bundler_args: --without development assets
 
 before_script:
+  - "cp config/database.yml.example config/database.yml"
   - "cp config/secrets.yml.example config/secrets.yml"
   - "bundle exec rake db:create db:migrate ; RAILS_ENV=test rake db:migrate"
 
