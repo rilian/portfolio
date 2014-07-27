@@ -38,11 +38,8 @@ class Image < ActiveRecord::Base
   # Model dictionaries, state machine
 
   # Scopes
-  # TODO: move to controller
-  #default_scope order: 'images.published_at DESC, images.created_at DESC'
-
+  scope :sorted, -> { order('images.published_at DESC, images.created_at DESC') }
   scope :published, -> { where('images.published_at IS NOT NULL') }
-
   scope :from_published_albums, -> { joins(:album).where('(albums.is_published = ? AND albums.is_upload_to_stock = ?)', true, true) }
 
   # Other model methods

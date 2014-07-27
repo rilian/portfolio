@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @images = @album.images.published.page(params[:page])
+    @images = @album.images.published.sorted.page(params[:page])
   end
 
   def new

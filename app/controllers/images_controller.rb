@@ -3,9 +3,8 @@ class ImagesController < ApplicationController
   load_resource :image, only: [:show]
 
   def index
-    @q = Image.unscoped.includes([:album]).search(params[:q])
+    @q = Image.sorted.includes([:album]).search(params[:q])
     @images = @q.result
-    @images = @images.order('id DESC') if params[:q].nil?
     @images = @images.page(params[:page])
   end
 

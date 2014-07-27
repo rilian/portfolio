@@ -61,6 +61,10 @@ describe Image do
         expect(Image.from_published_albums.map(&:id)).to match_array([@image_1.id, @image_2.id])
       end
     end
+
+    describe '.sorted' do
+      pending
+    end
   end
 
   describe 'instance methods' do
