@@ -16,15 +16,9 @@
 <% unless image.tags.empty? %>
   <div>
     <%= I18n.t 'site.tags' %>:
-    <% image.tags.each do |tag| %>
+    <% image.tags.map(&:name).each do |tag| %>
       <%= link_to tag, root_url(q: {anything_like: tag}) %>
     <% end %>
-  </div>
-<% end %>
-
-<% if get_setting('flickr_user_id').present? && image.flickr_photo_id.present? %>
-  <div>
-    <%= I18n.t 'site.see_on' %> <%= link_to 'Flickr', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/#{image.flickr_photo_id}" %>
   </div>
 <% end %>
 

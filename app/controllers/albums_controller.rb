@@ -2,14 +2,14 @@ class AlbumsController < ApplicationController
   load_and_authorize_resource :album
 
   def index
-    authorize! :manage, Album
+    authorize! :manage, Album.new
     @albums = @albums.unscoped if params[:q] && params[:q][:s]
-    @q = @albums.includes([:images]).search(params[:q])
+    @q = @albums.includes([:images]).by_weight.search(params[:q])
     @albums = @q.result
   end
 
   def show
-    @images = @album.images.published.page(params[:page])
+    @images = @album.images.published.sorted.page(params[:page])
   end
 
   def new
@@ -28,7 +28,7 @@ class AlbumsController < ApplicationController
   end
 
   def update
-    if @album.update_attributes(params[:album])
+    if @album.update_attributes(album_params)
       redirect_to album_path(@album)
     else
       render :edit
@@ -38,5 +38,14 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     redirect_to albums_path
+  end
+
+private
+
+  def album_params
+    params.require(:album).permit(
+      :title, :title_ua, :is_published, :weight, :is_upload_to_stock,
+      :description, :description_ua
+    )
   end
 end

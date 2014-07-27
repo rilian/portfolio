@@ -31,7 +31,7 @@
 
           <% unless @image.tags.empty? %>
             <br/>
-            <% @image.tags.each do |tag| %>
+            <% @image.tags.map(&:name).each do |tag| %>
               <%= link_to "<i class=\"icon-tag icon-white\"> </i> #{tag}".html_safe, root_path(q: {anything_like: tag}), class: 'label' %>
             <% end %>
 
@@ -46,5 +46,3 @@
 </ul>
 
 <%= render 'home/contacts_block' %>
-
-<%= render 'shared/disqus_comments', id: "image_#{@image.id}", url: image_url(@image) %>

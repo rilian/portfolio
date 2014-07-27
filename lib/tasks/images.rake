@@ -5,7 +5,7 @@ namespace :images do
     if image_to_publish
       image_to_publish.published_at = Time.now
       image_to_publish.save!
-      puts "Published image #{image_to_publish.id}"
+      puts "Published image #{image_to_publish.id}" unless Rails.env.test?
     end
   end
 

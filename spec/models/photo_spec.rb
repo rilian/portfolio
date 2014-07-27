@@ -7,10 +7,5 @@ describe Photo do
     it { should have_db_column(:image_height).of_type(:integer) }
     it { should have_db_column(:desc).of_type(:text) }
     it { should have_db_column(:desc_ua).of_type(:text) }
-
-    it { should allow_mass_assignment_of :desc }
-    it { should allow_mass_assignment_of :desc_ua }
-
-    pending
   end
 end

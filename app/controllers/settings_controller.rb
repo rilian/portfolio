@@ -22,7 +22,7 @@ class SettingsController < ApplicationController
   end
 
   def update
-    if @setting.update_attributes(params[:setting])
+    if @setting.update_attributes(setting_params)
       redirect_to setting_path(@setting)
     else
       render :edit
@@ -32,5 +32,15 @@ class SettingsController < ApplicationController
   def destroy
     @setting.destroy
     redirect_to settings_path
+  end
+
+private
+
+  def setting_params
+    params.require(:setting).permit(
+      :env, :host, :title, :copyright_holder, :contact_text,
+      :contact_text_ua, :facebook_account, :flickr_user_id, :linkedin_account,
+      :description, :google_analytics_account
+    )
   end
 end

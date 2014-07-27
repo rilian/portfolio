@@ -1,16 +1,12 @@
 require 'spec_helper'
 
-describe ImagesController do
-  it 'should use ImagesController' do
-    controller.should be_an_instance_of(ImagesController)
-  end
-
+describe ImagesController, type: :controller do
   describe 'unauthorized request' do
     context 'inaccessible pages' do
       context 'album' do
         after do
-          response.should redirect_to root_path
-          response.status.should eq(302)
+          expect(response).to redirect_to root_path
+          expect(response.status).to eq(302)
         end
 
         it 'should redirect to homepage' do
@@ -24,7 +20,7 @@ describe ImagesController do
           get :new
         end
         it 'should redirect to homepage' do
-          post :create
+          post :create, { image: { album_id: 0 } }
         end
       end
 
@@ -34,8 +30,8 @@ describe ImagesController do
         end
 
         after do
-          response.should redirect_to root_path
-          response.status.should eq(302)
+          expect(response).to redirect_to root_path
+          expect(response.status).to eq(302)
         end
 
         it 'should redirect to homepage' do
@@ -57,9 +53,9 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:show)
-        assigns[:image].should == @image
+        expect(response).to be_success
+        expect(response).to render_template(:show)
+        expect(assigns[:image]).to eq @image
       end
     end
   end
@@ -77,9 +73,9 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:show)
-        assigns[:image].should == @image
+        expect(response).to be_success
+        expect(response).to render_template(:show)
+        expect(assigns[:image]).to eq @image
       end
     end
 
@@ -89,15 +85,15 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:new)
+        expect(response).to be_success
+        expect(response).to render_template(:new)
       end
     end
 
     describe "POST 'create'" do
       before do
         @album = FactoryGirl.create(:album)
-        @file = fixture_file_upload('/file.jpg', 'image/jpg')
+        @file = fixture_file_upload('/file.png', 'image/png')
 
         post :create, image: {
           album_id: @album.id,
@@ -110,14 +106,13 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
-        image = Image.last
-        image.present?.should be_true
-        image.title.should eq('aa AA aA Aa')
-        image.desc.should eq('bb BB bB Bb')
-        image.place.should eq('cc CC Cc cC')
-        image.album_id.should eq(@album.id)
-        image.published_at.should == nil
+        image = Image.first
+        expect(image.title).to eq('aa AA aA Aa')
+        expect(image.desc).to eq('bb BB bB Bb')
+        expect(image.place).to eq('cc CC Cc cC')
+        expect(image.album_id).to eq(@album.id)
+        expect(image.published_at).to eq nil
+        expect(response.status).to eq 302
       end
     end
 
@@ -128,8 +123,8 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.should be_success
-        response.should render_template(:edit)
+        expect(response).to be_success
+        expect(response).to render_template(:edit)
       end
     end
 
@@ -140,9 +135,8 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
-        @image.reload
-        @image.title.should eq('BB bb Bb bB!')
+        expect(response.status).to eq 302
+        expect(@image.reload.title).to eq('BB bb Bb bB!')
       end
     end
 
@@ -153,11 +147,10 @@ describe ImagesController do
       end
 
       it 'should be successful' do
-        response.status.should eq(302)
-        Image.find_by_id(@image.id).nil?.should be_true
+        expect(response.status).to eq 302
+        expect(Image.find_by_id(@image.id)).to eq nil
       end
     end
-
   end
 end
 

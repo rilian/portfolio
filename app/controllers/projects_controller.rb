@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update_attributes(params[:project])
+    if @project.update_attributes(project_params)
       redirect_to edit_project_path(@project)
     else
       render :edit
@@ -40,5 +40,14 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     redirect_to projects_path
+  end
+
+private
+
+  def project_params
+    params.require(:project).permit(
+      :title, :title_ua, :is_published, :description, :description_ua,
+      :weight, :info, :info_ua, :photos_attributes
+    )
   end
 end

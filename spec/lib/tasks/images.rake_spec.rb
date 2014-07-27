@@ -15,9 +15,9 @@ describe 'images' do
     end
 
     it 'should not exist unpublished images' do
-      Image.where(published_at: nil).size.should eq(1)
+      expect(Image.where(published_at: nil).size).to eq(1)
       @rake['images:publish_unpublished'].invoke
-      Image.where(published_at: nil).size.should eq(0)
+      expect(Image.where(published_at: nil).size).to eq(0)
     end
   end
 end

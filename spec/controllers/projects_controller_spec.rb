@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'ProjectsController' do
+describe ProjectsController, type: :controller do
   pending
 end

@@ -1,4 +1,6 @@
 ua:
+  site:
+    no_images: "Нема зображень"
   date:
     abbr_day_names:
     - нд.

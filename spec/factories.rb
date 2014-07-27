@@ -24,16 +24,12 @@ FactoryGirl.define do
 
   factory :image do
     album
-    asset                 File.open("#{Rails.root}/spec/fixtures/file.jpg")
+    asset                 File.open("#{Rails.root}/spec/fixtures/file.png")
     sequence(:title)      { |n| "Title #{n}" }
     desc                  { FactoryGirl.generate(:body) }
     place                 'Kiev'
     date                  Date.today
     published_at          Time.now
-    flickr_photo_id       '1234567890'
-    deviantart_link       'http://deviantart.com/'
-    istockphoto_link      'http://istockphoto.com/'
-    shutterstock_link     'http://shutterstock.com/'
     is_for_sale           false
   end
 end

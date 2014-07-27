@@ -13,16 +13,16 @@ class Album < ActiveRecord::Base
   validates_uniqueness_of :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :title, :title_ua, :is_published, :weight, :is_upload_to_stock, :description, :description_ua
 
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope order: 'albums.weight DESC'
+
+  scope :by_weight, ->() { order('"albums"."weight" DESC') }
 
   scope :published, -> { where(is_published: true) }
 
-  scope :recent, -> { includes(:images).where(Image.arel_table[:created_at].gt(Time.now - 1.day)).limit(1) }
+  scope :recent, -> { joins(:images).where(Image.arel_table[:created_at].gt(Time.now - 1.day)).limit(1) }
 
   # Other model methods
 

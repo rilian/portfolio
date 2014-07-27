@@ -13,8 +13,6 @@
       <th>Thumb</th>
       <th>Info</th>
       <th><%= sort_link @q, :created_at, 'Dates' %></th>
-      <th>Flickr</th>
-      <th>Photobanks</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -71,49 +69,6 @@
           </p>
         </td>
         <td>
-          <% if image.flickr_photo_id.present? %>
-            <span><%= link_to image.flickr_photo_id || 'N/A', "http://www.flickr.com/photos/#{get_setting('flickr_user_id')}/#{image.flickr_photo_id}" %></span>
-          <% else %>
-            <span><%= link_to 'upload', 'http://www.flickr.com/photos/upload/' %></span>
-
-            <% if image.album.is_published? %>
-              <span class="label label-important">once per 6 hours</span>
-            <% else %>
-              <span class="label label-important">album hidden</span>
-            <% end %>
-          <% end%>
-
-          <% if image.flickr_comment_time != 0 %>
-            <p>Last comment <%= time_ago_in_words(Time.at(image.flickr_comment_time)) %> ago</p>
-          <% end %>
-        </td>
-        <td>
-          <p>
-            DeviantArt
-            <% if image.deviantart_link.present? %>
-              <span><%= link_to 'Browse', image.deviantart_link, target: '_blank' %></span>
-            <% else %>
-              <span><%= link_to 'upload', 'http://www.deviantart.com/submit/deviation' %></span>
-            <% end %>
-          </p>
-          <p>
-            iStockPhoto
-            <% if image.istockphoto_link.present? %>
-              <span><%= link_to 'Browse', image.istockphoto_link, target: '_blank' %></span>
-            <% else %>
-              <span><%= link_to 'upload', 'http://istockphoto.com/' %></span>
-            <% end %>
-          </p>
-          <p>
-            ShutterStock
-            <% if image.shutterstock_link.present? %>
-              <span><%= link_to 'Browse', image.shutterstock_link, target: '_blank' %></span>
-            <% else %>
-              <span><%= link_to 'upload', 'http://shutterstock.com/' %></span>
-            <% end %>
-          </p>
-        </td>
-        <td>
           <p>
             <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-primary' %>
           </p>
@@ -130,8 +85,6 @@
       <th>Thumb</th>
       <th>Info</th>
       <th><%= sort_link @q, :created_at, 'Dates' %></th>
-      <th>Flickr</th>
-      <th>Photobanks</th>
       <th>Actions</th>
     </tr>
   </thead>

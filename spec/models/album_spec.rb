@@ -15,16 +15,8 @@ describe Album do
 
   it { should validate_presence_of(:title) }
 
-  it { should allow_mass_assignment_of :title }
-  it { should allow_mass_assignment_of :title_ua }
-  it { should allow_mass_assignment_of :is_published }
-  it { should allow_mass_assignment_of :weight }
-  it { should allow_mass_assignment_of :is_upload_to_stock }
-  it { should allow_mass_assignment_of :description }
-  it { should allow_mass_assignment_of :description_ua }
-
   describe 'instance' do
-    before :each do
+    before do
       FactoryGirl.create(:album)
     end
 
@@ -32,12 +24,12 @@ describe Album do
   end
 
   describe 'generators' do
-    before :each do
+    before do
       @album = FactoryGirl.create(:album)
     end
 
     it 'should be valid' do
-      @album.should be_valid
+      expect(@album).to be_valid
     end
   end
 
@@ -49,7 +41,7 @@ describe Album do
     end
 
     it 'default scope should return all albums by weight DESC' do
-      Album.all.map(&:id).should == [@album_2.id, @album_3.id, @album_1.id]
+      expect(Album.by_weight.map(&:id)).to eq [@album_2.id, @album_3.id, @album_1.id]
     end
   end
 
@@ -60,18 +52,18 @@ describe Album do
       end
 
       it 'should have humanized values' do
-        @album.title.should == 'BB bb Bb bB!'
+        expect(@album.title).to eq 'BB bb Bb bB!'
       end
     end
   end
 
   describe 'other model methods' do
-    before :each do
+    before do
       @album = FactoryGirl.build(:album)
     end
 
     it 'should return to_param' do
-      @album.to_param.should eq("#{@album.id}-#{@album.title.parameterize}")
+      expect(@album.to_param).to eq("#{@album.id}-#{@album.title.parameterize}")
     end
   end
 end

@@ -13,7 +13,6 @@
     <meta name="description" content="<%= get_setting('description') %>">
     <meta name="author" content="<%= get_setting('copyright_holder') %>">
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
     <%= auto_discovery_link_tag(:rss, rss_feed_url) %>
@@ -78,17 +77,7 @@
       </div>
     </div>
 
-  <% if get_setting('disqus_shortname').present? %>
-    <script type="text/javascript">
-      var disqus_shortname = '<%= get_setting('disqus_shortname') %>';
-      var disqus_developer = '<%= get_setting('disqus_developer') %>';
-      (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-      }());
-    </script>
-  <% end %>
+  <%= javascript_include_tag 'application' %>
+
   </body>
 </html>

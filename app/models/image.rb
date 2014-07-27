@@ -25,25 +25,20 @@ class Image < ActiveRecord::Base
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :album, touch: true
+  has_many :image_tags
+  has_many :tags, through: :image_tags
 
   # Validations: presence > by type > validates
   validates_presence_of :album, :title
-  validates_numericality_of :flickr_photo_id, if: Proc.new { |i| i.flickr_photo_id.present? }
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  attr_accessible :asset, :asset_cache, :album_id, :title, :title_ua, :desc, :desc_ua, :place, :place_ua, :date,
-                  :updated_at, :published_at_checkbox, :tags, :tags_resolved, :flickr_photo_id, :flickr_comment_time,
-                  :deviantart_link, :istockphoto_link, :shutterstock_link, :is_for_sale, :image_width, :image_height
-  attr_taggable :tags
 
   # Model dictionaries, state machine
 
   # Scopes
-  default_scope order: 'images.published_at DESC, images.created_at DESC'
-
+  scope :sorted, -> { order('images.published_at DESC, images.created_at DESC') }
   scope :published, -> { where('images.published_at IS NOT NULL') }
-
-  scope :from_published_album, -> { joins(:album).where('(albums.is_published = ? AND albums.is_upload_to_stock = ?)', true, true) }
+  scope :from_published_albums, -> { joins(:album).where('(albums.is_published = ? AND albums.is_upload_to_stock = ?)', true, true) }
 
   # Other model methods
 
@@ -60,11 +55,17 @@ class Image < ActiveRecord::Base
   end
 
   def tags_resolved
-    self.tags * ', '
+    self.tags.map(&:name) * ', '
   end
 
-  def tags_resolved=(value)
-    self.tags = value if value.present?
+  def tags_resolved=(names)
+    tags_arr = []
+    names.split(', ').uniq.each do |name|
+      tag = Tag.where(name: name.strip).first_or_create
+      ImageTag.where(image: self, tag: tag).first_or_create
+      tags_arr << tag
+    end
+    update_values
   end
 
   # Private methods (for example: custom validators)
