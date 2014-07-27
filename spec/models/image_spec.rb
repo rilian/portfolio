@@ -41,10 +41,32 @@ describe Image do
 
   describe 'scopes' do
     describe '.published' do
-      pending
+      before do
+        @image_1 = FactoryGirl.create(:image, published_at: 1.minute.ago)
+        @image_2 = FactoryGirl.create(:image, published_at: 1.minutes.ago)
+        image_3 = FactoryGirl.create(:image, published_at: nil)
+      end
+
+      it 'returns published images' do
+        expect(Image.published.map(&:id)).to match_array([@image_1.id, @image_2.id])
+      end
     end
-    describe '.from_published_album' do
-      pending
+
+    describe '.from_published_albums' do
+      before do
+        album_1 = FactoryGirl.create(:album, is_published: true, is_upload_to_stock: true)
+        @image_1 = FactoryGirl.create(:image, album: album_1)
+        album_2 = FactoryGirl.create(:album, is_published: true, is_upload_to_stock: true)
+        @image_2 = FactoryGirl.create(:image, album: album_2)
+        album_3 = FactoryGirl.create(:album, is_published: true, is_upload_to_stock: false)
+        image_3 = FactoryGirl.create(:image, album: album_3)
+        album_4 = FactoryGirl.create(:album, is_published: false, is_upload_to_stock: true)
+        image_4 = FactoryGirl.create(:image, album: album_4)
+      end
+
+      it 'returns images from published Albums' do
+        expect(Image.from_published_albums.map(&:id)).to match_array([@image_1.id, @image_2.id])
+      end
     end
   end
 
