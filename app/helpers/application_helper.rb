@@ -1,7 +1,7 @@
 module ApplicationHelper
-##
-# Returns array of weighted tags, extracted from all Image
-#
+  ##
+  # Returns array of weighted tags, extracted from all Image
+  #
   def get_tags_cloud(images)
     tags_cloud = {}
     images.each do |image|

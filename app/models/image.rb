@@ -32,8 +32,6 @@ class Image < ActiveRecord::Base
   validates_presence_of :album, :title
 
   # Other properties (e.g. accepts_nested_attributes_for)
-  # TODO: implement
-  #attr_taggable :tags
 
   # Model dictionaries, state machine
 
