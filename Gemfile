@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Backend
 gem 'rails', '4.1.4'
-gem 'sqlite3'
+gem 'pg'
 gem 'devise'
 gem 'cancancan'
 gem 'carrierwave'

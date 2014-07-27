@@ -125,6 +125,7 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
+    pg (0.17.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
@@ -201,7 +202,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.9)
     subexec (0.2.3)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
@@ -248,6 +248,7 @@ DEPENDENCIES
   kaminari
   mini_magick
   nokogiri
+  pg
   quiet_assets
   rails (= 4.1.4)
   ransack!
@@ -256,7 +257,6 @@ DEPENDENCIES
   sass-rails (= 4.0.3)
   shoulda
   simple_form
-  sqlite3
   therubyracer
   uglifier
   unicorn
