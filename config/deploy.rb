@@ -108,7 +108,6 @@ namespace :deploy do
   after 'deploy:finished', 'deploy:link_uploads'
   after 'deploy:finished', 'deploy:link_nginx'
   after 'deploy:finished', 'nginx:restart'
-
 end
 
 namespace :foreman do
