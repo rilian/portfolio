@@ -10,7 +10,6 @@ gem 'mini_magick'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
 gem 'whenever', require: false
 gem 'nokogiri'
-gem 'foreman'
 
 # Frontend
 gem 'jquery-rails'
@@ -44,6 +43,7 @@ group :test do
 end
 
 group :production do
+  gem 'foreman'
   gem 'unicorn'
   gem 'carrierwave-imageoptimizer'
 end
