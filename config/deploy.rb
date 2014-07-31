@@ -1,23 +1,3 @@
-# require 'capistrano/rbenv'
-# require 'capistrano/bundler'
-# require 'capistrano/rails'
-#
-set :rbenv_ruby, '2.1.2'
-set :rbenv_path, '~/.rbenv'
-# set :rbenv_ruby_dir, -> { "#{fetch(:rbenv_path)}/versions/#{fetch(:rbenv_ruby)}" }
-# set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-# set :rbenv_roles, :all # default value
-#
-# set :bundle_binstubs, -> { shared_path.join('bin') }
-# set :bundle_gemfile, -> { release_path.join('Gemfile') }
-# set :bundle_path, -> { shared_path.join('bundle') }
-# set :bundle_without, %w{development test}.join(' ')
-# set :bundle_flags, '--deployment --quiet'
-# set :bundle_env_variables, {}
-#
-# set :bundle_bins, %w{gem rake rails}
-# set :migration_role, :db
-
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
@@ -44,19 +24,21 @@ set :log_level, :debug
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/secrets.yml .env.production}
+set :linked_files, %w{config/database.yml config/secrets.yml .env}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
 
 # Default value for default_env is {}
-set :default_env, { path: "/home/ubuntu/.rbenv/shims:$PATH" }
+set :default_env, { path: '/home/ubuntu/.rbenv/shims:$PATH'}
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
 # Custom
 set :uploads_dir, '/mnt/apps/portfolio/public/uploads'
+set :rbenv_ruby, '2.1.2'
+set :rbenv_path, '~/.rbenv'
 
 namespace :nginx do
   desc 'restart nginx'
@@ -88,22 +70,16 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+    on roles(:app) do
+      within current_path do
+        execute :bundle, :exec, :rake, 'tmp:clear'
+      end
     end
+
+    invoke 'foreman:restart'
   end
 
   after :publishing, :restart
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
 
   after 'deploy:finished', 'deploy:link_uploads'
   after 'deploy:finished', 'deploy:link_nginx'
@@ -118,21 +94,21 @@ namespace :foreman do
     end
   end
 
-  desc "Start the application services"
+  desc 'Start the application services'
   task :start do
     on roles(:app) do
       execute "sudo start #{fetch(:application)}"
     end
   end
 
-  desc "Stop the application services"
+  desc 'Stop the application services'
   task :stop do
     on roles(:app) do
       execute "sudo stop #{fetch(:application)}"
     end
   end
 
-  desc "Restart the application services"
+  desc 'Restart the application services'
   task :restart do
     on roles(:app) do
       execute "sudo start #{fetch(:application)} || sudo restart #{fetch(:application)}"

@@ -1,5 +1,5 @@
-worker_processes ENV["UNICORN_WORKERS"] && ENV["UNICORN_WORKERS"].to_i || 2
-timeout ENV["UNICORN_TIMEOUT"] && ENV["UNICORN_TIMEOUT"].to_i || 30
+worker_processes ENV['UNICORN_WORKERS'] && ENV['UNICORN_WORKERS'].to_i || 2
+timeout ENV['UNICORN_TIMEOUT'] && ENV['UNICORN_TIMEOUT'].to_i || 30
 preload_app true
 
 # This is where we specify the socket.
