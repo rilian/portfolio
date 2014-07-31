@@ -1,7 +1,7 @@
 Welcome to Portfolio
 --------------------
 
-Portfolio is a web-application based on Rails 3.2.x framework that allows you create portfolio with images
+Portfolio is a web-application based on Rails 4.x framework that allows you create portfolio with images
 
 Key features:
 
