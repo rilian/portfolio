@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:rilian/portfolio.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-set :branch, 'deploy'
+set :branch, 'master'
 
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/home/ubuntu/apps/portfolio'
