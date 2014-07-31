@@ -24,8 +24,9 @@ group :assets do
 end
 
 group :development do
-  gem 'capistrano'
-  gem 'rvm-capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
   gem 'quiet_assets'
 end
 
@@ -42,6 +43,7 @@ group :test do
 end
 
 group :production do
+  gem 'foreman'
   gem 'unicorn'
   gem 'carrierwave-imageoptimizer'
 end

@@ -3,11 +3,8 @@ app/assets/images/watermark.png
 .sass-cache
 config/database.yml
 config/secrets.yml
-db/*.sqlite3*
-db/shared/*.sqlite3
 log/*.log
 public/uploads
 tmp
-.rvmrc
 coverage/
-
+config/deploy
