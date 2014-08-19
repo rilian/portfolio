@@ -20,7 +20,7 @@ class Photo < ActiveRecord::Base
 
   # Validations: presence > by type > validates
   validates :owner_type, inclusion: {in: Photo::OWNER_TYPES}
-  validates_presence_of :asset, :owner_id, :owner_type
+  validates_presence_of :owner_id, :owner_type
 
   # Other properties (e.g. accepts_nested_attributes_for)
 
