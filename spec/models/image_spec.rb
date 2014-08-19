@@ -1,26 +1,26 @@
 require 'spec_helper'
 
 describe Image do
-  it { should have_db_column(:album_id).of_type(:integer) }
-  it { should have_db_column(:asset).of_type(:string) }
-  it { should have_db_column(:title).of_type(:string) }
-  it { should have_db_column(:title_ua).of_type(:string) }
-  it { should have_db_column(:desc).of_type(:text) }
-  it { should have_db_column(:desc_ua).of_type(:text) }
-  it { should have_db_column(:place).of_type(:string) }
-  it { should have_db_column(:place_ua).of_type(:string) }
-  it { should have_db_column(:date).of_type(:date) }
-  it { should have_db_column(:published_at).of_type(:datetime) }
-  it { should have_db_column(:tags_cache).of_type(:string) }
-  it { should have_db_column(:is_for_sale).of_type(:boolean).with_options(default: false) }
-  it { should have_db_column(:image_width).of_type(:integer) }
-  it { should have_db_column(:image_height).of_type(:integer) }
+  it { is_expected.to have_db_column(:album_id).of_type(:integer) }
+  it { is_expected.to have_db_column(:asset).of_type(:string) }
+  it { is_expected.to have_db_column(:title).of_type(:string) }
+  it { is_expected.to have_db_column(:title_ua).of_type(:string) }
+  it { is_expected.to have_db_column(:desc).of_type(:text) }
+  it { is_expected.to have_db_column(:desc_ua).of_type(:text) }
+  it { is_expected.to have_db_column(:place).of_type(:string) }
+  it { is_expected.to have_db_column(:place_ua).of_type(:string) }
+  it { is_expected.to have_db_column(:date).of_type(:date) }
+  it { is_expected.to have_db_column(:published_at).of_type(:datetime) }
+  it { is_expected.to have_db_column(:tags_cache).of_type(:string) }
+  it { is_expected.to have_db_column(:is_for_sale).of_type(:boolean).with_options(default: false) }
+  it { is_expected.to have_db_column(:image_width).of_type(:integer) }
+  it { is_expected.to have_db_column(:image_height).of_type(:integer) }
 
-  it { should have_db_index(:album_id) }
-  it { should have_db_index(:published_at) }
+  it { is_expected.to have_db_index(:album_id) }
+  it { is_expected.to have_db_index(:published_at) }
 
-  it { should validate_presence_of(:album) }
-  it { should validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:album) }
+  it { is_expected.to validate_presence_of(:title) }
 
   describe 'generators' do
     before do

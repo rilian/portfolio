@@ -1,26 +1,26 @@
 require 'spec_helper'
 
 describe Album do
-  it { should have_db_column(:title).of_type(:string).with_options(null: false) }
-  it { should have_db_column(:title_ua).of_type(:string) }
-  it { should have_db_column(:is_published).of_type(:boolean).with_options(default: true, null: false) }
-  it { should have_db_column(:weight).of_type(:integer).with_options(default: 0) }
-  it { should have_db_column(:is_upload_to_stock).of_type(:boolean).with_options(default: true) }
-  it { should have_db_column(:description).of_type(:text) }
-  it { should have_db_column(:description_ua).of_type(:text) }
+  it { is_expected.to have_db_column(:title).of_type(:string).with_options(null: false) }
+  it { is_expected.to have_db_column(:title_ua).of_type(:string) }
+  it { is_expected.to have_db_column(:is_published).of_type(:boolean).with_options(default: true, null: false) }
+  it { is_expected.to have_db_column(:weight).of_type(:integer).with_options(default: 0) }
+  it { is_expected.to have_db_column(:is_upload_to_stock).of_type(:boolean).with_options(default: true) }
+  it { is_expected.to have_db_column(:description).of_type(:text) }
+  it { is_expected.to have_db_column(:description_ua).of_type(:text) }
 
-  it { should have_db_index(:title).unique(true) }
-  it { should have_db_index(:is_published) }
-  it { should have_db_index(:weight) }
+  it { is_expected.to have_db_index(:title).unique(true) }
+  it { is_expected.to have_db_index(:is_published) }
+  it { is_expected.to have_db_index(:weight) }
 
-  it { should validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:title) }
 
   describe 'instance' do
     before do
       FactoryGirl.create(:album)
     end
 
-    it { should validate_uniqueness_of(:title) }
+    it { is_expected.to validate_uniqueness_of(:title) }
   end
 
   describe 'generators' do

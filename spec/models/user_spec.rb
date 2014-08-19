@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  it { should have_db_column(:email).of_type(:string) }
-  it { should have_db_column(:encrypted_password).of_type(:string) }
+  it { is_expected.to have_db_column(:email).of_type(:string) }
+  it { is_expected.to have_db_column(:encrypted_password).of_type(:string) }
 
-  it { should have_db_index(:email).unique(true) }
+  it { is_expected.to have_db_index(:email).unique(true) }
 
   describe 'generators' do
     before do
