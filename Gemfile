@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.5'
 gem 'pg'
 gem 'devise'
 gem 'cancancan'
