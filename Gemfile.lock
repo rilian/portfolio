@@ -83,7 +83,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    database_rewinder (0.2.0)
+    database_rewinder (0.4.1)
     debugger-linecache (1.2.0)
     devise (3.3.0)
       bcrypt (~> 3.0)
