@@ -11,7 +11,13 @@
   <% @setting.attributes.each do |attr| %>
     <tr>
       <td><%= attr[0] %></td>
-      <td><%= attr[1] %></td>
+      <td>
+        <% if %w[contact_text contact_text_ua].include?(attr[0]) %>
+          <%= highlight_links(attr[1]).html_safe %>
+        <% else %>
+          <%= attr[1] %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>
