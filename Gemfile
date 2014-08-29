@@ -6,6 +6,7 @@ gem 'pg'
 gem 'devise'
 gem 'cancancan'
 gem 'carrierwave'
+gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
 gem 'whenever', require: false
@@ -45,5 +46,4 @@ end
 group :production do
   gem 'foreman'
   gem 'unicorn'
-  gem 'carrierwave-imageoptimizer'
 end

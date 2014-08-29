@@ -8,7 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   include CarrierWave::MimeTypes
-  include CarrierWave::ImageOptimizer if Rails.env.production?
+  include CarrierWave::ImageOptimizer
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -37,11 +37,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :big do
     process resize_to_limit: [900, 700]
     process :add_watermark
-    process :optimize if Rails.env.production?
+    process optimize: [{ quiet: true }]
   end
   version :span2 do
     process resize_to_limit: [900, 110]
-    process :optimize if Rails.env.production?
+    process optimize: [{ quiet: true }]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
