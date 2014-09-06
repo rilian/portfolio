@@ -1,4 +1,4 @@
-app/assets/images/watermark.png
+config/watermark.png
 .idea
 .sass-cache
 config/database.yml

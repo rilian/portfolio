@@ -89,6 +89,7 @@ namespace :deploy do
   after :publishing, :restart
 
   after 'deploy:finished', 'deploy:link_uploads'
+  after 'deploy:finished', 'deploy:link_watermark'
   after 'deploy:finished', 'deploy:link_nginx'
   after 'deploy:finished', 'nginx:restart'
 end
