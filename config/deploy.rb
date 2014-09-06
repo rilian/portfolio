@@ -61,6 +61,13 @@ namespace :deploy do
     end
   end
 
+  desc 'link watermark file'
+  task :link_watermark do
+    on roles(:web) do
+      execute :ln, '-nfs', "#{shared_path}/config/watermark.png", "#{release_path}/config/watermark.png"
+    end
+  end
+
   desc 'link nginx.conf'
   task :link_nginx do
     on roles(:web) do

@@ -44,7 +44,7 @@ protected
   # Adds watermark over the image
   #
   def add_watermark
-    path = "#{Rails.root}/app/assets/images/watermark.png"
+    path = "#{Rails.root}/config/watermark.png"
     if File.exists? path
       begin
         manipulate! do |img|
