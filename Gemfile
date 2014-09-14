@@ -10,7 +10,6 @@ gem 'carrierwave'
 gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
-gem 'nokogiri'
 
 # Frontend
 gem 'simple_form'
@@ -19,7 +18,6 @@ gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'rails-html-sanitizer', '~> 1.0'
 gem 'therubyracer'
 
 group :development, :test do
