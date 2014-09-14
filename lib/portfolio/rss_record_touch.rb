@@ -1,7 +1,7 @@
 ##
 # Extend ActiveRecord models to support creation of related RssRecord
 #
-module RssRecordTouch
+module Portfolio::RssRecordTouch
   def self.included(base)
     base.class_eval do
       after_create :update_rss_record, if: Proc.new { |m| m.is_published? }

@@ -3,9 +3,6 @@ require 'spec_helper'
 describe AlbumsController, type: :controller do
   describe 'unauthorized request' do
     context 'accessible pages' do
-      after :each do
-      end
-
       it 'should be success' do
         @album = FactoryGirl.create(:album, images: [FactoryGirl.create(:image)])
         get :show, id: @album.id

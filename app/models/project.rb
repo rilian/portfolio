@@ -1,6 +1,8 @@
+require 'portfolio/rss_record_touch'
+
 class Project < ActiveRecord::Base
   # Includes
-  include RssRecordTouch
+  include Portfolio::RssRecordTouch
 
   # Before, after callbacks
 
