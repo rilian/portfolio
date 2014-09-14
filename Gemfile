@@ -1,27 +1,29 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.1.6'
+gem 'rails', '4.2.0.beta1'
 gem 'pg'
-gem 'devise'
+gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
 gem 'cancancan'
+gem 'whenever', require: false
 gem 'carrierwave'
 gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
-gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
-gem 'whenever', require: false
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 gem 'nokogiri'
 
 # Frontend
-gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari'
+gem 'sass-rails', '~> 5.0.0.beta1'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'rails-html-sanitizer', '~> 1.0'
+gem 'therubyracer'
 
-group :assets do
-  gem 'sass-rails', '4.0.3'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'therubyracer'
+group :development, :test do
+  gem 'byebug'
 end
 
 group :development do
@@ -29,10 +31,6 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'quiet_assets'
-end
-
-group :development, :test do
-  gem 'byebug'
 end
 
 group :test do

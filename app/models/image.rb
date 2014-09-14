@@ -1,7 +1,9 @@
+require 'portfolio/rss_record_touch'
+
 class Image < ActiveRecord::Base
   # Includes
   mount_uploader :asset, ImageUploader
-  include RssRecordTouch
+  include Portfolio::RssRecordTouch
 
   # Before, after callbacks
   before_save :update_values

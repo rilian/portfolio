@@ -1,45 +1,65 @@
 GIT
   remote: git://github.com/activerecord-hackery/ransack.git
-  revision: 742425ade4bb66db573dc13bf436a8f3c87b733b
-  branch: rails-4.1
+  revision: 4c254f5ba235e20ca43a2a3d8ff32ffc4653282c
+  branch: rails-4.2
   specs:
     ransack (1.2.4)
-      actionpack (>= 4.0)
-      activerecord (>= 4.0)
-      activesupport (>= 4.0)
+      actionpack (>= 4.1)
+      activerecord (>= 4.1)
+      activesupport (>= 4.1)
       i18n
       polyamorous (~> 1.1)
+
+GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: ce6e369ba85d3759474e468dd0b28735e7450a3d
+  branch: lm-rails-4-2
+  specs:
+    devise (3.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.1.6)
-      actionpack (= 4.1.6)
-      actionview (= 4.1.6)
+    actionmailer (4.2.0.beta1)
+      actionpack (= 4.2.0.beta1)
+      actionview (= 4.2.0.beta1)
       mail (~> 2.5, >= 2.5.4)
-    actionpack (4.1.6)
-      actionview (= 4.1.6)
-      activesupport (= 4.1.6)
-      rack (~> 1.5.2)
+      rails-dom-testing (~> 1.0, >= 1.0.2)
+    actionpack (4.2.0.beta1)
+      actionview (= 4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
+      rack (~> 1.6.0.beta)
       rack-test (~> 0.6.2)
-    actionview (4.1.6)
-      activesupport (= 4.1.6)
+      rails-deprecated_sanitizer (~> 1.0, >= 1.0.2)
+      rails-dom-testing (~> 1.0, >= 1.0.2)
+    actionview (4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    activemodel (4.1.6)
-      activesupport (= 4.1.6)
+      rails-deprecated_sanitizer (~> 1.0, >= 1.0.2)
+      rails-dom-testing (~> 1.0, >= 1.0.2)
+    activejob (4.2.0.beta1)
+      globalid (>= 0.2.3)
+    activemodel (4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       builder (~> 3.1)
-    activerecord (4.1.6)
-      activemodel (= 4.1.6)
-      activesupport (= 4.1.6)
-      arel (~> 5.0.0)
-    activesupport (4.1.6)
-      i18n (~> 0.6, >= 0.6.9)
+    activerecord (4.2.0.beta1)
+      activemodel (= 4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
+      arel (>= 6.0.0.beta1, < 6.1)
+    activesupport (4.2.0.beta1)
+      i18n (>= 0.7.0.beta1, < 0.8)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    arel (5.0.1.20140414130214)
+    arel (6.0.0.beta1)
     bcrypt (3.1.7)
     builder (3.2.2)
     byebug (3.4.0)
@@ -86,12 +106,6 @@ GEM
       thor
     database_rewinder (0.4.1)
     debugger-linecache (1.2.0)
-    devise (3.3.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (0.11.1)
@@ -107,8 +121,10 @@ GEM
     foreman (0.75.0)
       dotenv (~> 0.11.1)
       thor (~> 0.19.1)
+    globalid (0.3.0)
+      activesupport (>= 4.1.0)
     hike (1.2.3)
-    i18n (0.6.11)
+    i18n (0.7.0.beta1)
     image_optimizer (1.2.1)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -119,6 +135,8 @@ GEM
       activesupport (>= 3.0.0)
     kgio (2.9.2)
     libv8 (3.16.14.7)
+    loofah (2.0.1)
+      nokogiri (>= 1.5.9)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     mime-types (2.3)
@@ -139,27 +157,38 @@ GEM
       activerecord (>= 3.0)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
-    rack (1.5.2)
+    rack (1.6.0.beta)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.1.6)
-      actionmailer (= 4.1.6)
-      actionpack (= 4.1.6)
-      actionview (= 4.1.6)
-      activemodel (= 4.1.6)
-      activerecord (= 4.1.6)
-      activesupport (= 4.1.6)
+    rails (4.2.0.beta1)
+      actionmailer (= 4.2.0.beta1)
+      actionpack (= 4.2.0.beta1)
+      actionview (= 4.2.0.beta1)
+      activejob (= 4.2.0.beta1)
+      activemodel (= 4.2.0.beta1)
+      activerecord (= 4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.6)
-      sprockets-rails (~> 2.0)
-    railties (4.1.6)
-      actionpack (= 4.1.6)
-      activesupport (= 4.1.6)
+      railties (= 4.2.0.beta1)
+      sprockets-rails (~> 3.0.0.beta1)
+    rails-deprecated_sanitizer (1.0.2)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.2)
+      activesupport
+      nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-html-sanitizer (1.0.0)
+      loofah (~> 2.0)
+    railties (4.2.0.beta1)
+      actionpack (= 4.2.0.beta1)
+      activesupport (= 4.2.0.beta1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
     ref (1.0.5)
+    responders (2.0.0)
+      railties (>= 4.2.0.alpha, < 5)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -179,12 +208,12 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.0)
-    sass (3.2.19)
-    sass-rails (4.0.3)
+    sass (3.4.4)
+    sass-rails (5.0.0.beta1)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
-      sprockets-rails (~> 2.0)
+      sass (~> 3.2)
+      sprockets (~> 2.12)
+      sprockets-rails (>= 2.0, < 4.0)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (>= 1.4.1, < 3.0)
@@ -200,14 +229,14 @@ GEM
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
     slop (3.6.0)
-    sprockets (2.11.0)
+    sprockets (2.12.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.1.4)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
+    sprockets-rails (3.0.0.beta1)
+      actionpack (>= 4.0)
+      activesupport (>= 4.0)
       sprockets (~> 2.8)
     sshkit (1.5.1)
       colorize
@@ -249,10 +278,10 @@ DEPENDENCIES
   capistrano-rbenv
   carrierwave
   carrierwave-imageoptimizer
-  coffee-rails
+  coffee-rails (~> 4.0.0)
   coveralls
   database_rewinder
-  devise
+  devise!
   factory_girl_rails
   foreman
   jquery-rails
@@ -261,13 +290,14 @@ DEPENDENCIES
   nokogiri
   pg
   quiet_assets
-  rails (= 4.1.6)
+  rails (= 4.2.0.beta1)
+  rails-html-sanitizer (~> 1.0)
   ransack!
   rspec-rails
-  sass-rails (= 4.0.3)
+  sass-rails (~> 5.0.0.beta1)
   shoulda
   simple_form
   therubyracer
-  uglifier
+  uglifier (>= 1.3.0)
   unicorn
   whenever

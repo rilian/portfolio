@@ -1,10 +1,11 @@
+/.bundle
+log/*.log
+/tmp
 config/watermark.png
-.idea
-.sass-cache
 config/database.yml
 config/secrets.yml
-log/*.log
+config/deploy/
 public/uploads
-tmp
+.sass-cache
 coverage/
-config/deploy
+.idea
