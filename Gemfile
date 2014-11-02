@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.2.0.beta2'
+gem 'rails', '4.2.0.beta3'
 gem 'pg'
 gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
 gem 'cancancan'
