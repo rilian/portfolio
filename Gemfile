@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.2.0.beta4'
+gem 'rails', '4.2.0'
 gem 'pg'
 gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
 gem 'cancancan'
@@ -14,9 +14,9 @@ gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 # Frontend
 gem 'simple_form'
 gem 'kaminari'
-gem 'sass-rails', '~> 5.0.0.beta1'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'therubyracer'
 
