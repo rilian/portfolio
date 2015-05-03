@@ -25,6 +25,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano', '3.2.1'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
