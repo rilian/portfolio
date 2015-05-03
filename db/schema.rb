@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140819040951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "albums", force: true do |t|
+  create_table "albums", force: :cascade do |t|
     t.string  "title",                             null: false
     t.boolean "is_published",       default: true, null: false
     t.integer "weight",             default: 0
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140819040951) do
   add_index "albums", ["title"], name: "index_albums_on_title", unique: true, using: :btree
   add_index "albums", ["weight"], name: "index_albums_on_weight", using: :btree
 
-  create_table "image_tags", force: true do |t|
+  create_table "image_tags", force: :cascade do |t|
     t.integer  "image_id"
     t.integer  "tag_id"
     t.datetime "created_at"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140819040951) do
   add_index "image_tags", ["image_id"], name: "index_image_tags_on_image_id", using: :btree
   add_index "image_tags", ["tag_id"], name: "index_image_tags_on_tag_id", using: :btree
 
-  create_table "images", force: true do |t|
+  create_table "images", force: :cascade do |t|
     t.integer  "album_id"
     t.string   "asset"
     t.string   "title"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140819040951) do
   add_index "images", ["album_id"], name: "index_images_on_album_id", using: :btree
   add_index "images", ["published_at"], name: "index_images_on_published_at", using: :btree
 
-  create_table "photos", force: true do |t|
+  create_table "photos", force: :cascade do |t|
     t.string   "asset"
     t.text     "desc"
     t.datetime "created_at"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140819040951) do
     t.text     "desc_ua"
   end
 
-  create_table "projects", force: true do |t|
+  create_table "projects", force: :cascade do |t|
     t.string   "title",                         null: false
     t.boolean  "is_published",   default: true, null: false
     t.text     "description"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20140819040951) do
   add_index "projects", ["is_published"], name: "index_projects_on_is_published", using: :btree
   add_index "projects", ["weight"], name: "index_projects_on_weight", using: :btree
 
-  create_table "rss_records", force: true do |t|
+  create_table "rss_records", force: :cascade do |t|
     t.string   "owner_type", null: false
     t.integer  "owner_id",   null: false
     t.datetime "created_at"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20140819040951) do
   add_index "rss_records", ["created_at"], name: "index_rss_records_on_created_at", using: :btree
   add_index "rss_records", ["owner_type", "owner_id"], name: "index_rss_records_on_owner_type_and_owner_id", unique: true, using: :btree
 
-  create_table "settings", force: true do |t|
+  create_table "settings", force: :cascade do |t|
     t.string   "env",                      default: "development",                           null: false
     t.string   "host",                     default: "http://0.0.0.0:3000"
     t.string   "title",                    default: "Username Portfolio"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 20140819040951) do
 
   add_index "settings", ["env"], name: "index_settings_on_env", unique: true, using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -134,13 +134,13 @@ ActiveRecord::Schema.define(version: 20140819040951) do
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

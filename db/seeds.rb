@@ -5,3 +5,5 @@ if User.all.size == 0
     password_confirmation: '12345678'
   )
 end
+
+Setting.where(env: Rails.env).first_or_create!
