@@ -14,7 +14,7 @@
         <% end %>
       <% end %>
     </li>
-    <% Album.published.includes([:images]).each do |album| %>
+    <% Album.published.order(weight: :asc).includes([:images]).each do |album| %>
       <% if album.images.size > 0 %>
         <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">
           <%= link_to album_path(album) do %>
