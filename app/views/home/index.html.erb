@@ -79,9 +79,9 @@
   </nav>
 </header>
 <main>
-  <% if @image && @link %>
+  <% if @title_image && @link %>
     <a class="image-link" href="<%= @link %>">
-      <%= image_tag(@image.asset.url(:big), alt: @image.title, title: @image.title) %>
+      <%= image_tag(@@title_image.asset.url(:big), alt: '', title: '') %>
       <h3><%= ENV['TITLE_NAME'] %></h3>
     </a>
   <% end %>
