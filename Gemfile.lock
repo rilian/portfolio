@@ -110,7 +110,9 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dotenv (1.0.2)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -118,8 +120,7 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    foreman (0.77.0)
-      dotenv (~> 1.0.2)
+    foreman (0.78.0)
       thor (~> 0.19.1)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
@@ -282,6 +283,7 @@ DEPENDENCIES
   coveralls
   database_rewinder
   devise!
+  dotenv-rails (= 2.0.1)
   factory_girl_rails
   foreman
   jquery-rails

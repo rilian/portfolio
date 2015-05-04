@@ -9,3 +9,4 @@ public/uploads
 .sass-cache
 coverage/
 .idea
+.env
