@@ -79,10 +79,12 @@
   </nav>
 </header>
 <main>
-  <a class="image-link" href="<%= @link %>">
-    <%= image_tag(@image.asset.url(:big), alt: @image.title, title: @image.title) %>
-    <h3><%= ENV['TITLE_NAME'] %></h3>
-  </a>
+  <% if @image && @link %>
+    <a class="image-link" href="<%= @link %>">
+      <%= image_tag(@image.asset.url(:big), alt: @image.title, title: @image.title) %>
+      <h3><%= ENV['TITLE_NAME'] %></h3>
+    </a>
+  <% end %>
 </main>
 
 <%= javascript_include_tag 'application' %>
