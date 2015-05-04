@@ -14,7 +14,6 @@ ua:
         description: 'Опис (EN)'
         description_ua: 'Опис (UA)'
         is_published: 'Опубликован ?'
-        is_upload_to_stock: 'Загружать работы из альбома на стоки ?'
         weight: 'Вага'
       image:
         asset: 'Файл'

@@ -9,7 +9,6 @@
       <th><%= sort_link @q, :id %></th>
       <th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :is_visible %></th>
-      <th><%= sort_link @q, :is_upload_to_stock %></th>
       <th><%= sort_link @q, :weight %></th>
       <th>Images</th>
       <th>Actions</th>
@@ -30,13 +29,6 @@
             <span class="label label-important">hidden</span>
           <% end %>
         </td>
-        <td>
-          <% if album.is_upload_to_stock? %>
-            <span class="label label-important">yes</span>
-          <% else %>
-            no
-          <% end %>
-        </td>
         <td><%= album.weight %></td>
         <td><%= album.images.size %></td>
         <td>
@@ -53,7 +45,6 @@
       <th><%= sort_link @q, :id %></th>
       <th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :is_visible %></th>
-      <th><%= sort_link @q, :is_upload_to_stock %></th>
       <th><%= sort_link @q, :weight %></th>
       <th>Images</th>
       <th>Actions</th>

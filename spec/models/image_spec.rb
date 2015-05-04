@@ -46,14 +46,12 @@ describe Image do
 
     describe '.from_published_albums' do
       before do
-        album_1 = FactoryGirl.create(:album, is_published: true, is_upload_to_stock: true)
+        album_1 = FactoryGirl.create(:album, is_published: true)
         @image_1 = FactoryGirl.create(:image, album: album_1)
-        album_2 = FactoryGirl.create(:album, is_published: true, is_upload_to_stock: true)
+        album_2 = FactoryGirl.create(:album, is_published: true)
         @image_2 = FactoryGirl.create(:image, album: album_2)
-        album_3 = FactoryGirl.create(:album, is_published: true, is_upload_to_stock: false)
-        image_3 = FactoryGirl.create(:image, album: album_3)
-        album_4 = FactoryGirl.create(:album, is_published: false, is_upload_to_stock: true)
-        image_4 = FactoryGirl.create(:image, album: album_4)
+        album_4 = FactoryGirl.create(:album, is_published: false)
+        FactoryGirl.create(:image, album: album_4)
       end
 
       it 'returns images from published Albums' do

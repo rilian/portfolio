@@ -11,16 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504030843) do
+ActiveRecord::Schema.define(version: 20150504031841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
-    t.string  "title",                             null: false
-    t.boolean "is_published",       default: true, null: false
-    t.integer "weight",             default: 0
-    t.boolean "is_upload_to_stock", default: true
+    t.string  "title",                         null: false
+    t.boolean "is_published",   default: true, null: false
+    t.integer "weight",         default: 0
     t.text    "description"
     t.string  "title_ua"
     t.text    "description_ua"

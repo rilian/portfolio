@@ -14,7 +14,6 @@ en:
         description: 'Description (EN)'
         description_ua: 'Description (UA)'
         is_published: 'Is published ?'
-        is_upload_to_stock: 'Upload to stocks ?'
         weight: 'Weight'
       image:
         asset: 'Picture'

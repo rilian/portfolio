@@ -44,8 +44,7 @@ private
 
   def album_params
     params.require(:album).permit(
-      :title, :title_ua, :is_published, :weight, :is_upload_to_stock,
-      :description, :description_ua
+      :title, :title_ua, :is_published, :weight, :description, :description_ua
     )
   end
 end

@@ -5,7 +5,6 @@ describe Album do
   it { is_expected.to have_db_column(:title_ua).of_type(:string) }
   it { is_expected.to have_db_column(:is_published).of_type(:boolean).with_options(default: true, null: false) }
   it { is_expected.to have_db_column(:weight).of_type(:integer).with_options(default: 0) }
-  it { is_expected.to have_db_column(:is_upload_to_stock).of_type(:boolean).with_options(default: true) }
   it { is_expected.to have_db_column(:description).of_type(:text) }
   it { is_expected.to have_db_column(:description_ua).of_type(:text) }
 

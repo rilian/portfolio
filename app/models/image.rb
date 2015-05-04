@@ -37,7 +37,7 @@ class Image < ActiveRecord::Base
   # Scopes
   scope :sorted, -> { order('images.published_at DESC, images.created_at DESC') }
   scope :published, -> { where('images.published_at IS NOT NULL') }
-  scope :from_published_albums, -> { joins(:album).where('(albums.is_published = ? AND albums.is_upload_to_stock = ?)', true, true) }
+  scope :from_published_albums, -> { joins(:album).where('albums.is_published = ?', true) }
 
   # Other model methods
 
