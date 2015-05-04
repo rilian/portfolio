@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @title_image = Image.where(id: ENV['TITLE_IMAGE_ID']).first if ENV['TITLE_IMAGE_ID'].present?
-    album = Album.all.order("title='Portrait'").first
+    album = Album.where(title: 'Portrait').first
     @link = album_path(album) if album
 
     render layout: nil
