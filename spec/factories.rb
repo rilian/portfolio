@@ -1,5 +1,3 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   sequence :email do |n|
     "email.#{n+1}@example.local"
@@ -10,8 +8,8 @@ FactoryGirl.define do
   end
 
   factory :user do
-    email                 FactoryGirl.generate(:email)
-    password              'please'
+    email FactoryGirl.generate(:email)
+    password 'please'
     password_confirmation 'please'
     # required if the Devise Confirmable module is used
     # confirmed_at Time.now
@@ -24,12 +22,11 @@ FactoryGirl.define do
 
   factory :image do
     album
-    asset                 File.open("#{Rails.root}/spec/fixtures/file.png")
-    sequence(:title)      { |n| "Title #{n}" }
-    desc                  { FactoryGirl.generate(:body) }
-    place                 'Kiev'
-    date                  Date.today
-    published_at          Time.now
-    is_for_sale           false
+    asset File.open("#{Rails.root}/spec/fixtures/file.png")
+    sequence(:title) { |n| "Title #{n}" }
+    desc { FactoryGirl.generate(:body) }
+    place 'Kiev'
+    date Date.today
+    published_at Time.now
   end
 end

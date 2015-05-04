@@ -18,11 +18,8 @@ class Image < ActiveRecord::Base
   end
 
   DEFAULT_QUERY = 'title_or_desc_or_tags_cache_or_place_or_album_title_cont'
-  TITLE_MIN_FOR_SALE = 7
   TITLE_MIN = 4
-  DESC_MIN_FOR_SALE = 30
   DESC_MIN = 15
-  TAGS_MIN_FOR_SALE = 30
   TAGS_MIN = 10
 
   # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many

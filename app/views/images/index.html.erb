@@ -32,9 +32,6 @@
               <span class="label label-important">not uploading</span>
             <% end %>
           </p>
-          <p>
-            <span class="label <%= image.is_for_sale? ? 'label-important' : '' %>"><%= image.is_for_sale? ? '' : 'Not ' %> For Sale</span>
-          </p>
         </td>
         <td>
           <%= link_to(edit_image_path(image.id), class: 'thumbnail span2') do

@@ -12,7 +12,6 @@ describe Image do
   it { is_expected.to have_db_column(:date).of_type(:date) }
   it { is_expected.to have_db_column(:published_at).of_type(:datetime) }
   it { is_expected.to have_db_column(:tags_cache).of_type(:string) }
-  it { is_expected.to have_db_column(:is_for_sale).of_type(:boolean).with_options(default: false) }
   it { is_expected.to have_db_column(:image_width).of_type(:integer) }
   it { is_expected.to have_db_column(:image_height).of_type(:integer) }
 

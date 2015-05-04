@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819040951) do
+ActiveRecord::Schema.define(version: 20150504030843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 20140819040951) do
     t.datetime "updated_at"
     t.datetime "published_at"
     t.string   "tags_cache"
-    t.boolean  "is_for_sale",  default: false
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "title_ua"

@@ -28,7 +28,6 @@ en:
         date: 'Year of the picture'
         tags_resolved: 'Tags (please add a lot relevant!)'
         published: 'Published'
-        is_for_sale: 'For sale?'
       photo:
         asset: 'Photo File'
         desc: 'Description (EN)'
