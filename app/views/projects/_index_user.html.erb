@@ -1,3 +1,7 @@
+<% if @projects.empty? %>
+  No projects yet
+<% end %>
+
 <%= paginate @projects %>
 
 <ul class="thumbnails">

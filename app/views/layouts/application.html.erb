@@ -58,21 +58,14 @@
         </div>
         <br/>
         <footer class="footer">
-          <p>
+          <p style="color: #808080">
             <small>
               Copyright © 2011-<%= Time.now.year %> <%= get_setting('copyright_holder') %>
               <br/>
-              Except where otherwise noted, content on <a href="<%= get_setting('host') %>"><%= get_setting('host') %></a> is licensed under a <a rel="nofollow" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+              Except where otherwise noted, content on <a style="color: dimgray" href="<%= get_setting('host') %>"><%= get_setting('host') %></a> is licensed under a <a  style="color: dimgray" rel="nofollow" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
               <br/>
-              This site is based on <a href="https://github.com/rilian/portfolio" rel="nofollow">rilian/portfolio</a> engine.
+              This site is based on <a  style="color: dimgray" href="https://github.com/rilian/portfolio" rel="nofollow">rilian/portfolio</a> engine.
             </small>
-          </p>
-          <p>
-            <% if user_signed_in? %>
-              <%= link_to 'User Sign Out', destroy_user_session_path, method: 'delete' %>
-            <% else %>
-              <%= link_to 'User Sign In', new_user_session_path %>
-            <% end %>
           </p>
         </footer>
       </div>

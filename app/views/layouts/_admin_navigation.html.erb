@@ -22,6 +22,10 @@
     <li class="<%= current_page?(edit_user_registration_path) ? 'active' : '' %>">
       <%= link_to (I18n.t 'site.edit_account'), edit_user_registration_path %>
     </li>
+    <li class="divider-vertical"></li>
+    <li class="<%= current_page?(edit_user_registration_path) ? 'active' : '' %>">
+      <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %>
+    </li>
   </ul>
 </div>
 
