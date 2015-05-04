@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
+gem 'dotenv-rails', '2.0.1'
 
 # Frontend
 gem 'simple_form'
