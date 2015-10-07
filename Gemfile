@@ -3,14 +3,14 @@ source 'https://rubygems.org'
 # Backend
 gem 'rails', '4.2.0'
 gem 'pg'
-gem 'devise', github: 'plataformatec/devise', branch: 'lm-rails-4-2'
+gem 'devise'
 gem 'cancancan'
 gem 'whenever', require: false
 gem 'carrierwave'
 gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
-gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
-gem 'dotenv-rails', '2.0.1'
+gem 'ransack'
+gem 'dotenv-rails'
 
 # Frontend
 gem 'simple_form'
