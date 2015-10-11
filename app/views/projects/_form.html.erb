@@ -2,6 +2,7 @@
                     as: :project,
                     url: (@project.new_record? ? projects_path : project_path(@project)),
                     html: {class: 'form-inline'} do |f| %>
+  <%= f.input :type, as: :select, collection: Project::TYPES, required: true, include_blank: false %>
   <%= f.input :title, input_html: {class: 'input-xxlarge'} %>
   <%= f.input :title_ua, input_html: {class: 'input-xxlarge'} %>
   <%= f.input :info, input_html: {rows: 4, cols: 40, class: 'input-xxlarge'} %>
@@ -11,7 +12,7 @@
   <%= f.input :is_published, as: :boolean %>
   <%= f.input :weight %>
 
-  <%= f.button :submit, class: 'btn-primary' %>
+  <%= f.button :submit, class: 'btn-primary', value: "#{@project.new_record? ? 'New' : 'Update'} #{@project.type == 'publication' ? 'Publication' : 'Project'}" %>
 
   <h3><%= I18n.t 'site.photos_title' %> <small>added after Project is created</small></h3>
 
@@ -44,7 +45,7 @@
         </li>
       <% end %>
 
-      <%= f.button :submit, class: 'btn-primary' %>
+      <%= f.button :submit, class: 'btn-primary', value: "#{@project.new_record? ? 'New' : 'Update'} #{@project.type == 'publication' ? 'Publication' : 'Project'}" %>
     <% end %>
   </ul>
 

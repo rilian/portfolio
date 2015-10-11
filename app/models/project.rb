@@ -3,10 +3,15 @@ require 'portfolio/rss_record_touch'
 class Project < ActiveRecord::Base
   include Portfolio::RssRecordTouch
 
+  self.inheritance_column = nil
+
   has_many :photos, as: :owner, dependent: :destroy
 
-  validates_presence_of :title, :info, :description
-  validates_uniqueness_of :title, :title_ua
+  TYPES = %w[project publication]
+
+  validates :title, :info, :description, presence: true
+  validates :title, :title_ua, uniqueness: true
+  validates :type, inclusion: { in: TYPES }
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: proc { |a| !a.has_key?('id') && !a.has_key?('asset') }
 
