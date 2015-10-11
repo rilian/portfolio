@@ -22,6 +22,7 @@ ua:
     settings_title: 'Налаштування'
     contacts_title: 'Контакти'
     projects_title: 'Проекти'
+    publications_title: 'Публікації'
     photos_title: 'Photos'
     new_photo: 'New Photo'
     search: 'Пошук'

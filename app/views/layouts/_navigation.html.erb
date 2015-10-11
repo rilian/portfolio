@@ -6,14 +6,24 @@
         <%= link_to (I18n.t 'site.contacts_title'), contacts_path %>
       </li>
     <% end %>
-    <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
-      <%= link_to projects_path do %>
+    <li class="<%= (current_page?(projects_path) || current_page?(projects_path(q: { type_eq: 'project' })) || (@project && @project.type == 'project')) ? 'active' : '' %>">
+      <%= link_to projects_path(q: { type_eq: 'project' }) do %>
         <%= (I18n.t 'site.projects_title') %>
-        <% if Project.recent.exists? %>
+        <% if Project.recent.where(type: 'project').exists? %>
           <i class="unread"></i>
         <% end %>
       <% end %>
     </li>
+    <% if Project.where(type: 'publication', is_published: true).exists? %>
+      <li class="<%= (current_page?(projects_path(q: { type_eq: 'publication' })) || (@project && @project.type == 'publication')) ? 'active' : '' %>">
+        <%= link_to projects_path(q: { type_eq: 'publication' }) do %>
+          <%= (I18n.t 'site.publications_title') %>
+          <% if Project.recent.where(type: 'publication').exists? %>
+            <i class="unread"></i>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
     <% Album.published.order(weight: :asc).includes([:images]).each do |album| %>
       <% if album.images.size > 0 %>
         <li class="<%= current_page?(album_path(album)) || (@image && @image.album == album) ? 'active' : '' %>">

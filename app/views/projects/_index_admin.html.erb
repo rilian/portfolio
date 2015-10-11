@@ -1,8 +1,8 @@
 <h1>
-  <%= link_to 'New Project', new_project_path, class: 'btn btn-primary' %>
+  <%= link_to "New #{params[:q] && params[:q][:type_eq] == 'publication' ? 'Publication' : 'Project'}", new_project_path, class: 'btn btn-primary' %>
 
-  Projects
-  <small>list of all projects</small>
+  <%= params[:q] && params[:q][:type_eq] == 'publication' ? 'Publications' : 'Projects' %>
+  <small>list of all <%= params[:q] && params[:q][:type_eq] == 'publication' ? 'publications' : 'projects' %></small>
 </h1>
 
 <%= paginate @projects %>
@@ -12,6 +12,7 @@
   <tr>
     <th><%= sort_link @q, :id %></th>
     <th>Picture</th>
+    <th>Type</th>
     <th>About</th>
     <th><%= sort_link @q, :weight %></th>
     <th><%= sort_link @q, :created_at %></th>
@@ -32,6 +33,9 @@
             image_tag(project.cover_photo.asset.url(:span2))
           end %>
         <% end %>
+      </td>
+      <td>
+        <%= project.type %>
       </td>
       <td>
         <p><%= link_to get_local_value(I18n.locale, {en: project.title, ua: project.title_ua}), project_path(project) %></p>
@@ -62,6 +66,7 @@
   <tr>
     <th><%= sort_link @q, :id %></th>
     <th>Picture</th>
+    <th>Type</th>
     <th>About</th>
     <th><%= sort_link @q, :weight %></th>
     <th><%= sort_link @q, :created_at %></th>
