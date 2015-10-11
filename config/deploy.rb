@@ -3,39 +3,18 @@ lock '3.2.1'
 
 set :application, 'portfolio'
 set :repo_url, 'git@github.com:rilian/portfolio.git'
-
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-set :branch, 'master'
-
-# Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/home/ubuntu/apps/portfolio'
-
-# Default value for :scm is :git
 set :scm, :git
-
-# Default value for :format is :pretty
 set :format, :pretty
-
-# Default value for :log_level is :debug
 set :log_level, :debug
-
-# Default value for :pty is false
 set :pty, true
-
-# Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/secrets.yml .env}
-
-# Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
-
-# Default value for default_env is {}
 set :default_env, { path: '/home/ubuntu/.rbenv/shims:$PATH'}
-
-# Default value for keep_releases is 5
 set :keep_releases, 5
 
 # Custom
+set :linked_files, %w{config/database.yml config/secrets.yml .env}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
+set :branch, 'master'
 set :uploads_dir, '/mnt/apps/portfolio/public/uploads'
 set :rbenv_ruby, '2.1.2'
 set :rbenv_path, '~/.rbenv'

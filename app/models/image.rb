@@ -1,14 +1,11 @@
 require 'portfolio/rss_record_touch'
 
 class Image < ActiveRecord::Base
-  # Includes
   mount_uploader :asset, ImageUploader
   include Portfolio::RssRecordTouch
 
-  # Before, after callbacks
   before_save :update_values
 
-  # Default scopes, default values (e.g. self.per_page =)
   def extension_white_list
     %w(jpg jpeg gif png)
   end
@@ -22,24 +19,15 @@ class Image < ActiveRecord::Base
   DESC_MIN = 15
   TAGS_MIN = 10
 
-  # Associations: belongs_to > has_one > has_many > has_and_belongs_to_many
   belongs_to :album, touch: true
   has_many :image_tags
   has_many :tags, through: :image_tags
 
-  # Validations: presence > by type > validates
   validates_presence_of :album, :title
 
-  # Other properties (e.g. accepts_nested_attributes_for)
-
-  # Model dictionaries, state machine
-
-  # Scopes
   scope :sorted, -> { order('images.published_at DESC, images.created_at DESC') }
   scope :published, -> { where('images.published_at IS NOT NULL') }
   scope :from_published_albums, -> { joins(:album).where('albums.is_published = ?', true) }
-
-  # Other model methods
 
   def to_param
     "#{self.id}-#{self.title.parameterize}"
@@ -67,8 +55,7 @@ class Image < ActiveRecord::Base
     update_values
   end
 
-  # Private methods (for example: custom validators)
-  private
+private
 
   def update_values
     self.tags_cache = self.tags_resolved
@@ -82,7 +69,7 @@ class Image < ActiveRecord::Base
     end
   end
 
-  protected
+protected
 
   def is_published_changed?
     self.published_at_changed?
