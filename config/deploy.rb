@@ -16,7 +16,7 @@ set :linked_files, %w{config/database.yml config/secrets.yml .env}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
 set :branch, 'master'
 set :uploads_dir, '/mnt/apps/portfolio/public/uploads'
-set :rbenv_ruby, '2.1.2'
+set :rbenv_ruby, '2.2.2'
 set :rbenv_path, '~/.rbenv'
 
 namespace :nginx do
