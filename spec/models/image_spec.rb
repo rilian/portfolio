@@ -110,7 +110,7 @@ describe Image do
       end
 
       it 'should return well-formatted tags' do
-        expect(@image.reload.tags_resolved).to eq 'apple, banana, cucumber'
+        expect(@image.reload.tags_resolved.split(', ')).to match_array(%w[apple banana cucumber])
         expect(Tag.count).to eq 3
         expect(ImageTag.count).to eq 3
       end

@@ -1,6 +1,6 @@
 <h1>
   <%= link_to 'View', project_path(@project), class: 'btn btn-primary' if @project.persisted? %>
-  Edit Project
+  Edit <%= @project.type == 'publication' ? 'Publication' : 'Project' %>
 </h1>
 
 <%= render 'form' %>
