@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.4'
 gem 'nokogiri', '1.6.5'
 gem 'pg'
 gem 'devise'
@@ -12,6 +12,7 @@ gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'lograge'
 
 # Frontend
 gem 'simple_form'
