@@ -12,14 +12,14 @@
     </title>
     <meta name="description" content="<%= get_setting('description') %>">
     <meta name="author" content="<%= get_setting('copyright_holder') %>">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
     <%= auto_discovery_link_tag(:rss, rss_feed_url) %>
     <meta name="google-site-verification" content="2p1oQQtDfNHzwqUHXfb6kESw_Tcvn8YFL7Rg-cvF6a8" />
   </head>
   <body>
-    <% if get_setting('google_analytics_account').present? && Rails.env.production? && !user_signed_in? %>
+    <% if get_setting('google_analytics_account').present? && Rails.env.production? && !current_user %>
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

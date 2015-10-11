@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # disable registrations on PROD
-  devise :database_authenticatable, :recoverable, :rememberable#, :registerable
+  devise :database_authenticatable, :recoverable, :rememberable, :registerable
 
   validates_presence_of :password, :password_confirmation
   validates_length_of :password, minimum: 6
