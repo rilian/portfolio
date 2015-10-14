@@ -11,10 +11,6 @@
       <%= link_to (I18n.t 'site.albums_title'), albums_path(q: {s: 'weight desc'}) %>
     </li>
     <li class="divider-vertical"></li>
-    <li class="<%= (current_page?(projects_path) || @project) ? 'active' : '' %>">
-      <%= link_to (I18n.t 'site.projects_title'), projects_path %>
-    </li>
-    <li class="divider-vertical"></li>
     <li class="<%= (current_page?(settings_path) || @setting) ? 'active' : '' %>">
       <%= link_to (I18n.t 'site.settings_title'), settings_path %>
     </li>
