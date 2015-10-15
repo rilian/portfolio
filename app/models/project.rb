@@ -9,8 +9,7 @@ class Project < ActiveRecord::Base
 
   TYPES = %w[project publication]
 
-  validates :title, :info, :description, presence: true
-  validates :title, :title_ua, uniqueness: true
+  validates :title, presence: true
   validates :type, inclusion: { in: TYPES }
 
   accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: proc { |a| !a.has_key?('id') && !a.has_key?('asset') }
