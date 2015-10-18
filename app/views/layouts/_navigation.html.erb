@@ -60,6 +60,13 @@
         end %>
       </li>
     <% end %>
+    <% if get_setting('instagram_account').present? %>
+      <li>
+        <%= link_to "https://instagram.com/#{get_setting('instagram_account')}/", target: '_blank' do
+          image_tag 'instagram.png'
+        end %>
+      </li>
+    <% end %>
     <% if get_setting('linkedin_account').present? %>
       <li>
         <%= link_to get_setting('linkedin_account'), target: '_blank' do

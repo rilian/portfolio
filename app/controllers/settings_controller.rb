@@ -39,7 +39,7 @@ private
   def setting_params
     params.require(:setting).permit(
       :env, :host, :title, :copyright_holder, :contact_text,
-      :contact_text_ua, :facebook_account, :flickr_user_id, :linkedin_account,
+      :contact_text_ua, :facebook_account, :instagram_account, :flickr_user_id, :linkedin_account,
       :description, :google_analytics_account
     )
   end
