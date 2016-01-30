@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Backend
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5.1'
 gem 'nokogiri', '1.6.5'
 gem 'pg'
 gem 'devise'
