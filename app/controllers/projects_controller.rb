@@ -2,10 +2,9 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource :project
 
   def index
-    @projects = @projects.unscoped if params[:q] && params[:q][:s]
+    @projects = @projects.order('weight DESC')
     @q = @projects.search(params[:q])
     @projects = @q.result
-    @projects = @projects.order('weight DESC') if params[:q].nil?
     @projects = @projects.page(params[:page])
   end
 
@@ -38,8 +37,9 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    old_type = @project.type
     @project.destroy
-    redirect_to projects_path
+    redirect_to projects_path(q: { type_eq: old_type })
   end
 
 private
