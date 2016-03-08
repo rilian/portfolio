@@ -47,7 +47,7 @@ private
   def project_params
     params.require(:project).permit(
       :type, :title, :title_ua, :is_published, :description, :description_ua,
-      :weight, :info, :info_ua, { photos_attributes: [:asset, :asset_cache, :desc, :desc_ua, :is_cover, :weight] }
+      :weight, :info, :info_ua, { photos_attributes: [:id, :asset, :asset_cache, :desc, :desc_ua, :is_cover, :weight] }
     )
   end
 end
