@@ -12,7 +12,6 @@ gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
 gem 'ransack'
 gem 'dotenv-rails'
-gem 'lograge'
 
 # Frontend
 gem 'simple_form'
@@ -45,4 +44,5 @@ end
 group :production do
   gem 'foreman'
   gem 'unicorn'
+  gem 'lograge'
 end
