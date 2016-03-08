@@ -17,7 +17,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :big do
     process resize_to_limit: [900, 700]
-    process :add_watermark
+    # process :add_watermark
     process optimize: [{ quiet: true }]
   end
   version :span2 do
