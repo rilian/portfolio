@@ -8,7 +8,6 @@ gem 'devise'
 gem 'cancancan'
 gem 'whenever', require: false
 gem 'carrierwave'
-gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
 gem 'ransack'
 gem 'dotenv-rails'

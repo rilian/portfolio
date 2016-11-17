@@ -5,7 +5,6 @@ require 'carrierwave/processing/mime_types'
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   include CarrierWave::MimeTypes
-  include CarrierWave::ImageOptimizer
 
   storage :file
 
@@ -18,11 +17,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :big do
     process resize_to_limit: [900, 700]
     # process :add_watermark
-    process optimize: [{ quiet: true }]
   end
   version :span2 do
     process resize_to_limit: [900, 110]
-    process optimize: [{ quiet: true }]
   end
 
   def extension_white_list
