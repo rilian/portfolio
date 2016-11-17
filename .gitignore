@@ -2,8 +2,6 @@
 log/*.log
 /tmp
 config/watermark.png
-config/database.yml
-config/secrets.yml
 config/deploy/
 public/uploads
 .sass-cache
